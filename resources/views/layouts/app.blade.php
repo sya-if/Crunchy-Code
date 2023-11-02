@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <!-- Basic Page Info -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crunchy Code</title>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -15,18 +16,29 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <!-- Additional -->
+   
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../vendors/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../vendors/images/favicon-32x32.png">
+    <link rel="icon" type of="image/png" sizes="16x16" href="../../../vendors/images/favicon-16x16.png">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="../../../vendors/styles/core.css">
+    <link rel="stylesheet" type="text/css" href="../../../vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../vendors/styles/style.css">
+ 
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
+        
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
@@ -70,11 +82,16 @@
                     </ul>
                 </div>
             </div>
-        </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>
+
+    <!-- js -->
+	<script src="../../../vendors/scripts/core.js"></script>
+	<script src="../../../vendors/scripts/script.min.js"></script>
+	<script src="../../../vendors/scripts/process.js"></script>
+	<script src="../../../vendors/scripts/layout-settings.js"></script>
 </body>
 </html>
