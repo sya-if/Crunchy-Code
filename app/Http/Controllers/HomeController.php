@@ -37,4 +37,25 @@ class HomeController extends Controller
         $data->delete();
         return redirect('login');
     }
+
+    public function user_settings() {
+        $data = User::all();
+        return view('user_settings', compact('data'));
+    }
+    
+    public function save_settings($id, Request $request) {
+        $data = User::find($id);
+    
+        // Update the user data based on the input values
+        $data->name = $request->input('name');
+        $data->email = $request->input('setting2');
+        $data->phone = $request->input('setting3');
+    
+        // Save the updated data to the database
+        $data->save();
+    
+        return redirect()->back()->with('success', 'Settings saved successfully');
+    }    
+    
+
 }

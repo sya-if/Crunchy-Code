@@ -17,7 +17,7 @@
                         <td style="padding: 8px; text-align: left;">{{$data->email}}</td>
                         <td><a class="btn btn-danger" href="{{url('delete', $data->id)}}">Delete Profile</a></td>
                     </tr>
-
+    
                     @endforeach
                 </table>
                 
