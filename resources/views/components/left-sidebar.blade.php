@@ -22,21 +22,12 @@
                 </li>
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon dw dw-edit2"></span><span class="mtext">Forms</span>
+                        <span class="micon dw dw-edit2"></span><span class="mtext">Profile</span>
                     </a>
-                    <ul class="submenu">
-                        <li><a href="form-basic.html">Form Basic</a></li>
-                        <li><a href="advanced-components.html">Advanced Components</a></li>
-                        <li><a href="form-wizard.html">Form Wizard</a></li>
-                        <li><a href="html5-editor.html">HTML5 Editor</a></li>
-                        <li><a href="form-pickers.html">Form Pickers</a></li>
-                        <li><a href="image-cropper.html">Image Cropper</a></li>
-                        <li><a href="image-dropzone.html">Image Dropzone</a></li>
-                    </ul>
                 </li>
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon dw dw-library"></span><span class="mtext">Tables</span>
+                        <span class="micon dw dw-library"></span><span class="mtext">Courses</span>
                     </a>
                     <ul class="submenu">
                         <li><a href="basic-table.html">Basic Tables</a></li>
@@ -45,7 +36,7 @@
                 </li>
                 <li>
                     <a href="calendar.html" class="dropdown-toggle no-arrow">
-                        <span class="micon dw dw-calendar1"></span><span class="mtext">Calendar</span>
+                        <span class="micon dw dw-calendar1"></span><span class="mtext">Quizzes</span>
                     </a>
                 </li>
                 <li class="dropdown">
@@ -187,12 +178,7 @@
                         <li><a href="third-party-plugins.html">Third Party Plugins</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="https://dropways.github.io/deskapp-free-single-page-website-template/" target="_blank" class="dropdown-toggle no-arrow">
-                        <span class="micon dw dw-paper-plane1"></span>
-                        <span class="mtext">Landing Page <img src="../../../vendors/images/coming-soon.png" alt="" width="25"></span>
-                    </a>
-                </li>
+        
             </ul>
         </div>
     </div>

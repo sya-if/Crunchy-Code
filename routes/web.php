@@ -18,6 +18,11 @@ Route::get('/', function () {
 });
 
 
+//Route for edit profile. Panggil ProfileController. Method yang berbeza.
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'getProfile'])->name('profile');
+Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'postProfile'])->name('profile.post');
+
+
 
 Auth::routes();
 

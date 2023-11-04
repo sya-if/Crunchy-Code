@@ -37,14 +37,18 @@
 </head>
 <body>
     
+    <!-- Panggil file preloader -->
     @include('components.preloader')
-    
+
+    <!-- Panggil file header -->
     @include('components.header')
 
+    <!-- Panggil file right sidebar  -->
     @include('components.right-sidebar')
 
+    <!-- Panggil file left sidebar -->
     @include('components.left-sidebar')
-                
+    
     <main>
         @yield('content')
     </main>
