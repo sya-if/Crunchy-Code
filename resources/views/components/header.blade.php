@@ -114,7 +114,8 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                     <a class="dropdown-item" href="#"><i class="dw dw-user1"></i> Profile</a>
-                    <a class="dropdown-item" href="#"><i class="dw dw-settings2"></i> Setting</a>
+                    <a class="dropdown-item" href="{{url('settings')}}"><i class="dw dw-settings2"></i> Settings</a>
+                    <a class="dropdown-item" href="{{url('delete-profile')}}">Delete Profile</a>
                     <a class="dropdown-item" href="#"><i class="dw dw-help"></i> Help</a>
                     <a class="dropdown-item" href="#"><i class="dw dw-logout"></i> Log Out</a>
                 </div>
