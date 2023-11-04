@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 
+
 class ProfileController extends Controller
 {
 
@@ -13,7 +14,7 @@ class ProfileController extends Controller
         $user = Auth::user();
 
         // Return the page profile yang reside dalam folder page
-        return view('page.profile', compact('user'));
+        return view('pages.profile', compact('user'));
     }
 
     // Function to handle the POST method.Accept form request by using parameter request

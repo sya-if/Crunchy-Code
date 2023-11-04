@@ -1,3 +1,5 @@
+<!-- Get level of access -->
+@php($user = Auth::user())
 
 <div class="header">
     <div class="header-left">
@@ -110,10 +112,10 @@
                     <span class="user-icon">
                         <img src="../../../vendors/images/photo1.jpg" alt="">
                     </span>
-                    <span class="user-name">Ross C. Lopez</span>
+                    <span class="user-name">{{ old('name' , $user->name ) }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                    <a class="dropdown-item" href="#"><i class="dw dw-user1"></i> Profile</a>
+                    <a class="dropdown-item" href="{{ route('profile') }}"><i class="dw dw-user1"></i> Profile</a>
                     <a class="dropdown-item" href="{{url('settings')}}"><i class="dw dw-settings2"></i> Settings</a>
                     <a class="dropdown-item" href="{{url('delete-profile')}}">Delete Profile</a>
                     <a class="dropdown-item" href="#"><i class="dw dw-help"></i> Help</a>
