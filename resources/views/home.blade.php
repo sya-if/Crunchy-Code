@@ -1,21 +1,6 @@
 @extends('layouts.master')
 
-<!-- Site favicon -->
-<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png">
-
-<!-- Mobile Specific Metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<!-- CSS -->
-<link rel="stylesheet" type="text/css" href="vendors/styles/core.css">
-<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css">
-<link rel="stylesheet" type="text/css" href="src/plugins/jvectormap/jquery-jvectormap-2.0.3.css">
-<link rel="stylesheet" type="text/css" href="vendors/styles/style.css">
+@php($user = Auth::user())
 
 @section('content')
 <div class="main-container">
@@ -44,6 +29,19 @@
                             <a class="dropdown-item" href="#">View Assets</a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-box pd-20 height-100-p mb-30">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <img src="vendors/images/banner-img.png" alt="">
+                </div>
+                <div class="col-md-8">
+                    <h4 class="font-20 weight-500 mb-10 text-capitalize">
+                        Welcome back <div class="weight-600 font-30 text-blue">{{ old('name' , $user->nickname ) }}</div>
+                    </h4>
+                    <p class="font-18 max-width-600">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde hic non repellendus debitis iure, doloremque assumenda. Autem modi, corrupti, nobis ea iure fugiat, veniam non quaerat mollitia animi error corporis.</p>
                 </div>
             </div>
         </div>
@@ -88,17 +86,5 @@
 
     </div>
 </div>
-
-{{-- js --}}
-<script src="vendors/scripts/core.js"></script>
-<script src="vendors/scripts/script.min.js"></script>
-<script src="vendors/scripts/process.js"></script>
-<script src="vendors/scripts/layout-settings.js"></script>
-<script src="src/plugins/jQuery-Knob-master/jquery.knob.min.js"></script>
-<script src="src/plugins/highcharts-6.0.7/code/highcharts.js"></script>
-<script src="src/plugins/highcharts-6.0.7/code/highcharts-more.js"></script>
-<script src="src/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
-<script src="src/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<script src="vendors/scripts/dashboard2.js"></script>
 
 @endsection

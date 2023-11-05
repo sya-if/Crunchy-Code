@@ -112,7 +112,7 @@
                     <span class="user-icon">
                         <img src="../../../vendors/images/photo1.jpg" alt="">
                     </span>
-                    <span class="user-name">{{ old('name' , $user->name ) }}</span>
+                    <span class="user-name">{{ old('name' , $user->nickname )}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                     <a class="dropdown-item" href="{{ route('profile') }}"><i class="dw dw-user1"></i> Profile</a>
