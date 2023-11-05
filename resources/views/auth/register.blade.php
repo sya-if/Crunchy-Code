@@ -16,8 +16,10 @@
         </div>
     </div>
 </div>
+
+
 <div class="register-page-wrap d-flex align-items-center flex-wrap justify-content-center">
-    <div class="container">
+    <div class="container" style="padding-top:50px">
         <div class="row align-items-center">
 
             <div class="col-md-6 col-lg-7 mt-3">
@@ -32,12 +34,13 @@
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
+                            <!-- Full Name -->
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label">{{ __('Name') }}</label>
+                                <label for="fullname" class="col-md-4 col-form-label">{{ __('Fullname') }}</label>
                                 <div class="col-md-8">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <input id="fullname" type="text" class="form-control @error('fullname') is-invalid @enderror" name="fullname" value="{{ old('fullname') }}" required autocomplete="fullname" autofocus>
 
-                                    @error('name')
+                                    @error('fullname')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -45,6 +48,21 @@
                                 </div>
                             </div>
 
+                            <!-- Nick Name -->
+                            <div class="form-group row">
+                                <label for="nickname" class="col-md-4 col-form-label">{{ __('Nickname') }}</label>
+                                <div class="col-md-8">
+                                    <input id="nickname" type="text" class="form-control @error('nickname') is-invalid @enderror" name="nickname" value="{{ old('nickname') }}" required autocomplete="nickname" autofocus>
+
+                                    @error('nickname')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <!-- Email Address -->
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label">{{ __('Email Address') }}</label>
                                 <div class="col-md-8">
@@ -58,6 +76,7 @@
                                 </div>
                             </div>
 
+                            <!-- Password -->
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label">{{ __('Password') }}</label>
                                 <div class="col-md-8">
@@ -71,6 +90,7 @@
                                 </div>
                             </div>
 
+                            <!-- Confirm Password -->
                             <div class="form-group row">
                                 <label for="password-confirm" class="col-md-4 col-form-label">{{ __('Confirm Password') }}</label>
                                 <div class="col-md-8">
@@ -78,6 +98,7 @@
                                 </div>
                             </div>
 
+                            <!-- Submit Button -->
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
@@ -85,6 +106,8 @@
                                     </button>
                                 </div>
                             </div>
+
+
                         </form>
                     </div>
                 </div>

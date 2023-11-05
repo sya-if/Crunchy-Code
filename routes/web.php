@@ -25,15 +25,15 @@ Route::get('/', function () {
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'getProfile'])->name('profile');
 Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'postProfile'])->name('profile.post');
 
-
-
+// Authentication Route
 Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/delete-profile',[HomeController::class, 'view_delete_profile']);
+Route::get('/delete-profile', [HomeController::class, 'view_delete_profile']);
 
-Route::get('/delete/{id}',[HomeController::class, 'delete_profile']);
+Route::get('/delete/{id}', [HomeController::class, 'delete_profile']);
 
 Route::get('/settings', [HomeController::class, 'user_settings'])->name('user_settings');
 
