@@ -49,7 +49,7 @@
                         <label for="c-password">Confirm Password</label>
                         <input type="text" id="c-password" name="c-password" class="form-control">
                     </div>
-                    <button type="submit" class="btn btn-primary">Save Settings</button>
+                    <input type="submit" class="btn btn-primary" value="Save Settings"/>
                 </form>
                 @endforeach
             </div>

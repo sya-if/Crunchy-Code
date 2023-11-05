@@ -25,7 +25,7 @@ Route::get('/', function () {
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'getProfile'])->name('profile');
 Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'postProfile'])->name('profile.post');
 
-
+//Ubah
 
 Auth::routes();
 
