@@ -28,6 +28,8 @@ Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'postPro
 // Authentication Route
 Auth::routes();
 
+// Route for getting the information from user
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

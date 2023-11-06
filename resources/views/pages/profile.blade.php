@@ -125,9 +125,9 @@
 
                                             <!-- First row-->
                                             <tr>
-                                                <td>Name</td>
+                                                <td>Full Name</td>
                                                 <td>
-                                                    <input type="text" name="name" value=" {{ old('name' , $user->name ) }}" class="form-control">
+                                                    <input type="text" name="name" value=" {{ old('name' , $user->fullname ) }}" class="form-control">
                                                     @error('name')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -135,6 +135,17 @@
                                             </tr>
 
                                             <!-- Second row-->
+                                            <tr>
+                                                <td>Nickname</td>
+                                                <td>
+                                                    <input type="text" name="name" value=" {{ old('name' , $user->nickname ) }}" class="form-control">
+                                                    @error('name')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </td>
+                                            </tr>
+
+                                            <!-- Third row-->
                                             <tr>
                                                 <td>Email</td>
                                                 <td>
