@@ -1,3 +1,4 @@
+@php($user = Auth::user())
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="index.html">
@@ -20,11 +21,50 @@
                         <li><a href="#">Dashboard style 2</a></li>
                     </ul>
                 </li>
+              
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
-                        <span class="micon dw dw-edit2"></span><span class="mtext">Profile</span>
+                        <span class="micon dw dw-edit2"></span><span class="mtext" >Profile</span>
+                        <a href ="{{ route('profile') }}"> </a>
                     </a>
                 </li>
+                @if ($user->role =='admin')
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-library"></span><span class="mtext">Students</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="basic-table.html">Add New Students</a></li>
+                        <li><a href="datatable.html">Delete Students</a></li>
+                        <li><a href="datatable.html">View Student List</a></li>
+
+                    </ul>
+                </li> 
+
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-library"></span><span class="mtext">Manage Quiz</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="basic-table.html">Add New Quiz</a></li>
+                        <li><a href="datatable.html">Delete Quiz</a></li>
+                        <li><a href="datatable.html">View Quiz List</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-library"></span><span class="mtext">Manage Forum</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="basic-table.html">Add New Forum</a></li>
+                        <li><a href="datatable.html">Delete Forum</a></li>
+                        <li><a href="datatable.html">Edit Forum Information</a></li>
+                    </ul>
+                </li>
+                @endif
+
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-library"></span><span class="mtext">Courses</span>
@@ -34,11 +74,14 @@
                         <li><a href="datatable.html">DataTables</a></li>
                     </ul>
                 </li>
+                
+
                 <li>
                     <a href="calendar.html" class="dropdown-toggle no-arrow">
                         <span class="micon dw dw-calendar1"></span><span class="mtext">Quizzes</span>
                     </a>
                 </li>
+
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-apartment"></span><span class="mtext"> UI Elements </span>
@@ -60,6 +103,7 @@
                         <li><a href="ui-carousel.html">Carousel</a></li>
                     </ul>
                 </li>
+
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle">
                         <span class="micon dw dw-paint-brush"></span><span class="mtext">Icons</span>
