@@ -44,11 +44,12 @@
                     <h4 class="font-20 weight-500 mb-10 text-capitalize">
                         Welcome back <div class="weight-600 font-30 text-blue">{{ old('name' , $user->nickname ) }}</div>
                     </h4>
-                    <p class="font-18 max-width-600"> </p>
+                    <p class="font-17 max-width-1000">Welcome to the Crunchy Code Web Application System, your gateway to mastering computer science with ease! Get ready to embark on a knowledge-rich journey as you explore the world of coding and computer science.</p>
                 </div>
             </div>
         </div>
 
+        <!-- Student Dashboard -->
         @if($user->role=='student')
 
         <div class="card-box pd-20 height-100-p mb-30">
@@ -135,7 +136,64 @@
             </div>
         </div>
 
+        <!-- End Student Dashboard -->
         @endif
+
+
+        <!-- Admin Dashboard -->
+        @if($user->role =='admin')
+
+        <!-- System Summary -->
+        <div class="row justify-content-center" >
+
+            <div class="col-xl-3 mb-30">
+                <div class="card-box height-100-p widget-style1">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="progress-data">
+                            <div id="chart2"></div>
+                        </div>
+                        <div class="widget-data">
+                            <div class="h4 mb-0">10</div>
+                            <div class="weight-600 font-14">Students</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 mb-30">
+                <div class="card-box height-100-p widget-style1">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="progress-data">
+                            <div id="chart3"></div>
+                        </div>
+                        <div class="widget-data">
+                            <div class="h4 mb-0">3</div>
+                            <div class="weight-600 font-14">Modules</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 mb-30">
+                <div class="card-box height-100-p widget-style1">
+                    <div class="d-flex flex-wrap align-items-center">
+                        <div class="progress-data">
+                            <div id="chart4"></div>
+                        </div>
+                        <div class="widget-data">
+                            <div class="h4 mb-0">10</div>
+                            <div class="weight-600 font-14">Quizzes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+
+
+        <!-- End Admin Dashboard -->
+        @endif
+
+
     </div>
 </div>
 

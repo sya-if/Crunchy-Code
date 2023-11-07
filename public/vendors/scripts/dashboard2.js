@@ -1,35 +1,35 @@
 $(".dial1").knob();
-$({animatedVal: 0}).animate({animatedVal: 80}, {
+$({ animatedVal: 0 }).animate({ animatedVal: 80 }, {
 	duration: 3000,
 	easing: "swing",
-	step: function() {
+	step: function () {
 		$(".dial1").val(Math.ceil(this.animatedVal)).trigger("change");
 	}
 });
 
 $(".dial2").knob();
-$({animatedVal: 0}).animate({animatedVal: 70}, {
+$({ animatedVal: 0 }).animate({ animatedVal: 70 }, {
 	duration: 3000,
 	easing: "swing",
-	step: function() {
+	step: function () {
 		$(".dial2").val(Math.ceil(this.animatedVal)).trigger("change");
 	}
 });
 
 $(".dial3").knob();
-$({animatedVal: 0}).animate({animatedVal: 90}, {
+$({ animatedVal: 0 }).animate({ animatedVal: 90 }, {
 	duration: 3000,
 	easing: "swing",
-	step: function() {
+	step: function () {
 		$(".dial3").val(Math.ceil(this.animatedVal)).trigger("change");
 	}
 });
 
 $(".dial4").knob();
-$({animatedVal: 0}).animate({animatedVal: 65}, {
+$({ animatedVal: 0 }).animate({ animatedVal: 65 }, {
 	duration: 3000,
 	easing: "swing",
-	step: function() {
+	step: function () {
 		$(".dial4").val(Math.ceil(this.animatedVal)).trigger("change");
 	}
 });
@@ -38,7 +38,7 @@ jQuery('#browservisit').vectorMap({
 	map: 'world_mill_en',
 	backgroundColor: '#fff',
 	borderWidth: 1,
-	zoomOnScroll : false,
+	zoomOnScroll: false,
 	color: '#ddd',
 	regionStyle: {
 		initial: {
@@ -49,91 +49,7 @@ jQuery('#browservisit').vectorMap({
 	normalizeFunction: 'linear',
 	showTooltip: true
 });
-// chart
-Highcharts.chart('chart', {
-	chart: {
-		type: 'line'
-	},
-	title: {
-		text: ''
-	},
-	xAxis: {
-		categories: ['jan 01', 'jan 05', 'jan 10', 'jan 15', 'jan 20', 'jan 25', 'jan 30'],
-		labels: {
-			style: {
-				color: '#1b00ff',
-				fontSize: '12px',
-			}
-		}
-	},
-	yAxis: {
-		labels: {
-			formatter: function () {
-				return this.value;
-			},
-			style: {
-				color: '#1b00ff',
-				fontSize: '14px'
-			}
-		},
-		title: {
-			text: ''
-		},
-	},
-	credits: {
-		enabled: false
-	},
-	tooltip: {
-		crosshairs: true,
-		shared: true
-	},
-	plotOptions: {
-		spline: {
-			marker: {
-				radius: 10,
-				lineColor: '#1b00ff',
-				lineWidth: 2
-			}
-		}
-	},
-	legend: {
-		align: 'center',
-		x: 0,
-		y: 0
-	},
-	series: [{
-		name: 'Twitter',
-		color: '#00789c',
-		marker: {
-			symbol: 'circle'
-		},
-		data: [0, 10, 5, 30, 40, 20, 10]
-	},
-	{
-		name: 'Facebook',
-		color: '#236adc',
-		marker: {
-			symbol: 'circle'
-		},
-		data: [40, 20, 10, 40, 15, 15, 20]
-	},
-	{
-		name: 'Chat',
-		color: '#ff686b',
-		marker: {
-			symbol: 'circle'
-		},
-		data: [0, 15, 5, 30, 40, 30, 28]
-	},
-	{
-		name: 'Forum',
-		color: '#264653',
-		marker: {
-			symbol: 'circle'
-		},
-		data: [35, 25, 10, 40, 15, 5, 38]
-	}]
-});
+
 Highcharts.chart('compliance-trend', {
 	chart: {
 		type: 'column'
@@ -148,7 +64,7 @@ Highcharts.chart('compliance-trend', {
 	xAxis: {
 		categories: ['1th Sep', '2th Sep', '3th Sep', '4th Sep', '5th Sep', '6th Sep', '7th Sep', '8th Sep', '9th Sep', '10th Sep'],
 		crosshair: true,
-		lineWidth:1,
+		lineWidth: 1,
 		lineColor: '#979797',
 		labels: {
 			style: {
@@ -161,7 +77,7 @@ Highcharts.chart('compliance-trend', {
 		min: 0,
 		max: 100,
 		gridLineWidth: 0,
-		lineWidth:1,
+		lineWidth: 1,
 		lineColor: '#979797',
 		title: {
 			text: ''
