@@ -103,7 +103,6 @@
                         <li><a href="basic-table.html">Add New Quiz</a></li>
                         <li><a href="datatable.html">Delete Quiz</a></li>
                         <li><a href="datatable.html">View Quiz List</a></li>
-
                     </ul>
                 </li>
 
@@ -119,7 +118,40 @@
                 </li>
                 @endif
 
-            
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-library"></span><span class="mtext">Courses</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="basic-table.html">Module 1</a></li>
+                        <li><a href="datatable.html">Module 2</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="calendar.html" class="dropdown-toggle">
+                        <span class="micon dw dw-calendar1"></span><span class="mtext">Quizzes</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="basic-table.html">Module 1</a></li>
+                        <li><a href="datatable.html">Module 2</a></li>
+                        <li><a href="basic-table.html">Module 3</a></li>
+                        <li><a href="datatable.html">Module 4</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-apartment"></span><span class="mtext">Forum</span>
+                    </a>
+                </li>
+
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-paint-brush"></span><span class="mtext">Community</span>
+                    </a>
+                </li>
+                
             </ul>
         </div>
     </div>

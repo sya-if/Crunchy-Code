@@ -1,5 +1,5 @@
 @extends('layouts.master')
-
+@php($user = Auth::user())
 @section('content')
 <div class="main-container">
     <div class="pd-ltr-20 xs-pd-20-10">
@@ -169,6 +169,17 @@
 
                                             <!-- Fourth row-->
                                             <tr>
+                                                <td>School</td>
+                                                <td>
+                                                    <input type="School" name="school"  class="form-control">
+                                                    @error('school')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </td>
+                                            </tr>
+
+                                            <!-- Fifth row-->
+                                            <tr>
                                                 <td>Password</td>
                                                 <td>
                                                     <input type="password" name="password" class="form-control">
@@ -188,6 +199,8 @@
                                                     @enderror
                                                 </td>
                                             </tr>
+
+                                            
 
                                             <!-- First row-->
                                             <tr>
