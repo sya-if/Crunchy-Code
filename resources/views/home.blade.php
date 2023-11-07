@@ -49,6 +49,8 @@
             </div>
         </div>
 
+        @if($user->role=='student')
+
         <div class="card-box pd-20 height-100-p mb-30">
             <div class="row align-items-center">
                 <div class="progress-tracker">
@@ -132,6 +134,8 @@
                 </div>
             </div>
         </div>
+
+        @endif
     </div>
 </div>
 
