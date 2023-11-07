@@ -3,6 +3,7 @@
 @php($user = Auth::user())
 
 @section('content')
+
 <div class="main-container">
     <div class="xs-pd-20-10 pd-ltr-20">
         <div class="page-header">
@@ -47,7 +48,7 @@
                 </div>
             </div>
         </div>
-    
+
         <div class="card-box pd-20 height-100-p mb-30">
             <div class="row align-items-center">
                 <div class="progress-tracker">
