@@ -3,6 +3,14 @@
 @section('content')
 
 <div class="main-container">
+    
+    <!-- Untuk check whether session has established ataupun tidak -->
+    @if(Session::has('message'))
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            {{ Session::get('message') }}
+        </div>
+    @endif
     <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-200px">
             <div class="page-header">
@@ -12,12 +20,7 @@
                             <h4>Student List</h4>
                         </div>
 
-                        <!-- Untuk check whether session has established ataupun tidak -->
-                        @if(Session::has('message'))
-                            <div class="alert alert-success">
-                                {{ Session::get('message') }}
-                            </div>
-                        @endif
+                        
 
 
                         <nav aria-label="breadcrumb" role="navigation">

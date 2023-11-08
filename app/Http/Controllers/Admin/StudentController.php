@@ -127,7 +127,7 @@ class StudentController extends Controller
 
         $user->delete();
 
-        Session()->flash('message', 'Student has been deleted sucessfully');
+        Session()->flash('message', 'Student has been deleted successfully');
 
         // Redirect to the student list page
         return redirect()->route('user.index');
