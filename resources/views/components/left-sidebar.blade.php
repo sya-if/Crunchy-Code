@@ -19,14 +19,14 @@
 
                     <!-- Home -->
                     <li class="dropdown">
-                        <a href="javascript:;" class="dropdown-toggle no-arrow">
+                        <a href="j{{ route('home') }}" class="dropdown-toggle no-arrow">
                             <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
                         </a>
                     </li>
 
                     <!-- Profile -->
                     <li class="dropdown">
-                        <a href="javascript:;" class="dropdown-toggle no-arrow">
+                        <a href="{{ route('profile') }}" class="dropdown-toggle no-arrow">
                             <span class="micon dw dw-edit2"></span><span class="mtext">Profile</span>
                         </a>
                     </li>
@@ -85,7 +85,7 @@
 
                  <!-- Profile -->
                  <li>
-                    <a href="javascript:;" class="dropdown-toggle no-arrow">
+                    <a href="{{ route('profile') }}" class="dropdown-toggle no-arrow">
                         <span class="micon dw dw-edit2"></span><span class="mtext">Profile</span>
                     </a>
                 </li>

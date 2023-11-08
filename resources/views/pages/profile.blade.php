@@ -1,5 +1,7 @@
 @extends('layouts.master')
+
 @php($user = Auth::user())
+
 @section('content')
 <div class="main-container">
     <div class="pd-ltr-20 xs-pd-20-10">
@@ -52,13 +54,13 @@
                             </div>
                         </div>
                         <h5 class="text-center h5 mb-0">{{ old('name' , $user->name ) }}</h5>
-                        <p class="text-center text-muted font-14">Lorem ipsum dolor sit amet</p>
+                        <p class="text-center text-muted font-14">I'm excited to introduce our comprehensive web development program, designed to equip you with the essential skills and knowledge to build dynamic and engaging websites that make a lasting impact in the digital world.</p>
                         <div class="profile-info">
                             <h5 class="mb-20 h5 text-blue">Contact Information</h5>
                             <ul>
                                 <li>
                                     <span>Email Address:</span>
-                                    FerdinandMChilds@test.com
+                                    {{ old('name' , $user->email ) }}
                                 </li>
                                 <li>
                                     <span>Phone Number:</span>
@@ -117,9 +119,9 @@
                                         <!-- Setiap form perlu provide csrf -->
                                         @csrf
 
-                                        <table class="table table">
+                                        <table class="table">
 
-                                            <!-- First row-->
+                                            <!-- Default Personal Details -->
                                             <tr>
                                                 <td>Full Name</td>
                                                 <td>
@@ -129,6 +131,12 @@
                                                     @enderror
                                                 </td>
                                             </tr>
+
+                                            <!-- Personal Details Admin -->
+                                            @if($user->role == 'admin')
+
+
+                                           
 
                                             <!-- Second row-->
                                             <tr>
@@ -195,38 +203,6 @@
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </td>
-                                            </tr>
-
-
-
-                                            <!-- sixth row-->
-                                            <tr>
-                                                <div class="card-box pd-20 height-100-p mb-30">
-                                                    <div class="row align-items-center">
-                                                        <div class="progress-tracker">
-                                                            <div class="row clearfix progress-box">
-                                                                <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-                                                                    <div class="card-box pd-30 height-100-p">
-                                                                        <div class="progress-box text-center">
-                                                                            <input type="text" class="knob dial3" value="90" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#f56767" data-angleOffset="180" readonly>
-                                                                            <h5 class="text-light-orange padding-top-10 h5">Module 1</h5>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-                                                                    <div class="card-box pd-30 height-100-p">
-                                                                        <div class="progress-box text-center">
-                                                                            <input type="text" class="knob dial4" value="65" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#a683eb" data-angleOffset="180" readonly>
-                                                                            <h5 class="text-light-purple padding-top-10 h5">Module 2</h5>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </tr>
 
                                             <!-- seventh row-->
