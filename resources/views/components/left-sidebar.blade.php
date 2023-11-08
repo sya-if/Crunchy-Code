@@ -3,8 +3,11 @@
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="{{route('home')}}">
-            <img src="../../../vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
-            <img src="../../../vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
+            <img src="../../../vendors/images/crunchy-code-logo.png" alt="" width="70" height="70" class="dark-logo">
+            <img src="../../../vendors/images/wording-logo.png" alt="" width="600" class="dark-logo">
+
+            <img src="../../../vendors/images/crunchy-code-logo.png" alt="" width="70" height="70" class="light-logo">
+            <img src="../../../vendors/images/wording-logo.png" alt="" width="600" class="light-logo">
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>

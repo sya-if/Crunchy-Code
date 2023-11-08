@@ -249,17 +249,18 @@
                     </table>
                 </div>
             </div>
+            
         
             <!-- Forum List -->
             <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
                 <div class="pd-20 card-box height-100-p">
                     <h4 class="mb-20 h4">Community List</h4>
                     <ul class="list-group">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Morbi leo risus</li>
-                        <li class="list-group-item">Porta ac consectetur ac</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">SMK Batu Pahat</li>
+                        <li class="list-group-item">Universiti Teknologi Malaysia</li>
+                        <li class="list-group-item">Fakulti Komputeran</li>
+                        <li class="list-group-item">Public</li>
+                        <li class="list-group-item">Private</li>
                     </ul>
                 </div>
             </div>

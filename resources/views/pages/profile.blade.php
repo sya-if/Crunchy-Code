@@ -132,13 +132,7 @@
                                                 </td>
                                             </tr>
 
-                                            <!-- Personal Details Admin -->
-                                            @if($user->role == 'admin')
-
-
-                                           
-
-                                            <!-- Second row-->
+                                
                                             <tr>
                                                 <td>Nickname</td>
                                                 <td>
@@ -149,7 +143,7 @@
                                                 </td>
                                             </tr>
 
-                                            <!-- Third row-->
+
                                             <tr>
                                                 <td>Email</td>
                                                 <td>
@@ -160,7 +154,7 @@
                                                 </td>
                                             </tr>
 
-                                            <!-- Third row-->
+                                     
                                             <tr>
                                                 <td>Phone</td>
                                                 <td>
@@ -171,7 +165,8 @@
                                                 </td>
                                             </tr>
 
-                                            <!-- Fourth row-->
+                                            <!-- Personal Details Student -->
+                                            @if($user->role == 'student')
                                             <tr>
                                                 <td>School</td>
                                                 <td>
@@ -186,26 +181,25 @@
                                             <tr>
                                                 <td>Bio</td>
                                                 <td>
-                                                    <input type="password" name="password" class="form-control">
-                                                    @error('password')
+                                                    <input type="text" name="bio" value="" class="form-control">
+                                                    @error('bio')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </td>
                                             </tr>
-
-                                            <!-- Fifth row-->
 
                                             <tr>
                                                 <td>Date of Birth</td>
                                                 <td>
-                                                    <input type="password" name="password" class="form-control">
+                                                    <input type="" name="password" class="form-control">
                                                     @error('password')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </td>
                                             </tr>
 
-                                            <!-- seventh row-->
+                                            @endif             
+                                        
                                             <tr>
                                                 <td>Password</td>
                                                 <td>
@@ -216,7 +210,6 @@
                                                 </td>
                                             </tr>
 
-                                            <!-- Fifth row-->
                                             <tr>
                                                 <td>Confirm Password</td>
                                                 <td>
@@ -227,13 +220,12 @@
                                                 </td>
                                             </tr>
 
-                                            
-
+                                        
                                             <!-- First row-->
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                    <button type="submit" class="btn btn-primary">Save</button>
                                                 </td>
                                             </tr>
 
