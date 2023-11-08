@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 
 use Auth;
+use Hash;
 
 class StudentController extends Controller
 {
@@ -61,7 +62,7 @@ class StudentController extends Controller
         $user->nickname = $request['nickname'];
         $user->email = $request['email'];
         $user->phone = $request['phone'];
-        $user->password = $request['password'];
+        $user->password = Hash::make($request['password']); // Hash the password 
 
         // Save the action
         $user->save();
