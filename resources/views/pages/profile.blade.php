@@ -101,7 +101,7 @@
                             </div>
                         </div>
 
-                        
+                        @if($user-> role == ('admin'))
                         <h5 class="text-center h5 mb-0">{{ old('name' , $user->name ) }}</h5>
                         <p class="text-center text-muted font-14">I'm excited to introduce our comprehensive web development program, designed to equip you with the essential skills and knowledge to build dynamic and engaging websites that make a lasting impact in the digital world.</p>
                         <div class="profile-info">
@@ -122,14 +122,49 @@
                                 </li>
                             </ul>
                         </div>
+
                         <div class="profile-social">
                             <h5 class="mb-20 h5 text-blue">Social Links</h5>
                             <ul class="clearfix">
                                 <li><a href="#" class="btn" data-bgcolor="#3b5998" data-color="#ffffff"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#" class="btn" data-bgcolor="#1da1f2" data-color="#ffffff"><i class="fa fa-twitter"></i></a></li>
+
                                 <li><a href="#" class="btn" data-bgcolor="#007bb5" data-color="#ffffff"><i class="fa fa-linkedin"></i></a></li>
                             </ul>
                         </div>
+
+                        @elseif($user->role == ('student'))
+                        <p class="text-center text-muted font-14">Norain binti Mohd Sulaiman</p>
+                        <div class="profile-info">
+                            <h5 class="mb-20 h5 text-blue">Contact Information</h5>
+                            <ul>
+                                <li>
+                                    <span>Email Address:</span>
+                                    {{ old('name' , $user->email ) }}
+                                </li>
+                                <li>
+                                    <span>Bio:</span>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </li>
+                                <li>
+                                    <span>School:</span>
+                                    SMK TAMAN UNIVERSITI 2<br>
+                                    SKUDAI, JOHOR.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="profile-social">
+                            <h5 class="mb-20 h5 text-blue">Social Links</h5>
+                            <ul class="clearfix">
+                                <li><a href="#" class="btn" data-bgcolor="#3b5998" data-color="#ffffff"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#" class="btn" data-bgcolor="#1da1f2" data-color="#ffffff"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#" class="btn" data-bgcolor="#007bb5" data-color="#ffffff"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                        @endif
+
+                        
                         <div class="profile-skills">
                             <h5 class="mb-20 h5 text-blue">Key Skills</h5>
                             <h6 class="mb-5 font-14">HTML</h6>
