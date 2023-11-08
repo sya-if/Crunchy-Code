@@ -65,10 +65,6 @@
                                     619-229-0054
                                 </li>
                                 <li>
-                                    <span>Country:</span>
-                                    America
-                                </li>
-                                <li>
                                     <span>Address:</span>
                                     1807 Holden Street<br>
                                     San Diego, CA 92115
@@ -178,6 +174,60 @@
                                                 </td>
                                             </tr>
 
+                                            <!-- Fifth row-->
+                                            <tr>
+                                                <td>Bio</td>
+                                                <td>
+                                                    <input type="password" name="password" class="form-control">
+                                                    @error('password')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </td>
+                                            </tr>
+
+                                            <!-- Fifth row-->
+
+                                            <tr>
+                                                <td>Date of Birth</td>
+                                                <td>
+                                                    <input type="password" name="password" class="form-control">
+                                                    @error('password')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </td>
+                                            </tr>
+
+
+
+                                            <!-- sixth row-->
+                                            <tr>
+                                                <div class="card-box pd-20 height-100-p mb-30">
+                                                    <div class="row align-items-center">
+                                                        <div class="progress-tracker">
+                                                            <div class="row clearfix progress-box">
+                                                                <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+                                                                    <div class="card-box pd-30 height-100-p">
+                                                                        <div class="progress-box text-center">
+                                                                            <input type="text" class="knob dial3" value="90" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#f56767" data-angleOffset="180" readonly>
+                                                                            <h5 class="text-light-orange padding-top-10 h5">Module 1</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+                                                                    <div class="card-box pd-30 height-100-p">
+                                                                        <div class="progress-box text-center">
+                                                                            <input type="text" class="knob dial4" value="65" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#a683eb" data-angleOffset="180" readonly>
+                                                                            <h5 class="text-light-purple padding-top-10 h5">Module 2</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </tr>
 
                                             <!-- seventh row-->
                                             <tr>
