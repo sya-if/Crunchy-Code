@@ -29,8 +29,55 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
 
+            <!-- Student Progress  -->
+            @if($user->role == ('student'))
+            <div class="row">
+                <div class="card-box pd-20 height-100-p mb-30">
+                <div class="row align-items-center">
+                    <div class="row clearfix progress-box">
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+                            <div class="card-box pd-30 height-100-p">
+                                <div class="progress-box text-center">
+                                    <input type="text" class="knob dial1" value="80" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#1b00ff" data-angleOffset="180" readonly>
+                                    <h5 class="text-blue padding-top-10 h5">Module 1</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+                            <div class="card-box pd-30 height-100-p">
+                                <div class="progress-box text-center">
+                                    <input type="text" class="knob dial2" value="70" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#00e091" data-angleOffset="180" readonly>
+                                    <h5 class="text-light-green padding-top-10 h5">Module 2</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+                            <div class="card-box pd-30 height-100-p">
+                                <div class="progress-box text-center">
+                                    <input type="text" class="knob dial3" value="90" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#f56767" data-angleOffset="180" readonly>
+                                    <h5 class="text-light-orange padding-top-10 h5">Module 3</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+                            <div class="card-box pd-30 height-100-p">
+                                <div class="progress-box text-center">
+                                    <input type="text" class="knob dial4" value="65" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#a683eb" data-angleOffset="180" readonly>
+                                    <h5 class="text-light-purple padding-top-10 h5">Module 4</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
+
+            <div class="row">
                 <!-- Bahagian Pertama Personal Details -->
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-30">
                     <div class="pd-20 card-box height-100-p">
@@ -53,6 +100,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        
                         <h5 class="text-center h5 mb-0">{{ old('name' , $user->name ) }}</h5>
                         <p class="text-center text-muted font-14">I'm excited to introduce our comprehensive web development program, designed to equip you with the essential skills and knowledge to build dynamic and engaging websites that make a lasting impact in the digital world.</p>
                         <div class="profile-info">
@@ -103,6 +152,7 @@
                     </div>
                 </div>
 
+
                 <!-- Bahagian Kedua Personal Details -->
                 <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 mb-30">
                     <div class="card-box height-100-p overflow-hidden">
@@ -134,9 +184,6 @@
 
                                             <!-- Personal Details Admin -->
                                             @if($user->role == 'admin')
-
-
-                                           
 
                                             <!-- Second row-->
                                             <tr>
@@ -172,6 +219,7 @@
                                             </tr>
 
                                             <!-- Fourth row-->
+                                            @elseif($user->role=='student')
                                             <tr>
                                                 <td>School</td>
                                                 <td>
@@ -193,8 +241,7 @@
                                                 </td>
                                             </tr>
 
-                                            <!-- Fifth row-->
-
+                                            <!-- sixth row -->
                                             <tr>
                                                 <td>Date of Birth</td>
                                                 <td>
@@ -204,6 +251,8 @@
                                                     @enderror
                                                 </td>
                                             </tr>
+                                            @endif
+
 
                                             <!-- seventh row-->
                                             <tr>
@@ -216,7 +265,7 @@
                                                 </td>
                                             </tr>
 
-                                            <!-- Fifth row-->
+                                            <!-- eight row-->
                                             <tr>
                                                 <td>Confirm Password</td>
                                                 <td>
@@ -226,10 +275,7 @@
                                                     @enderror
                                                 </td>
                                             </tr>
-
-                                            
-
-                                            <!-- First row-->
+                                            <!-- submit row-->
                                             <tr>
                                                 <td></td>
                                                 <td>
@@ -241,15 +287,9 @@
                                     </form>
                                 </div>
                             </div>
-                            
-
-                       
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
     </div>
