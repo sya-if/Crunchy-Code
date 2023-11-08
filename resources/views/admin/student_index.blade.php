@@ -31,7 +31,7 @@
                         <div class="dropdown">
                             <!-- Create New Student -->
                             <div class="pull-right">
-                                <a href="{{ route('user.create') }}" class="btn btn-primary">Add Student</a>
+                                <a href="{{ route('users.create') }}" class="btn btn-primary">Add Student</a>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
     
                                                 <!-- Edit Student Information -->
-                                                <a href="{{ route('user.edit', $user) }}" class="dropdown-item"><i class="dw dw-edit2"></i>Edit</a>
+                                                <a href="{{ route('users.edit', $user) }}" class="dropdown-item"><i class="dw dw-edit2"></i>Edit</a>
 
     
                                                 <!-- Delete Student Information -->
