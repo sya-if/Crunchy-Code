@@ -18,7 +18,7 @@ class StudentController extends Controller
     public function index()
     {
         // Retrieve all students from the database
-        $users = User::all();
+        $users = User::where('role', 'student')->get();
 
         // Senaraikan semua student. Return page view name 
         return view('admin.student_index', compact('users'));
@@ -88,11 +88,11 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
-
+        return view('admin.edit_user', compact('user'));
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -101,10 +101,18 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, User $user)
+        {
+            $validatedData = $request->validate([
+                'fullname' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255',
+                // Add any other fields you want to validate and update
+            ]);
 
-    }
+            $user->update($validatedData);
+
+            return redirect()->route('user.index', $user)->with('success', 'User updated successfully');
+        }
 
     /**
      * Remove the specified resource from storage.

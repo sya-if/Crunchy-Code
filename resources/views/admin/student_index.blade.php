@@ -71,7 +71,8 @@
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
     
                                                 <!-- Edit Student Information -->
-                                                <a class="dropdown-item" href="#"><i class="dw dw-edit2"></i> Edit</a>
+                                                <a href="{{ route('user.edit', $user) }}" class="dropdown-item"><i class="dw dw-edit2"></i>Edit</a>
+
     
                                                 <!-- Delete Student Information -->
                                                 <form method="POST" action="{{route('user.destroy', $user->id)}}">

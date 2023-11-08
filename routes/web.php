@@ -33,4 +33,6 @@ Route::resource('user', 'App\Http\Controllers\Admin\StudentController');
 
 // Route for get the list of students
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('users', StudentController::class);
+
 
