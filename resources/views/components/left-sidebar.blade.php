@@ -94,9 +94,8 @@
                         <span class="micon dw dw-library"></span><span class="mtext">Manage Students</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="basic-table.html">Add New Students</a></li>
-                        <li><a href="datatable.html">Delete Students</a></li>
-                        <li><a href="datatable.html">View Student List</a></li>
+                        <li><a href="{{ route('user.index') }}">Add New Students</a></li>
+                        <li><a href="{{ route('user.index')}}">View Student List</a></li>
 
                     </ul>
                 </li> 

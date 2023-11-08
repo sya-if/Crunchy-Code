@@ -28,15 +28,9 @@ Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'postPro
 // Authentication Route
 Auth::routes();
 
-// Route for getting the information from user
+// Route for student model (resource)
+Route::resource('user', 'App\Http\Controllers\Admin\StudentController');
 
-
+// Route for get the list of students
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/delete-profile', [HomeController::class, 'view_delete_profile']);
-
-Route::get('/delete/{id}', [HomeController::class, 'delete_profile']);
-
-Route::get('/settings', [HomeController::class, 'user_settings'])->name('user_settings');
-
-Route::get('/save/{id}', [HomeController::class, 'save_settings']);

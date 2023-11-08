@@ -185,11 +185,66 @@
                     </div>
                 </div>
             </div>
-            
 
         </div>
 
+        <!-- Row 2 -->
+        <div class="row">
+            <!-- Counting the number -->
+            @php($i=0)
 
+            <!-- Start the loop to get all of the student's information  -->
+            @foreach ($users as $user)
+
+                <!-- Only display student -->
+                @if($user->role == 'student')
+
+                    <!-- Student List -->
+                    <div class="card-box mb-30">
+                        <div class="pd-20">
+                            <h4 class="text-blue h4">Data Table Simple</h4>
+                            <p class="mb-0">you can find more options <a class="text-primary" href="https://datatables.net/" target="_blank">Click Here</a></p>
+                        </div>
+                        <div class="pb-20">
+                            <table class="data-table table stripe hover nowrap">
+                                <thead>
+                                    <tr>
+                                        <th class="table-plus datatable-nosort">#</th>
+                                        <th>Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="table-plus">{{ ++$i }}</td>
+                                        <td>{{ $user->fullname }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                @endif 
+
+            @endforeach
+
+
+            <!-- Forum List -->
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+                <div class="pd-20 card-box height-100-p">
+                    <h4 class="mb-20 h4">Community List</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Morbi leo risus</li>
+                        <li class="list-group-item">Porta ac consectetur ac</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+        
         <!-- End Admin Dashboard -->
         @endif
 
