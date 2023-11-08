@@ -3,8 +3,8 @@
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="index.html">
-            <img src="../../../vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
-            <img src="../../../vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
+            <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
+            <img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>
@@ -19,14 +19,14 @@
 
                     <!-- Home -->
                     <li class="dropdown">
-                        <a href="javascript:;" class="dropdown-toggle no-arrow">
+                        <a href="j{{ route('home') }}" class="dropdown-toggle no-arrow">
                             <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
                         </a>
                     </li>
 
                     <!-- Profile -->
                     <li class="dropdown">
-                        <a href="javascript:;" class="dropdown-toggle no-arrow">
+                        <a href="{{ route('profile') }}" class="dropdown-toggle no-arrow">
                             <span class="micon dw dw-edit2"></span><span class="mtext">Profile</span>
                         </a>
                     </li>
@@ -77,14 +77,15 @@
 
                  <!-- Home -->
                  <li>
-                    <a href="javascript:;" class="dropdown-toggle no-arrow">
-                        <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
+                    <a href="{{ route('home') }}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-house-1"></span>
+                        <span class="mtext">Home</span>
                     </a>
                 </li>
 
                  <!-- Profile -->
                  <li>
-                    <a href="javascript:;" class="dropdown-toggle no-arrow">
+                    <a href="{{ route('profile') }}" class="dropdown-toggle no-arrow">
                         <span class="micon dw dw-edit2"></span><span class="mtext">Profile</span>
                     </a>
                 </li>
@@ -94,7 +95,7 @@
                         <span class="micon dw dw-library"></span><span class="mtext">Manage Students</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{ route('user.index') }}">Add New Students</a></li>
+                        <li><a href="{{ route('user.create') }}">Add New Students</a></li>
                         <li><a href="{{ route('user.index')}}">View Student List</a></li>
 
                     </ul>

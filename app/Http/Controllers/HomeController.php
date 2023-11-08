@@ -65,5 +65,8 @@ class HomeController extends Controller
         return redirect()->back()->with('success', 'Settings saved successfully');
     }
 
+    public function logout(){
+        return view('auth.login');
+    }
 
 }

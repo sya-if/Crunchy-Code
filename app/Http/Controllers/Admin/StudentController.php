@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 
 use Auth;
+use Hash;
 
 class StudentController extends Controller
 {
@@ -21,7 +22,7 @@ class StudentController extends Controller
         $users = User::where('role', 'student')->get();
 
         // Senaraikan semua student. Return page view name 
-        return view('admin.student_index', compact('users'));
+        return view('admin\student_index', compact('users'));
     }
     /**
      * Show the form for creating a new resource.
@@ -34,7 +35,7 @@ class StudentController extends Controller
         $user = new User;
 
         //Redirect to create.blade.php for model User
-        return view('admin.create', compact('user'));
+        return view('admin\create', compact('user'));
     }
 
     /**
@@ -50,6 +51,7 @@ class StudentController extends Controller
         // Validate the input data
         $this->validate($request, [
             'fullname' => 'required|string|max:255',
+            'nickname' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'phone' => 'nullable',
             'password' => 'nullable|min:8|confirmed',
@@ -57,10 +59,10 @@ class StudentController extends Controller
 
         // Information from the form is copied to the database
         $user->fullname = $request['fullname'];
-        $user->nickname = 'Student';
+        $user->nickname = $request['nickname'];
         $user->email = $request['email'];
         $user->phone = $request['phone'];
-        $user->password = $request['password'];
+        $user->password = Hash::make($request['password']); // Hash the password 
 
         // Save the action
         $user->save();
@@ -90,7 +92,7 @@ class StudentController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.edit_user', compact('user'));
+        return view('admin\edit_user', compact('user'));
     }
     
 
@@ -125,7 +127,7 @@ class StudentController extends Controller
 
         $user->delete();
 
-        Session()->flash('message', 'Student has been deleted sucessfully');
+        Session()->flash('message', 'Student has been deleted successfully');
 
         // Redirect to the student list page
         return redirect()->route('user.index');

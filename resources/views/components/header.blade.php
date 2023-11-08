@@ -83,7 +83,13 @@
                     <a class="dropdown-item" href="{{ route('profile') }}"><i class="dw dw-user1"></i> Profile</a>
                     <a class="dropdown-item" href="{{url('settings')}}"><i class="dw dw-settings2"></i> Settings</a>
                     <a class="dropdown-item" href="#"><i class="dw dw-help"></i> Help</a>
-                    <a class="dropdown-item" href="#"><i class="dw dw-logout"></i> Log Out</a>
+                    <a class="dropdown-item" href="{{ route('logout')}}"
+                                            onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();"><i class="dw dw-logout"></i> Log Out</a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>

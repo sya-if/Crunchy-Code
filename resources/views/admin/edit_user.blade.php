@@ -29,7 +29,7 @@
         <div class="card-box pd-20 height-100-p mb-30">
             <div id="settings-content">
                 <h2>User Settings</h2>
-                <form method="POST" action="{{ route('user.update', $user) }}">
+                <form method="POST" action="{{ route('users.update', $user) }}">
                     @csrf
                     @method('PUT')
 
