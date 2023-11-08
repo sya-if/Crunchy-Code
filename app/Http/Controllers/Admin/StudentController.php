@@ -50,6 +50,7 @@ class StudentController extends Controller
         // Validate the input data
         $this->validate($request, [
             'fullname' => 'required|string|max:255',
+            'nickname' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'phone' => 'nullable',
             'password' => 'nullable|min:8|confirmed',
@@ -57,7 +58,7 @@ class StudentController extends Controller
 
         // Information from the form is copied to the database
         $user->fullname = $request['fullname'];
-        $user->nickname = 'Student';
+        $user->nickname = $request['nickname'];
         $user->email = $request['email'];
         $user->phone = $request['phone'];
         $user->password = $request['password'];

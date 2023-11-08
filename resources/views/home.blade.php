@@ -190,44 +190,32 @@
 
         <!-- Row 2 -->
         <div class="row">
-            <!-- Counting the number -->
-            @php($i=0)
-
-            <!-- Start the loop to get all of the student's information  -->
-            @foreach ($users as $user)
-
-                <!-- Only display student -->
-                @if($user->role == 'student')
-
-                    <!-- Student List -->
-                    <div class="card-box mb-30">
-                        <div class="pd-20">
-                            <h4 class="text-blue h4">Data Table Simple</h4>
-                            <p class="mb-0">you can find more options <a class="text-primary" href="https://datatables.net/" target="_blank">Click Here</a></p>
-                        </div>
-                        <div class="pb-20">
-                            <table class="data-table table stripe hover nowrap">
-                                <thead>
+            <!-- Student Table -->
+            <div class="col-lg-8 col-md-6 col-sm-12 mb-30">
+                <div class="pd-20 card-box height-100-p">
+                    <h4 class="mb-20 h4">Student List</h4>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php($i=0)
+                            @foreach ($users as $user)
+                                @if($user->role == 'student')
                                     <tr>
-                                        <th class="table-plus datatable-nosort">#</th>
-                                        <th>Name</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="table-plus">{{ ++$i }}</td>
+                                        <td>{{ ++$i }}</td>
                                         <td>{{ $user->fullname }}</td>
                                     </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                @endif 
-
-            @endforeach
-
-
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
             <!-- Forum List -->
             <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
                 <div class="pd-20 card-box height-100-p">
@@ -241,10 +229,9 @@
                     </ul>
                 </div>
             </div>
-
-
         </div>
         
+
         <!-- End Admin Dashboard -->
         @endif
 

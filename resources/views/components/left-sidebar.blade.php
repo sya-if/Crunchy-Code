@@ -77,8 +77,9 @@
 
                  <!-- Home -->
                  <li>
-                    <a href="javascript:;" class="dropdown-toggle no-arrow">
-                        <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
+                    <a href="{{ route('home') }}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-house-1"></span>
+                        <span class="mtext">Home</span>
                     </a>
                 </li>
 
