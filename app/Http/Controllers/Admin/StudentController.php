@@ -22,7 +22,7 @@ class StudentController extends Controller
         $users = User::where('role', 'student')->get();
 
         // Senaraikan semua student. Return page view name 
-        return view('admin\student_index', compact('users'));
+        return view('admin\student\student_index', compact('users'));
     }
     /**
      * Show the form for creating a new resource.
@@ -35,7 +35,7 @@ class StudentController extends Controller
         $user = new User;
 
         //Redirect to create.blade.php for model User
-        return view('admin\create', compact('user'));
+        return view('admin\student\create', compact('user'));
     }
 
     /**
@@ -92,7 +92,7 @@ class StudentController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin\edit_user', compact('user'));
+        return view('admin\student\edit_user', compact('user'));
     }
     
 

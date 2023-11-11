@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\StudentController;
 use Illuminate\Support\Facades\Route;
@@ -39,5 +40,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::resource('users', StudentController::class);
+
+Route::resource('materials', MaterialController::class);
 
 

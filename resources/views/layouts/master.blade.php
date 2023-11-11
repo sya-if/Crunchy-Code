@@ -38,7 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../../../src/plugins/jvectormap/jquery-jvectormap-2.0.3.css">
     <link rel="stylesheet" type="text/css" href="../../../src/plugins/datatables/css/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="../../../src/plugins/datatables/css/responsive.bootstrap4.min.css">
-
+    <link rel="stylesheet" type="text/css" href="../../../src/plugins/jquery-steps/jquery.steps.css">
  
 </head>
 <body>
@@ -84,6 +84,8 @@
 	<script src="../../../src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 	<script src="../../../src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
 	<script src="../../../vendors/scripts/dashboard.js"></script>
+    <script src="../../../src/plugins/jquery-steps/jquery.steps.js"></script>
+	<script src="../../../vendors/scripts/steps-setting.js"></script>
     
 </body>
 </html>

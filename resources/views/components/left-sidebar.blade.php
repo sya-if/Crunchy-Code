@@ -2,9 +2,11 @@
 
 <div class="left-side-bar">
     <div class="brand-logo">
-        <a href="index.html">
-            <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
-            <img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
+        <a href="{{route('home')}}">
+            <img src="../../../vendors/images/crunchy-code-logo.png" alt="" width="70" height="70" class="dark-logo">
+            <img src="../../../vendors/images/wording-logo.png" alt="" width="600" class="dark-logo">
+            <img src="../../../vendors/images/crunchy-code-logo.png" alt="" width="70" height="70" class="light-logo">
+            <img src="../../../vendors/images/wording-logo.png" alt="" width="600" class="light-logo">
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>
@@ -97,6 +99,17 @@
                     <ul class="submenu">
                         <li><a href="{{ route('user.create') }}">Add New Students</a></li>
                         <li><a href="{{ route('user.index')}}">View Student List</a></li>
+
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle">
+                        <span class="micon dw dw-library"></span><span class="mtext">Manage Material</span>
+                    </a>
+                    <ul class="submenu">
+                        <li><a href="{{route('materials.create')}}">Add New Material</a></li>
+                        <li><a href="{{route('materials.index')}}">View Material</a></li>
 
                     </ul>
                 </li> 
