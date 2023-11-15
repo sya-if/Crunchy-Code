@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\MaterialController;
+use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\StudentController;
 use Illuminate\Support\Facades\Route;
@@ -42,5 +43,5 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::resource('users', StudentController::class);
 
 Route::resource('materials', MaterialController::class);
-
+Route::resource('quiz', QuizController::class);
 
