@@ -1,4 +1,3 @@
-
 <div class="right-sidebar">
     <div class="sidebar-title">
         <h3 class="weight-600 font-16 text-blue">
