@@ -193,7 +193,7 @@
                             <span class="micon dw dw-edit2"></span><span class="mtext">Modules</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="basic-table.html">Module 1</a></li>
+                            <li><a href="{{ route('module') }}">Module 1</a></li>
                             <li><a href="datatable.html">Module 2</a></li>  
                             <li><a href="datatable.html">Module 3</a></li>  
                             <li><a href="datatable.html">Module 4</a></li>    

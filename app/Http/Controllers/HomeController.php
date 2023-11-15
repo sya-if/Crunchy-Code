@@ -65,8 +65,19 @@ class HomeController extends Controller
         return redirect()->back()->with('success', 'Settings saved successfully');
     }
 
-    public function logout(){
+    public function logout()
+    {
         return view('auth.login');
     }
+
+    // View the module page
+    public function viewModule()
+    {
+        $user = Auth::user();
+
+        // Return the page module 1-1 yang reside dalam folder page
+        return view('pages.materials.mainpage-module', compact('user'));
+    }
+
 
 }

@@ -24,7 +24,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 //Route for edit profile. Panggil ProfileController. Method yang berbeza.
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'getProfile'])->name('profile');
 Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'postProfile'])->name('profile.post');
@@ -38,10 +37,18 @@ Route::resource('user', 'App\Http\Controllers\Admin\StudentController');
 // Route for get the list of students
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Route for logout into the system
 Route::get('/logout', [LoginController::class, 'logout']);
 
+// Route for student function - Resource Controller
 Route::resource('users', StudentController::class);
 
+// Route for student function - Material Controller
 Route::resource('materials', MaterialController::class);
+
+// Route for quiz function - Resource Controller
 Route::resource('quiz', QuizController::class);
+
+// Route for module page
+Route::get('/module', [App\Http\Controllers\HomeController::class, 'ViewModule'])->name('module');
 
