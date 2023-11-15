@@ -273,9 +273,8 @@
                         <span class="micon dw dw-library"></span><span class="mtext">Manage Quiz</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="basic-table.html">Add New Quiz</a></li>
-                        <li><a href="datatable.html">Delete Quiz</a></li>
-                        <li><a href="datatable.html">View Quiz List</a></li>
+                        <li><a href="{{route('quiz.create')}}">Add New Quiz</a></li>
+                        <li><a href="{{route('quiz.index')}}">View Quiz</a></li>
                     </ul>
                 </li>
 
