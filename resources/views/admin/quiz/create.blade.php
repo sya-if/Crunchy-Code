@@ -38,54 +38,48 @@
                 <div class="wizard-content">
                     <form method="POST" action="{{route('quiz.store')}}">
                         @csrf
+                        <h5>Module Info</h5>
                         <section>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >Title :</label>
-                                        <input type="text" class="form-control" name="title" value="{{$quiz->title}}" required>
+                                        <label >title :</label>
+                                        <input type="text" class="form-control" name="title" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >Description :</label>
-                                        <input type="text" class="form-control" name="description" value="{{$quiz->description}}" required>
+                                        <label >description :</label>
+                                        <input type="text" class="form-control" name="description" required>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Duration :</label>
-                                        <input type="text" class="form-control" name="duration" value="{{$quiz->duration}}" required>
+                                        <label>duration :</label>
+                                        <input type="text" class="form-control" name="duration" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Score :</label>
-                                        <input type="text" class="form-control" name="score" value="{{$quiz->score}}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Review :</label>
-                                        <input type="text" class="form-control" name="review" value="{{$quiz->review}}">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Question Count :</label>
-                                        <input type="text" class="form-control" name="questioncount" value="{{$quiz->questioncount}}">
+                                        <label>score :</label>
+                                        <input type="text" class="form-control" name="score" required>
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                        <!-- Step 3 -->
-                        <h5>OTHERS</h5>
-                        <section>
                             <div class="row">
                                 <div class="col-md-6">
-                                    {{-- klau nk tmbh bende lain --}}
+                                    <div class="form-group">
+                                        <label>review :</label>
+                                        <input type="text" class="form-control" name="review" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>questioncount :</label>
+                                        <input type="text" class="form-control" name="questioncount" required>
+                                    </div>
                                 </div>
                             </div>
                         </section>

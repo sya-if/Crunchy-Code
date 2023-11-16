@@ -7,12 +7,12 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Add New Quiz</h4>
+                            <h4>Edit Quiz</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Add New quiz</li>
+                                <li class="breadcrumb-item active" aria-current="page">Edit Quiz</li>
                             </ol>
                         </nav>
                     </div>
@@ -44,13 +44,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >Title :</label>
+                                        <label >title :</label>
                                         <input type="text" class="form-control" name="title" value="{{$quiz->title}}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >Description :</label>
+                                        <label >description :</label>
                                         <input type="text" class="form-control" name="description" value="{{$quiz->description}}" required>
                                     </div>
                                 </div>
@@ -58,59 +58,29 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Duration :</label>
+                                        <label>duration :</label>
                                         <input type="text" class="form-control" name="duration" value="{{$quiz->duration}}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Score :</label>
+                                        <label>score :</label>
                                         <input type="text" class="form-control" name="score" value="{{$quiz->score}}" required>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Review :</label>
-                                        <input type="text" class="form-control" name="review" value="{{$quiz->review}}">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Question Count :</label>
-                                        <input type="text" class="form-control" name="questioncount" value="{{$quiz->questioncount}}">
-                                    </div>
-                                </div>
                             </div>
-                        </section>
-                        <h5>Module Content</h5>
-                        <section>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Module Content Title :</label>
-                                        <input type="text" class="form-control" name="contenttitle" value="{{$quiz->contenttitle}}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Module Content Description :</label>
-                                        <textarea class="form-control" name="contentdescription" required>{{$quiz->contentdescription}}</textarea>
+                                        <label>review :</label>
+                                        <input type="text" class="form-control" name="review" value="{{$quiz->review}}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Module Page Number :</label>
-                                        <input type="text" class="form-control" name="pagenumber" value="{{$quiz->pagenumber}}" required>
+                                        <label>questioncount :</label>
+                                        <input type="text" class="form-control" name="questioncount" value="{{$quiz->questioncount}}" required>
                                     </div>
-                                </div>
-                            </div>
-                        </section>
-                        <!-- Step 3 -->
-                        <h5>OTHERS</h5>
-                        <section>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    {{-- klau nk tmbh bende lain --}}
                                 </div>
                             </div>
                         </section>

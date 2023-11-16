@@ -15,10 +15,9 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $quizzes = Quiz::all();
-        return view('admin\quiz\quiz_index', compact('quizzes'));
+        $quiz = Quiz::all();
+        return view('admin\quiz\quiz_index', compact('quiz'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -45,10 +44,10 @@ class QuizController extends Controller
         $this->validate($request, [
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            'duration' => 'required|integer',
-            'score' => 'required|integer',
-            'review' => 'required|boolean',
-            'questioncount' => 'required|integer',
+            'duration' => 'required|string|max:255',
+            'score' => 'required|string|max:255',
+            'review' => 'required|string|max:255',
+            'questioncount' => 'required|string|max:255',
         ]);
 
         // Information from the form is copied to the database
@@ -63,7 +62,7 @@ class QuizController extends Controller
         $quiz->save();
 
         // Redirect to a success page or back to the form
-        Session()->flash('message', 'Quiz has been created!');
+        Session()->flash('message', 'quiz has been created!');
         return redirect()->route('quiz.index');
     }
 
@@ -101,10 +100,10 @@ class QuizController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            'duration' => 'required|integer',
-            'score' => 'required|integer',
-            'review' => 'required|boolean',
-            'questioncount' => 'required|integer',
+            'duration' => 'required|string|max:255',
+            'score' => 'required|string|max:255',
+            'review' => 'required|string|max:255',
+            'questioncount' => 'required|string|max:255',
         ]);
 
         $quiz->update($validatedData);
@@ -118,7 +117,7 @@ class QuizController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Quiz $quiz)
+    public function destroy(quiz $quiz)
     {
         $quiz->delete();
 

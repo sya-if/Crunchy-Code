@@ -48,35 +48,36 @@
                         <a href="{{route('quiz.create')}}" class="btn btn-info float-end">Add New Quiz</a>
                     </div>
                     <div class="pull-left">
-                        <h4 class="text-blue h4">List of Quiz</h4>
+                        <h4 class="text-blue h4">List of quiz</h4>
                     </div>
                 </div>
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Title</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Duration</th>
-                            <th scope="col">Score</th>
-                            <th scope="col">Question Count</th>
+                            <th scope="col">title</th>
+                            <th scope="col">description</th>
+                            <th scope="col">duration</th>
+                            <th scope="col">score</th>
+                            <th scope="col">review</th>
+                            <th scope="col">questioncount</th>
                             <th scope="col" colspan="2">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($quizzes as $quiz)
+                        @foreach($quiz as $quizs)
                         <tr>
-                            <td>{{$quiz->title}}</td>
-                            <td>{{$quiz->description}}</td>
-                            <td>{{ \Carbon\CarbonInterval::minutes($quiz->duration)->format('%H:%I') }}</td>
-                            <td>{{$quiz->score}}</td>
-                            <td>{{ $quiz->review ? 'Yes' : 'No' }}</td>
-                            <td>{{$quiz->questioncount}}</td>
-                            <td><a href="{{route('quiz.edit', $quiz->id)}}" class="btn btn-success">Edit</a></td>
+                            <td>{{$quizs->title}}</td>
+                            <td>{{$quizs->description}}</td>
+                            <td>{{$quizs->duration}}</td>
+                            <td>{{$quizs->score}}</td>
+                            <td>{{$quizs->review}}</td>
+                            <td>{{$quizs->questioncount}}</td>
+                            <td><a href="{{route('quiz.edit', $quizs->id)}}" class="btn btn-success">Edit</a></td>
                             <td>
-                                <form method="POST" action="{{route('quiz.destroy', $quiz->id)}}">
+                                <form method="POST" action="{{route('quiz.destroy', $quizs->id)}}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Are you sure you want to delete this quiz?')" class="btn btn-danger">Delete</button>
+                                    <button type="submit" onclick="return confirm('Are you sure that you want to delete this user?')" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
                         </tr>
