@@ -79,14 +79,25 @@ class HomeController extends Controller
         return view('pages.materials.mainpage-module', compact('user'));
     }
 
-    // View the module 1.2 page
-    public function viewModule12()
+    // View the specific module page
+    public function showModulePage($module)
     {
         $user = Auth::user();
 
-        // Return the page module 1-1 yang reside dalam folder page
-        return view('pages.materials.mainpage-module', compact('user'));
+        // Assuming the module views are named module-1-1.blade.php, module-1-2.blade.php, etc.
+        $viewName = "pages.materials.module-$module";
+
+        // Check if the view exists before attempting to render it
+        if (view()->exists($viewName)) {
+            // If the view exists, render it and pass any necessary data (e.g., $user) to the view
+            return view($viewName, compact('user'));
+        } else {
+            // If the view doesn't exist, you can handle the situation accordingly
+            return abort(404); // or any other logic you prefer
+        }
     }
+
+
 
 
 }

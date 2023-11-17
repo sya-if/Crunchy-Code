@@ -50,8 +50,8 @@ Route::resource('materials', MaterialController::class);
 // Route for quiz function - Resource Controller
 Route::resource('quiz', QuizController::class);
 
-// Route for module page
+// Route for module main page
 Route::get('/module', [App\Http\Controllers\HomeController::class, 'ViewModule'])->name('module');
 
-// Route for Module 1.2 page
-Route::get('/module', [App\Http\Controllers\HomeController::class, 'ViewModule12'])->name('module1-2');
+// Route for chosen module page
+Route::get('/module/{module}', [App\Http\Controllers\HomeController::class, 'showModulePage'])->name('module.page');
