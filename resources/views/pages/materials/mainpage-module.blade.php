@@ -108,6 +108,26 @@
                                                 </div>
                                             </div>
                                         </li>
+                                        <li>
+                                            <div class="row no-gutters">
+                                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                                    <div class="blog-img">
+                                                        <img src="vendors/images/img5.jpg" alt="" class="bg_img">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-12 col-sm-12">
+                                                    <div class="blog-caption">
+                                                        <h4><a href="#">Modul 1.5</a></h4>
+                                                        <div class="blog-by">
+                                                            <p>Modul ini menerangkan tentang </p>
+                                                            <div class="pt-10">
+                                                                <a href="#" class="btn btn-outline-primary">Read More</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
                                 
