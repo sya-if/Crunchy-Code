@@ -45,6 +45,7 @@ Route::resource('users', StudentController::class);
 
 // Route for student function - Material Controller
 Route::resource('materials', MaterialController::class);
+Route::resource('materials', MaterialController::class);
 
 // Route for quiz function - Resource Controller
 Route::resource('quiz', QuizController::class);
@@ -52,3 +53,5 @@ Route::resource('quiz', QuizController::class);
 // Route for module page
 Route::get('/module', [App\Http\Controllers\HomeController::class, 'ViewModule'])->name('module');
 
+// Route for Module 1.2 page
+Route::get('/module', [App\Http\Controllers\HomeController::class, 'ViewModule12'])->name('module1-2');
