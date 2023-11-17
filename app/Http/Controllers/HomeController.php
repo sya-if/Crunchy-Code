@@ -79,5 +79,14 @@ class HomeController extends Controller
         return view('pages.materials.mainpage-module', compact('user'));
     }
 
+    // View the module 1.2 page
+    public function viewModule12()
+    {
+        $user = Auth::user();
+
+        // Return the page module 1-1 yang reside dalam folder page
+        return view('pages.materials.mainpage-module', compact('user'));
+    }
+
 
 }
