@@ -45,7 +45,6 @@ Route::resource('users', StudentController::class);
 
 // Route for student function - Material Controller
 Route::resource('materials', MaterialController::class);
-Route::resource('materials', MaterialController::class);
 
 // Route for quiz function - Resource Controller
 Route::resource('quiz', QuizController::class);

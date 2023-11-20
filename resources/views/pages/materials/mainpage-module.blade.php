@@ -136,7 +136,7 @@
                                                             <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-1']) }}">Module 1.1 Strategi Penyelesaian Masalah</a>
                                                             <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-2']) }}">Module 1.2 Algoritma</a>
                                                             <a class="button-85 btn-block mb-4" role="button" href="#">Module 1.3 Pemboleh Ubah, Pemalar dan Jenis Data</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="#">Module 1.4 Struktur Kawalan</a>
+                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-4']) }}">Module 1.4 Struktur Kawalan</a>
                                                             <a class="button-85 btn-block mb-4" role="button" href="#">Module 1.5 Amalan Terbaik Pengaturcaraan</a>
                                                             <a class="button-85 btn-block mb-4" role="button" href="#">Module 1.6 Struktur Data dan Modular</a>
                                                             <a class="button-85 btn-block mb-4" role="button" href="#">Module 1.6 Pembangunan Aplikasi</a>

@@ -283,10 +283,7 @@
                                                 </td>
                                             </tr>
                                             @endif
-<<<<<<< Updated upstream
                                         
-=======
->>>>>>> Stashed changes
                                             <tr>
                                                 <td>Password</td>
                                                 <td>
