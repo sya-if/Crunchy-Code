@@ -1,5 +1,7 @@
 @php($user = Auth::user())
 <style>
+
+
 .checkbox-wrapper-8 .tgl {
         display: none;
     }
@@ -189,15 +191,9 @@
 
                     <!-- Modules -->
                     <li class="dropdown">
-                        <a href="javascript:;" class="dropdown-toggle">
+                        <a href="{{ route('module') }}" class="dropdown-toggle no-arrow">
                             <span class="micon dw dw-edit2"></span><span class="mtext">Modules</span>
                         </a>
-                        <ul class="submenu">
-                            <li><a href="{{ route('module') }}">Module 1</a></li>
-                            <li><a href="datatable.html">Module 2</a></li>  
-                            <li><a href="datatable.html">Module 3</a></li>  
-                            <li><a href="datatable.html">Module 4</a></li>    
-                        </ul>
                     </li>
 
                     <!-- Quizzes -->
