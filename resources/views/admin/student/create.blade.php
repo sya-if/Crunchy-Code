@@ -32,7 +32,7 @@
                 <div class="row">
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('user.store') }}">
+                        <form method="POST" action="{{ route('user.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             <!-- Full Name -->
@@ -76,6 +76,21 @@
                                     @enderror
                                 </div>
                             </div>
+
+                             <!-- Photo -->
+                             <div class="form-group row">
+                                <label for="photo" class="col-md-4 col-form-label">{{ __('Photo') }}</label>
+                                <div class="col-md-8">
+                                    <input id="photo" type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('email') }}" required autocomplete="photo">
+
+                                    @error('photo')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
 
                             <!-- Password -->
                             <div class="form-group row">

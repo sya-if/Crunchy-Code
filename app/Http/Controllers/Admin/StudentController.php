@@ -8,6 +8,7 @@ use App\Models\User;
 
 use Auth;
 use Hash;
+use Image;
 
 class StudentController extends Controller
 {
@@ -55,6 +56,8 @@ class StudentController extends Controller
             'email' => 'required|email|unique:users,email',
             'phone' => 'nullable',
             'password' => 'nullable|min:8|confirmed',
+            'photo' =>'nullable|mimes:jpeg,jpg,png|max:10000'
+            
         ]);
 
         // Information from the form is copied to the database
@@ -63,6 +66,21 @@ class StudentController extends Controller
         $user->email = $request['email'];
         $user->phone = $request['phone'];
         $user->password = Hash::make($request['password']); // Hash the password 
+
+        //save photo
+        $image_name ='user_'.time().'.'.$request->photo->getClientOriginalExtension();
+        $directory = $_SERVER['DOCUMENT_ROOT'].'/uploads/users';
+        if (!file_exists($directory)){
+            mkdir ($directory,0755,true);
+        }
+        $img =Image::make ($request->photo->getRealPath());
+
+        $img->fit(200,200,function ($constraint){
+            $constraint->aspectRatio();
+        })->save ($directory . '/' .$image_name,75);
+        
+        $user->photo =$image_name;
+
 
         // Save the action
         $user->save();
