@@ -4,6 +4,8 @@
 
 @section('content')
 <style>
+
+
 .card {
     display: inline-block;
     margin: 10px; /* Adjust margin as needed */
@@ -82,10 +84,51 @@
     padding: 10px !important;
 }
 
+.shadow-box
+{
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.colour-box
+{
+   background: lightsteelblue;
+}
+
+.terminal 
+{
+    background-color: #2e2e2e;
+    color: #00ff00; /* Green text */
+    font-family: 'Courier New', monospace;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+.terminal p 
+{
+    padding: 20px;
+    margin: 0;
+}
+
+.image-size
+{
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.text-formatting
+{
+    text-align: justify;
+}
+
 </style>
 
 
 <div class="main-container">
+
     <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-200px">
 
@@ -97,8 +140,8 @@
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item" aria-current="page">Module</li>
+                                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                                <li class="breadcrumb-item" aria-current="{{route('module')}}">Module</li>
                                 <li class="breadcrumb-item active" aria-current="page">Module 1.1 Strategi Penyelesaian Masalah</li>
                             </ol>
                         </nav>
@@ -106,16 +149,17 @@
                 </div>
             </div>
 
-            <div class="blog-wrap">
+            <div>
                 <div class="container pd-0">
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
+                            
+                            <div class="card-box blog-caption mb-20 shadow-box colour-box" style="padding:30px;" align="center">
+                                <h3>Module 1.1: Strategi Penyelesaian Masalah</h3>
+                            </div>
+
                             <div class="blog-detail card-box overflow-hidden mb-30">
 
-                                <div class="blog-img" style="margin-bottom:20px">
-                                    <img src="../../../vendors/images/Module/module1-1-landing-banner.png" alt="" style="width: 100%; height: auto;">
-                                </div>
-                                
                                 <div class="blog-caption" >
 
                                     <!-- Heading -->
@@ -151,7 +195,30 @@
 
                                         <!-- Image 2 Container -->
                                         <div class="card">
-                                            <img class="card-img-top" src="../../../vendors/images/Module/code1.png" alt="Card image cap">
+                                            
+                                            <!-- Coding Displayed -->
+                                            <div class="terminal">
+                                                <p>
+                                                    public class HelloMalaysia <br>
+                                                    { <br>
+                                                        &nbsp;public static void main(String[] args) <br>
+                                                        &nbsp;{ <br>
+                                                        &nbsp;&nbsp;//Declare the data type<br>
+                                                        &nbsp;&nbsp;<b>String x</b><br><br>
+                                                        &nbsp;&nbsp;//Berikan variable data untuk disimpan<br>
+                                                        &nbsp;&nbsp;<b>String x</b><br><br>
+                                                        &nbsp;&nbsp;//Paparkan data<br>
+                                                        &nbsp;&nbsp;<b>System.out.println(x);</b><br>
+                                                        &nbsp;} <br>
+                                                    } <br>
+                                                </p>
+                                            </div>
+
+                                            <br>
+                                            <p>
+                                                Anda boleh menekan butang di bawah untuk melihat output yang akan dihasilkan sekiranya kita menjalankan kod tersebut di sebarang IDE.    
+                                            </p>
+
                                             <div class="card-body">
 
                                                 <div class="col-lg-6 col-sm-12 mb-30">
@@ -179,25 +246,136 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <p align="justify">
-                                                    Anda boleh menekan butang di atas untuk melihat output yang akan dihasilkan sekiranya kita menjalankan kod tersebut di sebarang IDE.    
-                                                </p>
                                             </div>
                                         </div>
                                     </div>
-
-
-
-
                                 </div>
                             </div>
-                        </div>
-                       
+                        </div>                       
                     </div>
                 </div>
             </div>
         </div>
+
+
+        <!-- Module 1.1.2 -->
+        <div class="pd-ltr-20 xs-pd-20-10">
+            <div class="min-height-200px">
+
+                <div class="blog-wrap">
+                    <div class="container pd-0">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="blog-detail card-box overflow-hidden mb-30">
+                                    
+                                    <div class="blog-caption" >
+    
+                                        <!-- Pengenalan -->
+                                        <h4 class="mb-10"> Module 1.1.2 Keperluan Penyelesaian Masalah Berstrategi </h4>
+                                        <p class="text-formatting">
+                                            Pelbagai masalah dalam kehidupan harian merupakan cabaran yang perlu diatasi. Masalah menghalang kita daripada mencapai apa yang diingini, di samping mengganggu kelancaran dan keselesaan hidup. Sesuatu masalah yang rumit memerlukan strategi penyelesaian masalah yang berkesan. Apakah faedah penggunaan strategi dalam penyelesaian masalah? 
+                                        </p>
+
+                                        <div class="card image-size" align="center">
+                                            <img class="card-img-top" src="../../../vendors/images/Module/keperluan-1-2.jpg" alt="Card image cap">
+                                        </div>
+
+                                        <p class="text-center" style="color:#ff0000;"> Rajah: Keperluan Penyelesaian Masalah </p>
+                                        
+                                        <p class="text-formatting">
+                                            Pembangunan aplikasi komputer berkait rapatdengan strategi penyelesaian masalah dalam pengaturcaraan komputer. Seseorang perlu menguasai strategi penyelesaian masalah supaya dapat memahami masalah dengan mudah bagi mendapatkan strategi penyelesaian yang terbaik. 
+                                        </p>
+
+                                        <p class="text-formatting" style="border: 2px solid #B4BDFF; padding: 10px; border-radius:8px;">
+                                            <b>Penyelesaian masalah</b> sebagai proses mengkaji butiran sesuatu masalah untuk mendapatkan satu penyelesaian (Businessdictionary.com)
+                                        </p>
+                                        
+                                        <p class="text-formatting">
+                                            Komputer boleh digunakan untuk menyelesaikan masalah. Waiau bagaimanapun, cara penyelesaian terhadap masalah yang dihadapi haruslah jelas sebelum mengatasinya. Pemikiran komputasional (computational) membolehkan kita memahami masalah yang dihadapi dan membangunkan penyelesaian yang munasabah apabila kita menghadapi masalah yang kompleks. 
+                                        </p>
+                                        
+                                        <!-- Teknik Pemikiran Komputasional -->
+                                        <h4 class="mb-10"> Teknik Pemikiran Komputasional </h4>
+
+                                        <!-- Teknik Leraian -->
+                                        <h5>1. Teknik Leraian </h5><br>
+
+                                        <p class="text-formatting">
+                                            Memecahkan masalah kepada bahagian yang lebih kecil dan terkawal. Sebelum komputer menyelesaikan masalah, masalah dan cara untuk menyelesaikannya mestilah difahami. 
+                                            Penguraian masalah membantu memecahkan masalah kompleks kepada bahagian yang mudah diuruskan. Begitu juga, kita cuba memahami bagaimana sistem yang kompleks berfungsi menggunakan teknik leraian.
+                                            Contoh: Memahami cara sebuah basikal berfungsi akan jadi lebih mudah jika seluruh basikal itu dipecahkan kepada bahagian yang kecil. Rujuk rajah di bawah dan labelkan bahagian basikal yang dilukiskan.
+                                        </p>
+
+                                        <div class="card image-size" align="center">
+                                            <img class="card-img-top" src="../../../vendors/images/Module/teknik-pemecahan.jpg" alt="Card image cap">
+                                        </div>
+
+                                        <p class="text-center" style="color:#ff0000;"> Rajah: Teknik leraian memecahkan basikal kepada bahagian-bahagian basikal </p>
+                                    
+                                        <!-- Teknik Leraian -->
+                                        <h5>2. Pengecaman Corak (Pattern Recognition) </h5><br>
+
+                                        <p class="text-formatting">
+                                            Mencari persamaan similaritieSJ antara masalah dan dalam masalah. Apabila kita telah meleraikan masalah yang kompleks kepada bahagian yang mudah urus dengan teknik leraian, ini membantu dalam mengenal pasti persamaan atau corak yang ada pada setiap bahagian masalah yang kecil. Corak-corak ini dapat membantu menyelesaikan masalah kompleks dengan lebih efisien.
+                                            Bayangkan kita hendak mengetahui cara sesebuah basikal berfungsi. Ciri-ciri basikal ialah mempunyai dua buah roda yang berputar, 
+                                            hendal untuk menguasai hala tuju, pedal untuk menggerakkan basikal dan rantai yang menjadi penyambung supaya basikal dapat berfungsi. 
+                                            Jadi, kita boleh melukis gambar basikal berdasarkan ciri-ciri di atas. Oalam pemikiran komputasional, ciri-ciri ini dikenal sebagai corak. Cuma yang berbeza secara spesifik ialah warna basikal, bunyi loceng atau saiz roda.
+                                        </p>
+
+                                        <div class="card image-size" align="center">
+                                            <img class="card-img-top" src="../../../vendors/images/Module/pengecaman-corak.png" alt="Card image cap">
+                                        </div>
+
+                                        <p class="text-center" style="color:#ff0000;"> Rajah: Teknik pengecaman corak di basikal </p>
+
+                                        <!-- Teknik Leraian -->
+                                        <h5>3. Peniskalaan (Abstraction) </h5><br>
+
+                                        <p class="text-formatting">
+                                            Peniskalaan adalah penting supaya dapat menjana penyelesaian yang tepat kepada masalah yang dihadapi. 
+                                            Contohnya, untuk menghasilkan sebuah basikal, jika tidak meniskalakan ciri-ciri umum dan spesifik, kita berkemungkinan akan menghasilkan basikal yang beroda kecil dan berbakul di hendalnya,
+                                            iaitu merupakan satu penyelesaian yang tidak tepat. Satu model basikal ialah basikal yang mempunyai dua roda, hendal dan pedal. Ciri spesifik seperti saiz roda, berbakul atau berloceng dan warna rangka hendaklah diabaikan.
+                                        </p>
+
+                                        <div class="card image-size" align="center">
+                                            <img class="card-img-top" src="../../../vendors/images/Module/teknik-peniskalaan.png" alt="Card image cap">
+                                        </div>
+
+                                        <p class="text-center" style="color:#ff0000;"> Rajah: Teknik peniskalaan di basikal </p>
+                                        
+
+                                        <!-- Teknik Algoritma -->
+                                        <h5>4. Algoritma (Algorithms) </h5><br>
+
+                                        <p class="text-formatting">
+                                            Membangunkan penyelesaian langkah demi langkah terhadap masalah yang dihadapi atau mematuhi peraturan untuk menyelesaikan masalah. Algoritma merupakan suatu pelan, iaitu satu set langkah arahan untuk menyelesaikan masalah. Jika anda boleh mengikat tali kasut, membuat secawan kopi, atau menyediakan makanan, anda telah tahu mengikut sesuatu algoritma.
+                                            Dalam algoritma, setiap arahan dikenal pasti dan susunan pelaksanaannya dijalankan seperti yang dirancang. Algoritma juga digunakan sebagai titik mula untuk rekaan program komputer dalam bentuk carta alir dan pseudokod.
+                                        </p>
+
+                                        <!-- Coding Displayed -->
+                                        <div class="terminal" style="width:70%;">
+                                            <p>
+
+                                                &nbsp;Mula<br>
+                                                &nbsp;&nbsp;OUPUT "Mempunyai 2 roda yang berputar?" <br>
+                                                &nbsp;&nbsp;INPUT "Ya" <br>
+                                                &nbsp;&nbsp;OUTPUT "Hendal untuk menguasai hala tuju?"<br>
+                                                &nbsp;&nbsp;INPUT "Ya" <br>
+                                                &nbsp;&nbsp;OUTPUT "Pedal dan rantai untuk menggerakkan basikal? <br>
+                                                &nbsp;&nbsp;INPUT "Ya" <br>
+                                                &nbsp;&nbsp;OUTPUT "Ini ialah sebuah basikal." <br>
+                                                &nbsp;Tamat<br>               
+                                            </p>
+                                        </div>
+
+                                        <p class="text-center" style="color:#ff0000;"> Rajah: Teknik algoritma untuk menentukan aspek basikal </p>
+                                    </div>
+                                </div>
+                            </div>                         
+                        </div>
+                    </div>
+                </div>
+            </div>
         <div class="footer-wrap pd-20 mb-20 card-box">
             Crunchy Code Web Application System developed by Elysium
         </div>

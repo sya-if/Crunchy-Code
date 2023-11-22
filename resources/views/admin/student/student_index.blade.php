@@ -57,6 +57,7 @@
                                     <th class="table-plus datatable-nosort">FullName</th>
                                     <th>NickName</th>
                                     <th>Email</th>
+                                    <th>Photo</th>
                                     <th class="datatable-nosort">Action</th>
                                 </tr>
                             </thead>
@@ -66,6 +67,10 @@
                                     <td class="table-plus">{{$user->fullname}}</td>
                                     <td>{{$user->nickname}}</td>
                                     <td>{{$user->email}}</td>
+                                    <td>
+                                        <img src="{{ asset ('uploads/users/'.$user->photo)}}" style="width:100px;">
+                                    </td>
+
                                     <td>
                                         <div class="dropdown">
                                             <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
