@@ -43,13 +43,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >title :</label>
+                                        <label >Title :</label>
                                         <input type="text" class="form-control" name="title" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >description :</label>
+                                        <label >Description :</label>
                                         <input type="text" class="form-control" name="description" required>
                                     </div>
                                 </div>
@@ -57,13 +57,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>duration :</label>
+                                        <label>Duration :</label>
                                         <input type="text" class="form-control" name="duration" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>score :</label>
+                                        <label>Score :</label>
                                         <input type="text" class="form-control" name="score" required>
                                     </div>
                                 </div>
@@ -71,13 +71,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>review :</label>
+                                        <label>Review :</label>
                                         <input type="text" class="form-control" name="review" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>questioncount :</label>
+                                        <label>Questioncount :</label>
                                         <input type="text" class="form-control" name="questioncount" required>
                                     </div>
                                 </div>
