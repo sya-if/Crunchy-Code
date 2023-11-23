@@ -97,7 +97,32 @@ class HomeController extends Controller
         }
     }
 
+    // View the Quiz page
+    public function viewQuiz()
+    {
+        $user = Auth::user();
 
+        // Return the page Quiz 1-1 yang reside dalam folder page
+        return view('pages.quizzes.mainpage-quiz', compact('user'));
+    }
+
+    // View the specific quiz page
+    public function showQuizPage($quiz)
+    {
+        $user = Auth::user();
+
+        // Assuming the quiz views are named quiz-1-1.blade.php, quiz-1-2.blade.php, etc.
+        $viewName = "pages.quizzes.quiz-$quiz";
+
+        // Check if the view exists before attempting to render it
+        if (view()->exists($viewName)) {
+            // If the view exists, render it and pass any necessary data (e.g., $user) to the view
+            return view($viewName, compact('user'));
+        } else {
+            // If the view doesn't exist, you can handle the situation accordingly
+            return abort(404); // or any other logic you prefer
+        }
+    }
 
 
 }

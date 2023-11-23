@@ -198,13 +198,9 @@
 
                     <!-- Quizzes -->
                     <li>
-                        <a href="calendar.html" class="dropdown-toggle no-arrow">
+                        <a href="{{ route('quiz') }}" class="dropdown-toggle no-arrow">
                             <span class="micon dw dw-calendar1"></span><span class="mtext">Quizzes</span>
                         </a>
-                        <ul class="submenu">
-                            <li><a href="basic-table.html">My Quizzes</a></li>
-                            <li><a href="datatable.html">Add Quizzes</a></li>    
-                        </ul>
                     </li>
 
                     <!-- Forum -->
