@@ -54,3 +54,9 @@ Route::get('/module', [App\Http\Controllers\HomeController::class, 'ViewModule']
 
 // Route for chosen module page
 Route::get('/module/{module}', [App\Http\Controllers\HomeController::class, 'showModulePage'])->name('module.page');
+
+// Route for quiz main page
+Route::get('/quiz', [App\Http\Controllers\HomeController::class, 'ViewQuiz'])->name('quiz');
+
+// Route for chosen quiz page
+Route::get('/quiz/{quiz}', [App\Http\Controllers\HomeController::class, 'showQuizPage'])->name('quiz.page');
