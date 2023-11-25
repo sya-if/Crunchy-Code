@@ -78,36 +78,60 @@
             )
         });
 
-        //Parameter
-        $('#sa-params').click(function () {
-            swal({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel!',
-                confirmButtonClass: 'btn btn-success margin-5',
-                cancelButtonClass: 'btn btn-danger margin-5',
-                buttonsStyling: false
-            }).then(function () {
-                swal(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                )
-            }, function (dismiss) {
-                // dismiss can be 'cancel', 'overlay',
-                // 'close', and 'timer'
-                if (dismiss === 'cancel') {
-                    swal(
-                        'Cancelled',
-                        'Your imaginary file is safe :)',
-                        'error'
-                    )
-                }
-            })
+        // Delete Button
+        $(document).ready(function () {
+            $('#deleteBtn').click(function () {
+                // Use SweetAlert to confirm the delete action
+                swal({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'No, cancel!',
+                    confirmButtonClass: 'btn btn-success margin-5',
+                    cancelButtonClass: 'btn btn-danger margin-5',
+                    buttonsStyling: false
+                }).then(function (result) {
+                    if (result.value) {
+                        // Trigger the form submission
+                        $('#deleteForm').submit();
+                    } else if (result.dismiss === swal.DismissReason.cancel) {
+                        // Handle the case where the user clicked "Cancel" in SweetAlert
+                        swal('Cancelled', 'Your data is safe.', 'info');
+                    }
+                });
+            });
         });
+
+        // Update Button
+        $(document).ready(function () {
+            $('#editBtn').click(function () {
+                // Use SweetAlert to confirm the edit action
+                swal({
+                    title: 'Are you sure?',
+                    text: 'Do you want to edit this button?',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes, update the information.',
+                    cancelButtonText: 'No, cancel',
+                    confirmButtonClass: 'btn btn-success margin-5',
+                    cancelButtonClass: 'btn btn-danger margin-5',
+                    buttonsStyling: false
+                }).then(function (result) {
+                    if (result.value) {
+                        // Trigger the form submission
+                        $('form').submit(); // Use the correct form id or tag name
+                    } else if (result.dismiss === swal.DismissReason.cancel) {
+                        // Handle the case where the user clicked "Cancel" in SweetAlert
+                        swal('Cancelled', 'You still have time to think.', 'info');
+                    }
+                });
+            });
+        });
+        
+
+
 
         //Custom Image
         $('#sa-image').click(function () {
@@ -144,8 +168,8 @@
                 title: '<i>HTML</i> <u>example</u>',
                 type: 'info',
                 html: 'You can use <b>bold text</b>, ' +
-                '<a href="#" class="text-blue">links</a> ' +
-                'and other HTML tags',
+                    '<a href="#" class="text-blue">links</a> ' +
+                    'and other HTML tags',
                 showCloseButton: true,
                 showCancelButton: true,
                 confirmButtonClass: 'btn btn-success',
@@ -220,8 +244,8 @@
                 swal({
                     title: 'All done!',
                     html: 'Your answers: <pre>' +
-                    JSON.stringify(result) +
-                    '</pre>',
+                        JSON.stringify(result) +
+                        '</pre>',
                     confirmButtonText: 'Lovely!',
                     showCancelButton: false
                 })
@@ -236,7 +260,7 @@
                 title: 'Your public IP',
                 confirmButtonText: 'Show my public IP',
                 text: 'Your public IP will be received ' +
-                'via AJAX request',
+                    'via AJAX request',
                 showLoaderOnConfirm: true,
                 preConfirm: function () {
                     return new Promise(function (resolve) {
@@ -256,7 +280,7 @@
         $.SweetAlert = new SweetAlert, $.SweetAlert.Constructor = SweetAlert
 }(window.jQuery),
 
-//initializing
+    //initializing
     function ($) {
         "use strict";
         $.SweetAlert.init()

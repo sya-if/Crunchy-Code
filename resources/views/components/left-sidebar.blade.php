@@ -198,9 +198,13 @@
 
                     <!-- Quizzes -->
                     <li>
-                        <a href="{{ route('quiz') }}" class="dropdown-toggle no-arrow">
+                        <a href="calendar.html" class="dropdown-toggle no-arrow">
                             <span class="micon dw dw-calendar1"></span><span class="mtext">Quizzes</span>
                         </a>
+                        <ul class="submenu">
+                            <li><a href="basic-table.html">My Quizzes</a></li>
+                            <li><a href="datatable.html">Add Quizzes</a></li>    
+                        </ul>
                     </li>
 
                     <!-- Forum -->
@@ -266,7 +270,7 @@
                     </a>
                     <ul class="submenu">
                         <li><a href="{{route('quiz.create')}}">Add New Quiz</a></li>
-                        <li><a href="{{route('quiz.index')}}">View Quiz</a></li>
+                        <li><a href="">View Quiz</a></li>
                     </ul>
                 </li>
 
@@ -275,9 +279,8 @@
                         <span class="micon dw dw-library"></span><span class="mtext">Manage Forum</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="basic-table.html">Add New Forum</a></li>
-                        <li><a href="datatable.html">Delete Forum</a></li>
-                        <li><a href="datatable.html">Edit Forum Information</a></li>
+                        <li><a href="{{route('forum.create')}}">Add New Forum</a></li>
+                        <li><a href="{{route('forum.index')}}">View Forum </a></li>
                     </ul>
                 </li>
                 @endif

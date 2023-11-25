@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\ForumController;
+use App\Http\Controllers\ForumPostController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -48,6 +50,9 @@ Route::resource('materials', MaterialController::class);
 
 // Route for quiz function - Resource Controller
 Route::resource('quiz', QuizController::class);
+
+// Route for forum function - Resource Controller
+Route::resource('forum', ForumController::class);
 
 // Route for module main page
 Route::get('/module', [App\Http\Controllers\HomeController::class, 'ViewModule'])->name('module');
