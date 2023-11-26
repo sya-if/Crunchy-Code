@@ -22,21 +22,21 @@
 
             <div class="pd-20 card-box mb-30">
                 <div class="clearfix">
-                    <h4 class="text-blue h4">Adding New Material</h4>
+                    <h4 class="text-blue h4">Edit Forum Information</h4>
                 </div>
                 <div class="wizard-content">
-                    <form  method="POST" action="{{route('forum.update', $forum)}}">
+                    <form method="POST" action="{{ route('forum.update', $forum) }}">
                         @csrf
                         @method('PUT')
                         <h5>Forum Information</h5>
                         <section>
                             <div class="row">
-                                
+                
                                 <!-- Forum Title -->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >Forum Title :</label>
-                                        <input type="text" class="form-control" name="forum-title" value="{{$forum->title}}" required>
+                                        <label>Forum Title:</label>
+                                        <input type="text" class="form-control" name="forum-title" value="{{ $forum->title }}" required>
                                     </div>
                                 </div>
                                 <!-- Forum Category -->
@@ -51,27 +51,27 @@
                                         </select>
                                     </div>
                                 </div>
-
+                
                             </div>
                             <div class="row">
-                                
+                
                                 <!-- Forum Descriptions -->
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Forum Description :</label>
+                                        <label>Forum Description:</label>
                                         <textarea class="form-control" name="forum-description" required>{{ $forum->description }}</textarea>
-
                                     </div>
                                 </div>
-
+                
                             </div>
                         </section>
-                        
+                
                         <div class="clearfix" style="display:flex; justify-content:center;">
                             <button type="submit" class="btn btn-success">Update Information</button>
                         </div>
                     </form>
                 </div>
+                
             </div>
         </div>
     </div>

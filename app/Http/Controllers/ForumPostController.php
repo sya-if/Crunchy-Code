@@ -14,7 +14,7 @@ class ForumPostController extends Controller
      */
     public function index()
     {
-        //
+       
     }
 
     /**

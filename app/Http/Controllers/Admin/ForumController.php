@@ -76,7 +76,7 @@ class ForumController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -85,9 +85,12 @@ class ForumController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Forum $forum)
+    public function edit($id)
     {
-        return view('admin\forum\edit', compact('forum'));
+        // Ambil product ID yang dihantar oleh edit button dekat profile_index page
+        $forum = Forum::find($id);
+
+        return view('admin.forum.edit', compact('forum'));
     }
 
     /**
@@ -99,15 +102,28 @@ class ForumController extends Controller
      */
     public function update(Request $request, Forum $forum)
     {
-        $validatedData = $request->validate([
+        // Dapatkan user id bagi user yg tengah login sebagai creator of the forum
+        $user = Auth::user();
+
+        // Validate the input data
+        $this->validate($request, [
             'forum-title' => 'required|string|max:255',
             'forum_category' => 'required|string|max:255',
             'forum-description' => 'required|string|max:255',
         ]);
 
-        $forum->update($validatedData);
+        // Save the action
+        $forum->user_id = $user->id;
+        $forum->title = $request['forum-title'];
+        $forum->category = $request['forum_category'];
+        $forum->description = $request['forum-description'];
 
-        return redirect()->route('forum.index', $forum)->with('success', 'Forum updated successfully');
+        // Save the action
+        $forum->save();
+
+        // Redirect to a success page or back to the form
+        Session()->flash('message', 'Forum has been updated seuccessfully.');
+        return redirect()->route('forum.index');
     }
 
     /**
@@ -121,6 +137,9 @@ class ForumController extends Controller
         $forum->delete();
 
         // Redirect to the view material page
-        return redirect()->route('forum.index')->with('success', 'Forum deleted successfully');;
+        return redirect()->route('forum.index')->with('success', 'Forum deleted successfully');
+        ;
     }
+
+
 }

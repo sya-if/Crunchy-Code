@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Forum;
 use Auth;
 
 class HomeController extends Controller
@@ -122,6 +123,12 @@ class HomeController extends Controller
             // If the view doesn't exist, you can handle the situation accordingly
             return abort(404); // or any other logic you prefer
         }
+    }
+
+    public function viewForumPage()
+    {
+        $forums = Forum::all();
+        return view('pages\forums\mainpage-forum', compact('forums'));
     }
 
 

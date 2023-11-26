@@ -65,3 +65,6 @@ Route::get('/quiz', [App\Http\Controllers\HomeController::class, 'ViewQuiz'])->n
 
 // Route for chosen quiz page
 Route::get('/quiz/{quiz}', [App\Http\Controllers\HomeController::class, 'showQuizPage'])->name('quiz.page');
+
+// Route for forum main page
+Route::get('/discussion', [App\Http\Controllers\HomeController::class, 'viewForumPage'])->name('discussion');
