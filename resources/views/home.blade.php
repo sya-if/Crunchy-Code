@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @php($user = Auth::user())
-
+@php($modules = App\Models\Module::all())
 @section('content')
 
 <div class="main-container">
@@ -54,52 +54,25 @@
 
         <!-- Second Row - Progress -->
         <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 align-items-center">
-                <div class="row clearfix progress-box">
-                    <div class="d-flex flex-wrap align-items-center">
-                    <div class="col-md-6 col-sm-12 mb-30">
-                        <div class="card-box pd-30 height-100-p">
-                            <div class="progress-box text-center">
-                                <input type="text" class="knob dial1" value="80" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#1b00ff" data-angleOffset="180" readonly>
-                                <h5 class="text-blue padding-top-10 h5">Module 1</h5>
-                            </div>
+            <div class="row justify-content-left">
+                @foreach($modules as $module)
+                <div class="col-md-4 col-sm-12 mb-30"> <!-- Adjusted column width to fit 3 modules in a row -->
+                <div class="card-box pd-30 height-100-p">
+                    <div class="progress-box text-center">
+                            <a href="{{ route('module.page', ['module' => $module->link]) }}">
+                                <input type="text" class="knob dial2" value="70" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="{{ $module->color }}" data-angleOffset="180" readonly>
+                                <h5 class="padding-top-10 h5" style="color: {{ $module->color }}"> {{$module->title}}</h5>
+                            </a>
                         </div>
                     </div>
-
-                    <div class="col-md-6 col-sm-12 mb-30">
-                        <div class="card-box pd-30 height-100-p">
-                            <div class="progress-box text-center">
-                                <input type="text" class="knob dial2" value="70" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#00e091" data-angleOffset="180" readonly>
-                                <h5 class="text-light-green padding-top-10 h5">Module 2</h5>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+                @endforeach
+                <div class="col-md-4 col-sm-12 mb-30"> <!-- Adjusted column width to fit 3 modules in a row -->
+                    <div class="card-box pd-30 height-100-p">
+                        <h5 class="padding-top-10 h5" style="color: grey"> Add more module</h5>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Third Row - Recommended COurse -->
-        <div class="row justify-content-center">
-
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
-                <div class="pd-20 card-box height-100-p">
-                    <h4 class="mb-20 h4">Recommended Module</h4>
-                    <div class="row align-items-center">
-                        <div class="col-md-4">
-                            <div class="card" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Module 3</h5>
-                                    <p class="card-text">Interaksi Manusia dan Komputer</p>
-                                    <a href="#" class="btn btn-primary">Subscribe This Course</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-
         </div>
 
         <!-- Forth Row - Announcements -->
