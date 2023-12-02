@@ -68,3 +68,5 @@ Route::get('/quiz/{quiz}', [App\Http\Controllers\HomeController::class, 'showQui
 
 // Route for forum main page
 Route::get('/discussion', [App\Http\Controllers\HomeController::class, 'viewForumPage'])->name('discussion');
+
+
