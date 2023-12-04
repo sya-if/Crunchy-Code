@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Modules;
 
 class ModuleController extends Controller
 {
@@ -14,8 +15,10 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        
+        $modules = Modules::all();
+        return view('pages\module-page\module_index', compact('modules'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +27,8 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        //
+        $modules = new Modules;
+        return view('pages\module-page\create', compact('modules'));
     }
 
     /**
@@ -35,7 +39,30 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $modules = new Modules();
+
+        // Validate the input data
+        $this->validate($request, [
+            'title' => 'required|string|max:255',
+            'color' => 'required|string|max:255',
+        ]);
+        
+        // Modify the 'link' value based on the 'title' value
+        $title = $request->input('title');
+        $modifiedLink = str_replace('.', '-', substr($title, 0, 3));
+
+
+        // Information from the form is copied to the database
+        $modules->title = $request['title'];
+        $modules->link = $modifiedLink;
+        $modules->color = $request['color'];
+
+        // Save the action
+        $modules->save();
+
+        // Redirect to a success page or back to the form
+        Session()->flash('message', 'module has been created!');
+        return redirect()->route('modules.index');
     }
 
     /**
@@ -55,9 +82,9 @@ class ModuleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Modules $modules)
     {
-        //
+        return view('pages\module-page\edit', compact('modules'));
     }
 
     /**
@@ -67,9 +94,15 @@ class ModuleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Modules $modules)
     {
-        //
+        $validatedData = $request->validate([
+            'color' => 'required|string|max:255',
+        ]);
+
+        $modules->update($validatedData);
+
+        return redirect()->route('modules.index', $modules)->with('success', 'modules updated successfully');
     }
 
     /**
@@ -78,8 +111,11 @@ class ModuleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Modules $modules)
     {
-        //
+        $modules->delete();
+
+        // Redirect to the view modules page
+        return redirect()->route('modules.index')->with('success', 'module Deleted successfully');;
     }
 }

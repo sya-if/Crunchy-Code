@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @php($user = Auth::user())
-@php($modules = App\Models\Module::all())
+@php($modules = App\Models\Modules::all())
 @section('content')
 
 <div class="main-container">
@@ -67,11 +67,7 @@
                     </div>
                 </div>
                 @endforeach
-                <div class="col-md-4 col-sm-12 mb-30"> <!-- Adjusted column width to fit 3 modules in a row -->
-                    <div class="card-box pd-30 height-100-p">
-                        <h5 class="padding-top-10 h5" style="color: grey"> Add more module</h5>
-                    </div>
-                </div>
+                <a href="{{route('modules.create')}}" class="btn btn-info float-end">Enroll More Module</a>
             </div>
         </div>
 
