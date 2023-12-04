@@ -82,9 +82,9 @@ class ModuleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Modules $modules)
+    public function edit(Modules $module)
     {
-        return view('pages\module-page\edit', compact('modules'));
+        return view('pages\module-page\edit', compact('module'));
     }
 
     /**
@@ -94,15 +94,15 @@ class ModuleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Modules $modules)
+    public function update(Request $request, Modules $module)
     {
         $validatedData = $request->validate([
             'color' => 'required|string|max:255',
         ]);
 
-        $modules->update($validatedData);
+        $module->update($validatedData);
 
-        return redirect()->route('modules.index', $modules)->with('success', 'modules updated successfully');
+        return redirect()->route('modules.index', $module)->with('success', 'modules updated successfully');
     }
 
     /**
@@ -111,9 +111,9 @@ class ModuleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Modules $modules)
+    public function destroy(Modules $module)
     {
-        $modules->delete();
+        $module->delete();
 
         // Redirect to the view modules page
         return redirect()->route('modules.index')->with('success', 'module Deleted successfully');;
