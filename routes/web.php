@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Auth\LoginController;
@@ -50,6 +51,9 @@ Route::resource('materials', MaterialController::class);
 
 // Route for quiz function - Resource Controller
 Route::resource('quiz', QuizController::class);
+
+// Route for Module function - Resource Controller
+Route::resource('modules', ModuleController::class);
 
 // Route for forum function - Resource Controller
 Route::resource('forum', ForumController::class);

@@ -139,7 +139,7 @@
                                                             <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-4']) }}">Module 1.4 Struktur Kawalan</a>
                                                             <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-5']) }}">Module 1.5 Amalan Terbaik Pengaturcaraan</a>
                                                             <a class="button-85 btn-block mb-4" role="button" href="#">Module 1.6 Struktur Data dan Modular</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="#">Module 1.6 Pembangunan Aplikasi</a>
+                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-7']) }}">Module 1.7 Pembangunan Aplikasi</a>
                                                         </div>                                                        
                                                         
                                                     </div>
