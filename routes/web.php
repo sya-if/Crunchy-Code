@@ -54,6 +54,12 @@ Route::resource('quiz', QuizController::class);
 // Route for forum function - Resource Controller
 Route::resource('forum', ForumController::class);
 
+// Route for forum post function - Resource Controller
+Route::resource('post', ForumPostController::class);
+
+// Replace create forum route
+Route::get('/post/create/{forum_id}/{page_number}', [ForumPostController::class, 'create'])->name('post.create');
+
 // Route for module main page
 Route::get('/module', [App\Http\Controllers\HomeController::class, 'ViewModule'])->name('module');
 
@@ -68,3 +74,7 @@ Route::get('/quiz/{quiz}', [App\Http\Controllers\HomeController::class, 'showQui
 
 // Route for forum main page
 Route::get('/discussion', [App\Http\Controllers\HomeController::class, 'viewForumPage'])->name('discussion');
+
+// Route for specific page number
+Route::get('/forum/page/{pageNumber}/{forumTitle?}', [App\Http\Controllers\HomeController::class, 'showForumPage'])->name('forum.page');
+

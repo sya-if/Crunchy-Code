@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Forum;
+use App\Models\ForumPost;
 use Auth;
 
 class HomeController extends Controller
@@ -112,8 +114,10 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        // Assuming the quiz views are named quiz-1-1.blade.php, quiz-1-2.blade.php, etc.
-        $viewName = "pages.quizzes.quiz-$quiz";
+        $forum =
+
+            // Assuming the quiz views are named quiz-1-1.blade.php, quiz-1-2.blade.php, etc.
+            $viewName = "pages.quizzes.quiz-$quiz";
 
         // Check if the view exists before attempting to render it
         if (view()->exists($viewName)) {
@@ -124,12 +128,39 @@ class HomeController extends Controller
             return abort(404); // or any other logic you prefer
         }
     }
-
+    // Function to display main page of forum
     public function viewForumPage()
     {
         $forums = Forum::all();
         return view('pages\forums\mainpage-forum', compact('forums'));
     }
 
+    // Function to display specific page of forum
+    public function showForumPage($pageNumber, $forumTitle = null)
+    {
+        // FInd specific forum based on forum title
+        $forum = Forum::where('title', $forumTitle)->first();
+
+        $posts = ForumPost::with('user')
+            ->whereHas('forum', function ($query) use ($forumTitle) {
+                $query->where('title', $forumTitle);
+            })
+            ->get();
+
+        $user = Auth::user();
+
+        // Assuming the forum views are named page-1.blade.php, page-2.blade.php, etc.
+        $viewName = "pages.forums.page-$pageNumber";
+
+        // Check if the view exists before attempting to render it
+        if (view()->exists($viewName)) {
+            // If the view exists, render it and pass any necessary data (e.g., $user) to the view
+            return view($viewName, compact('user', 'forumTitle', 'forum','posts'));
+        } else {
+            // If the view doesn't exist, you can handle the situation accordingly
+            return abort(404); // or any other logic you prefer
+        }
+
+    }
 
 }

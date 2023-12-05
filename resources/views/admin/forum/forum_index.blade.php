@@ -61,12 +61,12 @@
                             <td>{{$forum->user->nickname}}</td>
                             <td><a href="{{route('forum.edit', $forum->id)}}" class="btn btn-success">Edit</a></td>
                             <td>
-                                <form id="deleteForm" method="POST" action="{{ route('forum.destroy', $forum->id) }}">
+                                <form method="POST" action="{{ route('forum.destroy', $forum->id) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" class="btn btn-danger" id="deleteBtn">Delete</button>
+                                    <button type="submit" onclick="return confirm('Are you sure that you want to delete this user?')" class="btn btn-danger">Delete</button>
                                 </form>
-                                
+                       
                             </td>
                         </tr>
                         @endforeach
