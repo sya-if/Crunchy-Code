@@ -171,39 +171,42 @@ body p{
 					<div class="container pd-0">
 						<div class="row">
 							<div class="col-md-12 col-sm-12">
-								<<div class="card-box blog-caption mb-20 shadow-box colour-box" style="padding:30px;" align="center">
+								<div class="card-box blog-caption mb-20 shadow-box colour-box" style="padding:30px;" align="center">
                                 	<h3>Module 1.2 : Algoritma</h3>
 								</div>
 								<!-- Pengenalan Module -->
 									<div class="blog-detail card-box overflow-hidden mb-30">
 										<div class="blog-caption">
-											
-											<h5 class="mb-10">Definisi Algoritma</h5>
-											<p>Satu set arahan untuk menyelesaikan masalah. arahan -arahan terpinci yang dapat diikuti oleh pembaca sehingga tugasan terlaksana dengan jayanya adalah suatu bentuk algoritma dalam kehidupan harian. Contohnya, seorang ibu boleh dirujuk arahan arahan untuk persedian memasak dalam buku resepi.
-												Algoritma dapat dihaluskan dengan menambahkan butiran.
+										<h4 class="mb-10">Pendahuluan</h4>
+											<p>Algoritma ialah satu set arahan untuk menyelesaikan masalah. Arahan-
+												arahan terperinci yang dapat diikuti oleh pembaca sehingga tugasan
+
+												terlaksana dengan jayanya ialah suatu bentuk algoritma dalam kehidupan
+												harian. Dalam kehidupan harian, terdapat banyak contoh yang boleh
+												dikaitkan dengan algoritma. Contohnya, seorang ibu boleh merujuk
+												arahan-arahan untuk persediaan memasak dalam buku resepi.
+
+												Algoritma dapat dihalusi dengan menambahkan butiran. Contoh-
+												contoh algoritma yang lain dalam kehidupan harian seperti berikut:
 											</p>
-											<p><b>Contoh 1 : Menjerang air</b>
-												<ol>
-													<li>Mula</li>
-													<li>Isi air ke dalam cerek</li>
-													<li>Letakkan cerek di atas dapur gas</li>
-													<li>Hidupkan api </li>
-													<li>Tunggu sehingga air mendidih</li>
-													<li>Matikan api </li>
-												</ol>
-											</p>
-											<p><b>Contoh 2 : Membeli air minuman tin darioada mesin layan diri</b>
-												<ol>
-													<li>Mula</li>
-													<li>Masukkan wang yangs ecukupnya</li></li> 
-													<li>Tekan butang air minuman tin yang dipilih</li>
-													<li>Ambil air minuman tin</li>
-													<li>Tamat</li>
-												</ol>
-											</p>
+											<div class="card-deck mb-10">
+												<div class="card mb-30">
+													<img class="card-img-top" src="../../../vendors/images/Module/contoh1.png" alt="mind map ciri ciri algoritma">
+												</div>
+											</div>
+											<div class="card-deck mb-10">
+												<div class="card mb-30">
+													<img class="card-img-top" src="../../../vendors/images/Module/contoh2.png" alt="mind map ciri ciri algoritma">
+												</div>
+											</div>
+											<div class="card-deck mb-10">
+												<div class="card mb-30">
+													<img class="card-img-top" src="../../../vendors/images/Module/contoh3.png" alt="mind map ciri ciri algoritma">
+												</div>
+											</div>
 
 
-											<p>Perhatikan contoh 2, adakah butiran algoritma cukup jelas ? Jika tidak, anda perlu memperhalus algoritma tersebut dengan idea untuk menyelesaikan masalah tersebut. Misalnya, arahan (2) dan (4) memerlukan butiran tambahan.</p>
+											<p>Perhatikan contoh 3, adakah butiran algoritma cukup jelas ? Jika tidak, anda perlu memperhalus algoritma tersebut dengan idea untuk menyelesaikan masalah tersebut. Misalnya, arahan (2) dan (4) memerlukan butiran tambahan.</p>
 											<p>
 												Penghalusan arahan(2):
 												<ol>
@@ -219,11 +222,11 @@ body p{
 													<li>Tunggu baki wang (jika ada) di ruangan yang disediakan</li>
 												</ol>
 											</p>
-
+											<br>
 											<h5 class="mb-10">Ciri-Ciri Wajib Algoritma</h5z>
 											<!-- Image Ciri-ciri wajib algoritma Container -->
 											<div class="card-deck mb-30">
-												<div class="card mx-auto">
+												<div class="card mb-30">
 													<img class="card-img-top" src="../../../vendors/images/Module/ciri-wajib-algoritma.png" alt="mind map ciri ciri algoritma">
 												</div>
 											</div>
@@ -243,17 +246,17 @@ body p{
 										</div>
 									</div>
 
-									<!-- 1.2.1 Penggunaan Algoritma untuk Menyelesaikan Masalah -->
+									<!-- Module 1.2.1 Penggunaan Algoritma untuk Menyelesaikan Masalah -->
 									<div class="blog-detail card-box overflow-hidden mb-30">
 										<div class="blog-caption">
-											<h4 class="mb-10">1.2.1 Penggunaan Algoritma untuk Menyelesaikan Masalah</h4>
+											<h4 class="mb-10">Module 1.2.1 Penggunaan Algoritma untuk Menyelesaikan Masalah</h4><br>
 											<h5 class="mb-10">Definisi Komputer</h5>
 											<p>
 												Komputer ialah alat elektronik yang berupaya menerima dan memproses data input untuk menghasilkan maklumat sebagai output serta menyimpan kedua-dua data dan maklumat. Salah satu ciri komputer ialah kebolehan menyimpan dan menggunakan pelbagai aturcara untuk melaksanakan proses komputer. Semua aturcara komputer ialah perisina yang “menghidupkan” perkakasan komputer dengan memproses semua input kepada output.
 											</p>
 											<!-- Image 2(Input-proses-output) Container -->
 											<div class="card-deck mb-30">
-												<div class="card mx-auto">
+												<div class="card mb-30">
 													<img class="card-img-top" src="../../../vendors/images/Module/121-picture.png" alt="mind map ciri ciri algoritma">
 												</div>
 											</div>
@@ -270,8 +273,7 @@ body p{
 											Adam mengambil gambar keluarganya dan menghantar gambar tersebut kepada datuk dan nenek di kampung dengan menggunakan telefon pintar.
 											</p>
 											<p>
-												Penyelesaian:
-
+											<p><b>Penyelesaian</b></p>
 												<table class="table table-bordered">
 														<tr>
 															<th scope="col">Input</th>
@@ -291,6 +293,7 @@ body p{
 											</p>
 
 											<!-- Analisis IPO -->
+											<br>
 											<h5 class="mb-10">Analisis IPO</h5>
 											<p>
 											Sebelum menulis algoritma untuk suatu masalah, analisa IPO perlu dibuat. Analisis IPO adalah untuk mengenal pasti data input, proses untuk mengubah nilai data kepada maklumat dan paparan output maklumat setelah proses.
@@ -343,6 +346,7 @@ body p{
 											</p>
 
 											<!-- Perwakilan Algoritma -->
+											<br>
 											<h5 class="mb-10">Perwakilan Algoritma</h5>
 											<p>Terdapat dua format perwakilan algoritma, iaitu pseudokod dan carta alir.
 
@@ -354,6 +358,7 @@ body p{
 											</p>
 
 											<!-- Pseudokod -->
+											<br>
 											<h5 class="mb-10">Pseudokod</h5>
 											<p>
 											Pseudokod bukanlah bahasa pengaturcaraan komputer. Arahan ditulis dalam bahasa pertuturan harian. Setiap arahan ialah ungkapan matematik, ungkapan logik, penggunaan struktur kawalan ataupun penggunaan fungsi komputer (contohnya membaca input). Setiap arahan diletakkan dalam baris baharu yang diberikan nombor siri.
@@ -369,12 +374,13 @@ body p{
 													<li>Tulis kenyataan TAMAT.</li>
 												</ol>
 											</p>
+											<br>
 											<p><b>Contoh 3</b></p>
 											<p>
 												Tuliskan pseudokod untuk program ringkas yang meminta nama pengguna dan memaparkan "Hello" diikuti nama pengguna.
 											</p>
 												
-											<p>Penyelesaian :</p> 
+											<p><b>Penyelesaian :</b></p> 
 											<p><ol>
 												<li>MULA</li>
 												<li>INPUT NAMA</li>
@@ -382,13 +388,13 @@ body p{
 												<li>TAMAT</li>
 												</ol>
 											</p>
-
+											<br>
 											<p><b>Contoh 4</b></p>
 											<p>
 												Tuliskan pseudokod untuk program ringkas yang meminta tahun kelahiran pengguna, menghitung umur dan memaparkan umur pengguna.
 											</p>
 												
-											<p>Penyelesaian :</p> 
+											<p><b>Penyelesaian :</b></p> 
 											<p><ol>
 												<li>MULA</li>
 												<li>INPUT TAHUN_LAHIR</li>
@@ -399,7 +405,7 @@ body p{
 											</p>
 
 											<div class="card-deck mb-30">
-												<div class="card mx-auto">
+												<div class="card mb-30">
 													<img class="card-img-top" src="../../../vendors/images/Module/121-carta-alir.png" alt="carta alir">
 												</div>
 											</div>
@@ -418,11 +424,12 @@ body p{
 													<li>Sekiranya tiada, lukis nod terminal Tamat.</li>
 												</ol>
 											</p>
+											<br>
 											<p><b>Contoh 5</b></p>
 											<p>Lukis carta alir untuk program ringkas yang meminta nama pengguna dan memaparkan "Hello" diikuti nama pengguna.</p>
 											<div class="card-deck mb-30">
 												<div class="card mb-30">
-													<img class="card-img-top" src="../../../vendors/images/Module/123-picture2.png" alt="contoh 5">
+													<img class="card-img-top" src="../../../vendors/images/Module/121-contoh5.png" alt="contoh 5">
 												</div>
 											</div>
 											<br>
@@ -432,7 +439,7 @@ body p{
 											</p>
 											<div class="card-deck mb-30">
 												<div class="card">
-													<img class="card-img-top" src="../../../vendors/images/Module/121-picture3.png" alt="carta alir">
+													<img class="card-img-top" src="../../../vendors/images/Module/121-contoh6.png" alt="contoh 6">
 												</div>
 											</div>
 											<p></p>
@@ -442,7 +449,7 @@ body p{
 									<!-- 1.2.2 Struktur Kawalan dalam Pengaturcaraan -->
 									<div class="blog-detail card-box overflow-hidden mb-30">
 										<div class="blog-caption">
-											<h4 class="mb-10">1.2.2 Struktur Kawalan dalam Pengaturcaraan</h4>
+											<h4 class="mb-10">Module 1.2.2 Struktur Kawalan dalam Pengaturcaraan</h4>
 											<h5 class="mb-10">Struktur Kawalan Komputer</h5>
 											<p>
 												<ol>
@@ -464,27 +471,27 @@ body p{
 												Urutan linear algoritma dipersembahkan sebagai susunan penyataan- penyataan secara linear. Sintaks bagi urutan linear adalah seperti yang berikut:
 											</p>
 											<div class="card-deck mb-30">
-												<div class="card mx-auto">
+												<div class="card">
 													<img class="card-img-top" src="../../../vendors/images/Module/122-picture1.png" alt="carta alir">
 												</div>
 											</div>
 											<br>
 											<p>Contoh-contoh urutan linear menggunakan pseudokod dan carta alir adalah seperti yang berikut:</p>
 											<div class="card-deck mb-30">
-												<div class="card mx-auto">
+												<div class="card">
 													<img class="card-img-top" src="../../../vendors/images/Module/122-picture2.png" alt="carta alir">
 												</div>
 											</div>
 											<br>
 											<!-- Input interaktif -->
-											<h5 class="mb-10">Input Interaktif</h5>
+											<h6 class="mb-10">Input Interaktif</h6>
 											<p>Perhatikan penyataan-penyataan INPUT adalah untuk menerima data daripada pengguna. Pengguna memasukkan data melalui papan kekunci dan akan disimpan dalam pemboleh ubah. Algoritma sedemikian dikatakan interaktif kerana melibatkan input pengguna.
 												Pemboleh ubah ialah ruang memori yang dikhususkan untuk menerima dan menyimpan data. Dalam subjek Matematik terutamanya dalam bab Algebra, pemboleh ubah biasanya diberikan nama abjad seperti x ataupun y.
 											</p>
 											<br>
 
 											<!-- Umpukan -->
-											<h5 class="mb-10">Umpukan</h5>
+											<h6 class="mb-10">Umpukan</h6>
 
 											<p>
 												Selain input interaktif daripada pengguna, kaedah umpukan boleh digunakan untuk memasukkan data ke dalam pemboleh ubah. Akan tetapi, nilai pemboleh ubah yang diumpuk adalah sama setiap kali aturcara daripada algoritma sedemikian dijalankan. Umpukan menggunakan simbol matematik, iaitu (=). Merujuk Contoh 1 di bawah, di sebelah kiri operator ialah pemboleh ubah seperti tahun_lahir. Di sebelah kanan operator ialah nilai. Umpukan bermakna nilai di sebelah kanan disimpan di dalam pemboleh ubah di sebelah kiri simbol umpukan (=).
@@ -499,7 +506,7 @@ body p{
 												Di samping itu, operator-operator aritmetik juga digunakan dalam ungkapan yang melibatkan pengiraan nombor. Kebanyakan operator ini sama dengan operator matematik (lihat Jadual 1.2). Pengecualian ialah penggunaan simbol asterik (*) untuk pendaraban dan simbol garis sendeng untuk pembahagian nombor. Hal ini demikian kerana, tiada simbol darab dan pembahagian untuk papan kunci piawai.
 											</p>
 											<div class="card-deck mb-30">
-												<div class="card mx-auto">
+												<div class="card">
 													<img class="card-img-top" src="../../../vendors/images/Module/122-picture3.png" alt="carta alir">
 												</div>
 											</div>
@@ -509,7 +516,7 @@ body p{
 												Lukiskan carta alir untuk atur cara yang menerima dua nombor dan memaparkan jumlah sebagai output.
 											</p>
 											<div class="card-deck mb-30">
-												<div class="card mx-auto">
+												<div class="card">
 													<img class="card-img-top" src="../../../vendors/images/Module/122-picture4.png" alt="carta alir">
 												</div>
 											</div>
@@ -520,7 +527,7 @@ body p{
 											<p><b>Contoh 8</b></p>
 											<p>Lukis carta alir untuk atur cara yang menerima saiz jejari bulatan dan menentukan ukur lilit keluasan bulatan tersebut.</p>
 											<div class="card-deck mb-30">
-												<div class="card mx-auto">
+												<div class="card">
 													<img class="card-img-top" src="../../../vendors/images/Module/122-picture5.png" alt="carta alir">
 												</div>
 											</div>
@@ -533,7 +540,7 @@ body p{
 												Struktur kawalan pilihan memberikan perisian komputer keupayaan untuk membuat keputusan berasaskan syarat yang telah ditentukan pengatur cara. Struktur ini membolehkan arahan-arahan lain komputer dilaksanakan dalam situasi masalah yang berbeza. Ciri umum adalah satu syarat yang menentukan satu daripada dua cabang dipilih. Setiap cabang mengandungi urutan arahan komputer yang berbeza. Sekiranya satu urutan sudah terpilih, urutan satu lagi akan diabaikan.
 											</p>
 											<div class="card-deck mb-30">
-												<div class="card mx-auto">
+												<div class="card">
 													<img class="card-img-top" src="../../../vendors/images/Module/122-picture6.png" alt="carta alir">
 												</div>
 											</div>
@@ -559,7 +566,7 @@ body p{
 												"Benar" atau "Palsu". Jadual 1.3 menunjukkan operator hubungan yang kerap digunakan.
 											</p>
 											<div class="card-deck mb-30">
-												<div class="card mx-auto">
+												<div class="card">
 													<img class="card-img-top" src="../../../vendors/images/Module/122-picture7.png" alt="carta alir">
 												</div>
 											</div>
@@ -580,17 +587,298 @@ body p{
 												</ul>
 											</p>
 
-											<p></p>
-											<p></p>
-											<p></p>
-											<p></p>
-											<p></p>
+											<!-- Pseudokod untuk Struktur Kawalan Pilihan -->
+											<h6 class="mb-10">Pseudokod untuk Struktur Kawalan Pilihan</h6>
+											<p>Perhatikan bahawa terdapat dua blok dalam pseudokod struktur kawalan pilihan. Blok pertama mengandungi blok penyataan yang akan dilaksanakan sekiranya syarat memberikan nilai "Benar". Perkataan JIKA oleh syarat diuji. Blok penyataan mesti berada di antara MULA_
+												JIKA dan TAMAT_JIKA.
+											</p>
+											<div class="card-deck mb-30">
+												<div class="card">
+													<img class="card-img-top" src="../../../vendors/images/Module/122-picture8.png" alt="carta alir">
+												</div>
+											</div>
+											<br>
+											<p>
+												Blok selainnya mengandungi blok penyataan yang akan dilaksanakan sekiranya syarat dari blok pertama gagal memberikan nilai "Benar", yakni "Palsu". Blok penyataan "Palsu" mesti berada di antara MULA_JIKA_ TIDAK dan TAMAT_JIKA_TIDAK.
+											</p>
+											<div class="card-deck mb-30">
+												<div class="card">
+													<img class="card-img-top" src="../../../vendors/images/Module/122-picture9.png" alt="carta alir">
+												</div>
+											</div>
+											<br>
+											<p><b>Contoh 11</b></p>
+											<p>
+												Tulis pseudokod untuk menilai hari sama ada hari sudah gelap atau sebaliknya. Pengguna dikehendaki menjawab sama ada "Benar" atau "Palsu" apabila ditanya jika hari sudah gelap. Jika "Benar" untuk hari sudah gelap, papar "Ambil baju dari ampaian." dan "Simpan dalam bakul.". Jika sebaliknya, papar "Sidai baju di ampaian".
+											</p>
+											<p>Penyelesaian:
+												<ol>
+													<li>MULA</li>
+													<li>Papar "Hari sudah gelap: Benar atau Palsu?"</li>
+													<li> INPUT jawapan dengan nilai "Benar" atau "Palsu"</li>
+													<li>JIKA Hari_sudah_gelap? MULA_JIKA
+														<ul>
+															<li>OUTPUT "Ambil semua baju dari ampaian."</li>
+															<li>OUTPUT "Simpan semua baju dalam bakul."</li>
+														</ul>
+														TAMAT_JIKA
+														JIKA_TIDAK MULA_JIKA_TIDAK
+														<ul>
+															<li>OUTPUT "Sidai baju di ampaian."</li>
+														</ul>
+														TAMAT_JIKA_TIDAK
+													</li>
+													<li>TAMAT</li>
+
+												</ol>
+											</p>
+											<p><b>Contoh 12</b></p>
+											<p>
+												Tulis pseudokod bagi blok struktur kawalan pilihan untuk menguji sama
+												ada umur pengguna sudah mencapai usia minimum 17 tahun. Jika umur
+												pengguna adalah 17 tahun atau ke atas, paparkan bahawa pemohon boleh
+												memohon menduduki ujian lesen memandu . Paparkan bahawa pemohon
+												belum cukup umur sekiranya ujian syarat gagal.
+											</p>
+											<p>Penyelesaian:
+												<ol>
+													<li>MULA</li>
+													<li>Papar "Masukkan umur pemohon:"</li>
+													<li>INPUT umur</li>
+													<li>JIKA umur > 16 MULA_JIKA
+														<ul>
+															<li>OUTPUT "Anda boleh pohon lesen."</li>														</ul>
+														TAMAT_JIKA
+														JIKA_TIDAK MULA_JIKA_TIDAK
+														<ul>
+															<li>OUTPUT "Anda belum cukup umur."</li>
+														</ul>
+														TAMAT_JIKA_TIDAK
+													</li>
+													<li>TAMAT</li>
+												</ol>
+											</p>
+											<br>
+
+											<!-- Carta alir untuk Struktur Kawalan Pilihan -->
+											<h6 class="mb-10">Carta alir untuk Struktur Kawalan Pilihan</h6>
+											<p>Dalam carta alir, nod syarat, diwakili oleh bentuk
+												geometri rombus. Terdapat satu anak panah
+												masuk dan dua anak panah keluar. Anak panah
+												masuk membawa data untuk dinilai oleh syarat
+												dalam nod syarat. Hasil penilaian adalah sama
+												ada "Benar" (True) atau "Palsu" (False).
+
+												Dua anak panah keluar ialah keputusan untuk
+												"Benar" dan "Palsu". Anak panah "Benar" dipilih
+												apabila syarat dalam nod menghasilkan keputusan
+												"Benar" dan "Palsu". Setiap anak panah menuju
+												kepada blok penyataan-penyataan yang berbeza.
+												Hal ini bererti tindakan susulan adalah berbeza
+												dan bergantung kepada hasil ujian syarat.
+											</p>
+											<div class="card-deck mb-30">
+												<div class="card">
+													<img class="card-img-top" src="../../../vendors/images/Module/122-picture10.png" alt="carta alir">
+												</div>
+											</div><br>
+
+											<p><b>Contoh 13</b></p>
+											<p>
+												Lukis carta alir untuk menilai hari sama ada sudah gelap atau sebaliknya. Pengguna dikehendaki menjawab
+												sama ada "Benar" atau "Palsu" apabila ditanya jika hari sudah gelap. Jika "Benar" untuk hari sudah gelap,
+												papar "Ambil baju dari ampaian." dan "Simpan dalam bakul.". Jika sebaliknya, papar "Sidai baju di ampaian".
+											</p>
+											<p>Penyelesaian:
+											<div class="card-deck mb-30">
+												<div class="card">
+													<img class="card-img-top" src="../../../vendors/images/Module/122-picture11.png" alt="carta alir">
+												</div>
+											</div>
+											</p>
+											<br>
+
+											<p><b>Contoh 14</b></p>
+											<p>
+											Lukis carta alir untuk atur cara yang menentukan umur pemohon dan tentukan sama ada pemohon boleh
+											memohon lesen memandu ataupun tidak. Umur minimum ialah 17 tahun.
+											</p>
+											<p>Penyelesaian:
+											<div class="card-deck mb-30">
+												<div class="card">
+													<img class="card-img-top" src="../../../vendors/images/Module/122-picture12.png" alt="carta alir">
+												</div>
+											</div>
+											</p>
+											<br>
+
+											<!-- Struktur Kawalan Pengulangan -->
+											<h5 class="mb-10">Struktur Kawalan Pengulangan</h5>
+											<p>Struktur kawalan pengulangan mengulang arahanarahan komputer dalam blok. Ulangan boleh
+												berlangsung sehingga menerima syarat
+												berhenti ataupun mencapai bilangan yang
+												sudah ditetapkan.
+												Cuba bayangkan seorang murid
+												berlari mengelilingi bulatan dan terusmenerus membuat pusingan.
+												Sintaks struktur kawalan ulangan
+												adalah seperti yang berikut:
+											</p>
+											<div class="card-deck mb-30">
+												<div class="card">
+													<img class="card-img-top" src="../../../vendors/images/Module/122-picture13.png" alt="carta alir">
+												</div>
+											</div>
+
+											<p>Dalam pseudokod, perhatikan bahawa syarat juga digunakan
+												seperti dalam kawalan pilihan untuk menentukan tindakan seterusnya.
+												Syarat diletakkan selepas kata kunci SELAGI. Tidak seperti kawalan
+												pilihan, kawalan pengulangan menggunakan keputusan syarat "Benar"
+												untuk mengulang arahan-arahan dalam blok penyataan. Jika keputusan
+												syarat adalah "Palsu", maka blok penyataan tidak akan diendahkan.
+												Blok penyataan ialah penyataan-penyataan di antara kata kunci MULA_
+												SELAGI dan TAMAT_SELAGI.
+												Demikian halnya dalam carta alir, lihat rajah 1.15. Nod syarat dalam
+												struktur kawalan pengulangan menentukan sama ada blok penyataan
+												perlu diulang. Jika keputusan adalah "Benar", anak panah menuju kepada blok penyataan dan seterusnya balik kepada nod syarat untuk
+												diuji sekali lagi. Sekiranya keputusan adalah "Palsu", anak panah keluar
+												akan meninggalkan kesemua blok penyataan dan nod syarat.
+											</p>
+											<div class="card-deck mb-30">
+												<div class="card">
+													<img class="card-img-top" src="../../../vendors/images/Module/122-picture14.png" alt="carta alir">
+												</div>
+											</div>
+											<p>Dalam rajah di atas, perhatikan perbezaan reka bentuk carta alir
+												di antara struktur kawalan ulangan dengan struktur kawalan pilihan.
+												Perbezaan ketara adalah hala tuju anak panah bagi keputusan "Benar"
+												yang berpatah balik supaya pengulangan boleh dilaksanakan jika perlu.
+												Oleh sebab itulah struktur ini disebut sebagai struktur kawalan ulangan.
+											</p>
+
+											<p><b>Contoh 15</b></p>
+											<p>Tulis pseudokod untuk aplikasi yang akan mencetak teks "Saya gembira
+												hadir ke sekolah hari ini." sebanyak 5 kali.
+											</p>
+											<p>Penyelesaian:
+												<ol>
+													<li>Mula</li>
+													<li>pembilang = 0</li>
+													<li>SELAGI pembilang < 5 MULA_SELAGI
+														<ul>
+															<li>OUTPUT "Anda boleh pohon lesen."</li>
+															<li>pembilang = pembilang + 1</li>
+														<ul>
+														TAMAT_SELAGI
+													</li>
+													<li>Tamat</li>
+												</ol>
+											</p><br>
+
+											<p><b>Contoh 16</b></p>
+											<p>Lukis carta alir untuk aplikasi yang akan mencetak teks "Saya gembira hadir
+												ke sekolah hari ini," sebanyak 5 kali.
+											</p>
+											<p>Penyelesaian:
+											<div class="card-deck mb-30">
+												<div class="card">
+													<img class="card-img-top" src="../../../vendors/images/Module/122-contoh-16.png" alt="carta alir">
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- Module 1.2.3 Menguji dan Membaiki Ralat dalam Algoritma -->
+									<div class="blog-detail card-box overflow-hidden mb-30"> 
+										<div class="blog-caption">
+											<h4 class="mb-10">Module 1.2.3 Menguji dan Membaiki Ralat dalam Algoritma</h4>
+											<p>Algoritma diuji setelah ditulis untuk tujuan pembaikan. Pengujian
+												algoritma dibuat sebelum algoritma ditulis sebagai kod komputer. Lihat
+												Rajah 1.18. Hal ini demikian kerana, pembetulan di peringkat kod
+												mengambil masa yang lebih lama dan lebih mahal daripada pembetulan
+												di peringkat algoritma.
+											</p>
+											<div class="card-deck mb-30">
+												<div class="card">
+													<img class="card-img-top" src="../../../vendors/images/Module/123-picture1.png" alt="carta alir">
+												</div>
+											</div>
+											<p>Matlamat pengujian algoritma adalah untuk memastikan logik algoritma 
+												adalah betul dan memikirkan pembaikan algoritma supaya lebih efisien. 
+												Algoritma yang telah diuji mempunyai ciri-ciri yang berikut:
+												<ul>
+													<li><b>Mudah difahami</b>, maka mudah ditulis sebagai atur cara komputer.</li>
+													<li><b>Lengkap</b>, yakni memenuhi semua keperluan penyelesaian masalah.</li>
+													<li><b>Efisien</b>, yakni algoritma berfungsi dengan pantas dan tidak memakan banyak ruang memori.</li>
+													<li><b>Memenuhi kriteria reka bentuk</b> perisian yang ingin dibangunkan</li>
+												</ul>
+											</p><br>
+
+											<h5 class="mb-10">Ralat dalam Algoritma</h5>											
+											<p>Algoritma yang tidak memenuhi kriteria akan sukar difahami, tidak lengkap, 
+												kurang efisien dan tidak memenuhi kriteria reka bentuk perisian. Perkara 
+												ini akan mengakibatkan perisian yang dihasilkan mengandungi ralat. Hal ini 
+												kerana pengatur cara bergantung kepada algoritma untuk menghasilkan 
+												atur cara. Algoritma yang mengandungi ralat akan menyebabkan pengatur 
+												cara menghasilkan atur cara yang juga mengandungi ralat. Rajah di bawah 
+												menunjukkan hubungan ralat algoritma dan ralat atur cara.
+											</p>
+											<div class="card-deck mb-30">
+												<div class="card">
+													<img class="card-img-top" src="../../../vendors/images/Module/123-picture2.png" alt="carta alir">
+												</div>
+											</div><br>
+											<p>Ujian algoritma boleh mencegah ralat algoritma. Ralat algoritma boleh 
+												menyebabkan dua jenis ralat dalam atur cara yang bakal dihasilkan 
+												daripada algoritma tersebut, lihat Jadual 1.4.
+												<ol type="a">
+													<li><b>Ralat sintaks</b> - tidak wujud dalam algoritma. Ralat sintaks berlaku 
+														kerana menggunakan bahasa pengaturcaraan seperti Java dengan 
+														cuai. Ralat sintaks biasanya ditemui secara automatik oleh perisian 
+														kompiler bahasa pengaturcaraan. Ralat algoritma tidak menyebabkan 
+														ralat sintaks..
+													</li>
+													<li><b>Ralat logik</b> - ralat logik berlaku kerana perisian yang dihasilkan tidak 
+														menjalankan fungsi-fungsi yang sepatutnya, tidak lengkap ataupun 
+														fungsi menghasilkan output yang tidak tepat.
+														<div class="card-deck mb-30">
+															<div class="card">
+																<img class="card-img-top" src="../../../vendors/images/Module/123-picture3.png" alt="carta alir">
+															</div>
+														</div>
+														<p>Untuk mencegah ralat ini daripada berlaku dalam atur cara, algoritma 
+															mestilah dipastikan mudah difahami pengatur cara, lengkap dan 
+															memenuhi kriteria reka bentuk.
+														</p>
+													</li>
+													<li>
+														<b>Ralat masa larian</b> - ralat yang timbul apabila atur cara dijalankan. 
+														Ralat masa larian termasuklah atur cara yang tidak dapat dimulakan, 
+														menjadi sangat perlahan ataupun tidak responsif. Ralat ini boleh 
+														dikenal pasti daripada kegagalan output dan paparan amaran dalam 
+														atur cara.
+														<div class="card-deck mb-30">
+															<div class="card">
+																<img class="card-img-top" src="../../../vendors/images/Module/123-contoh.png" alt="carta alir">
+															</div>
+														</div>
+														<p>Ralat masa larian boleh dikesan melalui reka bentuk algoritma yang tidak efisien atau salah. Misalnya:
+														<ul>
+															<li>Struktur kawalan urutan yang tidak betul.</li>
+															<li>Pemboleh ubah tidak mengandungi nilai atau objek.</li>
+															<li>Pembahagian dengan sifar.</li>
+															<li>Struktur kawalan pengulangan yang tidak boleh berhenti kerana logik syarat yang salah.</li>
+														</ul>
+														</p>
+													</li>
+												</ol>
+											</p>
 											<p></p>
 											<p></p>
 											<p></p>
 
 										</div>
 									</div>
+
 								</div>
 							</div>
 							

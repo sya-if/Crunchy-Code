@@ -31,6 +31,10 @@ Route::get('/', function () {
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'getProfile'])->name('profile');
 Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'postProfile'])->name('profile.post');
 
+// Route for handling the photo update
+Route::post('/update-photo', [App\Http\Controllers\ProfileController::class, 'updatePhoto'])->name('update-photo');
+
+
 // Authentication Route
 Auth::routes();
 
