@@ -40,6 +40,7 @@
 	<link rel="stylesheet" type="text/css" href="../../../src/plugins/datatables/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="../../../src/plugins/jquery-steps/jquery.steps.css">
  
+ 
 </head>
 <body>
     
@@ -61,6 +62,8 @@
   
 
     <!-- js -->
+    <script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
+	<script src="src/plugins/sweetalert2/sweet-alert.init.js"></script>
 	<script src="../../../vendors/scripts/core.js"></script>
 	<script src="../../../vendors/scripts/script.min.js"></script>
 	<script src="../../../vendors/scripts/process.js"></script>
@@ -86,8 +89,6 @@
 	<script src="../../../vendors/scripts/dashboard.js"></script>
     <script src="../../../src/plugins/jquery-steps/jquery.steps.js"></script>
 	<script src="../../../vendors/scripts/steps-setting.js"></script>
-    <script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
-	<script src="src/plugins/sweetalert2/sweet-alert.init.js"></script>
     
 </body>
 </html>

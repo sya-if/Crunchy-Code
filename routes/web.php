@@ -31,6 +31,10 @@ Route::get('/', function () {
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'getProfile'])->name('profile');
 Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'postProfile'])->name('profile.post');
 
+// Route for handling the photo update
+Route::post('/update-photo', [App\Http\Controllers\ProfileController::class, 'updatePhoto'])->name('update-photo');
+
+
 // Authentication Route
 Auth::routes();
 
@@ -50,13 +54,19 @@ Route::resource('users', StudentController::class);
 Route::resource('materials', MaterialController::class);
 
 // Route for quiz function - Resource Controller
-Route::resource('quiz', QuizController::class);
+Route::resource('quizzes', QuizController::class);
 
 // Route for Module function - Resource Controller
 Route::resource('modules', ModuleController::class);
 
 // Route for forum function - Resource Controller
 Route::resource('forum', ForumController::class);
+
+// Route for forum post function - Resource Controller
+Route::resource('post', ForumPostController::class);
+
+// Replace create forum route
+Route::get('/post/create/{forum_id}/{page_number}', [ForumPostController::class, 'create'])->name('post.create');
 
 // Route for module main page
 Route::get('/module', [App\Http\Controllers\HomeController::class, 'ViewModule'])->name('module');
@@ -73,4 +83,6 @@ Route::get('/quiz/{quiz}', [App\Http\Controllers\HomeController::class, 'showQui
 // Route for forum main page
 Route::get('/discussion', [App\Http\Controllers\HomeController::class, 'viewForumPage'])->name('discussion');
 
+// Route for specific page number
+Route::get('/forum/page/{pageNumber}/{forumTitle?}', [App\Http\Controllers\HomeController::class, 'showForumPage'])->name('forum.page');
 

@@ -38,7 +38,7 @@
         <div class="card-box pd-20 height-100-p mb-30">
             <div class="row align-items-center">
                 <div class="col-md-3">
-                    <img src="vendors/images/photo1.jpg" alt="">
+                    <img src="{{ asset ('uploads/users/'.$user->photo)}}" alt="Profile photo">
                 </div>
                 <div class="col-md-6">
                     <h4 class="font-20 weight-500 mb-10 text-capitalize">

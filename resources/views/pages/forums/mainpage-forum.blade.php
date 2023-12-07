@@ -210,23 +210,23 @@
                     </div>
                 </div>
             </div>
-            <div class="blog-wrap ">
+          
+            <div class="blog-wrap">
                 <div class="container pd-0">
                     <div class="row ag-courses_box">
                         @foreach($forums as $forum)
                             <div class="col-md-6 col-sm-12 ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
+                              <a href="{{ route('forum.page', ['pageNumber' => $loop->index + 1, 'forumTitle' => $forum->title]) }}" class="ag-courses-item_link">              
                                     <div class="ag-courses-item_bg"></div>
-                                        <div class="ag-courses-item_title">
-                                            {{ $forum->title }}
-                                            <br>
-                                            <span class="ag-courses-item_date">
-                                                {{ $forum->description }}
-                                            </span>
-                                        </div>
-                                        
-                                        <div class="ag-courses-item_date-box"> 
-                                    
+                                    <div class="ag-courses-item_title">
+                                        {{ $forum->title }}
+                                        <br>
+                                        <span class="ag-courses-item_date">
+                                            {{ $forum->description }}
+                                        </span>
+                                    </div>
+
+                                    <div class="ag-courses-item_date-box">
                                         <div class="center">
                                             <button class="button-74" role="button">Masuk</button>
                                         </div>
@@ -237,14 +237,9 @@
                     </div>
                 </div>
             </div>
-            
-            
-            
+
         </div>
     </div>
-
-    
-
 </div>
 
 @endsection

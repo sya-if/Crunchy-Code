@@ -124,4 +124,6 @@ class QuizController extends Controller
         // Redirect to the view quiz page
         return redirect()->route('quiz.index')->with('success', 'quiz Deleted successfully');;
     }
+
+    
 }

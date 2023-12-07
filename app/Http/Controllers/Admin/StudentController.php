@@ -73,7 +73,7 @@ class StudentController extends Controller
         if (!file_exists($directory)){
             mkdir ($directory,0755,true);
         }
-        $img =Image::make ($request->photo->getRealPath());
+        $img = Image::make ($request->photo->getRealPath());
 
         $img->fit(200,200,function ($constraint){
             $constraint->aspectRatio();

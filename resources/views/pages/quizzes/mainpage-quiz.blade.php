@@ -96,12 +96,12 @@
                             <div class="col-md-12 col-sm-12">
                                 <div class="blog-list">
                                     <ul>
-                                        <!-- Bab 1 Pengaturcaraan -->
+                                        <!-- KUIZ 1 Pengaturcaraan -->
                                         <li>
                                             <div class="row no-gutters">
                                                 <div class="col-lg-4 col-md-12 col-sm-12">
                                                     <div class="blog-img">
-                                                        <img src="vendors/images/bab-1.png" alt="" class="bg_img">
+                                                        <img src="vendors/images/Quiz/kuiz1.png" alt="" class="bg_img">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-8 col-md-12 col-sm-12">
@@ -116,7 +116,7 @@
                                                             </p>
                                                             <div class="pt-10">
                                                                 <!-- Modal Button -->
-                                                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-1">Tekan sini</button>
+                                                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-1">Jawab Kuiz</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -149,12 +149,12 @@
 
                                         </li>
 
-                                        <!-- Bab 2 Pangkalan Data -->
+                                        <!-- KUIZ 2 Pangkalan Data -->
                                         <li>
                                             <div class="row no-gutters">
                                                 <div class="col-lg-4 col-md-12 col-sm-12">
                                                     <div class="blog-img">
-                                                        <img src="vendors/images/bab-2.png" alt="" class="bg_img">
+                                                        <img src="vendors/images/Quiz/kuiz2.png" alt="" class="bg_img">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-8 col-md-12 col-sm-12">
@@ -170,7 +170,7 @@
                                                             </p>
                                                             <div class="pt-10">
                                                                 <!-- Modal Button -->
-                                                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-2">Tekan sini</button>
+                                                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-2">Jawab Kuiz</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -201,17 +201,17 @@
                                            
                                         </li>
 
-                                        <!-- Bab 3 Interaksi Manusia dengan Komputer -->
+                                        <!--KUIZ 3 Interaksi Manusia dengan Komputer -->
                                         <li>
                                             <div class="row no-gutters">
                                                 <div class="col-lg-4 col-md-12 col-sm-12">
                                                     <div class="blog-img">
-                                                        <img src="vendors/images/bab-3.png" alt="" class="bg_img">
+                                                        <img src="vendors/images/Quiz/kuiz3.png" alt="" class="bg_img">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-8 col-md-12 col-sm-12">
                                                     <div class="blog-caption">
-                                                        <h4><a href="#"> BAB 3 INTERAKSI MANUSIA DENGAN KOMPUTER  </a></h4>
+                                                        <h4><a href="#"> LATIHAN SUMATIF 3 INTERAKSI MANUSIA DENGAN KOMPUTER  </a></h4>
                                                         <div class="blog-by">
                                                             <p align="justify">
                                                                 lnteraksi ialah tindakan atau perhubungan aktif antara satu dengan yang lain. 
@@ -221,7 +221,7 @@
                                                             </p>
                                                             <div class="pt-10">
                                                                 <!-- Modal Button -->
-                                                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-3">Tekan sini</button>
+                                                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-3">Jawab Kuiz</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -233,13 +233,13 @@
                                                 <div class="modal-dialog modal-lg modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title" id="myModalLabel">Sub Bab 2 Pangkalan Data</h4>
+                                                            <h4 class="modal-title" id="myModalLabel">Sub Kuiz 3 Interaksi Manusia dengan Komputer</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
                                                         <div class="modal-body justify-content">
                                                             <!-- Replace the content below with your specific modal content -->
-                                                            <button class="button-85 btn-block mb-4" role="button" href="#">Module 3.1 Reka Bentuk Interaksi</button>
-                                                            <button class="button-85 btn-block mb-4" role="button" href="#">Module 3.2 Paparan dan Reka Bentuk Skrin</button>
+                                                            <button class="button-85 btn-block mb-4" role="button" href="#">Kuiz 3.1 Reka Bentuk Interaksi</button>
+                                                            <button class="button-85 btn-block mb-4" role="button" href="#">Kuiz 3.2 Paparan dan Reka Bentuk Skrin</button>
            
                               
                                                         </div>

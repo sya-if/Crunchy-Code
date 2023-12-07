@@ -33,12 +33,10 @@
             <!-- Student Progress  -->
             @if($user->role == ('student'))
             <div class="row">
-                <div class="card-box pd-20 height-100-p mb-30">
-                <div class="row align-items-center">
+                <div class="row justify-content-center">
                     <div class="row clearfix progress-box">
-
                         <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-                            <div class="card-box pd-30 height-100-p">
+                            <div class="card-box pd-20 height-80-p">
                                 <div class="progress-box text-center">
                                     <input type="text" class="knob dial1" value="80" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#1b00ff" data-angleOffset="180" readonly>
                                     <h5 class="text-blue padding-top-10 h5">Module 1</h5>
@@ -47,7 +45,7 @@
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-                            <div class="card-box pd-30 height-100-p">
+                        <div class="card-box pd-20 height-80-p">
                                 <div class="progress-box text-center">
                                     <input type="text" class="knob dial2" value="70" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#00e091" data-angleOffset="180" readonly>
                                     <h5 class="text-light-green padding-top-10 h5">Module 2</h5>
@@ -56,7 +54,7 @@
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-                            <div class="card-box pd-30 height-100-p">
+                        <div class="card-box pd-20 height-80-p">
                                 <div class="progress-box text-center">
                                     <input type="text" class="knob dial3" value="90" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#f56767" data-angleOffset="180" readonly>
                                     <h5 class="text-light-orange padding-top-10 h5">Module 3</h5>
@@ -65,14 +63,13 @@
                         </div>
 
                         <div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-                            <div class="card-box pd-30 height-100-p">
+                        <div class="card-box pd-20 height-80-p">
                                 <div class="progress-box text-center">
                                     <input type="text" class="knob dial4" value="65" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#a683eb" data-angleOffset="180" readonly>
                                     <h5 class="text-light-purple padding-top-10 h5">Module 4</h5>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
             @endif
@@ -82,19 +79,32 @@
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-30">
                     <div class="pd-20 card-box height-100-p">
                         <div class="profile-photo">
-                            <a href="modal" data-toggle="modal" data-target="#modal" class="edit-avatar"><i class="fa fa-pencil"></i></a>
-                            <img src="vendors/images/photo1.jpg" alt="" class="avatar-photo">
+                            <a href="#" data-toggle="modal" data-target="#modal" class="edit-avatar"><i class="fa fa-pencil"></i></a>
+                            <img src="{{ asset ('uploads/users/'.$user->photo)}}" style="width:160px;" alt="profile picture">
                             <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-body pd-5">
-                                            <div class="img-container">
-                                                <img id="image" src="vendors/images/photo2.jpg" alt="Picture">
-                                            </div>
-                                        </div>
                                         <div class="modal-footer">
-                                            <input type="submit" value="Update" class="btn btn-primary">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <form method="POST" action="{{ route('update-photo') }}" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="form-group row">
+                                                    <label for="photo" class="col-md-4 col-form-label">{{ __('Photo') }}</label>
+                                                    <div class="col-md-8">
+                                                        <input id="photo" type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('photo') }}" required autocomplete="photo">
+
+                                                        @error('photo')
+                                                            <span class="invalid-feedback" role="alert">
+                                                                <strong>{{ $message }}</strong>
+                                                            </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <!-- Add an "Update" button -->
+                                                <button type="submit" class="btn btn-primary">Update</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </form>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -113,7 +123,7 @@
                                 </li>
                                 <li>
                                     <span>Phone Number:</span>
-                                    619-229-0054
+                                    {{ old('phone' , $user->phone ) }}
                                 </li>
                                 <li>
                                     <span>Address:</span>
@@ -134,7 +144,7 @@
                         </div>
 
                         @elseif($user->role == ('student'))
-                        <p class="text-center text-muted font-14">Norain binti Mohd Sulaiman</p>
+                        <p class="text-center text-muted font-14">{{ $user->fullname }}</p>
                         <div class="profile-info">
                             <h5 class="mb-20 h5 text-blue">Contact Information</h5>
                             <ul>
@@ -144,12 +154,11 @@
                                 </li>
                                 <li>
                                     <span>Bio:</span>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    {{ old('bio' , $user->bio ) }}
                                 </li>
                                 <li>
                                     <span>School:</span>
-                                    SMK TAMAN UNIVERSITI 2<br>
-                                    SKUDAI, JOHOR.
+                                    {{ old('school' , $user->school ) }}
                                 </li>
                             </ul>
                         </div>
@@ -207,28 +216,30 @@
                                         <table class="table">
 
                                             <!-- Default Personal Details -->
+
+                                            <!-- Full Name -->
                                             <tr>
                                                 <td>Full Name</td>
                                                 <td>
-                                                    <input type="text" name="name" value=" {{ old('name' , $user->fullname ) }}" class="form-control">
-                                                    @error('name')
+                                                    <input type="text" name="fullname" value=" {{ old('fullname' , $user->fullname ) }}" class="form-control">
+                                                    @error('fullname')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </td>
                                             </tr>
 
-                                
+                                            <!-- Nickname -->
                                             <tr>
                                                 <td>Nickname</td>
                                                 <td>
-                                                    <input type="text" name="name" value=" {{ old('name' , $user->nickname ) }}" class="form-control">
-                                                    @error('name')
+                                                    <input type="text" name="nickname" value=" {{ old('nickname' , $user->nickname ) }}" class="form-control">
+                                                    @error('nickname')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </td>
                                             </tr>
 
-
+                                            <!-- Email -->
                                             <tr>
                                                 <td>Email</td>
                                                 <td>
@@ -239,7 +250,7 @@
                                                 </td>
                                             </tr>
 
-                                     
+                                            <!-- Phone -->
                                             <tr>
                                                 <td>Phone</td>
                                                 <td>
@@ -252,38 +263,42 @@
 
                                             <!-- Personal Details Student -->
                                             @if($user->role == 'student')
+
+                                            <!-- School -->
                                             <tr>
                                                 <td>School</td>
                                                 <td>
-                                                    <input type="School" name="school"  class="form-control">
+                                                    <input type="text" name="school" value="{{ old('school', $user->school )}}" class="form-control">
                                                     @error('school')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </td>
                                             </tr>
 
-                                            <!-- Fifth row-->
+                                            <!-- Biodata -->
                                             <tr>
                                                 <td>Bio</td>
                                                 <td>
-                                                    <input type="text" name="bio" value="" class="form-control">
+                                                    <input type="text" name="bio" value="{{ old('bio' , $user->bio ) }}" class="form-control">
                                                     @error('bio')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </td>
                                             </tr>
 
+                                            <!-- Date of Birth -->
                                             <tr>
                                                 <td>Date of Birth</td>
                                                 <td>
-                                                    <input type="" name="password" class="form-control">
-                                                    @error('password')
+                                                    <input type="date" name="dob" value="{{ old('dob' , $user-> dob) }}" class="form-control">
+                                                    @error('dob')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </td>
                                             </tr>
                                             @endif
-                                        
+
+                                            <!-- Password -->
                                             <tr>
                                                 <td>Password</td>
                                                 <td>
@@ -294,6 +309,7 @@
                                                 </td>
                                             </tr>
 
+                                            <!-- Confirm Password -->
                                             <tr>
                                                 <td>Confirm Password</td>
                                                 <td>
@@ -304,9 +320,6 @@
                                                 </td>
                                             </tr>
 
-                                            
-
-                                            <!-- First row-->
                                             <tr>
                                                 <td></td>
                                                 <td>
@@ -317,6 +330,12 @@
                                         </table>
                                     </form>
                                 </div>
+                                @if(session('message'))
+                                    <div class="alert alert-success">
+                                        {{ session('message') }}
+                                    </div>
+                                @endif
+
                             </div>
                         </div>
                     </div>

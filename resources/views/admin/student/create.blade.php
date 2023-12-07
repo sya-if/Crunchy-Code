@@ -37,8 +37,8 @@
 
                             <!-- Full Name -->
                             <div class="form-group row">
-                                <label for="fullname" class="col-md-4 col-form-label">{{ __('Fullname') }}</label>
-                                <div class="col-md-8">
+                                <label for="fullname" class="col-md-6 col-form-label">{{ __('Fullname') }}</label>
+                                <div class="col-md-5">
                                     <input id="fullname" type="text" class="form-control @error('fullname') is-invalid @enderror" name="fullname" value="{{ old('fullname') }}" required autocomplete="fullname" autofocus>
 
                                     @error('fullname')

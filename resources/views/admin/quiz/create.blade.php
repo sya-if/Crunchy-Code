@@ -36,7 +36,7 @@
                     <h4 class="text-blue h4">Adding New Quiz</h4>
                 </div>
                 <div class="wizard-content">
-                    <form method="POST" action="{{route('quiz.store')}}">
+                    <form method="POST" action="{{route('quizzes.store')}}">
                         @csrf
                         <h5>Module Info</h5>
                         <section>
