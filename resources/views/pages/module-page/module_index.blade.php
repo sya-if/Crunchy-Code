@@ -52,29 +52,29 @@
                     </div>
                 </div>
                 <div class="container">
-                <div class="row justify-content-left">
-                    @foreach($modules as $module)
-                    <div class="col-md-4 col-sm-12 mb-30"> <!-- Adjusted column width to fit 3 modules in a row -->
-                    <div class="card-box pd-30 height-100-p">
-                        <div class="progress-box text-center">
-                                <a href="{{ route('module.page', ['module' => $module->link]) }}">
-                                    <input type="text" class="knob dial2" value="70" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="{{ $module->color }}" data-angleOffset="180" readonly>
-                                    <h5 class="padding-top-10 h5" style="color: {{ $module->color }}"> {{$module->title}}</h5>
-                                </a>
-                                <div class="text-right">
+                    <div class="row justify-content-left">
+                        @foreach($modules as $module)
+                        <div class="col-md-4 col-sm-12 mb-30 position-relative"> <!-- Adjusted column width to fit 3 modules in a row -->
+                        <div class="card-box pd-30 height-100-p">
+                            <div class="progress-box text-center">
+                                <div class="button-group">
+                                    <a href="{{ route('module.page', ['module' => $module->link]) }}">
+                                        <input type="text" class="knob dial2" value="70" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="{{ $module->color }}" data-angleOffset="180" readonly>
+                                        <h5 class="padding-top-10 h5" style="color: {{ $module->color }}"> {{$module->title}}</h5>
+                                    </a>
+                                    <a href="{{route('modules.edit', $module->id)}}" class="btn btn-success">Edit</a>
+                                    <br>
                                     <form method="POST" action="{{route('modules.destroy', $module->id)}}">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" onclick="return confirm('Are you sure that you want to delete this user?')" class="btn btn-danger">Delete</button>
+                                        <button type="submit" onclick="return confirm('Are you sure that you want to delete this modules?')" class="btn btn-danger">Delete</button>
                                     </form>
                                 </div>
-                                <div class="text-left">
-                                    <a href="{{route('modules.edit', $module->id)}}" class="btn btn-success">Edit</a>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
                 </div>
             </div>
             </div>

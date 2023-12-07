@@ -15,7 +15,7 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        $modules = Modules::all();
+        $modules = Modules::orderBy('title', 'asc')->get(); // Fetch modules sorted by the 'title' column in ascending order
         return view('pages\module-page\module_index', compact('modules'));
     }
 
@@ -39,32 +39,35 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-        $modules = new Modules();
-
         // Validate the input data
         $this->validate($request, [
             'title' => 'required|string|max:255',
             'color' => 'required|string|max:255',
         ]);
-        
-        // Modify the 'link' value based on the 'title' value
-        $title = $request->input('title');
-        $modifiedLink = str_replace('.', '-', substr($title, 0, 3));
 
+        // Check if the '<link>title</link>' already exists in the database
+        $existingModule = Modules::where('title', $request['title'])->first();
+        if ($existingModule) {
+            return redirect()->route('modules.index')->with('success', 'modules already exist!');
+        } else {
+            $modules = new Modules();
 
-        // Information from the form is copied to the database
-        $modules->title = $request['title'];
-        $modules->link = $modifiedLink;
-        $modules->color = $request['color'];
+            // Modify the 'link' value based on the '<link>title</link>' value
+            $title = $request->input('title');
+            $modifiedLink = str_replace('.', '-', substr($title, 0, 3));
 
-        // Save the action
-        $modules->save();
+            // Information from the form is copied to the database
+            $modules->title = $request['title'];
+            $modules->link = $modifiedLink;
+            $modules->color = $request['color'];
 
-        // Redirect to a success page or back to the form
-        Session()->flash('message', 'module has been created!');
-        return redirect()->route('modules.index');
+            // Save the action
+            $modules->save();
+
+            // Redirect to a success page or back to the form
+            return redirect()->route('modules.index')->with('success', 'modules enrolled successfully');
+        }
     }
-
     /**
      * Display the specified resource.
      *

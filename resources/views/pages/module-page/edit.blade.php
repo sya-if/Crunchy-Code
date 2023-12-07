@@ -39,8 +39,8 @@
                     <form method="POST" action="{{route('modules.update', $module)}}">
                         @csrf
                         @method('PUT')
-                        <label>Color</label>
-                        <input type="text" name="color">
+                        <label>Select Color:</label>
+                        <input type="color" id="color" name="color">
                         <div class="clearfix" style="display:flex; justify-content:center;">
                             <button type="submit" class="btn btn-success" >Update</button>
                         </div>
