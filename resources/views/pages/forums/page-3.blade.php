@@ -196,7 +196,7 @@ body
                             @endif
                             
                             <div class="inner-sidebar-header justify-content-end">
-                                <form method="GET" action="{{ route('post.create', ['forum_id' => $forum->id, 'page_number' => 1]) }}">
+                                <form method="GET" action="{{ route('post.create', ['forum_id' => $forum->id, 'page_number' => 3]) }}">
                                     @csrf
                                     <button type="submit" class="btn btn-primary">Create Post</button>
                                 </form>
@@ -241,7 +241,7 @@ body
                                                                         <form action="{{ route('post.edit', $post) }}" method="POST">
                                                                             @csrf
                                                                             @method('GET')
-                                                                            <input type="hidden" name="page_number" value="1">
+                                                                            <input type="hidden" name="page_number" value="3">
                                                                             <button type="submit" class="btn btn-success">Edit</button>
                                                                         </form>
                                                                     </div>
@@ -255,7 +255,6 @@ body
                                                                             <input type="hidden" name="_method" value="DELETE" />
                                                                             @csrf
                                                                             @method('DELETE')
-                                                                            <input type="hidden" name="page_number" value="1">
                                                                             <button type="submit" class="btn btn-danger">Delete</button>
                                                                         </form>
                                                                     </div>

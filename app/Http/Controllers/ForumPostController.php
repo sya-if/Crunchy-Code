@@ -176,8 +176,19 @@ class ForumPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ForumPost $post, Request $request )
     {
-        //
+        $post->delete();
+
+        Session()->flash('message', 'Post has been deleted successfully');
+
+        // Fetch the page number
+        $page = $request->input('page_number');
+
+        // Fetch forum model
+        $forum = Forum::find($post->forum_id);
+
+        // Redirect to the student list page
+        return redirect()->route('forum.page', ['pageNumber' => $page, 'forumTitle' => $forum->title]);
     }
 }
