@@ -36,7 +36,7 @@
                     <h4 class="text-blue h4">Adding New Quiz</h4>
                 </div>
                 <div class="wizard-content">
-                    <form method="POST" action="{{route('quiz.update', $quiz)}}">
+                    <form method="POST" action="{{route('quizzes.update', $quiz)}}">
                         @csrf
                         @method('PUT')
                         <h5>Quiz Info</h5>

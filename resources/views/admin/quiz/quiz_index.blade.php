@@ -45,7 +45,7 @@
             <div class="pd-20 card-box mb-30">
                 <div class="clearfix mb-20">
                     <div class="pull-right">
-                        <a href="{{route('quiz.create')}}" class="btn btn-info float-end">Add New Quiz</a>
+                        <a href="{{route('quizzes.create')}}" class="btn btn-info float-end">Add New Quiz</a>
                     </div>
                     <div class="pull-left">
                         <h4 class="text-blue h4">List of quiz</h4>
@@ -72,9 +72,9 @@
                             <td>{{$quizs->score}}</td>
                             <td>{{$quizs->review}}</td>
                             <td>{{$quizs->questioncount}}</td>
-                            <td><a href="{{route('quiz.edit', $quizs->id)}}" class="btn btn-success">Edit</a></td>
+                            <td><a href="{{route('quizzes.edit', $quizs->id)}}" class="btn btn-success">Edit</a></td>
                             <td>
-                                <form method="POST" action="{{route('quiz.destroy', $quizs->id)}}">
+                                <form method="POST" action="{{route('quizzes.destroy', $quizs->id)}}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" onclick="return confirm('Are you sure that you want to delete this user?')" class="btn btn-danger">Delete</button>

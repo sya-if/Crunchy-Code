@@ -50,7 +50,7 @@ Route::resource('users', StudentController::class);
 Route::resource('materials', MaterialController::class);
 
 // Route for quiz function - Resource Controller
-Route::resource('quiz', QuizController::class);
+Route::resource('quizzes', QuizController::class);
 
 // Route for Module function - Resource Controller
 Route::resource('modules', ModuleController::class);
