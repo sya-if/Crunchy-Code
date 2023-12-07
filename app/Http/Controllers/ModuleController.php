@@ -27,8 +27,25 @@ class ModuleController extends Controller
      */
     public function create()
     {
+
+        $moduleTitles = [
+            "1.1 Strategi Penyelesaian Masalah",
+            "1.2 Algoritma",
+            "1.3 Pemboleh Ubah, Pemalar dan Jenis Data",
+            "1.4 Struktur Kawalan",
+            "1.5 Amalan Terbaik Pengaturcaraan",
+            "1.6 Struktur Data dan Modular",
+            "1.7 Pembangunan Aplikasi",
+            "2.1 Pangkalan Data Hubungan",
+            "2.2 Reka Bentuk Pangkalan Data Hubungan",
+            "2.3 Pembangunan Pangkalan Data Hubungan",
+            "2.4 Pembangunan Sistem Pangkalan Data",
+            "3.1 Reka Bentuk Interaksi",
+            "3.2 Paparan dan Reka Bentuk Skrin",
+        ];
         $modules = new Modules;
-        return view('pages\module-page\create', compact('modules'));
+
+        return view('pages\module-page\create', compact('moduleTitles', 'modules'));
     }
 
     /**

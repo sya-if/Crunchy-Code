@@ -56,18 +56,21 @@
         <div class="container">
             <div class="row justify-content-left">
                 @foreach($modules as $module)
-                <div class="col-md-4 col-sm-12 mb-30"> <!-- Adjusted column width to fit 3 modules in a row -->
-                <div class="card-box pd-30 height-100-p">
-                    <div class="progress-box text-center">
-                            <a href="{{ route('module.page', ['module' => $module->link]) }}">
-                                <input type="text" class="knob dial2" value="70" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="{{ $module->color }}" data-angleOffset="180" readonly>
-                                <h5 class="padding-top-10 h5" style="color: {{ $module->color }}"> {{$module->title}}</h5>
-                            </a>
+                <div class="col-md-4 col-sm-12 mb-30 position-relative">
+                    <div class="card-box pd-30 height-100-p" style="background-color: {{$module->color}}">
+                        <div class="progress-box text-center">
+                            <div class="button-group">
+                                <a href="{{ route('module.page', ['module' => $module->link]) }}">
+                                    <input type="text" class="knob dial2" value="70" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#00f" data-angleOffset="180" readonly>
+                                    <h5 class="padding-top-10 h5" style="color: #000"> {{$module->title}}</h5>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 @endforeach
-                <a href="{{route('modules.create')}}" class="btn btn-info float-end">Enroll More Module</a>
+                <a href="{{route('modules.index')}}" class="btn btn-info float-end mb-10" style="background-color: magenta">Manage Module</a>
+                <a href="{{route('modules.create')}}" class="btn btn-info float-end mb-10">Enroll More Module</a>
             </div>
         </div>
 
