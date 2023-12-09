@@ -187,13 +187,11 @@
                                                         </div>
                                                         <div class="modal-body justify-content">
                                                             <!-- Replace the content below with your specific modal content -->
-                                                            <button class="button-85 btn-block mb-4" role="button" href="#">Module 2.1 Pangkalan Data Hubungan</button>
-                                                            <button class="button-85 btn-block mb-4" role="button" href="#">Module 2.2 Reka Bentuk Pangkalan Data Hubungan</button>
-                                                            <button class="button-85 btn-block mb-4" role="button" href="#">Module 2.3 Pembangunan Pangkalan Data Hubungan</button>
-                                                            <button class="button-85 btn-block mb-4" role="button" href="#">Module 2.4 Pembangunan Sistem Pangkalan Data</button>
-                              
+                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '2-1']) }}">Module 2.1 Pangkalan Data Hubungan</a>
+                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '2-2']) }}">Module 2.2 Reka Bentuk Pangkalan Data Hubungan</a>
+                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '2-3']) }}">Module 2.3 Pembangunan Pangkalan Data Hubungan</a>
+                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '2-4']) }}">Module 2.4 Pembangunan Sistem Pangkalan Data</a>
                                                         </div>
-                                                        
                                                     </div>
                                                 </div>
                                             </div>
