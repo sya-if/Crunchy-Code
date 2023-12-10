@@ -130,7 +130,6 @@
 
 </style>
 
-
 <div class="main-container">
 
     <div class="pd-ltr-20 xs-pd-20-10">
@@ -152,7 +151,6 @@
                     </div>
                 </div>
             </div>
-            <div class="blog-detail card-box overflow-hidden mb-30">
 
                                 <div class="blog-caption" >
 

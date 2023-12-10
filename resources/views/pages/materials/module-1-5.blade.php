@@ -156,7 +156,6 @@
                     </div>
                 </div>
             </div>
-            <div>
                 
                 <div class="container pd-0">
                     <div class="row">

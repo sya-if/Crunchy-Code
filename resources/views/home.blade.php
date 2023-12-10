@@ -74,6 +74,12 @@
             </div>
         </div>
 
+        <div class="progress" id="progress-bar">
+    <div class="progress-bar" role="progressbar" aria-valuenow="54" style="width: 54%" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
         <!-- Forth Row - Announcements -->
         <div class="row justify-content-center">
             <div class="card-box pd-20 height-100-p mb-30">

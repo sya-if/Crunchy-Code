@@ -74,10 +74,58 @@
 
 .btn-block-width 
 {
-    width:80% !important;
+    width:83% !important;
 }
 
 </style>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    var totalModules = 7; // Set the total number of modules
+    var currentProgress = 0; // Initialize the current progress
+
+    $(document).ready(function () {
+        $('.mark-as-done-button').click(function () {
+            var module = $(this).data('module');
+            var progressKey = 'module_' + module + '_progress';
+
+            // Toggle the class to change the button color
+            $(this).toggleClass('btn-outline-success btn-danger');
+
+            // Change the button text based on the state
+            var buttonText = $(this).hasClass('btn-outline-success') ? 'Mark as done' : 'Done';
+            $(this).text(buttonText);
+
+            // Update the progress
+            var moduleProgress = buttonText === 'Done' ? 1 : -1;
+            currentProgress += moduleProgress;
+            localStorage.setItem(progressKey, moduleProgress);
+
+            // Update the UI with the new progress
+            updateProgressUI();
+        });
+
+        $('#myModal-1').on('hidden.bs.modal', function () {
+            // Reverse the progress when the modal is closed
+            currentProgress = 0;
+            for (var i = 1; i <= totalModules; i++) {
+                currentProgress += parseInt(localStorage.getItem('module_' + i + '_progress')) || 0;
+            }
+            updateProgressUI();
+        });
+
+        // Function to update the UI with the new progress
+        function updateProgressUI() {
+            var averageProgress = totalModules > 0 ? Math.round((currentProgress / totalModules) * 100) : 0;
+
+            // Display the total progress in the corresponding span element
+            $('#progressLabel').text('Progress: ' + averageProgress + '%');
+
+            // Update the progress bar
+            $('#progressBar').css('width', averageProgress + '%');
+            $('#progressBar').attr('aria-valuenow', averageProgress);
+        }
+    });
+</script>
 
     <div class="main-container">
         <div class="pd-ltr-20 height-100-p xs-pd-20-10">
@@ -106,27 +154,33 @@
                                 <div class="blog-list">
                                     <ul>
                                         <!-- Bab 1 Pengaturcaraan -->
-                                        <li>
-                                            <div class="row no-gutters">
-                                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <div class="blog-img">
-                                                        <img src="vendors/images/bab-1.png" alt="" class="bg_img">
-                                                    </div>
+                                        <li class="d-flex align-items-center">
+                                            <div class="col-lg-4 col-md-12 col-sm-12 mb-3 mb-sm-0">
+                                                <div class="blog-img">
+                                                    <img src="vendors/images/bab-1.png" alt="" class="bg_img">
                                                 </div>
-                                                <div class="col-lg-8 col-md-12 col-sm-12">
-                                                    <div class="blog-caption">
-                                                        <h4><a href="#"> BAB 1 PENGATURCARAAN </a></h4>
-                                                        <div class="blog-by">
-                                                            <p align="justify">
-                                                                Penggunaan komputer, telefon pintar dan tablet telah menjadi satu keperluan dalam kehidupan masa kini. 
-                                                                lnteraksi antara manusia dengan peralatan komunikasi telah mewujudkan satu bentuk bahasa yang dikenal sebagai bahasa pengaturcaraan. 
-                                                                Pelbagai aplikasi telah direka menggunakan bahasa pengaturcaraan untuk membantu manusia dalam kehidupan harian. Adakah pengaturcaraan untuk membantu
-                                                                anda menyelesaikan masalah ?
-                                                            </p>
-                                                            <div class="pt-10">
-                                                                <!-- Modal Button -->
-                                                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-1">Tekan sini</button>
+                                            </div>
+                                            <div class="col-lg-8 col-md-12 col-sm-12">
+                                                <div class="blog-caption">
+                                                    <h4><a href="#"> BAB 1 PENGATURCARAAN </a></h4>
+                                                    <div class="blog-by">
+                                                        <p align="justify">
+                                                            Penggunaan komputer, telefon pintar dan tablet telah menjadi satu keperluan dalam kehidupan masa kini. 
+                                                            lnteraksi antara manusia dengan peralatan komunikasi telah mewujudkan satu bentuk bahasa yang dikenal sebagai bahasa pengaturcaraan. 
+                                                            Pelbagai aplikasi telah direka menggunakan bahasa pengaturcaraan untuk membantu manusia dalam kehidupan harian. Adakah pengaturcaraan untuk membantu
+                                                            anda menyelesaikan masalah ?
+                                                        </p>
+                                                        <div class="pt-3">
+                                                            <!-- Progress Bar -->
+                                                            <div class="progress">
+                                                                <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                                             </div>
+                                                            <div class="text-center mt-2">
+                                                                <span id="progressLabel">Progress: 0%</span>
+                                                            </div>
+
+                                                            <!-- Modal Button -->
+                                                            <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-1" onclick="updateProgressBar(25)">Tekan sini</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -140,18 +194,72 @@
                                                             <h4 class="modal-title" id="myModalLabel">Sub Bab 1 Pengaturcaraan</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
-                                                        <div class="modal-body justify-content">
-                                                            <!-- Replace the content below with your specific modal content -->
-                                                            <a class="button-85 btn-block mb-4 btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-1']) }}">Module 1.1 Strategi Penyelesaian Masalah</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-2']) }}">Module 1.2 Algoritma</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-3']) }}">Module 1.3 Pemboleh Ubah, Pemalar dan Jenis Data</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-4']) }}">Module 1.4 Struktur Kawalan</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-5']) }}">Module 1.5 Amalan Terbaik Pengaturcaraan</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-6']) }}">Module 1.6 Struktur Data dan Modular</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-7']) }}">Module 1.7 Pembangunan Aplikasi</a>
-                                                        </div>                                                        
-                                                        
-                                                    </div>
+                                                        <div class="modal-body">
+                                                        <!-- Replace the content below with your specific modal content -->
+                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
+                                                            <a class="button-85 btn-block btn-block-width" role="button" href="#">
+                                                                <span>Module 1.1 Strategi Penyelesaian Masalah</span>
+                                                            </a>
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion">
+                                                                Mark as done
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
+                                                            <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-2']) }}">
+                                                                <span>Module 1.2 Algoritma</span>
+                                                            </a>
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion">
+                                                                Mark as done
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
+                                                            <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-3']) }}">
+                                                                <span>Module 1.3 Pemboleh Ubah, Pemalar dan Jenis Data</span>
+                                                            </a>
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion">
+                                                                Mark as done
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
+                                                            <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-4']) }}">
+                                                                <span>Module 1.4 Struktur Kawalan</span>
+                                                            </a>
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion">
+                                                                Mark as done
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
+                                                            <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-5']) }}">
+                                                                <span>Module 1.5 Amalan Terbaik Pengaturcaraan</span>
+                                                            </a>
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion">
+                                                                Mark as done
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
+                                                            <a class="button-85 btn-block btn-block-width" role="button" href="#">
+                                                                <span>Module 1.6 Struktur Data dan Modular</span>
+                                                            </a>
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion">
+                                                                Mark as done
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
+                                                            <a class="button-85 btn-block btn-block-width" role="button" href="#">
+                                                                <span>Module 1.7 Pembangunan Aplikasi</span>
+                                                            </a>
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion">
+                                                                Mark as done
+                                                            </button>
+                                                        </div>
+                                                    </div>        
+                                                    
                                                 </div>
                                             </div>
                                         </li>
