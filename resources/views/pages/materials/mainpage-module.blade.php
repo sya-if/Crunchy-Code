@@ -80,51 +80,77 @@
 </style>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    var totalModules = 7; // Set the total number of modules
-    var currentProgress = 0; // Initialize the current progress
+    var totalModules = 3; // Set the total number of modules
+var moduleSubmodules = {
+    'module1': 7,
+    'module2': 4,
+    'module3': 2
+};
+var currentProgress = {}; // Initialize the current progress object
 
-    $(document).ready(function () {
-        $('.mark-as-done-button').click(function () {
-            var module = $(this).data('module');
-            var progressKey = 'module_' + module + '_progress';
+// Initialize currentProgress object with default values
+for (var i = 1; i <= totalModules; i++) {
+    currentProgress['module' + i] = 0;
+}
 
-            // Toggle the class to change the button color
-            $(this).toggleClass('btn-outline-success btn-danger');
+$(document).ready(function () {
+    $('.mark-as-done-button').click(function () {
+        var module = $(this).data('module');
+        var submodule = $(this).data('submodule');
+        var progressKey = 'module_' + module + '_submodule_' + submodule + '_progress';
 
-            // Change the button text based on the state
-            var buttonText = $(this).hasClass('btn-outline-success') ? 'Mark as done' : 'Done';
-            $(this).text(buttonText);
+        // Toggle the class to change the button color
+        $(this).toggleClass('btn-outline-success btn-danger');
 
-            // Update the progress
-            var moduleProgress = buttonText === 'Done' ? 1 : -1;
-            currentProgress += moduleProgress;
-            localStorage.setItem(progressKey, moduleProgress);
+        // Change the button text based on the state
+        var buttonText = $(this).hasClass('btn-outline-success') ? 'Mark as done' : 'Done';
+        $(this).text(buttonText);
 
-            // Update the UI with the new progress
-            updateProgressUI();
-        });
+        // Update the progress
+        var submoduleProgress = buttonText === 'Done' ? 1 : -1;
+        currentProgress[module] += submoduleProgress;
+        localStorage.setItem(progressKey, submoduleProgress);
 
-        $('#myModal-1').on('hidden.bs.modal', function () {
-            // Reverse the progress when the modal is closed
-            currentProgress = 0;
-            for (var i = 1; i <= totalModules; i++) {
-                currentProgress += parseInt(localStorage.getItem('module_' + i + '_progress')) || 0;
-            }
-            updateProgressUI();
-        });
-
-        // Function to update the UI with the new progress
-        function updateProgressUI() {
-            var averageProgress = totalModules > 0 ? Math.round((currentProgress / totalModules) * 100) : 0;
-
-            // Display the total progress in the corresponding span element
-            $('#progressLabel').text('Progress: ' + averageProgress + '%');
-
-            // Update the progress bar
-            $('#progressBar').css('width', averageProgress + '%');
-            $('#progressBar').attr('aria-valuenow', averageProgress);
-        }
+        // Update the UI with the new progress
+        updateProgressUI();
     });
+
+    $('#myModal-1, #myModal-2, #myModal-3').on('hidden.bs.modal', function () {
+        // Reverse the progress when the modal is closed
+        for (var i = 1; i <= totalModules; i++) {
+            currentProgress['module' + i] = 0;
+            for (var j = 1; j <= moduleSubmodules['module' + i]; j++) {
+                currentProgress['module' + i] += parseInt(localStorage.getItem('module_' + i + '_submodule_' + j + '_progress')) || 0;
+            }
+        }
+        updateProgressUI();
+    });
+
+    // Function to update the UI with the new progress
+    function updateProgressUI() {
+        var averageProgress = 0;
+
+        // Calculate average progress for all modules
+        for (var i = 1; i <= totalModules; i++) {
+            var moduleProgress = moduleSubmodules['module' + i] > 0 ? Math.round((currentProgress['module' + i] / moduleSubmodules['module' + i]) * 100) : 0;
+            averageProgress += moduleProgress;
+            // Display the total progress for each module in the corresponding span element
+            $('#progressLabel' + i).text('Progress: ' + moduleProgress + '%');
+            // Update the progress bar for each module
+            $('#progressBar' + i).css('width', moduleProgress + '%');
+            $('#progressBar' + i).attr('aria-valuenow', moduleProgress);
+        }
+
+        // Calculate average progress for all modules
+        averageProgress = totalModules > 0 ? Math.round((averageProgress / totalModules)) : 0;
+        // Display the total progress for all modules in the corresponding span element
+        $('#progressLabel').text('Total Progress: ' + averageProgress + '%');
+        // Update the total progress bar
+        $('#totalProgressBar').css('width', averageProgress + '%');
+        $('#totalProgressBar').attr('aria-valuenow', averageProgress);
+    }
+});
+
 </script>
 
     <div class="main-container">
@@ -173,10 +199,10 @@
                                                         <div class="pt-3">
                                                             <!-- Progress Bar -->
                                                             <div class="progress">
-                                                                <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                <div class="progress-bar" id="progressBar1" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                                             </div>
                                                             <div class="text-center mt-2">
-                                                                <span id="progressLabel">Progress: 0%</span>
+                                                                <span id="progressLabel1">Progress: 0%</span>
                                                             </div>
 
                                                             <!-- Modal Button -->
@@ -200,7 +226,7 @@
                                                             <a class="button-85 btn-block btn-block-width" role="button" href="#">
                                                                 <span>Module 1.1 Strategi Penyelesaian Masalah</span>
                                                             </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion">
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion"data-module="module1" data-submodule="1">
                                                                 Mark as done
                                                             </button>
                                                         </div>
@@ -209,7 +235,7 @@
                                                             <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-2']) }}">
                                                                 <span>Module 1.2 Algoritma</span>
                                                             </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion">
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module1" data-submodule="2">
                                                                 Mark as done
                                                             </button>
                                                         </div>
@@ -218,7 +244,7 @@
                                                             <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-3']) }}">
                                                                 <span>Module 1.3 Pemboleh Ubah, Pemalar dan Jenis Data</span>
                                                             </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion">
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module1" data-submodule="3">
                                                                 Mark as done
                                                             </button>
                                                         </div>
@@ -227,7 +253,7 @@
                                                             <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-4']) }}">
                                                                 <span>Module 1.4 Struktur Kawalan</span>
                                                             </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion">
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module1" data-submodule="4">
                                                                 Mark as done
                                                             </button>
                                                         </div>
@@ -236,7 +262,7 @@
                                                             <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-5']) }}">
                                                                 <span>Module 1.5 Amalan Terbaik Pengaturcaraan</span>
                                                             </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion">
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module1" data-submodule="5">
                                                                 Mark as done
                                                             </button>
                                                         </div>
@@ -245,7 +271,7 @@
                                                             <a class="button-85 btn-block btn-block-width" role="button" href="#">
                                                                 <span>Module 1.6 Struktur Data dan Modular</span>
                                                             </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion">
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module1" data-submodule="6">
                                                                 Mark as done
                                                             </button>
                                                         </div>
@@ -254,39 +280,46 @@
                                                             <a class="button-85 btn-block btn-block-width" role="button" href="#">
                                                                 <span>Module 1.7 Pembangunan Aplikasi</span>
                                                             </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion">
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module1" data-submodule="7">
                                                                 Mark as done
                                                             </button>
                                                         </div>
-                                                    </div>        
-                                                    
+                                                    </div>
+        
+                                                    </div>
                                                 </div>
                                             </div>
                                         </li>
 
-                                        <!-- Bab 2 Pangkalan Data -->
-                                        <li>
-                                            <div class="row no-gutters">
-                                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <div class="blog-img">
-                                                        <img src="vendors/images/bab-2.png" alt="" class="bg_img">
-                                                    </div>
+                                         <!-- Bab 2 Pangkalan Data -->
+                                        <li class="d-flex align-items-center">
+                                            <div class="col-lg-4 col-md-12 col-sm-12 mb-3 mb-sm-0">
+                                                <div class="blog-img">
+                                                    <img src="vendors/images/bab-2.png" alt="" class="bg_img">
                                                 </div>
-                                                <div class="col-lg-8 col-md-12 col-sm-12">
-                                                    <div class="blog-caption">
-                                                        <h4><a href="#"> BAB 2 PANGKALAN DATA  </a></h4>
-                                                        <div class="blog-by">
-                                                            <p align="justify">
-                                                                Salah satu faktor kejayaan syarikat gergasi IT seperti Google, Amazon dan Facebook ialah kemampuan platform teknologi untuk menampung jumlah data yang sangat besar dan sentiasa bertambah. 
-                                                                Cabaran utama bagi syarikat ini adalah untuk menampung kesemua data tersebut dan mengekalkan prestasi pencarian serta pengurusan data. 
-                                                                Jika data diumpamakan sebagai satu perkataan, proses menyimpan dan mencari sesuatu perkataan dalam sebuah buku nota kecil tidaklah sukar. 
-                                                                Sekarang, cuba anda bayangkan apabila buku tersebut disimpan di dalam perpustakaan sekolah anda. 
-                                                                Bolehkah anda mencari perkataan tersebut dalam masa yang singkat? 
-                                                            </p>
-                                                            <div class="pt-10">
-                                                                <!-- Modal Button -->
-                                                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-2">Tekan sini</button>
+                                            </div>
+                                            <div class="col-lg-8 col-md-12 col-sm-12">
+                                                <div class="blog-caption">
+                                                    <h4><a href="#"> BAB 2 PANGKALAN DATA </a></h4>
+                                                    <div class="blog-by">
+                                                        <p align="justify">
+                                                        Salah satu faktor kejayaan syarikat gergasi IT seperti Google, Amazon dan Facebook ialah kemampuan platform teknologi untuk menampung jumlah data yang sangat besar dan sentiasa bertambah. 
+                                                        Cabaran utama bagi syarikat ini adalah untuk menampung kesemua data tersebut dan mengekalkan prestasi pencarian serta pengurusan data. 
+                                                        Jika data diumpamakan sebagai satu perkataan, proses menyimpan dan mencari sesuatu perkataan dalam sebuah buku nota kecil tidaklah sukar. 
+                                                        Sekarang, cuba anda bayangkan apabila buku tersebut disimpan di dalam perpustakaan sekolah anda. 
+                                                        Bolehkah anda mencari perkataan tersebut dalam masa yang singkat? 
+                                                        </p>
+                                                        <div class="pt-3">
+                                                            <!-- For Module 2 -->
+                                                            <div class="progress">
+                                                                <div class="progress-bar" id="progressBar2" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                                             </div>
+                                                            <div class="text-center mt-2">
+                                                                <span id="progressLabel2">Progress: 0%</span>
+                                                            </div>
+
+                                                            <!-- Modal Button -->
+                                                            <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-2" onclick="updateProgressBar(25)">Tekan sini</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -300,69 +333,118 @@
                                                             <h4 class="modal-title" id="myModalLabel">Sub Bab 2 Pangkalan Data</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
-                                                        <div class="modal-body justify-content">
-                                                            <!-- Replace the content below with your specific modal content -->
-                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '2-1']) }}">Module 2.1 Pangkalan Data Hubungan</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '2-2']) }}">Module 2.2 Reka Bentuk Pangkalan Data Hubungan</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '2-3']) }}">Module 2.3 Pembangunan Pangkalan Data Hubungan</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '2-4']) }}">Module 2.4 Pembangunan Sistem Pangkalan Data</a>
+                                                        <div class="modal-body">
+                                                        <!-- Replace the content below with your specific modal content -->
+                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
+                                                            <a class="button-85 btn-block btn-block-width" role="button" href="#">
+                                                                <span>Module 2.1 Pangkalan Data Hubungan</span>
+                                                            </a>
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module2" data-submodule="1">
+                                                                Mark as done
+                                                            </button>
                                                         </div>
+
+                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
+                                                            <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-2']) }}">
+                                                                <span>Module 2.2 Reka Bentuk Pangkalan Data Hubungan</span>
+                                                            </a>
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module2" data-submodule="2">
+                                                                Mark as done
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
+                                                            <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-3']) }}">
+                                                                <span>Module 2.3 Pembangunan Pangkalan Data Hubungan</span>
+                                                            </a>
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module2" data-submodule="3">
+                                                                Mark as done
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
+                                                            <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-4']) }}">
+                                                                <span>Module 2.4 Pembangunan Sistem Pangkalan Data</span>
+                                                            </a>
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module2" data-submodule="4">
+                                                                Mark as done
+                                                            </button>
+                                                        </div>
+                                                    </div>
+    
                                                     </div>
                                                 </div>
                                             </div>
-
-                                           
                                         </li>
 
                                         <!-- Bab 3 Interaksi Manusia dengan Komputer -->
-                                        <li>
-                                            <div class="row no-gutters">
-                                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <div class="blog-img">
-                                                        <img src="vendors/images/bab-3.png" alt="" class="bg_img">
-                                                    </div>
+                                        <li class="d-flex align-items-center">
+                                            <div class="col-lg-4 col-md-12 col-sm-12 mb-3 mb-sm-0">
+                                                <div class="blog-img">
+                                                    <img src="vendors/images/bab-2.png" alt="" class="bg_img">
                                                 </div>
-                                                <div class="col-lg-8 col-md-12 col-sm-12">
-                                                    <div class="blog-caption">
-                                                        <h4><a href="#"> BAB 3 INTERAKSI MANUSIA DENGAN KOMPUTER  </a></h4>
-                                                        <div class="blog-by">
-                                                            <p align="justify">
-                                                                lnteraksi ialah tindakan atau perhubungan aktif antara satu dengan yang lain. 
-                                                                Pada era globalisasi ini, manusia dan komputer saling memerlukan di samping menjadi medium utama dalam pembangunan 
-                                                                dan perkembangan pelbagai bidang. lnteraksi manusia-komputer adalah bidang kajian yang memfokuskan tentang bagaimana 
-                                                                manusia berinteraksi dengan sistem komputer, termasuk reka bentuk antara muka pengguna dan proses penyampaian maklumat.
-                                                            </p>
-                                                            <div class="pt-10">
-                                                                <!-- Modal Button -->
-                                                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-3">Tekan sini</button>
+                                            </div>
+                                            <div class="col-lg-8 col-md-12 col-sm-12">
+                                                <div class="blog-caption">
+                                                    <h4><a href="#"> BAB 3 INTERAKSI MANUSIA DENGAN KOMPUTER </a></h4>
+                                                    <div class="blog-by">
+                                                        <p align="justify">
+                                                        lnteraksi ialah tindakan atau perhubungan aktif antara satu dengan yang lain. 
+                                                        Pada era globalisasi ini, manusia dan komputer saling memerlukan di samping menjadi medium utama dalam pembangunan 
+                                                        dan perkembangan pelbagai bidang. lnteraksi manusia-komputer adalah bidang kajian yang memfokuskan tentang bagaimana 
+                                                        manusia berinteraksi dengan sistem komputer, termasuk reka bentuk antara muka pengguna dan proses penyampaian maklumat.
+                                                        </p>
+                                                        <div class="pt-3">
+                                                            <!-- For Module 3 -->
+                                                            <div class="progress">
+                                                                <div class="progress-bar" id="progressBar3" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                                             </div>
+                                                            <div class="text-center mt-2">
+                                                                <span id="progressLabel3">Progress: 0%</span>
+                                                            </div>
+
+                                                            <!-- Modal Button -->
+                                                            <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-3" onclick="updateProgressBar(25)">Tekan sini</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                             <!-- Modal that will display when clicked -->
-                                             <div class="modal fade" id="myModal-3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <!-- Modal that will display when clicked -->
+                                            <div class="modal fade" id="myModal-3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg modal-dialog-centered">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h4 class="modal-title" id="myModalLabel">Sub Bab 2 Pangkalan Data</h4>
+                                                            <h4 class="modal-title" id="myModalLabel">Sub Bab 3 Pangkalan Data</h4>
                                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                                         </div>
-                                                        <div class="modal-body justify-content">
-                                                            <!-- Replace the content below with your specific modal content -->
-                                                            <button class="button-85 btn-block mb-4" role="button" href="#">Module 3.1 Reka Bentuk Interaksi</button>
-                                                            <button class="button-85 btn-block mb-4" role="button" href="#">Module 3.2 Paparan dan Reka Bentuk Skrin</button>
-           
-                              
+                                                        <div class="modal-body">
+                                                        <!-- Replace the content below with your specific modal content -->
+                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
+                                                            <a class="button-85 btn-block btn-block-width" role="button" href="#">
+                                                                <span>Module 3.1 Reka Bentuk Interaksi</span>
+                                                            </a>
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module3" data-submodule="1">
+                                                                Mark as done
+                                                            </button>
                                                         </div>
-                                                        
+
+                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
+                                                            <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-2']) }}">
+                                                                <span>Module 3.2 Paparan dan Reka Bentuk Skrin</span>
+                                                            </a>
+                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module3" data-submodule="2">
+                                                                Mark as done
+                                                            </button>
+                                                        </div>
+                                                    </div>
+    
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            
                                         </li>
+
+
                                         
                                     </ul>
                                 </div>
