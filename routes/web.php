@@ -34,7 +34,6 @@ Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'postPro
 // Route for handling the photo update
 Route::post('/update-photo', [App\Http\Controllers\ProfileController::class, 'updatePhoto'])->name('update-photo');
 
-
 // Authentication Route
 Auth::routes();
 

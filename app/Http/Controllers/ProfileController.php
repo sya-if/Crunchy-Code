@@ -71,6 +71,7 @@ class ProfileController extends Controller
         $request->validate([
             'photo'=> 'required|image|mimes:jpeg, png, jpg|max:1000',
         ]);
+        
         // Get the authenticated user
         $user = auth()->user();
 

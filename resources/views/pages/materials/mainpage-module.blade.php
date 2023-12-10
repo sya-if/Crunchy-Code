@@ -70,6 +70,13 @@
   top: 0;
   border-radius: 10px;
 }
+
+
+.btn-block-width 
+{
+    width:80% !important;
+}
+
 </style>
 
     <div class="main-container">
@@ -92,7 +99,9 @@
                 </div>
                 <div class="blog-wrap">
                     <div class="container pd-0">
-                        <div class="row">
+                        <div class="row">'
+                            
+                            <!-- Container -->
                             <div class="col-md-12 col-sm-12">
                                 <div class="blog-list">
                                     <ul>
@@ -133,20 +142,18 @@
                                                         </div>
                                                         <div class="modal-body justify-content">
                                                             <!-- Replace the content below with your specific modal content -->
-                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-1']) }}">Module 1.1 Strategi Penyelesaian Masalah</a>
+                                                            <a class="button-85 btn-block mb-4 btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-1']) }}">Module 1.1 Strategi Penyelesaian Masalah</a>
                                                             <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-2']) }}">Module 1.2 Algoritma</a>
                                                             <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-3']) }}">Module 1.3 Pemboleh Ubah, Pemalar dan Jenis Data</a>
                                                             <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-4']) }}">Module 1.4 Struktur Kawalan</a>
                                                             <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-5']) }}">Module 1.5 Amalan Terbaik Pengaturcaraan</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="#">Module 1.6 Struktur Data dan Modular</a>
+                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-6']) }}">Module 1.6 Struktur Data dan Modular</a>
                                                             <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => '1-7']) }}">Module 1.7 Pembangunan Aplikasi</a>
                                                         </div>                                                        
                                                         
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                         </li>
 
                                         <!-- Bab 2 Pangkalan Data -->
