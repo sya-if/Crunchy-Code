@@ -211,8 +211,67 @@
                                     
                                     <div class="blog-caption" >
 
-                                    
+                                        <!-- Pengenalan -->
+                                        <h4 class="mb-10"> Module 1.6.1 Struktur Tatasusunan <i>(array)</i> Satu Dimensi</h4>
+                                        <p class="text-formatting">
+                                            Sistem pengurusan maklumat melibatkan pemprosesan suatu jumlah data yang banyak. Bagi menguruskan data agar lebih tersusun dan senang dicapai, maka diperkenalkan konsep struktur data. Sebaik manapun algoritma, jika data tidak tersusun, capaian dan pemprosesan data menjadi kurang efisien. Malah, penulisan kod komputer menjadi amat sukar. <br><br>
+                                            Salah satu struktur data yang penting ialah <b>tatasusunan</b> <i>(array)</i>. Tatasusunan ialah pemboleh ubah yang membolehkan koleksi beberapa nilai data (elemen) dalam satu-satu masa dengan menyimpan setiap elemen dalam ruang memori berindeks. <br><br>
+                                            Dalam subtopik ini, anda akan mengkaji pemboleh ubah mudah ataupun biasa semula sebagai sel memori dan perbezaannya dengan tatasusunan. Anda akan melihat kelebihan-kelebihan tatasusunan sebagai senarai data berbanding dengan pemboleh ubah mudah. <br><br>
+                                            Pemboleh ubah ialah slot memori yang telah dikhaskan untuk menyimpan data. Kebiasaannya, pemboleh ubah mudah cuma menyimpan satu nilai data dalam satu-satu masa. Lihat ruang memori untuk pemboleh ubah mudah di bawah. 
+                                        </p>
+
+                                        <!-- Image -->
+                                        <div class="card image-size" style="width:20%;" align="center">
+                                            <img class="card-img-top"  src="../../../vendors/images/module1-6/array.png" alt="Card image cap">
+                                        </div>
+
+                                        <!-- Caption -->
+                                        <p class="text-center" style="color:#ff0000;"> Rajah: Pemboleh ubah mudah menggunakan hanya satu kotak </p>
                                         
+                                        <p class="text-formatting">
+                                            Dalam kod Java, nilai pemboleh ubah diisytihar seperti sintaks seperti yang berikut: 
+                                        </p>
+
+                                        <!-- Coding Displayed -->
+                                        <div class="terminal" style="width:50%;">
+                                            <p>
+                                                &nbsp;jenisData namaPembolehUbah;<br>           
+                                            </p>
+                                        </div>
+                                        
+                                        <h6>Contoh 1</h6>
+
+                                        <!-- Coding Displayed -->
+                                        <div class="terminal" style="width:50%;">
+                                            <p>
+                                                &nbsp;int markah;<br>           
+                                            </p>
+                                        </div>
+
+                                        <p class="text-formatting">
+                                            Jika Java perlu menyimpan data bernilai 34, umpukkan sahaja nilai 34 ke dalam pemboleh ubah markah. Kod Javaboleh ditulis seperti yang berikut.
+                                        </p>
+
+                                        <h6>Contoh 2</h6>
+
+                                        <!-- Coding Displayed -->
+                                        <div class="terminal" style="width:50%;">
+                                            <p>
+                                                &nbsp;markah = 34;<br>           
+                                            </p>
+                                        </div>
+
+                                        <p class="text-formatting">
+                                            Kedua-dua langkah di atas boleh dibuat sekali gus dalam satu arahan.
+                                        </p>
+
+                                        <h6>Contoh 3</h6>
+                                        <!-- Coding Displayed -->
+                                        <div class="terminal" style="width:50%;">
+                                            <p>
+                                                &nbsp;int markah = 34;<br>           
+                                            </p>
+                                        </div>
 
                                     </div> 
                                 </div>
