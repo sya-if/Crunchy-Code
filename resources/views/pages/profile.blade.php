@@ -4,6 +4,14 @@
 
 @section('content')
 <div class="main-container">
+    <!-- Display any message based on the session -->
+    @if(Session::has('message'))
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            {{ Session::get('message') }}
+        </div>
+    @endif
+
     <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-200px">
             <div class="page-header">
@@ -13,12 +21,6 @@
                             <h4>Profile</h4>
                         </div>
                         
-                        <!-- Display any message based on the session -->
-                        @if(Session::has('message'))
-                            <div class="alert alert-success">
-                                {{ Session::get('message') }}
-                            </div>
-                        @endif
                         
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
@@ -80,7 +82,7 @@
                     <div class="pd-20 card-box height-100-p">
                         <div class="profile-photo">
                             <a href="#" data-toggle="modal" data-target="#modal" class="edit-avatar"><i class="fa fa-pencil"></i></a>
-                            <img src="{{ asset ('uploads/users/'.$user->photo)}}" style="width:160px;" alt="profile picture">
+                            <img src="{{ asset ('uploads/users/'.$user->photo)}}" style="width:160px; border-radius:40px;" alt="profile picture">
                             
                             <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -331,12 +333,6 @@
                                         </table>
                                     </form>
                                 </div>
-                                @if(session('message'))
-                                    <div class="alert alert-success">
-                                        {{ session('message') }}
-                                    </div>
-                                @endif
-
                             </div>
                         </div>
                     </div>

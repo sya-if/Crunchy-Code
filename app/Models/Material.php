@@ -9,13 +9,15 @@ class Material extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'modulenumber'; // specify the custom primary key column
+
     protected $fillable = [
         'modulenumber',
         'moduletitle',
-        'subchapternumber',
-        'subchaptertitle',
-        'contenttitle',
-        'contentdescription',
-        'pagenumber',
+        'description',
     ];
+
+    public function submaterials(){
+        return $this->hasMany(Submaterial::class, 'modulenumber', 'modulenumber');
+    }
 }

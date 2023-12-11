@@ -153,310 +153,88 @@ $(document).ready(function () {
 
 </script>
 
-    <div class="main-container">
-        <div class="pd-ltr-20 height-100-p xs-pd-20-10">
-            <div class="min-height-200px">
-                <div class="page-header">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                            <div class="title">
-                                <h4>Modul Pembelajaran Sains Komputer Tingkatan 4</h4>
-                            </div>
-                            <nav aria-label="breadcrumb" role="navigation">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Module</li>
-                                </ol>
-                            </nav>
+<div class="main-container">
+    <div class="pd-ltr-20 height-100-p xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="title">
+                            <h4>Modul Pembelajaran Sains Komputer Tingkatan 4</h4>
                         </div>
-                    </div>
-                </div>
-                <div class="blog-wrap">
-                    <div class="container pd-0">
-                        <div class="row">'
-                            
-                            <!-- Container -->
-                            <div class="col-md-12 col-sm-12">
-                                <div class="blog-list">
-                                    <ul>
-                                        <!-- Bab 1 Pengaturcaraan -->
-                                        <li class="d-flex align-items-center">
-                                            <div class="col-lg-4 col-md-12 col-sm-12 mb-3 mb-sm-0">
-                                                <div class="blog-img">
-                                                    <img src="vendors/images/bab-1.png" alt="" class="bg_img">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8 col-md-12 col-sm-12">
-                                                <div class="blog-caption">
-                                                    <h4><a href="#"> BAB 1 PENGATURCARAAN </a></h4>
-                                                    <div class="blog-by">
-                                                        <p align="justify">
-                                                            Penggunaan komputer, telefon pintar dan tablet telah menjadi satu keperluan dalam kehidupan masa kini. 
-                                                            lnteraksi antara manusia dengan peralatan komunikasi telah mewujudkan satu bentuk bahasa yang dikenal sebagai bahasa pengaturcaraan. 
-                                                            Pelbagai aplikasi telah direka menggunakan bahasa pengaturcaraan untuk membantu manusia dalam kehidupan harian. Adakah pengaturcaraan untuk membantu
-                                                            anda menyelesaikan masalah ?
-                                                        </p>
-                                                        <div class="pt-3">
-                                                            <!-- Progress Bar -->
-                                                            <div class="progress">
-                                                                <div class="progress-bar" id="progressBar1" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                            <div class="text-center mt-2">
-                                                                <span id="progressLabel1">Progress: 0%</span>
-                                                            </div>
-
-                                                            <!-- Modal Button -->
-                                                            <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-1" onclick="updateProgressBar(25)">Tekan sini</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Modal that will display when clicked -->
-                                            <div class="modal fade" id="myModal-1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="myModalLabel">Sub Bab 1 Pengaturcaraan</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                        <!-- Replace the content below with your specific modal content -->
-                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
-                                                            <a class="button-85 btn-block btn-block-width" role="button" href="#">
-                                                                <span>Module 1.1 Strategi Penyelesaian Masalah</span>
-                                                            </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion"data-module="module1" data-submodule="1">
-                                                                Mark as done
-                                                            </button>
-                                                        </div>
-
-                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
-                                                            <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-2']) }}">
-                                                                <span>Module 1.2 Algoritma</span>
-                                                            </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module1" data-submodule="2">
-                                                                Mark as done
-                                                            </button>
-                                                        </div>
-
-                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
-                                                            <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-3']) }}">
-                                                                <span>Module 1.3 Pemboleh Ubah, Pemalar dan Jenis Data</span>
-                                                            </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module1" data-submodule="3">
-                                                                Mark as done
-                                                            </button>
-                                                        </div>
-
-                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
-                                                            <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-4']) }}">
-                                                                <span>Module 1.4 Struktur Kawalan</span>
-                                                            </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module1" data-submodule="4">
-                                                                Mark as done
-                                                            </button>
-                                                        </div>
-
-                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
-                                                            <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-5']) }}">
-                                                                <span>Module 1.5 Amalan Terbaik Pengaturcaraan</span>
-                                                            </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module1" data-submodule="5">
-                                                                Mark as done
-                                                            </button>
-                                                        </div>
-
-                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
-                                                            <a class="button-85 btn-block btn-block-width" role="button" href="#">
-                                                                <span>Module 1.6 Struktur Data dan Modular</span>
-                                                            </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module1" data-submodule="6">
-                                                                Mark as done
-                                                            </button>
-                                                        </div>
-
-                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
-                                                            <a class="button-85 btn-block btn-block-width" role="button" href="#">
-                                                                <span>Module 1.7 Pembangunan Aplikasi</span>
-                                                            </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module1" data-submodule="7">
-                                                                Mark as done
-                                                            </button>
-                                                        </div>
-                                                    </div>
-        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                         <!-- Bab 2 Pangkalan Data -->
-                                        <li class="d-flex align-items-center">
-                                            <div class="col-lg-4 col-md-12 col-sm-12 mb-3 mb-sm-0">
-                                                <div class="blog-img">
-                                                    <img src="vendors/images/bab-2.png" alt="" class="bg_img">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8 col-md-12 col-sm-12">
-                                                <div class="blog-caption">
-                                                    <h4><a href="#"> BAB 2 PANGKALAN DATA </a></h4>
-                                                    <div class="blog-by">
-                                                        <p align="justify">
-                                                        Salah satu faktor kejayaan syarikat gergasi IT seperti Google, Amazon dan Facebook ialah kemampuan platform teknologi untuk menampung jumlah data yang sangat besar dan sentiasa bertambah. 
-                                                        Cabaran utama bagi syarikat ini adalah untuk menampung kesemua data tersebut dan mengekalkan prestasi pencarian serta pengurusan data. 
-                                                        Jika data diumpamakan sebagai satu perkataan, proses menyimpan dan mencari sesuatu perkataan dalam sebuah buku nota kecil tidaklah sukar. 
-                                                        Sekarang, cuba anda bayangkan apabila buku tersebut disimpan di dalam perpustakaan sekolah anda. 
-                                                        Bolehkah anda mencari perkataan tersebut dalam masa yang singkat? 
-                                                        </p>
-                                                        <div class="pt-3">
-                                                            <!-- For Module 2 -->
-                                                            <div class="progress">
-                                                                <div class="progress-bar" id="progressBar2" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                            <div class="text-center mt-2">
-                                                                <span id="progressLabel2">Progress: 0%</span>
-                                                            </div>
-
-                                                            <!-- Modal Button -->
-                                                            <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-2" onclick="updateProgressBar(25)">Tekan sini</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Modal that will display when clicked -->
-                                            <div class="modal fade" id="myModal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="myModalLabel">Sub Bab 2 Pangkalan Data</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                        <!-- Replace the content below with your specific modal content -->
-                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
-                                                            <a class="button-85 btn-block btn-block-width" role="button" href="#">
-                                                                <span>Module 2.1 Pangkalan Data Hubungan</span>
-                                                            </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module2" data-submodule="1">
-                                                                Mark as done
-                                                            </button>
-                                                        </div>
-
-                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
-                                                            <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-2']) }}">
-                                                                <span>Module 2.2 Reka Bentuk Pangkalan Data Hubungan</span>
-                                                            </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module2" data-submodule="2">
-                                                                Mark as done
-                                                            </button>
-                                                        </div>
-
-                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
-                                                            <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-3']) }}">
-                                                                <span>Module 2.3 Pembangunan Pangkalan Data Hubungan</span>
-                                                            </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module2" data-submodule="3">
-                                                                Mark as done
-                                                            </button>
-                                                        </div>
-
-                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
-                                                            <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-4']) }}">
-                                                                <span>Module 2.4 Pembangunan Sistem Pangkalan Data</span>
-                                                            </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module2" data-submodule="4">
-                                                                Mark as done
-                                                            </button>
-                                                        </div>
-                                                    </div>
-    
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-                                        <!-- Bab 3 Interaksi Manusia dengan Komputer -->
-                                        <li class="d-flex align-items-center">
-                                            <div class="col-lg-4 col-md-12 col-sm-12 mb-3 mb-sm-0">
-                                                <div class="blog-img">
-                                                    <img src="vendors/images/bab-2.png" alt="" class="bg_img">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8 col-md-12 col-sm-12">
-                                                <div class="blog-caption">
-                                                    <h4><a href="#"> BAB 3 INTERAKSI MANUSIA DENGAN KOMPUTER </a></h4>
-                                                    <div class="blog-by">
-                                                        <p align="justify">
-                                                        lnteraksi ialah tindakan atau perhubungan aktif antara satu dengan yang lain. 
-                                                        Pada era globalisasi ini, manusia dan komputer saling memerlukan di samping menjadi medium utama dalam pembangunan 
-                                                        dan perkembangan pelbagai bidang. lnteraksi manusia-komputer adalah bidang kajian yang memfokuskan tentang bagaimana 
-                                                        manusia berinteraksi dengan sistem komputer, termasuk reka bentuk antara muka pengguna dan proses penyampaian maklumat.
-                                                        </p>
-                                                        <div class="pt-3">
-                                                            <!-- For Module 3 -->
-                                                            <div class="progress">
-                                                                <div class="progress-bar" id="progressBar3" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                            <div class="text-center mt-2">
-                                                                <span id="progressLabel3">Progress: 0%</span>
-                                                            </div>
-
-                                                            <!-- Modal Button -->
-                                                            <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-3" onclick="updateProgressBar(25)">Tekan sini</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Modal that will display when clicked -->
-                                            <div class="modal fade" id="myModal-3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="myModalLabel">Sub Bab 3 Pangkalan Data</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                        <!-- Replace the content below with your specific modal content -->
-                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
-                                                            <a class="button-85 btn-block btn-block-width" role="button" href="#">
-                                                                <span>Module 3.1 Reka Bentuk Interaksi</span>
-                                                            </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module3" data-submodule="1">
-                                                                Mark as done
-                                                            </button>
-                                                        </div>
-
-                                                        <div class="module-row d-flex justify-content-between align-items-center mb-4">
-                                                            <a class="button-85 btn-block btn-block-width" role="button" href="{{ route('module.page', ['module' => '1-2']) }}">
-                                                                <span>Module 3.2 Paparan dan Reka Bentuk Skrin</span>
-                                                            </a>
-                                                            <button class="btn btn-outline-success btn-sm text-nowrap mark-as-done-button" data-action="toggle-manual-completion" data-module="module3" data-submodule="2">
-                                                                Mark as done
-                                                            </button>
-                                                        </div>
-                                                    </div>
-    
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-
-
-                                        
-                                    </ul>
-                                </div>
-                                
-                            </div>
-                            
-                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Module</li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
             </div>
-           
+            <div class="blog-wrap">
+                <div class="container pd-0">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="blog-list">
+                                <ul>
+                                    @foreach ($materials as $material)
+                                        <li>
+                                            <!-- Your existing content for each module -->
+                                            <div class="row no-gutters">
+                                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                                    <div class="blog-img">
+                                                        <img src="vendors/images/bab-1.png" alt="" class="bg_img">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-12 col-sm-12">
+                                                    <div class="blog-caption">
+                                                        <h4><a href="#">BAB {{$material->modulenumber}} {{$material->moduletitle}} </a></h4>
+                                                        <div class="blog-by">
+                                                            <p align="justify">
+                                                                {{$material->description}}
+                                                            </p>
+                                                            <div class="pt-10">
+                                                                <!-- Modal Button -->
+                                                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-{{$material->modulenumber}}">Tekan sini</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Modal that will display when clicked -->
+                                            <div class="modal fade" id="myModal-{{$material->modulenumber}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myModalLabel">Sub Bab {{$material->modulenumber}}</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body justify-content">
+                                                            @foreach ($material->submaterials as $submaterial)
+                                                                 @if ($submaterial->modulenumber == $material->modulenumber)    
+                                                                <!-- Replace the content below with your specific modal content -->
+                                                                    <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => $submaterial->subchapternumber]) }}">Module {{$submaterial->subchapternumber}} {{$submaterial->subchaptertitle}}</a>
+                                                                @else
+                                                                    <p>No submaterials available for this module.</p>
+                                                                @endif   
+                                                            @endforeach
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endforeach
+
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>    
+                </div>
+            </div>
         </div>
     </div>
-
+</div>
 @endsection

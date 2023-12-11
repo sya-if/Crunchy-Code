@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Material;
+use App\Models\Submaterial;
 use App\Models\Forum;
 use App\Models\ForumPost;
 use Auth;
@@ -77,9 +79,11 @@ class HomeController extends Controller
     public function viewModule()
     {
         $user = Auth::user();
+        $materials = Material::all();
+        $submaterials = SubMaterial::all();
 
         // Return the page module 1-1 yang reside dalam folder page
-        return view('pages.materials.mainpage-module', compact('user'));
+        return view('pages.materials.mainpage-module', compact('user', 'materials', 'submaterials'));
     }
 
     // View the specific module page

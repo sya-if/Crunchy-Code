@@ -119,8 +119,8 @@ b {
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item" aria-current="page">Module</li>
+                                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{route('module')}}">Module</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Module 2.2 Struktur Kawalan</li>
                             </ol>
                         </nav>
