@@ -25,12 +25,13 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Quiz List</h4>
+                            <h4>Subchapter List</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">View Quiz</li>
+                                <li class="breadcrumb-item"><a href="{{route('quizzes.index')}}">View Quiz</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">View Subchapter</li>
                             </ol>
                         </nav>
                     </div>
@@ -51,30 +52,26 @@
             <!-- Striped table start -->
             <div class="pd-20 card-box mb-30">
                 <div class="clearfix mb-20">
-                    <div class="pull-right">
-                        <a href="{{route('quizzes.create')}}" class="btn btn-info float-end">Add New Quiz</a>
-                    </div>
                     <div class="pull-left">
-                        <h4 class="text-blue h4">List of Quizzes</h4>
+                        <h4 class="text-blue h4">List of Subchapter</h4>
                     </div>
                 </div>
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Chapter Number</th>
-                            <th scope="col">Chapter Title</th>
-                            <th scope="col" colspan="3">Action</th>
+                            <th scope="col">Subchapter Number</th>
+                            <th scope="col">Subchapter Title</th>
+                            <th scope="col" colspan="2">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($quizzes as $quiz)
+                        @foreach($quiz->subquizzes as $subquiz)
                         <tr>
-                            <td>{{$quiz->chapternumber}}</td>
-                            <td>{{$quiz->chaptertitle}}</td>
-                            <td><a href="{{route('quizzes.show', $quiz->chapternumber)}}" class="btn btn-info">Show</a></td>
-                            <td><a href="{{route('quizzes.edit', $quiz->chapternumber)}}" class="btn btn-success">Edit</a></td>
+                            <td>{{$subquiz->subchapternumber}}</td>
+                            <td>{{$subquiz->subchaptertitle}}</td>
+                            <td><a href="{{ route('quizzes.editShow', ['quiz' => $subquiz->chapternumber]) }}" class="btn btn-success">Edit</a></td>
                             <td>
-                                <form method="POST" action="{{route('quizzes.destroy', $quiz->chapternumber)}}">
+                                <form method="POST" action="{{route('quizzes.destroySubquiz', $subquiz)}}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" onclick="return confirm('Are you sure that you want to delete this?')" class="btn btn-danger">Delete</button>

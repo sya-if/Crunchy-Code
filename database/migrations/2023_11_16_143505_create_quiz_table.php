@@ -14,14 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('quizzes', function (Blueprint $table) {
-            $table->id();
-            $table->string('title')->nullable();
-            $table->string('description')->nullable();
-            $table->string('duration')->nullable();
-            $table->string('score')->nullable();
-            $table->string('contenttitle')->nullable();
-            $table->string('review')->nullable();
-            $table->string('questioncount')->nullable();
+            $table->bigIncrements('chapternumber');
+            $table->string('chaptertitle')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
