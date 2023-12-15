@@ -39,6 +39,10 @@
                     <form method="POST" action="{{ route('modules.store') }}">
                         @csrf
                         <div class="form-group">
+                            <label>Select Color:</label>
+                            <input type="color" id="color" name="color">
+                        </div>
+                        <div class="form-group">
                             <label>Please Choose What Module You Want To Add</label>
                             <div>
                                 <div class="row justify-content-left">
@@ -57,10 +61,6 @@
                                     @endforeach
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Select Color:</label>
-                            <input type="color" id="color" name="color">
                         </div>
                     </form>
                 </div>
