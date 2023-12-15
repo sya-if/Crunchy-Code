@@ -1,4 +1,7 @@
 @extends('layouts.master')
+
+@php($user = Auth::user())
+
 @section('content')
 <div class="main-container">
     <div class="pd-ltr-20 xs-pd-20-10">
@@ -36,7 +39,7 @@
                     <h4 class="text-blue h4">Adding New Material</h4>
                 </div>
                 <div class="wizard-content">
-                    <form method="POST" action="{{route('materials.store')}}">
+                    <form method="POST" action="{{route('materials.store')}}" enctype="multipart/form-data">
                         @csrf
                         <h5>Module Info</h5>
                         <section>
@@ -53,12 +56,21 @@
                                         <input type="text" class="form-control" name="moduletitle" required>
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label >Description :</label>
+                                        <textarea class="form-control" name="description" required></textarea>
+                                    </div>
+                                </div>
                             </div>
+                        </section>
+                        <h5>SubModule Info</h5>
+                        <section>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Subchapter Number :</label>
-                                        <input type="text" class="form-control" name="subchapternumber" required>
+                                        <input type="text" class="form-control" name="subchapternumber" placeholder="Format: 0-0" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -67,39 +79,12 @@
                                         <input type="text" class="form-control" name="subchaptertitle" required>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
-                        <!-- Step 2 -->
-                        <h5>Module Content</h5>
-                        <section>
-                            <div class="row">
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Module Content Title :</label>
-                                        <input type="text" class="form-control" name="contenttitle" required>
+                                        <label>Content (Blade File):</label>
+                                        <input type="file" class="form-control" name="content" accept=".blade.php" required>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Module Content Description :</label>
-                                        <textarea class="form-control" name="contentdescription" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Module Page Number :</label>
-                                        <input type="text" class="form-control" name="pagenumber" required>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                        <!-- Step 3 -->
-                        <h5>OTHERS</h5>
-                        <section>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    {{-- klau nk tmbh bende lain --}}
-                                </div>
+                                </div> --}}
                             </div>
                         </section>
                         <div class="clearfix" style="display:flex; justify-content:center;">

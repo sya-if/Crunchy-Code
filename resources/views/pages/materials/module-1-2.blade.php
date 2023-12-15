@@ -159,8 +159,8 @@ body p{
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="home.blade.php">Home</a></li>
-									<li class="breadcrumb-item"><a href="mainpage-module.blade.php">Module</a></li>
+									<li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+									<li class="breadcrumb-item"><a href="{{route('module')}}">Module</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Module 1.2 Algoritma</li>
 								</ol>
 							</nav>

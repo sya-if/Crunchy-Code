@@ -52,8 +52,32 @@ Route::resource('users', StudentController::class);
 // Route for student function - Material Controller
 Route::resource('materials', MaterialController::class);
 
+// Route for show the subchapter information
+Route::get('/materials/{material}', [MaterialController::class, 'show'])->name('materials.show');
+
+// Exclude the default destroy route
+Route::resource('materials', MaterialController::class)->except(['destroy']); 
+
+// Add a custom route for destroying a submaterial
+Route::delete('materials/{submaterial}/destroy-submaterial', [MaterialController::class, 'destroySubmaterial'])->name('materials.destroySubmaterial');
+
+// Add a custom route to go to editShow page
+Route::get('/materials/{material}/editShow', [MaterialController::class, 'editShow'])->name('materials.editShow');
+
+// Add a custom route to handle update on editShow page
+Route::put('/materials/{material}/updateShow', [MaterialController::class, 'updateShow'])->name('materials.updateShow');
+
 // Route for quiz function - Resource Controller
 Route::resource('quizzes', QuizController::class);
+
+// Add a custom route for destroying a subquiz
+Route::delete('quizzes/{subquiz}/destroy-subquiz', [MaterialController::class, 'destroySubquiz'])->name('quizzes.destroySubquiz');
+
+// Add a custom route to go to editShow page
+Route::get('/quizzes/{quiz}/editShow', [QuizController::class, 'editShow'])->name('quizzes.editShow');
+
+// Add a custom route to handle update on editShow page
+Route::put('/quizzes/{quiz}/updateShow', [QuizController::class, 'updateShow'])->name('quizzes.updateShow');
 
 // Route for Module function - Resource Controller
 Route::resource('modules', ModuleController::class);

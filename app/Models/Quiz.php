@@ -9,12 +9,15 @@ class Quiz extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'chapternumber'; // specify the custom primary key column
+
     protected $fillable = [
-        'title',
+        'chapternumber',
+        'chaptertitle',
         'description',
-        'duration',
-        'score',
-        'review',
-        'questioncount',
     ];
+
+    public function subquizzes(){
+        return $this->hasMany(Subquiz::class, 'chapternumber', 'chapternumber');
+    }
 }

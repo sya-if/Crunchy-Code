@@ -7,13 +7,14 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Edit Material</h4>
+                            <h4>Edit Quiz</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                                <li class="breadcrumb-item"><a href="{{route('materials.index')}}">View Material</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Edit Material</li>
+                                <li class="breadcrumb-item"><a href="{{route('quizzes.index')}}">View Quiz</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('quizzes.show', ['quiz' => $quiz->chapternumber]) }}">View Subquiz</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Edit Subquiz</li>
                             </ol>
                         </nav>
                     </div>
@@ -34,31 +35,25 @@
 
             <div class="pd-20 card-box mb-30">
                 <div class="clearfix">
-                    <h4 class="text-blue h4">Edit Material</h4>
+                    <h4 class="text-blue h4">Edit Subquiz</h4>
                 </div>
                 <div class="wizard-content">
-                    <form method="POST" action="{{ route('materials.update', $material) }}">
+                    <form method="POST" action="{{ route('quizzes.updateShow', ['quiz' => $quiz->chapternumber]) }}">
                         @csrf
                         @method('PUT')
-                        <h5>Module Info</h5>
                         <section>
+                            <h5>SubChapter Info</h5>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Module Number :</label>
-                                        <input type="text" class="form-control" name="modulenumber" value="{{ $material->modulenumber }}" required>
+                                        <label>Subchapter Number :</label>
+                                        <input type="text" class="form-control" name="subchapternumber" value="{{ optional($quiz->subquizzes->first())->subchapternumber }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Module Title :</label>
-                                        <input type="text" class="form-control" name="moduletitle" value="{{ $material->moduletitle }}" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Description :</label>
-                                        <textarea class="form-control" name="description" required>{{ $material->description }}</textarea>
+                                        <label>Subchapter Title :</label>
+                                        <input type="text" class="form-control" name="subchaptertitle" value="{{ optional($quiz->subquizzes->first())->subchaptertitle }}" required>
                                     </div>
                                 </div>
                             </div>

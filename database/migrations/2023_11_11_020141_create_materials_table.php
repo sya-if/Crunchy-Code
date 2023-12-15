@@ -14,14 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('materials', function (Blueprint $table) {
-            $table->id();
-            $table->string('modulenumber')->nullable();
+            $table->bigIncrements('modulenumber');
             $table->string('moduletitle')->nullable();
-            $table->string('subchapternumber')->nullable();
-            $table->string('subchaptertitle')->nullable();
-            $table->string('contenttitle')->nullable();
-            $table->text('contentdescription')->nullable();
-            $table->string('pagenumber');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

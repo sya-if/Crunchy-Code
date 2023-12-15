@@ -1,4 +1,7 @@
 @extends('layouts.master')
+
+@php($user = Auth::user())
+
 @section('content')
 <div class="main-container">
     <div class="pd-ltr-20 xs-pd-20-10">
@@ -36,51 +39,52 @@
                     <h4 class="text-blue h4">Adding New Quiz</h4>
                 </div>
                 <div class="wizard-content">
-                    <form method="POST" action="{{route('quizzes.store')}}">
+                    <form method="POST" action="{{route('quizzes.store')}}" enctype="multipart/form-data">
                         @csrf
-                        <h5>Module Info</h5>
+                        <h5>Quiz Info</h5>
                         <section>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >Title :</label>
-                                        <input type="text" class="form-control" name="title" required>
+                                        <label >Chapter Number :</label>
+                                        <input type="text" class="form-control" name="chapternumber" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label >Chapter Title :</label>
+                                        <input type="text" class="form-control" name="chaptertitle" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label >Description :</label>
-                                        <input type="text" class="form-control" name="description" required>
+                                        <textarea class="form-control" name="description" required></textarea>
                                     </div>
                                 </div>
                             </div>
+                        </section>
+                        <h5>Subquiz Info</h5>
+                        <section>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Duration :</label>
-                                        <input type="text" class="form-control" name="duration" required>
+                                        <label>Subchapter Number :</label>
+                                        <input type="text" class="form-control" name="subchapternumber" placeholder="Format: 0-0" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Score :</label>
-                                        <input type="text" class="form-control" name="score" required>
+                                        <label>Subchapter Title :</label>
+                                        <input type="text" class="form-control" name="subchaptertitle" required>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Review :</label>
-                                        <input type="text" class="form-control" name="review" required>
+                                        <label>Content (Blade File):</label>
+                                        <input type="file" class="form-control" name="content" accept=".blade.php" required>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Questioncount :</label>
-                                        <input type="text" class="form-control" name="questioncount" required>
-                                    </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </section>
                         <div class="clearfix" style="display:flex; justify-content:center;">
