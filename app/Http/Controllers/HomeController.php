@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Material;
 use App\Models\Submaterial;
+use App\Models\Quiz;
+use App\Models\Subquiz;
 use App\Models\Forum;
 use App\Models\ForumPost;
 use Auth;
@@ -108,9 +110,11 @@ class HomeController extends Controller
     public function viewQuiz()
     {
         $user = Auth::user();
+        $quizzes = Quiz::all();
+        $subquizzes = Subquiz::all();
 
-        // Return the page Quiz 1-1 yang reside dalam folder page
-        return view('pages.quizzes.mainpage-quiz', compact('user'));
+        // Return the page quiz 1-1 yang reside dalam folder page
+        return view('pages.quizzes.mainpage-quiz', compact('user', 'quizzes', 'subquizzes'));
     }
 
     // View the specific quiz page

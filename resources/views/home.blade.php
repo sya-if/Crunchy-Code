@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @php($user = Auth::user())
-@php($modules = App\Models\Modules::all())
+@php($modules = App\Models\Modules::orderBy('title', 'asc')->get())
 @section('content')
 
 <div class="main-container">

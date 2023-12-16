@@ -71,7 +71,7 @@ Route::put('/materials/{material}/updateShow', [MaterialController::class, 'upda
 Route::resource('quizzes', QuizController::class);
 
 // Add a custom route for destroying a subquiz
-Route::delete('quizzes/{subquiz}/destroy-subquiz', [MaterialController::class, 'destroySubquiz'])->name('quizzes.destroySubquiz');
+Route::delete('quizzes/{subquiz}/destroy-subquiz', [QuizController::class, 'destroySubquiz'])->name('quizzes.destroySubquiz');
 
 // Add a custom route to go to editShow page
 Route::get('/quizzes/{quiz}/editShow', [QuizController::class, 'editShow'])->name('quizzes.editShow');
