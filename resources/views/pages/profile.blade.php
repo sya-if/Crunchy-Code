@@ -128,21 +128,6 @@
                                     <span>Phone Number:</span>
                                     {{ old('phone' , $user->phone ) }}
                                 </li>
-                                <li>
-                                    <span>Address:</span>
-                                    1807 Holden Street<br>
-                                    San Diego, CA 92115
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="profile-social">
-                            <h5 class="mb-20 h5 text-blue">Social Links</h5>
-                            <ul class="clearfix">
-                                <li><a href="#" class="btn" data-bgcolor="#3b5998" data-color="#ffffff"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" class="btn" data-bgcolor="#1da1f2" data-color="#ffffff"><i class="fa fa-twitter"></i></a></li>
-
-                                <li><a href="#" class="btn" data-bgcolor="#007bb5" data-color="#ffffff"><i class="fa fa-linkedin"></i></a></li>
                             </ul>
                         </div>
 
@@ -288,7 +273,7 @@
                                                     @enderror
                                                 </td>
                                             </tr>
-
+                                            
                                             <!-- Date of Birth -->
                                             <tr>
                                                 <td>Date of Birth</td>
