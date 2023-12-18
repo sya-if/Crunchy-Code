@@ -98,12 +98,11 @@ class MaterialController extends Controller
      */
 
 
-    public function show(Material $material)
+    public function show(Material $modulenumber)
     {
-        // Get the associated Submaterials
-        $submaterials = $material->submaterial;
+        $submaterials = Submaterial::where('modulenumber', $modulenumber)->get(); // Get students
     
-        return view('admin\material\show', compact('material', 'submaterials'));
+        return view('admin\material\show', compact('submaterials'));
     }
      
      
@@ -122,9 +121,14 @@ class MaterialController extends Controller
     }
 
 
-    public function editShow(Material $material)
+    public function editShow($id)
     {
-        return view('admin\material\editShow', compact('material'));
+        dd($id);
+
+        // Ambil product ID yang dihantar oleh edit button dekat profile_index page
+        $submaterial = Submaterial::find($id);
+        
+        return view('admin\material\editShow', compact('submaterial'));
     }
 
 
@@ -160,7 +164,7 @@ class MaterialController extends Controller
     }
      
      
-    public function updateShow(Request $request, Material $material)
+    public function updateShow(Request $request, Submaterial $submaterial)
     {
         // Validate the request data for editing show.blade
         $request->validate([
@@ -168,20 +172,28 @@ class MaterialController extends Controller
             'subchaptertitle' => 'required|string|max:255',
         ]);
 
-        // Check if subchapter fields are present in the request
-        if ($request->has('subchapternumber') && $request->has('subchaptertitle')) {
-            // Delete existing submaterials first
-            $material->submaterials()->delete();
 
-            // Create new submaterial
-            $material->submaterials()->create([
-                'subchapternumber' => $request['subchapternumber'],
-                'subchaptertitle' => $request['subchaptertitle'],
-            ]);
-        }
+        // Update submaterial fields
+        $submaterial->subchapternumber = $request['forum-title'];
+        $submaterial->subchaptertitle = $request['forum_category'];
+
+        $submaterial->save();
+
+
+        // // Check if subchapter fields are present in the request
+        // if ($request->has('subchapternumber') && $request->has('subchaptertitle')) {
+        //     // Delete existing submaterials first
+        //     $material->submaterials()->delete();
+
+        //     // Create new submaterial
+        //     $material->submaterials()->create([
+        //         'subchapternumber' => $request['subchapternumber'],
+        //         'subchaptertitle' => $request['subchaptertitle'],
+        //     ]);
+        // }
 
         // Redirect or return response
-        return redirect()->route('materials.show', $material)->with('success', 'Submaterial has been updated!');
+        return redirect()->route('materials.show', $submaterial)->with('success', 'Submaterial has been updated!');
     } 
 
 

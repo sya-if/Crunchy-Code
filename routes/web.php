@@ -65,7 +65,7 @@ Route::delete('materials/{submaterial}/destroy-submaterial', [MaterialController
 Route::get('/materials/{material}/editShow', [MaterialController::class, 'editShow'])->name('materials.editShow');
 
 // Add a custom route to handle update on editShow page
-Route::put('/materials/{material}/updateShow', [MaterialController::class, 'updateShow'])->name('materials.updateShow');
+Route::put('/materials/updateShow', [MaterialController::class, 'updateShow'])->name('materials.updateShow');
 
 // Route for quiz function - Resource Controller
 Route::resource('quizzes', QuizController::class);

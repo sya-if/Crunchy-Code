@@ -65,11 +65,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($material->submaterials as $submaterial)
+                        @foreach($submaterials as $submaterial)
                         <tr>
                             <td>{{$submaterial->subchapternumber}}</td>
                             <td>{{$submaterial->subchaptertitle}}</td>
-                            <td><a href="{{ route('materials.editShow', ['material' => $submaterial->modulenumber]) }}" class="btn btn-success">Edit</a></td>
+                            <td><a href="{{ route('materials.editShow',  $submaterial->id) }}" class="btn btn-success">Edit</a></td>
                             <td>
                                 <form method="POST" action="{{route('materials.destroySubmaterial', $submaterial)}}">
                                     @csrf

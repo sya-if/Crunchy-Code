@@ -13,7 +13,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                                 <li class="breadcrumb-item"><a href="{{route('materials.index')}}">View Material</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('materials.show', ['material' => $material->modulenumber]) }}">View SubMaterial</a></li>
+                                <li class="breadcrumb-item"><a href="">View SubMaterial</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Edit SubMaterial</li>
                             </ol>
                         </nav>
@@ -38,7 +38,7 @@
                     <h4 class="text-blue h4">Edit SubMaterial</h4>
                 </div>
                 <div class="wizard-content">
-                    <form method="POST" action="{{ route('materials.updateShow', ['material' => $material->modulenumber]) }}">
+                    <form method="POST" action="{{ route('materials.updateShow', $submaterial->id) }}">
                         @csrf
                         @method('PUT')
                         <section>
@@ -47,13 +47,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Subchapter Number :</label>
-                                        <input type="text" class="form-control" name="subchapternumber" value="{{ optional($material->submaterials->first())->subchapternumber }}" required>
+                                        <input type="text" class="form-control" name="subchapternumber" value="{{ $submaterial->subchapternumber }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Subchapter Title :</label>
-                                        <input type="text" class="form-control" name="subchaptertitle" value="{{ optional($material->submaterials->first())->subchaptertitle }}" required>
+                                        <input type="text" class="form-control" name="subchaptertitle" value="" required>
                                     </div>
                                 </div>
                             </div>
