@@ -171,4 +171,8 @@ class HomeController extends Controller
 
     }
 
+    public function viewFAQ()
+    {
+        return view('pages\FAQ');
+    }
 }

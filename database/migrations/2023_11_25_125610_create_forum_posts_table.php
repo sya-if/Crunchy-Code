@@ -42,7 +42,8 @@ return new class extends Migration {
     public function down()
     {
         Schema::table('forum_posts', function (Blueprint $table) {
-            $table->dropForeign(['forum_id', 'user_id']);
+            $table->dropForeign(['forum_id']);
+            $table->dropForeign(['user_id']);
         });
 
         Schema::dropIfExists('forum_posts');

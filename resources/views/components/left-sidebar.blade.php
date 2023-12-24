@@ -212,8 +212,8 @@
 
                     <!-- Community -->
                     <li class="dropdown">
-                        <a href="javascript:;" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-paint-brush"></span><span class="mtext">Community</span>
+                        <a href="{{route('FAQ')}}" class="dropdown-toggle no-arrow">
+                            <span class="micon dw dw-paint-brush"></span><span class="mtext">FAQ</span>
                         </a>
                     </li>
 
@@ -235,6 +235,13 @@
                  <li>
                     <a href="{{ route('profile') }}" class="dropdown-toggle no-arrow">
                         <span class="micon dw dw-edit2"></span><span class="mtext">Profile</span>
+                    </a>
+                </li>
+
+                <!-- Message -->
+                <li>
+                    <a href="{{ route('message') }}" class="dropdown-toggle no-arrow">
+                        <span class="micon dw dw-edit2"></span><span class="mtext">Message</span>
                     </a>
                 </li>
 
