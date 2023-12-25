@@ -46,31 +46,31 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>question_text :</label>
+                                        <label>Question Text :</label>
                                         <input type="text" class="form-control" name="question_text" value="{{ $subquiz->question_text }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Answer_1 :</label>
+                                        <label>Answer 1 :</label>
                                         <input type="text" class="form-control" name="answer_1" value="{{ $subquiz->answer_1 }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Answer_2 :</label>
+                                        <label>Answer 2 :</label>
                                         <input type="text" class="form-control" name="answer_2" value="{{ $subquiz->answer_2 }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Answer_3 :</label>
+                                        <label>Answer 3 :</label>
                                         <input type="text" class="form-control" name="answer_3" value="{{ $subquiz->answer_3 }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Answer_4 :</label>
+                                        <label>Answer 4 :</label>
                                         <input type="text" class="form-control" name="answer_4" value="{{ $subquiz->answer_4 }}" required>
                                     </div>
                                 </div>

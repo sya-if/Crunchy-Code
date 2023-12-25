@@ -59,11 +59,11 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">question_text</th>
-                            <th scope="col">Answer_ 1</th>
-                            <th scope="col">Answer_2</th>
-                            <th scope="col">Answer_3</th>
-                            <th scope="col">Answer_4</th>
+                            <th scope="col">Question Text</th>
+                            <th scope="col">Answer 1</th>
+                            <th scope="col">Answer 2</th>
+                            <th scope="col">Answer 3</th>
+                            <th scope="col">Answer 4</th>
                             <th scope="col">Answer</th>
                             <th scope="col" colspan="2">Action</th>
                         </tr>
