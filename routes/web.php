@@ -74,10 +74,10 @@ Route::resource('quizzes', QuizController::class);
 Route::delete('quizzes/{subquiz}/destroy-subquiz', [QuizController::class, 'destroySubquiz'])->name('quizzes.destroySubquiz');
 
 // Add a custom route to go to editShow page
-Route::get('/quizzes/{quiz}/editShow', [QuizController::class, 'editShow'])->name('quizzes.editShow');
+Route::get('/quizzes/{quiz}/editShow/{subquizId}', [QuizController::class, 'editShow'])->name('quizzes.editShow');
 
 // Add a custom route to handle update on editShow page
-Route::put('/quizzes/{quiz}/updateShow', [QuizController::class, 'updateShow'])->name('quizzes.updateShow');
+Route::put('/quizzes/{quiz}/updateShow/{subquizId}', [QuizController::class, 'updateShow'])->name('quizzes.updateShow');
 
 // Route for Module function - Resource Controller
 Route::resource('modules', ModuleController::class);

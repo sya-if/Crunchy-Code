@@ -67,16 +67,40 @@
                         <h5>Subquiz Info</h5>
                         <section>
                             <div class="row">
-                                <div class="col-md-6">
+                            <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Subchapter Number :</label>
-                                        <input type="text" class="form-control" name="subchapternumber" placeholder="Format: 0-0" required>
+                                        <label>question_text :</label>
+                                        <input type="text" class="form-control" name="question_text" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Subchapter Title :</label>
-                                        <input type="text" class="form-control" name="subchaptertitle" required>
+                                        <label>Answer_1 :</label>
+                                        <input type="text" class="form-control" name="answer_1"  required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Answer_2 :</label>
+                                        <input type="text" class="form-control" name="answer_2" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Answer_3 :</label>
+                                        <input type="text" class="form-control" name="answer_3" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Answer_4 :</label>
+                                        <input type="text" class="form-control" name="answer_4" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Answer :</label>
+                                        <input type="text" class="form-control" name="answer" required>
                                     </div>
                                 </div>
                                 {{-- <div class="col-md-12">
