@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\ForumPost;
-use App\Models\Forum;
-use App\Models\User;
-use Auth;
 use Image;
+use App\Models\User;
+use App\Models\Forum;
+use App\Models\ForumPost;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ForumPostController extends Controller
 {
