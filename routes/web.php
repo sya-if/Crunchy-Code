@@ -1,15 +1,17 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ModuleController;
-use App\Http\Controllers\Admin\MaterialController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ForumPostController;
 use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\ForumController;
-use App\Http\Controllers\ForumPostController;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\MaterialController;
 
 
 /*
@@ -65,7 +67,7 @@ Route::delete('materials/{submaterial}/destroy-submaterial', [MaterialController
 Route::get('/materials/{material}/editShow', [MaterialController::class, 'editShow'])->name('materials.editShow');
 
 // Add a custom route to handle update on editShow page
-Route::put('/materials/{material}/updateShow', [MaterialController::class, 'updateShow'])->name('materials.updateShow');
+Route::put('/materials/updateShow', [MaterialController::class, 'updateShow'])->name('materials.updateShow');
 
 // Route for quiz function - Resource Controller
 Route::resource('quizzes', QuizController::class);
@@ -109,3 +111,14 @@ Route::get('/discussion', [App\Http\Controllers\HomeController::class, 'viewForu
 // Route for specific page number
 Route::get('/forum/page/{pageNumber}/{forumTitle?}', [App\Http\Controllers\HomeController::class, 'showForumPage'])->name('forum.page');
 
+// Route for FAQ page
+Route::get('/FAQ', [App\Http\Controllers\HomeController::class, 'viewFAQ'])->name('FAQ');
+
+// Route for contact us form
+Route::post('/contact', [ContactController::class, 'store'])->name('contact');
+
+//Route for message
+Route::get('/message', [MessageController::class, 'index'])->name('message');
+
+//Route for delete message
+Route::delete('/admin/messages/{id}', [MessageController::class, 'destroy'])->name('destroy');
