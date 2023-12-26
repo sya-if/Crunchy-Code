@@ -98,7 +98,7 @@ Route::get('/module/{module}', [App\Http\Controllers\HomeController::class, 'sho
 Route::get('/quiz', [App\Http\Controllers\HomeController::class, 'ViewQuiz'])->name('quiz');
 
 // Route for chosen quiz page
-Route::get('/quiz/{quiz}', [App\Http\Controllers\HomeController::class, 'showQuizPage'])->name('quiz.page');
+Route::get('/quiz/{quizId}', [App\Http\Controllers\HomeController::class, 'showQuizPage'])->name('quiz.page');
 
 // Route for forum main page
 Route::get('/discussion', [App\Http\Controllers\HomeController::class, 'viewForumPage'])->name('discussion');

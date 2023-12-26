@@ -150,8 +150,6 @@ class QuizController extends Controller
 
     public function updateShow(Request $request, Quiz $quiz, $subquizId)
     {
-
-    
         // Validate the request data for editing show.blade
         $request->validate([
             'question_text' => 'required|string|max:255',
@@ -161,15 +159,13 @@ class QuizController extends Controller
             'answer_4' => 'required|string|max:255',
             'answer' => 'required|string|max:255',
         ]);
-    
-    
-        // Find the specific subquiz based on the provided $subquizId
-        $subquiz = $quiz->subquizzes()->find($subquizId);
-    
-    
-        // Check if the subquiz is found
+
+        // Find the Subquiz by ID
+        $subquiz = Subquiz::find($subquizId);
+
+        // Check if the Subquiz exists
         if ($subquiz) {
-            // Update the specific subquiz
+            // Update the Subquiz
             $subquiz->update([
                 'question_text' => $request->input('question_text'),
                 'answer_1' => $request->input('answer_1'),
@@ -177,15 +173,16 @@ class QuizController extends Controller
                 'answer_3' => $request->input('answer_3'),
                 'answer_4' => $request->input('answer_4'),
                 'answer' => $request->input('answer'),
-            ]);            
-    
+            ]);
+
             // Redirect or return response
             return redirect()->route('quizzes.show', $quiz)->with('success', 'Subquiz has been updated!');
         } else {
-            // Redirect with an error message if subquiz is not found
-            return redirect()->route('quizzes.show', $quiz)->with('error', 'Subquiz not found.');
+            // Handle the case where Subquiz is not found
+            return redirect()->route('quizzes.show', $quiz)->with('error', 'Subquiz not found!');
         }
-    }    
+    }
+   
     
 
 

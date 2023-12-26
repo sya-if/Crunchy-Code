@@ -1,3 +1,4 @@
+
 @extends('layouts.master')
 
 @php($user = Auth::user())

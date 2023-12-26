@@ -59,11 +59,12 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <th scope="col">Id</th>
                             <th scope="col">Question Text</th>
-                            <th scope="col">Answer 1</th>
-                            <th scope="col">Answer 2</th>
-                            <th scope="col">Answer 3</th>
-                            <th scope="col">Answer 4</th>
+                            <th scope="col">A</th>
+                            <th scope="col">B</th>
+                            <th scope="col">C</th>
+                            <th scope="col">D</th>
                             <th scope="col">Answer</th>
                             <th scope="col" colspan="2">Action</th>
                         </tr>
@@ -71,13 +72,14 @@
                     <tbody>
                         @foreach($quiz->subquizzes as $subquiz)
                         <tr>
+                            <td>{{$subquiz->id}}</td>
                             <td>{{$subquiz->question_text}}</td>
                             <td>{{$subquiz->answer_1}}</td>
                             <td>{{$subquiz->answer_2}}</td>
                             <td>{{$subquiz->answer_3}}</td>
                             <td>{{$subquiz->answer_4}}</td>
                             <td>{{$subquiz->answer}}</td>
-                            <td><a href="{{ route('quizzes.editShow', ['quiz' => $quiz, 'subquizId' => $subquiz->id]) }}" class="btn btn-success">Edit</a></td>
+                            <td><a href="{{ route('quizzes.editShow', ['quiz' => $quiz, $subquiz->id]) }}" class="btn btn-success">Edit</a></td>
                             <td>
                                 <form method="POST" action="{{route('quizzes.destroySubquiz', $subquiz)}}">
                                     @csrf
