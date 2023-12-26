@@ -4,7 +4,6 @@
 
 @section('content')
 
-
 <style>
 /* CSS */
 .button-74 {
@@ -153,40 +152,69 @@
   <div class="pd-ltr-20 height-100-p xs-pd-20-10">
       <div class="min-height-200px">
 
-          <div class="page-header">
-              <div class="row">
-                  <div class="col-md-12 col-sm-12">
-                      <div class="title">
-                          <h4>Forum Crunchy Code</h4>
-                      </div>
-                      <nav aria-label="breadcrumb" role="navigation">
-                          <ol class="breadcrumb">
-                              <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                              <li class="breadcrumb-item active" aria-current="page">Forum</li>
-                          </ol>
-                      </nav>
-                  </div>
-              </div>
-          </div>
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="title">
+                        <h4>Crunchy Quiz</h4>
+                    </div>
+                    <nav aria-label="breadcrumb" role="navigation">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a href="{{route('quiz')}}">Quiz</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Quiz {{$quizId}}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+		<div class="container pd-0">
+			<div class="row">
+				<div class="col-md-12 col-sm-12">
+					<div class="blog-detail card-box overflow-hidden mb-30">
+						<div class="blog-caption" style="color : #000;">
+							<form>
+								@foreach($quiz->subquizzes as $key => $subquiz)
+								<h6>Question {{ $key + 1 }}</h6>
+								<p>{{ $subquiz->question_text }}</p>
 
-          @foreach($forums as $forum)
-              <div class="courses-container">
-                  <div class="course">
-                      <div class="course-preview">
-                          <h6>Forum</h6>
-                          <h2>{{ $forum->title }}</h2>
-                          <a href="{{ route('forum.page', ['pageNumber' => $loop->index + 1, 'forumTitle' => $forum->title]) }}">Dapatkan informasi di sini <i class="fas fa-chevron-right"></i></a>
-                      </div>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_1" value="A">
+									<label class="form-check-label" for="answer_{{ $key }}_1">
+										A. {{ $subquiz->answer_1 }}
+									</label>
+								</div>
 
-                      <div class="course-info">
-                          <h5>Penerangan</h5>
-                          <p>{{ $forum->description }}</p>
-                          <a href="{{ route('forum.page', ['pageNumber' => $loop->index + 1, 'forumTitle' => $forum->title]) }}" class="btn button-74">Sertai</a>
-                      </div>
-                  </div>
-              </div>
-          @endforeach
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_2" value="B">
+									<label class="form-check-label" for="answer_{{ $key }}_2">
+										B. {{ $subquiz->answer_2 }}
+									</label>
+								</div>
 
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_3" value="C">
+									<label class="form-check-label" for="answer_{{ $key }}_3">
+										C. {{ $subquiz->answer_3 }}
+									</label>
+								</div>
+
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_4" value="D">
+									<label class="form-check-label" for="answer_{{ $key }}_4">
+										D. {{ $subquiz->answer_4 }}
+									</label>
+								</div>
+
+								<br><br>
+								@endforeach
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
       </div>
   </div>
 
@@ -195,7 +223,5 @@
   </div>
 
 </div>
-
-
 
 @endsection

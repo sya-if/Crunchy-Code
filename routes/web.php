@@ -4,14 +4,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ModuleController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ForumPostController;
+use App\Http\Controllers\Admin\MaterialController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\ForumController;
+use App\Http\Controllers\ForumPostController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\StudentController;
-use App\Http\Controllers\Admin\MaterialController;
+use App\Http\Controllers\Admin\SubmaterialController;
 
 
 /*
@@ -54,20 +55,8 @@ Route::resource('users', StudentController::class);
 // Route for student function - Material Controller
 Route::resource('materials', MaterialController::class);
 
-// Route for show the subchapter information
-Route::get('/materials/{material}', [MaterialController::class, 'show'])->name('materials.show');
-
-// Exclude the default destroy route
-Route::resource('materials', MaterialController::class)->except(['destroy']); 
-
-// Add a custom route for destroying a submaterial
-Route::delete('materials/{submaterial}/destroy-submaterial', [MaterialController::class, 'destroySubmaterial'])->name('materials.destroySubmaterial');
-
-// Add a custom route to go to editShow page
-Route::get('/materials/{material}/editShow', [MaterialController::class, 'editShow'])->name('materials.editShow');
-
-// Add a custom route to handle update on editShow page
-Route::put('/materials/updateShow', [MaterialController::class, 'updateShow'])->name('materials.updateShow');
+//Route for student function - Submaterial Controller
+Route::resource('submaterials', SubmaterialController::class);
 
 // Route for quiz function - Resource Controller
 Route::resource('quizzes', QuizController::class);
@@ -76,10 +65,10 @@ Route::resource('quizzes', QuizController::class);
 Route::delete('quizzes/{subquiz}/destroy-subquiz', [QuizController::class, 'destroySubquiz'])->name('quizzes.destroySubquiz');
 
 // Add a custom route to go to editShow page
-Route::get('/quizzes/{quiz}/editShow', [QuizController::class, 'editShow'])->name('quizzes.editShow');
+Route::get('/quizzes/{quiz}/editShow/{subquizId}', [QuizController::class, 'editShow'])->name('quizzes.editShow');
 
 // Add a custom route to handle update on editShow page
-Route::put('/quizzes/{quiz}/updateShow', [QuizController::class, 'updateShow'])->name('quizzes.updateShow');
+Route::put('/quizzes/{quiz}/updateShow/{subquizId}', [QuizController::class, 'updateShow'])->name('quizzes.updateShow');
 
 // Route for Module function - Resource Controller
 Route::resource('modules', ModuleController::class);
@@ -93,6 +82,12 @@ Route::resource('post', ForumPostController::class);
 // Replace create forum route
 Route::get('/post/create/{forum_id}/{page_number}', [ForumPostController::class, 'create'])->name('post.create');
 
+// Route for forum comment function - Resource Controller
+Route::resource('comment', CommentController::class);
+
+// Replace create discussion route
+Route::get('/comment/create/{post_id}/{page_number}', [CommentController::class, 'create'])->name('comment.create');
+
 // Route for module main page
 Route::get('/module', [App\Http\Controllers\HomeController::class, 'ViewModule'])->name('module');
 
@@ -103,7 +98,7 @@ Route::get('/module/{module}', [App\Http\Controllers\HomeController::class, 'sho
 Route::get('/quiz', [App\Http\Controllers\HomeController::class, 'ViewQuiz'])->name('quiz');
 
 // Route for chosen quiz page
-Route::get('/quiz/{quiz}', [App\Http\Controllers\HomeController::class, 'showQuizPage'])->name('quiz.page');
+Route::get('/quiz/{quizId}', [App\Http\Controllers\HomeController::class, 'showQuizPage'])->name('quiz.page');
 
 // Route for forum main page
 Route::get('/discussion', [App\Http\Controllers\HomeController::class, 'viewForumPage'])->name('discussion');

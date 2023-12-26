@@ -47,8 +47,12 @@ class QuizController extends Controller
             'chapternumber' => 'required|string|max:255',
             'chaptertitle' => 'required|string|max:255',
             'description' => 'required|string',
-            'subchapternumber' => 'required|string|max:255',
-            'subchaptertitle' => 'required|string|max:255',
+            'question_text' => 'required|string|max:255',
+            'answer_1' => 'required|string|max:255',
+            'answer_2' => 'required|string|max:255',
+            'answer_3' => 'required|string|max:255',
+            'answer_4' => 'required|string|max:255',
+            'answer' => 'required|string|max:255',
         ]);
 
         // Find or create the quiz based on chapternumber
@@ -62,8 +66,12 @@ class QuizController extends Controller
         $subquiz = new Subquiz();
     
         // Set the values for the subquiz
-        $subquiz->subchapternumber = $request['subchapternumber'];
-        $subquiz->subchaptertitle = $request['subchaptertitle'];
+        $subquiz->question_text = $request['question_text'];
+        $subquiz->answer_1 = $request['answer_1'];
+        $subquiz->answer_2 = $request['answer_2'];
+        $subquiz->answer_3 = $request['answer_3'];
+        $subquiz->answer_4 = $request['answer_4'];
+        $subquiz->answer = $request['answer'];
     
         // Associate the subquiz with the quiz
         $subquiz->quizzes()->associate($quiz);
@@ -101,10 +109,17 @@ class QuizController extends Controller
         return view('admin\quiz\edit', compact('quiz'));
     }
 
-    public function editShow(Quiz $quiz)
+    public function editShow(Quiz $quiz, $subquizId)
     {
-        return view('admin\quiz\editShow', compact('quiz'));
+        // Retrieve the specific subquiz based on the ID
+        $subquiz = Subquiz::find($subquizId);
+    
+        // You can still pass $quiz and $subquiz to your view as needed
+    
+        return view('admin.quiz.editShow', compact('quiz', 'subquiz'));
     }
+    
+    
 
     /**
      * Update the specified resource in storage.
@@ -133,29 +148,42 @@ class QuizController extends Controller
         return redirect()->route('quizzes.index')->with('success', 'Quiz has been updated!');
     }
 
-    public function updateShow(Request $request, Quiz $quiz)
+    public function updateShow(Request $request, Quiz $quiz, $subquizId)
     {
         // Validate the request data for editing show.blade
         $request->validate([
-            'subchapternumber' => 'required|string|max:255',
-            'subchaptertitle' => 'required|string|max:255',
+            'question_text' => 'required|string|max:255',
+            'answer_1' => 'required|string|max:255',
+            'answer_2' => 'required|string|max:255',
+            'answer_3' => 'required|string|max:255',
+            'answer_4' => 'required|string|max:255',
+            'answer' => 'required|string|max:255',
         ]);
 
-        // Check if subchapter fields are present in the request
-        if ($request->has('subchapternumber') && $request->has('subchaptertitle')) {
-            // Delete existing subquiz first
-            $quiz->subquizzes()->delete();
+        // Find the Subquiz by ID
+        $subquiz = Subquiz::find($subquizId);
 
-            // Create new subquiz
-            $quiz->subquizzes()->create([
-                'subchapternumber' => $request['subchapternumber'],
-                'subchaptertitle' => $request['subchaptertitle'],
+        // Check if the Subquiz exists
+        if ($subquiz) {
+            // Update the Subquiz
+            $subquiz->update([
+                'question_text' => $request->input('question_text'),
+                'answer_1' => $request->input('answer_1'),
+                'answer_2' => $request->input('answer_2'),
+                'answer_3' => $request->input('answer_3'),
+                'answer_4' => $request->input('answer_4'),
+                'answer' => $request->input('answer'),
             ]);
-        }
 
-        // Redirect or return response
-        return redirect()->route('quizzes.show', $quiz)->with('success', 'subquiz has been updated!');
-    } 
+            // Redirect or return response
+            return redirect()->route('quizzes.show', $quiz)->with('success', 'Subquiz has been updated!');
+        } else {
+            // Handle the case where Subquiz is not found
+            return redirect()->route('quizzes.show', $quiz)->with('error', 'Subquiz not found!');
+        }
+    }
+   
+    
 
 
     /**

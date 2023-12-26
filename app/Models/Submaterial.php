@@ -14,7 +14,7 @@ class Submaterial extends Model
         'subchaptertitle',
     ];
 
-    public function materials(){
+    public function material(){
         return $this->belongsTo(Material::class, 'modulenumber', 'modulenumber');
     }
 }

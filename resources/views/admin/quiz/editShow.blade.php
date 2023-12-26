@@ -38,7 +38,7 @@
                     <h4 class="text-blue h4">Edit Subquiz</h4>
                 </div>
                 <div class="wizard-content">
-                    <form method="POST" action="{{ route('quizzes.updateShow', ['quiz' => $quiz->chapternumber]) }}">
+                    <form method="POST" action="{{ route('quizzes.updateShow', ['quiz' => $quiz->chapternumber, 'subquizId' => $subquiz->id]) }}">
                         @csrf
                         @method('PUT')
                         <section>
@@ -46,14 +46,38 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Subchapter Number :</label>
-                                        <input type="text" class="form-control" name="subchapternumber" value="{{ optional($quiz->subquizzes->first())->subchapternumber }}" required>
+                                        <label>Question Text :</label>
+                                        <input type="text" class="form-control" name="question_text" value="{{ $subquiz->question_text }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Subchapter Title :</label>
-                                        <input type="text" class="form-control" name="subchaptertitle" value="{{ optional($quiz->subquizzes->first())->subchaptertitle }}" required>
+                                        <label>Answer 1 :</label>
+                                        <input type="text" class="form-control" name="answer_1" value="{{ $subquiz->answer_1 }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Answer 2 :</label>
+                                        <input type="text" class="form-control" name="answer_2" value="{{ $subquiz->answer_2 }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Answer 3 :</label>
+                                        <input type="text" class="form-control" name="answer_3" value="{{ $subquiz->answer_3 }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Answer 4 :</label>
+                                        <input type="text" class="form-control" name="answer_4" value="{{ $subquiz->answer_4 }}" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Answer :</label>
+                                        <input type="text" class="form-control" name="answer" value="{{ $subquiz->answer }}" required>
                                     </div>
                                 </div>
                             </div>

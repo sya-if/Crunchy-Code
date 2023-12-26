@@ -19,9 +19,8 @@ class MaterialController extends Controller
         
         // Retrieve all materials
         $materials = Material::all();
-        $submaterials = Submaterial::all();
         
-        return view('admin\material\material_index', compact('materials', 'submaterials'));
+        return view('admin\material\material_index', compact('materials'));
         
     }
 
@@ -75,18 +74,14 @@ class MaterialController extends Controller
         $submaterial->subchaptertitle = $request['subchaptertitle'];
     
         // Associate the submaterial with the material
-        $submaterial->materials()->associate($material);
+        $submaterial->material()->associate($material);
     
         // Save the submaterial
         $submaterial->save();
     
         // Redirect to a success page or back to the form
-        session()->flash('message', 'Material and Submaterial has been created!');
-        return redirect()->route('materials.index');
+        return redirect()->route('materials.index')->with('success','Material and Submaterial has been created!');
     }
-     
-     
-     
      
      
 
@@ -98,14 +93,14 @@ class MaterialController extends Controller
      */
 
 
-    public function show(Material $modulenumber)
-    {
-        $submaterials = Submaterial::where('modulenumber', $modulenumber)->get(); // Get students
     
-        return view('admin\material\show', compact('submaterials'));
-    }
-     
-     
+    public function show(Material $material)
+    {
+        // Get the associated Submaterials
+        $submaterials = $material->submaterial;
+    
+        return view('admin\submaterial\index', compact('material', 'submaterials'));
+    } 
 
 
 
@@ -118,17 +113,6 @@ class MaterialController extends Controller
     public function edit(Material $material)
     {
         return view('admin\material\edit', compact('material'));
-    }
-
-
-    public function editShow($id)
-    {
-        dd($id);
-
-        // Ambil product ID yang dihantar oleh edit button dekat profile_index page
-        $submaterial = Submaterial::find($id);
-        
-        return view('admin\material\editShow', compact('submaterial'));
     }
 
 
@@ -164,40 +148,6 @@ class MaterialController extends Controller
     }
      
      
-    public function updateShow(Request $request, Submaterial $submaterial)
-    {
-        // Validate the request data for editing show.blade
-        $request->validate([
-            'subchapternumber' => 'required|string|max:255',
-            'subchaptertitle' => 'required|string|max:255',
-        ]);
-
-
-        // Update submaterial fields
-        $submaterial->subchapternumber = $request['forum-title'];
-        $submaterial->subchaptertitle = $request['forum_category'];
-
-        $submaterial->save();
-
-
-        // // Check if subchapter fields are present in the request
-        // if ($request->has('subchapternumber') && $request->has('subchaptertitle')) {
-        //     // Delete existing submaterials first
-        //     $material->submaterials()->delete();
-
-        //     // Create new submaterial
-        //     $material->submaterials()->create([
-        //         'subchapternumber' => $request['subchapternumber'],
-        //         'subchaptertitle' => $request['subchaptertitle'],
-        //     ]);
-        // }
-
-        // Redirect or return response
-        return redirect()->route('materials.show', $submaterial)->with('success', 'Submaterial has been updated!');
-    } 
-
-
-     
      
     
     /**
@@ -212,18 +162,7 @@ class MaterialController extends Controller
         $material->delete();
 
         // Redirect to a success page or back to the index
-        session()->flash('message', 'Material and associated submaterials have been deleted!');
-        return redirect()->route('materials.index');
-    }
-
-    public function destroySubmaterial(Submaterial $submaterial)
-    {
-        // Delete the submaterial only
-        $submaterial->delete();
-
-        // Redirect to a success page or back to the show page
-        session()->flash('message', 'Submaterial has been deleted!');
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Material and associated submaterials have been deleted!');
     }
 
 

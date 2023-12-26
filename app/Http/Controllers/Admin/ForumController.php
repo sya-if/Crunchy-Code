@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Forum;
 use App\Models\User;
-use Auth;
+use App\Models\Forum;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class ForumController extends Controller
 {
@@ -122,7 +122,7 @@ class ForumController extends Controller
         $forum->save();
 
         // Redirect to a success page or back to the form
-        Session()->flash('message', 'Forum has been updated seuccessfully.');
+        Session()->flash('message', 'Forum has been updated successfully.');
         return redirect()->route('forum.index');
     }
 
