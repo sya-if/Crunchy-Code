@@ -70,198 +70,171 @@
   top: 0;
   border-radius: 10px;
 }
+
+
+.btn-block-width 
+{
+    width:83% !important;
+}
+
 </style>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    var totalModules = 3; // Set the total number of modules
+var moduleSubmodules = {
+    'module1': 7,
+    'module2': 4,
+    'module3': 2
+};
+var currentProgress = {}; // Initialize the current progress object
 
-    <div class="main-container">
-        <div class="pd-ltr-20 height-100-p xs-pd-20-10">
-            <div class="min-height-200px">
-                <div class="page-header">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                            <div class="title">
-                                <h4>Kuiz Pembelajaran Sains Komputer Tingkatan 4</h4>
-                            </div>
-                            <nav aria-label="breadcrumb" role="navigation">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Kuiz</li>
-                                </ol>
-                            </nav>
+// Initialize currentProgress object with default values
+for (var i = 1; i <= totalModules; i++) {
+    currentProgress['module' + i] = 0;
+}
+
+$(document).ready(function () {
+    $('.mark-as-done-button').click(function () {
+        var module = $(this).data('module');
+        var submodule = $(this).data('submodule');
+        var progressKey = 'module_' + module + '_submodule_' + submodule + '_progress';
+
+        // Toggle the class to change the button color
+        $(this).toggleClass('btn-outline-success btn-danger');
+
+        // Change the button text based on the state
+        var buttonText = $(this).hasClass('btn-outline-success') ? 'Mark as done' : 'Done';
+        $(this).text(buttonText);
+
+        // Update the progress
+        var submoduleProgress = buttonText === 'Done' ? 1 : -1;
+        currentProgress[module] += submoduleProgress;
+        localStorage.setItem(progressKey, submoduleProgress);
+
+        // Update the UI with the new progress
+        updateProgressUI();
+    });
+
+    $('#myModal-1, #myModal-2, #myModal-3').on('hidden.bs.modal', function () {
+        // Reverse the progress when the modal is closed
+        for (var i = 1; i <= totalModules; i++) {
+            currentProgress['module' + i] = 0;
+            for (var j = 1; j <= moduleSubmodules['module' + i]; j++) {
+                currentProgress['module' + i] += parseInt(localStorage.getItem('module_' + i + '_submodule_' + j + '_progress')) || 0;
+            }
+        }
+        updateProgressUI();
+    });
+
+    // Function to update the UI with the new progress
+    function updateProgressUI() {
+        var averageProgress = 0;
+
+        // Calculate average progress for all modules
+        for (var i = 1; i <= totalModules; i++) {
+            var moduleProgress = moduleSubmodules['module' + i] > 0 ? Math.round((currentProgress['module' + i] / moduleSubmodules['module' + i]) * 100) : 0;
+            averageProgress += moduleProgress;
+            // Display the total progress for each module in the corresponding span element
+            $('#progressLabel' + i).text('Progress: ' + moduleProgress + '%');
+            // Update the progress bar for each module
+            $('#progressBar' + i).css('width', moduleProgress + '%');
+            $('#progressBar' + i).attr('aria-valuenow', moduleProgress);
+        }
+
+        // Calculate average progress for all modules
+        averageProgress = totalModules > 0 ? Math.round((averageProgress / totalModules)) : 0;
+        // Display the total progress for all modules in the corresponding span element
+        $('#progressLabel').text('Total Progress: ' + averageProgress + '%');
+        // Update the total progress bar
+        $('#totalProgressBar').css('width', averageProgress + '%');
+        $('#totalProgressBar').attr('aria-valuenow', averageProgress);
+    }
+});
+
+</script>
+
+<div class="main-container">
+    <div class="pd-ltr-20 height-100-p xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="title">
+                            <h4>Modul Pembelajaran Sains Komputer Tingkatan 4</h4>
                         </div>
-                    </div>
-                </div>
-                <div class="blog-wrap">
-                    <div class="container pd-0">
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="blog-list">
-                                    <ul>
-                                        <!-- KUIZ 1 Pengaturcaraan -->
-                                        <li>
-                                            <div class="row no-gutters">
-                                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <div class="blog-img">
-                                                        <img src="vendors/images/Quiz/kuiz1.png" alt="" class="bg_img">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-8 col-md-12 col-sm-12">
-                                                    <div class="blog-caption">
-                                                        <h4><a href="#"> LATIHAN SUMATIF BAB 1 PENGATURCARAAN </a></h4>
-                                                        <div class="blog-by">
-                                                            <p align="justify">
-                                                            Dalam era teknologi yang pesat ini, pengaturcaraan menjadi keahlian yang semakin penting dalam pemahaman dunia digital.
-                                                            Bab I latihan sumatif ini membawa kita ke dalam dunia pengaturcaraan, di mana kita akan menjelajahi konsep-konsep dasar dan perkenalan kepada logik pemrograman. 
-                                                            Melalui latihan ini, diharapkan peserta dapat membangun landasan kuat dalam pemahaman sintaksis, struktur algoritma, dan pemecahan masalah menggunakan bahasa pengaturcaraan yang dipelajari. 
-                                                            Mari kita memulai perjalanan ini dengan semangat untuk menggali lebih dalam dalam ilmu pengaturcaraan, membuka pintu menuju potensi besar dalam menciptakan solusi teknologi yang inovatif
-                                                            </p>
-                                                            <div class="pt-10">
-                                                                <!-- Modal Button -->
-                                                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-1">Jawab Kuiz</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Modal that will display when clicked -->
-                                            <div class="modal fade" id="myModal-1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">F
-                                                <div class="modal-dialog modal-lg modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="myModalLabel">Sub Kuiz Bab 1 Pengaturcaraan</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        </div>
-                                                        <div class="modal-body justify-content">
-                                                            <!-- Replace the content below with your specific modal content -->
-                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('quiz.page', ['quiz' => '1-1']) }}">Latihan Sumatif 1.1 Strategi Penyelesaian Masalah</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('quiz.page', ['quiz' => '1-2']) }}">Latihan Sumatif 1.2 Algoritma</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('quiz.page', ['quiz' => '1-3']) }}">Latihan Sumatif 1.3 Pemboleh Ubah, Pemalar dan Jenis Data</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="{{ route('quiz.page', ['quiz' => '1-4']) }}">Latihan Sumatif 1.4 Struktur Kawalan</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="#">Latihan Sumatif 1.5 Amalan Terbaik Pengaturcaraan</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="#">Latihan Sumatif 1.6 Struktur Data dan Modular</a>
-                                                            <a class="button-85 btn-block mb-4" role="button" href="#">Latihan Sumatif 1.6 Pembangunan Aplikasi</a>
-                                                        </div>                                                        
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                        </li>
-
-                                        <!-- KUIZ 2 Pangkalan Data -->
-                                        <li>
-                                            <div class="row no-gutters">
-                                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <div class="blog-img">
-                                                        <img src="vendors/images/Quiz/kuiz2.png" alt="" class="bg_img">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-8 col-md-12 col-sm-12">
-                                                    <div class="blog-caption">
-                                                        <h4><a href="#"> LATIHAN SUMATIF 2 PANGKALAN DATA  </a></h4>
-                                                        <div class="blog-by">
-                                                            <p align="justify">
-                                                                Salah satu faktor kejayaan syarikat gergasi IT seperti Google, Amazon dan Facebook ialah kemampuan platform teknologi untuk menampung jumlah data yang sangat besar dan sentiasa bertambah. 
-                                                                Cabaran utama bagi syarikat ini adalah untuk menampung kesemua data tersebut dan mengekalkan prestasi pencarian serta pengurusan data. 
-                                                                Jika data diumpamakan sebagai satu perkataan, proses menyimpan dan mencari sesuatu perkataan dalam sebuah buku nota kecil tidaklah sukar. 
-                                                                Sekarang, cuba anda bayangkan apabila buku tersebut disimpan di dalam perpustakaan sekolah anda. 
-                                                                Bolehkah anda mencari perkataan tersebut dalam masa yang singkat? 
-                                                            </p>
-                                                            <div class="pt-10">
-                                                                <!-- Modal Button -->
-                                                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-2">Jawab Kuiz</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Modal that will display when clicked -->
-                                            <div class="modal fade" id="myModal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="myModalLabel">Sub Kuiz Bab 2 Pangkalan Data</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        </div>
-                                                        <div class="modal-body justify-content">
-                                                            <!-- Replace the content below with your specific modal content -->
-                                                            <button class="button-85 btn-block mb-4" role="button" href="#">Latihan Sumatif 2.1 Pangkalan Data Hubungan</button>
-                                                            <button class="button-85 btn-block mb-4" role="button" href="#">Latihan Sumatif 2.2 Reka Bentuk Pangkalan Data Hubungan</button>
-                                                            <button class="button-85 btn-block mb-4" role="button" href="#">Latihan Sumatif 2.3 Pembangunan Pangkalan Data Hubungan</button>
-                                                            <button class="button-85 btn-block mb-4" role="button" href="#">Latihan Sumatif 2.4 Pembangunan Sistem Pangkalan Data</button>
-                              
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                           
-                                        </li>
-
-                                        <!--KUIZ 3 Interaksi Manusia dengan Komputer -->
-                                        <li>
-                                            <div class="row no-gutters">
-                                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <div class="blog-img">
-                                                        <img src="vendors/images/Quiz/kuiz3.png" alt="" class="bg_img">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-8 col-md-12 col-sm-12">
-                                                    <div class="blog-caption">
-                                                        <h4><a href="#"> LATIHAN SUMATIF 3 INTERAKSI MANUSIA DENGAN KOMPUTER  </a></h4>
-                                                        <div class="blog-by">
-                                                            <p align="justify">
-                                                                lnteraksi ialah tindakan atau perhubungan aktif antara satu dengan yang lain. 
-                                                                Pada era globalisasi ini, manusia dan komputer saling memerlukan di samping menjadi medium utama dalam pembangunan 
-                                                                dan perkembangan pelbagai bidang. lnteraksi manusia-komputer adalah bidang kajian yang memfokuskan tentang bagaimana 
-                                                                manusia berinteraksi dengan sistem komputer, termasuk reka bentuk antara muka pengguna dan proses penyampaian maklumat.
-                                                            </p>
-                                                            <div class="pt-10">
-                                                                <!-- Modal Button -->
-                                                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-3">Jawab Kuiz</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                             <!-- Modal that will display when clicked -->
-                                             <div class="modal fade" id="myModal-3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="myModalLabel">Sub Kuiz 3 Interaksi Manusia dengan Komputer</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        </div>
-                                                        <div class="modal-body justify-content">
-                                                            <!-- Replace the content below with your specific modal content -->
-                                                            <button class="button-85 btn-block mb-4" role="button" href="#">Kuiz 3.1 Reka Bentuk Interaksi</button>
-                                                            <button class="button-85 btn-block mb-4" role="button" href="#">Kuiz 3.2 Paparan dan Reka Bentuk Skrin</button>
-           
-                              
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            
-                                        </li>
-                                        
-                                    </ul>
-                                </div>
-                                
-                            </div>
-                            
-                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Module</li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
             </div>
-           
+            <div class="blog-wrap">
+                <div class="container pd-0">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="blog-list">
+                                <ul>
+                                    @foreach ($quizzes as $quiz)
+                                        <li>
+                                            <!-- Your existing content for each module -->
+                                            <div class="row no-gutters">
+                                                <div class="col-lg-4 col-md-12 col-sm-12">
+                                                    <div class="blog-img">
+                                                        <img src="vendors/images/bab-1.png" alt="" class="bg_img">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-12 col-sm-12">
+                                                    <div class="blog-caption">
+                                                        <h4><a href="#">BAB {{$quiz->chapternumber}} {{$quiz->chaptertitle}} </a></h4>
+                                                        <div class="blog-by">
+                                                            <p align="justify">
+                                                                {{$quiz->description}}
+                                                            </p>
+                                                            <div class="pt-10">
+                                                                <!-- Modal Button -->
+                                                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-{{$quiz->chapternumber}}">Tekan sini</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Modal that will display when clicked -->
+                                            <div class="modal fade" id="myModal-{{$quiz->chapternumber}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myModalLabel">Sub Bab {{$quiz->chapternumber}}</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                        </div>
+                                                        <div class="modal-body justify-content">
+                                                            @foreach ($quiz->subquizzes as $subquiz)
+                                                                 @if ($subquiz->chapternumber == $quiz->chapternumber)    
+                                                                <!-- Replace the content below with your specific modal content -->
+                                                                    <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => $subquiz->subchapternumber]) }}">Module {{$subquiz->subchapternumber}} {{$subquiz->subchaptertitle}}</a>
+                                                                @else
+                                                                    <p>No subquizzes available for this module.</p>
+                                                                @endif   
+                                                            @endforeach
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    @endforeach
+
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>    
+                </div>
+            </div>
         </div>
     </div>
-
+</div>
 @endsection

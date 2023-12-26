@@ -69,9 +69,9 @@
                         <tr>
                             <td>{{$submaterial->subchapternumber}}</td>
                             <td>{{$submaterial->subchaptertitle}}</td>
-                            <td><a href="{{ route('materials.editShow', ['material' => $submaterial->modulenumber]) }}" class="btn btn-success">Edit</a></td>
+                            <td><a href="{{ route('submaterials.edit', $submaterial->id) }}" class="btn btn-success">Edit</a></td>
                             <td>
-                                <form method="POST" action="{{route('materials.destroySubmaterial', $submaterial)}}">
+                                <form method="POST" action="{{route('submaterials.destroy', $submaterial->id)}}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" onclick="return confirm('Are you sure that you want to delete this?')" class="btn btn-danger">Delete</button>

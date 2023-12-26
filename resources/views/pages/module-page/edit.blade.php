@@ -33,14 +33,14 @@
 
             <div class="pd-20 card-box mb-30">
                 <div class="clearfix">
-                    <h4 class="text-blue h4">Edit Color</h4>
+                    <h4 class="text-blue h4">Edit Color for {{$module->title}}</h4>
                 </div>
                 <div class="wizard-content">
                     <form method="POST" action="{{route('modules.update', $module)}}">
                         @csrf
                         @method('PUT')
                         <label>Select Color:</label>
-                        <input type="color" id="color" name="color">
+                        <input type="color" id="color" name="color" value="{{$module->color}}">
                         <div class="clearfix" style="display:flex; justify-content:center;">
                             <button type="submit" class="btn btn-success" >Update</button>
                         </div>
