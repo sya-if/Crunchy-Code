@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,24 +13,23 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('forum_posts', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-
-            // Foreign Key. Relationship between table Forum Post and table Forum. Name depan kena sama dengan model
-            $table->bigInteger('forum_id')->unsigned();
-            $table->foreign('forum_id')->references('id')->on('forums')->onDelete('cascade');
-
             $table->string('title')->nullable();
 
             // Photo variable
             $table->string('photo')->nullable();
 
-            // Foreign Key. Relationship between table Forum Post and table Forum. Name depan kena sama dengan model
+            // Foreign Key. Relationship between table Forum Comment and table Post. Name depan kena sama dengan model
+            $table->bigInteger('post_id')->unsigned();
+            $table->foreign('post_id')->references('id')->on('users')->onDelete('cascade');
+
+            // Foreign Key. Relationship between table Forum Comment and table Forum. Name depan kena sama dengan model
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            ;
+            
 
-            $table->text('desciption');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -41,12 +41,11 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::table('forum_posts', function (Blueprint $table) {
-            $table->dropForeign(['forum_id']);
+        Schema::table('comments', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['post_id']);
         });
 
-        Schema::dropIfExists('forum_posts');
-
+        Schema::dropIfExists('comments');
     }
 };

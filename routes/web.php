@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\Admin\MaterialController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\StudentController;
@@ -90,6 +91,12 @@ Route::resource('post', ForumPostController::class);
 
 // Replace create forum route
 Route::get('/post/create/{forum_id}/{page_number}', [ForumPostController::class, 'create'])->name('post.create');
+
+// Route for forum comment function - Resource Controller
+Route::resource('comment', CommentController::class);
+
+// Replace create discussion route
+Route::get('/comment/create/{post_id}/{page_number}', [CommentController::class, 'create'])->name('comment.create');
 
 // Route for module main page
 Route::get('/module', [App\Http\Controllers\HomeController::class, 'ViewModule'])->name('module');

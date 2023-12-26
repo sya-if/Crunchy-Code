@@ -17,7 +17,7 @@ class Forum extends Model
     }
 
     public function posts() {
-        return $this->hasMany(ForumPost::class);
+        return $this->hasMany(ForumPost::class, 'forum_id');
     }
 
     public function admin() {

@@ -9,6 +9,7 @@ use App\Models\Material;
 use App\Models\Submaterial;
 use App\Models\Forum;
 use App\Models\ForumPost;
+use App\Models\Comment;
 use Auth;
 
 class HomeController extends Controller
@@ -145,11 +146,10 @@ class HomeController extends Controller
         // FInd specific forum based on forum title
         $forum = Forum::where('title', $forumTitle)->first();
 
-        $posts = ForumPost::with('user')
+        $posts = ForumPost::with('user', 'comments')
             ->whereHas('forum', function ($query) use ($forumTitle) {
                 $query->where('title', $forumTitle);
-            })
-            ->get();
+            })->get();
 
         $user = Auth::user();
 

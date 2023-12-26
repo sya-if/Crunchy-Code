@@ -153,6 +153,108 @@ body
 
 }
 
+.img-sm {
+    width: 46px;
+    height: 46px;
+}
+
+.panel {
+    box-shadow: 0 2px 0 rgba(0,0,0,0.075);
+    border-radius: 0;
+    border: 0;
+    margin-bottom: 15px;
+}
+
+.panel .panel-footer, .panel>:last-child {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.panel .panel-heading, .panel>:first-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.panel-body {
+    padding: 25px 20px;
+}
+
+
+.media-block .media-left {
+    display: block;
+    float: left
+}
+
+.media-block .media-right {
+    float: right
+}
+
+.media-block .media-body {
+    display: block;
+    overflow: hidden;
+    width: auto
+}
+
+.middle .media-left,
+.middle .media-right,
+.middle .media-body {
+    vertical-align: middle
+}
+
+.thumbnail {
+    border-radius: 0;
+    border-color: #e9e9e9
+}
+
+.tag.tag-sm, .btn-group-sm>.tag {
+    padding: 5px 10px;
+}
+
+.tag:not(.label) {
+    background-color: #fff;
+    padding: 6px 12px;
+    border-radius: 2px;
+    border: 1px solid #cdd6e1;
+    font-size: 12px;
+    line-height: 1.42857;
+    vertical-align: middle;
+    -webkit-transition: all .15s;
+    transition: all .15s;
+}
+.text-muted, a.text-muted:hover, a.text-muted:focus {
+    color: #acacac;
+}
+.text-sm {
+    font-size: 0.9em;
+}
+.text-5x, .text-4x, .text-5x, .text-2x, .text-lg, .text-sm, .text-xs {
+    line-height: 1.25;
+}
+
+.btn-trans {
+    background-color: transparent;
+    border-color: transparent;
+    color: #929292;
+}
+
+.btn-icon {
+    padding-left: 9px;
+    padding-right: 9px;
+}
+
+.btn-sm, .btn-group-sm>.btn, .btn-icon.btn-sm {
+    padding: 5px 10px !important;
+}
+
+.mar-top {
+    margin-top: 15px;
+}
+
+hr.new1 {
+  border-top: 1px solid rgb(0, 128, 255);
+}
+
+
 </style>
 
 
@@ -198,7 +300,7 @@ body
                             <div class="inner-sidebar-header justify-content-end">
                                 <form method="GET" action="{{ route('post.create', ['forum_id' => $forum->id, 'page_number' => 2]) }}">
                                     @csrf
-                                    <button type="submit" class="btn btn-primary">Create Post</button>
+                                    <button type="submit" class="btn btn-primary">Create a Discussion</button>
                                 </form>
                             </div>
                             
@@ -209,13 +311,14 @@ body
                                 <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
                                     
                                     @forelse($posts as $post)
+                                    
                                         <div class="card mb-2">
                                             <div class="card-body p-2 p-sm-3">
                                                 <div class="media forum-item">
 
                                                     <!-- Profile Picture --->
                                                     <a href="#" data-toggle="collapse" data-target=".forum-content">
-                                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-circle" width="50" alt="User" />
+                                                        <img src="{{ asset ('uploads/users/'.$post->user->photo)}}" class="mr-3 rounded-circle" width="50" alt="User" />
                                                     </a>
 
                                                     <div class="media-body">
@@ -255,6 +358,7 @@ body
                                                                             <input type="hidden" name="_method" value="DELETE" />
                                                                             @csrf
                                                                             @method('DELETE')
+                                                                            <input type="hidden" name="page_number" value="2">
                                                                             <button type="submit" class="btn btn-danger">Delete</button>
                                                                         </form>
                                                                     </div>
@@ -275,18 +379,63 @@ body
                                                             <img src="{{ asset('uploads/posts/' . $post->photo) }}" style="width:auto;">
                                                         @endif
                                                         
+                                                        <form method="GET" action="{{ route('comment.create', ['post_id' => $post->id, 'page_number' => 2]) }}">
+                                                            @csrf
+                                                            <button type="submit" class="btn btn-success">Post Comment</button>
+                                                        </form>
+
                                                         <br><br>
 
-                                                        <!-- Comments Section -->
-                                                        <div class="comments-section">
-                                                            
-                                                            <!-- Add your own comment form here -->
-                                                            <!-- For simplicity, I'll add a static comment form -->
-                                                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#commentModal">Post Comment</button>
-                                                            
-                                                        </div>
+                                                         <!-- Comments -->
+                                                        <div class="comments-container">
 
+                                                            @foreach($post->comments as $comment)
+                                                            <div class="media-block">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <!-- Horizontal Line -->
+                                                                        <hr class="new1">
+                                                                    </div>
+                                                                    
+                                                                    <div class="col-md-1">
+                                                                        <!-- Profile Picture -->
+                                                                        <img src="{{ asset('uploads/users/'.$comment->user->photo) }}" class="mr-3 rounded-circle" width="50" alt="User" />
+                                                                    </div>
+                                                                    
+                                                                    <div class="col-md-6">
+                                                                        <!-- Comment Title -->
+                                                                        <h6><a href="#" data-toggle="collapse" data-target=".forum-content" class="text-body">{{ $comment->title }}</a></h6>
+                                                                        <!-- Comment Owner -->
+                                                                        <p class="color-font">by {{ $comment->user->fullname }} at {{ $comment->created_at }}</p>
+                                                                    </div>
+                                                                </div>
                                                         
+                                                                <div class="media-body">
+                                                                    <!-- Comment content -->
+                                                                    <div class="pad-ver">
+                                                                        <!-- Description -->
+                                                                        <p class="text-secondary" style="padding-right: 40px; text-align:justify;">
+                                                                            {{ $comment->description }}
+                                                                        </p>
+                                                                    </div>
+
+                                                                    <!-- Post Attachment -->
+                                                                    @if($comment->photo)
+                                                                        <a href="{{ asset('uploads/comments/' . $comment->photo) }}" target="_blank" class="btn btn-info attachment-button">
+                                                                            View Attachment
+                                                                        </a>
+                                                                    @endif
+                                                                
+                                                                    <hr>
+                                                                </div>
+                                                        
+                                                                
+                                                            </div>
+                                                            @endforeach
+
+                                                        </div>
+                                                        
+                                                        <button class="btn btn-warning comment-toggle" style="cursor: pointer;">Show/Hide Comments ({{ count($post->comments) }})</button>
                                                         <!-- /Comments Section -->
                                                     </div>
                                                    
@@ -316,5 +465,33 @@ body
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all comment containers and toggle buttons
+        const commentContainers = document.querySelectorAll('.comments-container');
+        const commentToggles = document.querySelectorAll('.comment-toggle');
+
+        // Hide all comment containers initially
+        commentContainers.forEach(container => {
+            container.style.display = 'none';
+        });
+
+        // Add click event listeners to toggle buttons
+        commentToggles.forEach((toggle, index) => {
+            toggle.addEventListener('click', function() {
+                const container = commentContainers[index];
+
+                // Toggle display of the comments container
+                if (container.style.display === 'none') {
+                    container.style.display = 'block';
+                } else {
+                    container.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+
     
 @endsection

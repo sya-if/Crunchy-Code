@@ -6,8 +6,6 @@
 
 
 <style>
-
-
 /* CSS */
 .button-74 {
   background-color: #fbeee0;
@@ -44,148 +42,107 @@
   }
 }
 
-/* Card Design */
-.ag-courses_box {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    padding: 40px ;
-    
-}
-.center
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 100%; /* Ensure it takes up the full height if needed */
-}
-.ag-courses_item {
-    -ms-flex-preferred-size: calc(50% - 30px);
-    flex-basis: calc(50% - 30px);
-    margin: 10px;
-    overflow: hidden;
-    
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+	box-sizing: border-box;
 }
 
-.ag-courses-item_link {
-    display: block;
-    padding: 30px 20px;
-    background-color: #ffffff;
-    overflow: hidden;
-    position: relative;
-    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px;
+.courses-container {
+	
 }
 
-.ag-courses-item_link:hover,
-.ag-courses-item_link:hover .ag-courses-item_date {
-  text-decoration: none;
-  color: #FFF;
-}
-.ag-courses-item_link:hover .ag-courses-item_bg {
-  -webkit-transform: scale(10);
-  -ms-transform: scale(10);
-  transform: scale(10);
-}
-.ag-courses-item_title {
-  min-height: 87px;
-
-  overflow: hidden;
-  font-weight: bold;
-  font-size: 21px;
-  color: #050505;
-
-  z-index: 2;
-  position: relative;
-}
-.ag-courses-item_date-box {
-  font-size: 18px;
-  color: #FFF;
-
-  z-index: 2;
-  position: relative;
-}
-.ag-courses-item_date {
-  font-weight: bold;
-  font-size: 14px !important;
-  color: #f9b234;
-
-  -webkit-transition: color .5s ease;
-  -o-transition: color .5s ease;
-  transition: color .5s ease
-}
-.ag-courses-item_bg {
-  height: 128px;
-  width: 128px;
-  background-color: #f9b234;
-
-  z-index: 1;
-  position: absolute;
-  top: -75px;
-  right: -75px;
-
-  border-radius: 50%;
-
-  -webkit-transition: all .5s ease;
-  -o-transition: all .5s ease;
-  transition: all .5s ease;
-}
-.ag-courses_item:nth-child(2n) .ag-courses-item_bg {
-  background-color: #3ecd5e;
-}
-.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
-  background-color: #e44002;
-}
-.ag-courses_item:nth-child(4n) .ag-courses-item_bg {
-  background-color: #952aff;
-}
-.ag-courses_item:nth-child(5n) .ag-courses-item_bg {
-  background-color: #cd3e94;
-}
-.ag-courses_item:nth-child(6n) .ag-courses-item_bg {
-  background-color: #4c49ea;
+.course {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	max-width: 100%;
+	margin: 20px;
+	overflow: hidden;
+	width: 95%;
 }
 
-
-
-@media only screen and (max-width: 979px) {
-  .ag-courses_item {
-    -ms-flex-preferred-size: calc(50% - 30px);
-    flex-basis: calc(50% - 30px);
-  }
-  .ag-courses-item_title {
-    font-size: 24px;
-  }
+.course h6 {
+  color: #fff !important;
+	opacity: 0.6;
+	margin: 0;
+	letter-spacing: 1px;
+	text-transform: uppercase;
 }
 
-@media only screen and (max-width: 767px) {
-  .ag-format-container {
-    width: 96%;
-  }
-
+.course h2 {
+  color: #fff !important;
+	letter-spacing: 1px;
+	margin: 10px 0;
 }
-@media only screen and (max-width: 639px) {
-  .ag-courses_item {
-    -ms-flex-preferred-size: 100%;
-    flex-basis: 100%;
-  }
-  .ag-courses-item_title {
-    min-height: 72px;
-    line-height: 1;
 
-    font-size: 24px;
-  }
-  .ag-courses-item_link {
-    padding: 22px 40px;
-  }
-  .ag-courses-item_date-box {
-    font-size: 14px;
-  }
+.course-preview {
+	background-color: #2A265F;
+	color: #fff;
+	padding: 20px;
+	max-width: 300px;
+}
+
+.course-preview a {
+	color: #fff;
+	display: inline-block;
+	font-size: 12px;
+	opacity: 0.6;
+	margin-top: 30px;
+	text-decoration: none;
+}
+
+.course-info {
+	padding: 30px;
+	position: relative;
+	width: 100%;
+}
+
+.progress-container {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	text-align: right;
+	width: 150px;
+}
+
+.progress {
+	background-color: #ddd;
+	border-radius: 3px;
+	height: 5px;
+	width: 100%;
+}
+
+.progress::after {
+	border-radius: 3px;
+	background-color: #2A265F;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 5px;
+	width: 66%;
+}
+
+.progress-text {
+	font-size: 10px;
+	opacity: 0.6;
+	letter-spacing: 1px;
+}
+
+.btn {
+	background-color: #2A265F;
+	border: 0;
+	border-radius: 50px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	color: #fff;
+	font-size: 16px;
+	padding: 12px 25px;
+	position: absolute;
+	bottom: 30px;
+	right: 30px;
+	letter-spacing: 1px;
 }
 
 
@@ -193,53 +150,50 @@
 
 
 <div class="main-container">
-    <div class="pd-ltr-20 height-100-p xs-pd-20-10">
-        <div class="min-height-200px">
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <div class="title">
-                            <h4>Forum Crunchy Code</h4>
-                        </div>
-                        <nav aria-label="breadcrumb" role="navigation">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Forum</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-          
-            <div class="blog-wrap">
-                <div class="container pd-0">
-                    <div class="row ag-courses_box">
-                        @foreach($forums as $forum)
-                            <div class="col-md-6 col-sm-12 ag-courses_item">
-                              <a href="{{ route('forum.page', ['pageNumber' => $loop->index + 1, 'forumTitle' => $forum->title]) }}" class="ag-courses-item_link">              
-                                    <div class="ag-courses-item_bg"></div>
-                                    <div class="ag-courses-item_title">
-                                        {{ $forum->title }}
-                                        <br>
-                                        <span class="ag-courses-item_date">
-                                            {{ $forum->description }}
-                                        </span>
-                                    </div>
+  <div class="pd-ltr-20 height-100-p xs-pd-20-10">
+      <div class="min-height-200px">
 
-                                    <div class="ag-courses-item_date-box">
-                                        <div class="center">
-                                            <button class="button-74" role="button">Masuk</button>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+          <div class="page-header">
+              <div class="row">
+                  <div class="col-md-12 col-sm-12">
+                      <div class="title">
+                          <h4>Forum Crunchy Code</h4>
+                      </div>
+                      <nav aria-label="breadcrumb" role="navigation">
+                          <ol class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                              <li class="breadcrumb-item active" aria-current="page">Forum</li>
+                          </ol>
+                      </nav>
+                  </div>
+              </div>
+          </div>
 
-        </div>
-    </div>
+          @foreach($forums as $forum)
+              <div class="courses-container">
+                  <div class="course">
+                      <div class="course-preview">
+                          <h6>Forum</h6>
+                          <h2>{{ $forum->title }}</h2>
+                          <a href="{{ route('forum.page', ['pageNumber' => $loop->index + 1, 'forumTitle' => $forum->title]) }}">Dapatkan informasi di sini <i class="fas fa-chevron-right"></i></a>
+                      </div>
+
+                      <div class="course-info">
+                          <h5>Penerangan</h5>
+                          <p>{{ $forum->description }}</p>
+                          <a href="{{ route('forum.page', ['pageNumber' => $loop->index + 1, 'forumTitle' => $forum->title]) }}" class="btn button-74">Sertai</a>
+                      </div>
+                  </div>
+              </div>
+          @endforeach
+
+      </div>
+  </div>
+
+  <div class="footer-wrap pd-20 mb-20 card-box">
+    Crunchy Code Web Application System developed by Elysium
+  </div>
+
 </div>
 
 @endsection
