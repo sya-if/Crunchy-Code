@@ -163,18 +163,10 @@ class CommentController extends Controller
         $postComment = ForumPost::find($request['post_id']);
 
         // Fetch forum model
-        $forum = Forum::find($postComment->forum_id);
-
+        $forum = Forum::find($request['forum_id']);
 
         // Assuming you have a variable $page that represents the page to redirect to
         $page = $request->input('page_number');
-
-        if ($comment->save()) {
-            // Data saved successfully
-        } else {
-            // Handle the case when saving fails
-            dd($comment->errors()); // Check for validation errors
-        }
 
         // Redirect to the index function with the desired page
         return redirect()->route('forum.page', ['pageNumber' => $page, 'forumTitle' => $forum->title]);

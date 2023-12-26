@@ -9,6 +9,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\ForumController;
+use App\Http\Controllers\ForumPostController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubmaterialController;

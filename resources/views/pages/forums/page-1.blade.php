@@ -386,10 +386,11 @@ hr.new1 {
 
                                                         <br><br>
 
-                                                         <!-- Comments -->
+                                                        <!-- Comments -->
+
                                                         <div class="comments-container">
 
-                                                            @foreach($post->comments as $comment)
+                                                            @forelse($post->comments as $comment)
                                                             <div class="media-block">
                                                                 <div class="row">
                                                                     <div class="col-md-12">
@@ -409,31 +410,9 @@ hr.new1 {
                                                                         <p class="color-font">by {{ $comment->user->fullname }} at {{ $comment->created_at }}</p>
                                                                     </div>
                                                             
-                                                                    <div class="col-md-3">
-                                                                       
-                                                                    </div>
-
-                                                                    <div class="col-md-2">
-                                                                         <!-- Edit -->
-                                                                         @if(auth()->user() && auth()->user()->id == $comment->user_id)
-
-                                                                         <div class="col-2 text-right">
-                                                                             <!-- Edit Comment Information -->
-                                                                             <form action="{{ route('comment.edit', $comment) }}" method="POST">
-                                                                                 @csrf
-                                                                                 @method('GET')
-                                                                                 <input type="hidden" name="page_number" value="1">
-                                                                                 <button type="submit" class="btn btn-sm btn-success">
-                                                                                     <i class="fas fa-edit"></i> 
-                                                                                 </button>
-                                                                             </form>
-                                                                         </div>
-                                                                     @endif
-                                                                    </div>
+                        
                                                                 </div>
-                                                            </div>
-                                                            
-                                                        
+
                                                                 <div class="media-body">
                                                                     <!-- Comment content -->
                                                                     <div class="pad-ver">
@@ -452,12 +431,15 @@ hr.new1 {
                                                                 
                                                                     <hr>
                                                                 </div>
-                                                        
-                                                                
-                                                            </div>
-                                                            @endforeach
 
+                                                            </div>
+                                                            
+                                                        
+                                                            @empty
+                                                                <p>No comments avalaible.</p>
+                                                            @endforelse
                                                         </div>
+                                                        
                                                         
                                                         <button class="btn btn-warning comment-toggle" style="cursor: pointer;">Show/Hide Comments ({{ count($post->comments) }})</button>
                                                         <!-- /Comments Section -->
@@ -465,6 +447,34 @@ hr.new1 {
                                                    
                                                 </div>
                                             </div>
+
+                                            <script>
+                                                document.addEventListener('DOMContentLoaded', function() {
+                                                    // Get all comment containers and toggle buttons
+                                                    const commentContainers = document.querySelectorAll('.comments-container');
+                                                    const commentToggles = document.querySelectorAll('.comment-toggle');
+                                            
+                                                    // Hide all comment containers initially
+                                                    commentContainers.forEach(container => {
+                                                        container.style.display = 'none';
+                                                    });
+                                            
+                                                    // Add click event listeners to toggle buttons
+                                                    commentToggles.forEach((toggle, index) => {
+                                                        toggle.addEventListener('click', function() {
+                                                            const container = commentContainers[index];
+                                            
+                                                            // Toggle display of the comments container
+                                                            if (container.style.display === 'none') {
+                                                                container.style.display = 'block';
+                                                            } else {
+                                                                container.style.display = 'none';
+                                                            }
+                                                        });
+                                                    });
+                                                });
+                                            </script>
+                                            
                                         
                                         </div>
                                     @empty
@@ -490,32 +500,6 @@ hr.new1 {
     </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get all comment containers and toggle buttons
-        const commentContainers = document.querySelectorAll('.comments-container');
-        const commentToggles = document.querySelectorAll('.comment-toggle');
-
-        // Hide all comment containers initially
-        commentContainers.forEach(container => {
-            container.style.display = 'none';
-        });
-
-        // Add click event listeners to toggle buttons
-        commentToggles.forEach((toggle, index) => {
-            toggle.addEventListener('click', function() {
-                const container = commentContainers[index];
-
-                // Toggle display of the comments container
-                if (container.style.display === 'none') {
-                    container.style.display = 'block';
-                } else {
-                    container.style.display = 'none';
-                }
-            });
-        });
-    });
-</script>
 
     
 @endsection
