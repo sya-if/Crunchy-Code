@@ -2,6 +2,12 @@
 
 @php($user = Auth::user())
 
+<style>
+    .required {
+        color: red;
+    }
+</style>
+
 @section('content')
 <div class="main-container">
     <!-- Display any message based on the session -->
@@ -148,39 +154,16 @@
                                     <span>School:</span>
                                     {{ old('school' , $user->school ) }}
                                 </li>
+                                <li>
+                                    <span>Date of Birth:</span>
+                                    {{ old('dob' , $user->dob ) }}
+                                </li>
                             </ul>
                         </div>
-
-                        <div class="profile-social">
-                            <h5 class="mb-20 h5 text-blue">Social Links</h5>
-                            <ul class="clearfix">
-                                <li><a href="#" class="btn" data-bgcolor="#3b5998" data-color="#ffffff"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#" class="btn" data-bgcolor="#1da1f2" data-color="#ffffff"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#" class="btn" data-bgcolor="#007bb5" data-color="#ffffff"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                        @endif
 
                         
-                        <div class="profile-skills">
-                            <h5 class="mb-20 h5 text-blue">Key Skills</h5>
-                            <h6 class="mb-5 font-14">HTML</h6>
-                            <div class="progress mb-20" style="height: 6px;">
-                                <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <h6 class="mb-5 font-14">Css</h6>
-                            <div class="progress mb-20" style="height: 6px;">
-                                <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <h6 class="mb-5 font-14">jQuery</h6>
-                            <div class="progress mb-20" style="height: 6px;">
-                                <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <h6 class="mb-5 font-14">Bootstrap</h6>
-                            <div class="progress mb-20" style="height: 6px;">
-                                <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
+                        @endif
+                        
                     </div>
                 </div>
 
@@ -207,7 +190,7 @@
 
                                             <!-- Full Name -->
                                             <tr>
-                                                <td>Full Name</td>
+                                                <td>Full Name <span class="required">*</span></td>
                                                 <td>
                                                     <input type="text" name="fullname" value=" {{ old('fullname' , $user->fullname ) }}" class="form-control">
                                                     @error('fullname')
@@ -218,7 +201,7 @@
 
                                             <!-- Nickname -->
                                             <tr>
-                                                <td>Nickname</td>
+                                                <td>Nickname <span class="required">*</span></td>
                                                 <td>
                                                     <input type="text" name="nickname" value=" {{ old('nickname' , $user->nickname ) }}" class="form-control">
                                                     @error('nickname')
@@ -229,7 +212,7 @@
 
                                             <!-- Email -->
                                             <tr>
-                                                <td>Email</td>
+                                                <td>Email <span class="required">*</span></td>
                                                 <td>
                                                     <input type="text" name="email" value="{{ old('email' , $user->email ) }}" class="form-control">
                                                     @error('email')
@@ -238,9 +221,11 @@
                                                 </td>
                                             </tr>
 
-                                            <!-- Phone -->
-                                            <tr>
-                                                <td>Phone</td>
+                                            <!-- Personal Details Admin -->
+                                            @if($user->role == 'admin')
+                                             <!-- Phone -->
+                                             <tr>
+                                                <td>Phone <span class="required">*</span></td>
                                                 <td>
                                                     <input type="text" name="phone" value="{{ old('phone' , $user->phone ) }}" class="form-control">
                                                     @error('phone')
@@ -248,13 +233,14 @@
                                                     @enderror
                                                 </td>
                                             </tr>
+                                            @endif
 
                                             <!-- Personal Details Student -->
                                             @if($user->role == 'student')
 
                                             <!-- School -->
                                             <tr>
-                                                <td>School</td>
+                                                <td>School <span class="required">*</span></td>
                                                 <td>
                                                     <input type="text" name="school" value="{{ old('school', $user->school )}}" class="form-control">
                                                     @error('school')
@@ -265,7 +251,7 @@
 
                                             <!-- Biodata -->
                                             <tr>
-                                                <td>Bio</td>
+                                                <td>Bio <span class="required">*</span></td>
                                                 <td>
                                                     <input type="text" name="bio" value="{{ old('bio' , $user->bio ) }}" class="form-control">
                                                     @error('bio')
@@ -276,7 +262,7 @@
                                             
                                             <!-- Date of Birth -->
                                             <tr>
-                                                <td>Date of Birth</td>
+                                                <td>Date of Birth <span class="required">*</span></td>
                                                 <td>
                                                     <input type="date" name="dob" value="{{ old('dob' , $user-> dob) }}" class="form-control">
                                                     @error('dob')

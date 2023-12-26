@@ -43,6 +43,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // Adding the creating event
+    protected static function boot()
+    {
+        parent::boot();
 
+        static::creating(function ($user) {
+            if (request('adminCheckbox')) {
+                $user->role = 'admin';
+            }
+        });
+    }
 
 }
