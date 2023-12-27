@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Modules;
+use Illuminate\Support\Facades\Auth;
 
 class ModuleController extends Controller
 {
@@ -27,7 +28,7 @@ class ModuleController extends Controller
      */
     public function create()
     {
-
+        $user = Auth::user();
         $moduleTitles = [
             "1.1 Strategi Penyelesaian Masalah",
             "1.2 Algoritma",
@@ -45,7 +46,7 @@ class ModuleController extends Controller
         ];
         $modules = new Modules;
 
-        return view('pages\module-page\create', compact('moduleTitles', 'modules'));
+        return view('pages\module-page\create', compact('moduleTitles', 'modules','user'));
     }
 
     /**
@@ -62,10 +63,15 @@ class ModuleController extends Controller
             'color' => 'required|string|max:255',
         ]);
 
-        // Check if the '<link>title</link>' already exists in the database
-        $existingModule = Modules::where('title', $request['title'])->first();
+        $user = Auth::user();
+
+        // Check if the '<link>title</link>' already exists for the specific user
+        $existingModule = Modules::where('title', $request['title'])
+                                    ->where('user_id', $user->id)
+                                    ->first();
+
         if ($existingModule) {
-            return redirect()->route('modules.index')->with('success', 'modules already exist!');
+            return redirect()->route('modules.index')->with('success', 'Module already exists for the user!');
         } else {
             $modules = new Modules();
 
@@ -77,14 +83,16 @@ class ModuleController extends Controller
             $modules->title = $request['title'];
             $modules->link = $modifiedLink;
             $modules->color = $request['color'];
+            $modules->user_id = $user->id;
 
             // Save the action
             $modules->save();
 
             // Redirect to a success page or back to the form
-            return redirect()->route('modules.index')->with('success', 'modules enrolled successfully');
+            return redirect()->route('modules.index')->with('success', 'Module enrolled successfully');
         }
     }
+
     /**
      * Display the specified resource.
      *

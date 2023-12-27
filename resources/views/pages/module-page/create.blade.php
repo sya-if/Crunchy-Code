@@ -85,15 +85,15 @@
                                 <div class="row justify-content-left">
                                     @foreach($moduleTitles as $title)
                                     <div class="col-md-4 col-sm-12 m-30">
-                                        @if(in_array($title, $modules->pluck('title')->toArray()))
+                                    @if(in_array($title, $modules->where('user_id', $user->id)->pluck('title')->toArray()))
                                         <button type="button" class="btn btn-block btn-change" style="height: 100px;" disabled>
-                                                {{ $title }} - Already Enrolled
+                                            {{ $title }} - Already Enrolled
                                         </button>
-                                        @else
+                                    @else
                                         <button type="submit" class="btn btn-block btn-change" style="height: 100px;" name="title" onclick="return confirm('Are you sure that you want to add {{ $title }}')" value="{{ $title }}">
                                             {{ $title }}
                                         </button>
-                                        @endif
+                                    @endif
                                     </div>
                                     @endforeach
                                 </div>

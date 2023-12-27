@@ -72,6 +72,7 @@
         <div class="container">
             <div class="row justify-content-left">
                 @foreach($modules as $module)
+                @if($module->user_id == Auth::id())
                 <div class="col-md-4 col-sm-12 mb-30 position-relative">
                     <div class="card-box pd-30 height-100-p" style="background-color: {{$module->color}}">
                         <div class="progress-box text-center">
@@ -84,6 +85,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 @endforeach
                 <div class="row justify-content-right">
                     <table class="m-0 p-0" style="width: 100%;">
