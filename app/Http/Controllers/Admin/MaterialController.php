@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Material;
 use App\Models\Submaterial;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class MaterialController extends Controller
 {
@@ -59,7 +60,7 @@ class MaterialController extends Controller
             'subchapternumber' => 'required|string|max:255',
             'subchaptertitle' => 'required|string|max:255',
         ]);
-    
+
         // Find or create the material based on modulenumber
         $material = Material::firstOrCreate(['modulenumber' => $request['modulenumber']], [
             'moduletitle' => $request['moduletitle'],
@@ -78,6 +79,15 @@ class MaterialController extends Controller
     
         // Save the submaterial
         $submaterial->save();
+
+        // Generate the content for the Blade file
+        $bladeContent = "@extends('layouts.app')\n\n@section('content')\n\n\n@endsection";
+
+        // Define the path where the Blade file will be stored
+        $bladeFilePath = resource_path('views\pages\materials' . '\module-' .$submaterial->subchapternumber . '.blade.php');
+
+        // Store the Blade file
+        file_put_contents($bladeFilePath, $bladeContent);
     
         // Redirect to a success page or back to the form
         return redirect()->route('materials.index')->with('success','Material and Submaterial has been created!');
@@ -158,7 +168,21 @@ class MaterialController extends Controller
      */
     public function destroy(Material $material)
     {
-        // Delete the material and its associated submaterials
+        // Delete associated submaterials and their Blade files
+        foreach ($material->submaterials as $submaterial) {
+            $bladeFilePath = resource_path('views/pages/materials/module-' . $submaterial->subchapternumber . '.blade.php');
+
+            // Check if the Blade file exists before deleting
+            if (File::exists($bladeFilePath)) {
+                // Delete the Blade file
+                File::delete($bladeFilePath);
+            }
+
+            // Delete the submaterial
+            $submaterial->delete();
+        }
+
+        // Delete the material
         $material->delete();
 
         // Redirect to a success page or back to the index

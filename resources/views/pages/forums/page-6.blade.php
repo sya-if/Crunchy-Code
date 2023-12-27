@@ -300,6 +300,7 @@ hr.new1 {
                             <div class="inner-sidebar-header justify-content-end">
                                 <form method="GET" action="{{ route('post.create', ['forum_id' => $forum->id, 'page_number' => 6]) }}">
                                     @csrf
+                                    <br><br>
                                     <button type="submit" class="btn btn-primary">Create a Discussion</button>
                                 </form>
                             </div>

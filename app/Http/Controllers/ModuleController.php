@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Modules;
+use App\Models\Submaterial;
 use Illuminate\Support\Facades\Auth;
 
 class ModuleController extends Controller
@@ -29,21 +30,19 @@ class ModuleController extends Controller
     public function create()
     {
         $user = Auth::user();
-        $moduleTitles = [
-            "1.1 Strategi Penyelesaian Masalah",
-            "1.2 Algoritma",
-            "1.3 Pemboleh Ubah, Pemalar dan Jenis Data",
-            "1.4 Struktur Kawalan",
-            "1.5 Amalan Terbaik Pengaturcaraan",
-            "1.6 Struktur Data dan Modular",
-            "1.7 Pembangunan Aplikasi",
-            "2.1 Pangkalan Data Hubungan",
-            "2.2 Reka Bentuk Pangkalan Data Hubungan",
-            "2.3 Pembangunan Pangkalan Data Hubungan",
-            "2.4 Pembangunan Sistem Pangkalan Data",
-            "3.1 Reka Bentuk Interaksi",
-            "3.2 Paparan dan Reka Bentuk Skrin",
-        ];
+        
+        // Fetch unique submaterial titles from the database
+        $moduleTitles = Submaterial::distinct('subchapternumber')
+        ->pluck('subchaptertitle', 'subchapternumber')
+        ->map(function ($title, $number) {
+            return "$number: $title";
+        })
+        ->toArray();
+
+        // You can sort the moduleTitles array if needed
+        sort($moduleTitles);
+        
+        
         $modules = new Modules;
 
         return view('pages\module-page\create', compact('moduleTitles', 'modules','user'));

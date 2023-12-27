@@ -24,6 +24,6 @@ class ContactController extends Controller
             'message' => $request->input('message'),
         ]);
 
-        return redirect()->back()->with('success', 'Message has been sent successfully');
+        return redirect()->back()->with('success', 'Message has been sent successfully, Please check your email later.');
     }
 }

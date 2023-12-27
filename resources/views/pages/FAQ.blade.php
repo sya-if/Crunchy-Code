@@ -275,7 +275,9 @@
                                                 <div class="card-body">
                                                     <ol>
                                                         <li><b>Bagaimanakah saya boleh mengakses dan menyelesaikan kuiz?</b></li>
-                                                        
+                                                        <ul>
+                                                            <li>Anda boleh mengaksesnya mengklik kuiz di sisi bar kiri. Halaman kuiz akan dipaparkan. Untuk menyelesaikan kuiz, anda boleh memilih bab yang anda dan tekan jawab untuk mencuba jawab kuiz.</li>
+                                                        </ul>
                                                         <li><b>Adakah terdapat had masa untuk kuiz?</b></li>
                                                         <ul>
                                                             <li>Ya. Terdapat had masa pada setiap quiz dan anda hanya boleh mencuba untuk 3 kali sahaja.</li>
@@ -341,7 +343,7 @@
                                                             <label for="message">Message</label>
                                                             <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
                                                         </div>
-                                                        <button type="submit" class="btn btn-success">Submit</button>
+                                                        <button type="submit" class="btn btn-success">Hantar</button>
                                                     </form>
                                                 </div>
                                             </div>
