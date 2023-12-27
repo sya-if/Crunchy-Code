@@ -17,4 +17,16 @@ class Submaterial extends Model
     public function material(){
         return $this->belongsTo(Material::class, 'modulenumber', 'modulenumber');
     }
+
+    public function progress()
+    {
+        return $this->hasMany(Progress::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withPivot('status');
+    }
+
+
 }

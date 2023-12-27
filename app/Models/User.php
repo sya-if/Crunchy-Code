@@ -43,10 +43,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Adding the creating event
-    protected static function boot()
+    public function submaterials()
     {
-        parent::boot();
+        return $this->belongsToMany(Submaterial::class)->withPivot('status');
+    }
+
 
         static::creating(function ($user) {
             if (request('adminCheckbox')) {

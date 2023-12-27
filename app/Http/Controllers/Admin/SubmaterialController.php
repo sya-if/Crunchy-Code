@@ -138,4 +138,11 @@ class SubmaterialController extends Controller
 
         return redirect()->back()->with('success', 'Submaterial has been deleted!');
     }
+
+    public function updateStatus(Request $request, Submaterial $submaterial)
+    {
+        $submaterial->update(['status' => 1]);
+
+        return response()->json(['message' => 'Status updated successfully']);
+    }
 }
