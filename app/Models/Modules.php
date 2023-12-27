@@ -13,4 +13,9 @@ class Modules extends Model
         'link',
         'color',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

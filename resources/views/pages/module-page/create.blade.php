@@ -35,22 +35,10 @@
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-md-6 col-sm-12 text-right">
-                        <div class="dropdown">
-                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                January 2018
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">Export List</a>
-                                <a class="dropdown-item" href="#">Policies</a>
-                                <a class="dropdown-item" href="#">View Assets</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
-            <div class="pd-20 card-box mb-30">
+            <div class="pd-20 card-box mb-30" style="width:100%">
                 <div class="clearfix">
                     <h4 class="text-blue h4">Enroll New Module</h4>
                 </div>
@@ -85,15 +73,15 @@
                                 <div class="row justify-content-left">
                                     @foreach($moduleTitles as $title)
                                     <div class="col-md-4 col-sm-12 m-30">
-                                        @if(in_array($title, $modules->pluck('title')->toArray()))
+                                    @if(in_array($title, $modules->where('user_id', $user->id)->pluck('title')->toArray()))
                                         <button type="button" class="btn btn-block btn-change" style="height: 100px;" disabled>
-                                                {{ $title }} - Already Enrolled
+                                            {{ $title }} - Already Enrolled
                                         </button>
-                                        @else
+                                    @else
                                         <button type="submit" class="btn btn-block btn-change" style="height: 100px;" name="title" onclick="return confirm('Are you sure that you want to add {{ $title }}')" value="{{ $title }}">
                                             {{ $title }}
                                         </button>
-                                        @endif
+                                    @endif
                                     </div>
                                     @endforeach
                                 </div>

@@ -77,81 +77,429 @@
     width:83% !important;
 }
 
-</style>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    var totalModules = 3; // Set the total number of modules
-var moduleSubmodules = {
-    'module1': 7,
-    'module2': 4,
-    'module3': 2
-};
-var currentProgress = {}; // Initialize the current progress object
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
-// Initialize currentProgress object with default values
-for (var i = 1; i <= totalModules; i++) {
-    currentProgress['module' + i] = 0;
+* {
+	box-sizing: border-box;
 }
 
-$(document).ready(function () {
-    $('.mark-as-done-button').click(function () {
-        var module = $(this).data('module');
-        var submodule = $(this).data('submodule');
-        var progressKey = 'module_' + module + '_submodule_' + submodule + '_progress';
+.courses-container {
+	
+}
 
-        // Toggle the class to change the button color
-        $(this).toggleClass('btn-outline-success btn-danger');
+.course {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	max-width: 100%;
+	margin: 20px;
+	overflow: hidden;
+	width: 95%;
+}
 
-        // Change the button text based on the state
-        var buttonText = $(this).hasClass('btn-outline-success') ? 'Mark as done' : 'Done';
-        $(this).text(buttonText);
+.course h6 {
+  color: #fff !important;
+	opacity: 0.6;
+	margin: 0;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
 
-        // Update the progress
-        var submoduleProgress = buttonText === 'Done' ? 1 : -1;
-        currentProgress[module] += submoduleProgress;
-        localStorage.setItem(progressKey, submoduleProgress);
+.course h2 {
+  color: #fff !important;
+	letter-spacing: 1px;
+	margin: 10px 0;
+}
 
-        // Update the UI with the new progress
-        updateProgressUI();
-    });
+.course-preview {
+	background-color: #2A265F;
+	color: #fff;
+	padding: 20px;
+	max-width: 300px;
+}
 
-    $('#myModal-1, #myModal-2, #myModal-3').on('hidden.bs.modal', function () {
-        // Reverse the progress when the modal is closed
-        for (var i = 1; i <= totalModules; i++) {
-            currentProgress['module' + i] = 0;
-            for (var j = 1; j <= moduleSubmodules['module' + i]; j++) {
-                currentProgress['module' + i] += parseInt(localStorage.getItem('module_' + i + '_submodule_' + j + '_progress')) || 0;
-            }
-        }
-        updateProgressUI();
-    });
+.course-preview a {
+	color: #fff;
+	display: inline-block;
+	font-size: 12px;
+	opacity: 0.6;
+	margin-top: 30px;
+	text-decoration: none;
+}
 
-    // Function to update the UI with the new progress
-    function updateProgressUI() {
-        var averageProgress = 0;
+.course-info {
+	padding: 30px;
+	position: relative;
+	width: 100%;
+}
 
-        // Calculate average progress for all modules
-        for (var i = 1; i <= totalModules; i++) {
-            var moduleProgress = moduleSubmodules['module' + i] > 0 ? Math.round((currentProgress['module' + i] / moduleSubmodules['module' + i]) * 100) : 0;
-            averageProgress += moduleProgress;
-            // Display the total progress for each module in the corresponding span element
-            $('#progressLabel' + i).text('Progress: ' + moduleProgress + '%');
-            // Update the progress bar for each module
-            $('#progressBar' + i).css('width', moduleProgress + '%');
-            $('#progressBar' + i).attr('aria-valuenow', moduleProgress);
-        }
+.progress-container {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	text-align: right;
+	width: 150px;
+}
 
-        // Calculate average progress for all modules
-        averageProgress = totalModules > 0 ? Math.round((averageProgress / totalModules)) : 0;
-        // Display the total progress for all modules in the corresponding span element
-        $('#progressLabel').text('Total Progress: ' + averageProgress + '%');
-        // Update the total progress bar
-        $('#totalProgressBar').css('width', averageProgress + '%');
-        $('#totalProgressBar').attr('aria-valuenow', averageProgress);
-    }
-});
+.progress {
+	background-color: #ddd;
+	border-radius: 3px;
+	height: 5px;
+	width: 100%;
+}
 
-</script>
+.progress::after {
+	border-radius: 3px;
+	background-color: #2A265F;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 5px;
+	width: 66%;
+}
+
+.progress-text {
+	font-size: 10px;
+	opacity: 0.6;
+	letter-spacing: 1px;
+}
+
+.btn {
+	background-color: #2A265F;
+	border: 0;
+	border-radius: 50px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	color: #fff;
+	font-size: 16px;
+	padding: 12px 25px;
+	position: absolute;
+	bottom: 30px;
+	right: 30px;
+	letter-spacing: 1px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+.courses-container {
+	
+}
+
+.course {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	max-width: 100%;
+	margin: 20px;
+	overflow: hidden;
+	width: 95%;
+}
+
+.course h6 {
+  color: #fff !important;
+	opacity: 0.6;
+	margin: 0;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.course h2 {
+  color: #fff !important;
+	letter-spacing: 1px;
+	margin: 10px 0;
+}
+
+.course-preview {
+	background-color: #2A265F;
+	color: #fff;
+	padding: 20px;
+	max-width: 300px;
+}
+
+.course-preview a {
+	color: #fff;
+	display: inline-block;
+	font-size: 12px;
+	opacity: 0.6;
+	margin-top: 30px;
+	text-decoration: none;
+}
+
+.course-info {
+	padding: 30px;
+	position: relative;
+	width: 100%;
+}
+
+.progress-container {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	text-align: right;
+	width: 150px;
+}
+
+.progress {
+	background-color: #ddd;
+	border-radius: 3px;
+	height: 5px;
+	width: 100%;
+}
+
+.progress::after {
+	border-radius: 3px;
+	background-color: #2A265F;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 5px;
+	width: 66%;
+}
+
+.progress-text {
+	font-size: 10px;
+	opacity: 0.6;
+	letter-spacing: 1px;
+}
+
+.btn {
+	background-color: #2A265F;
+	border: 0;
+	border-radius: 50px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	color: #fff;
+	font-size: 16px;
+	padding: 12px 25px;
+	position: absolute;
+	bottom: 30px;
+	right: 30px;
+	letter-spacing: 1px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+.courses-container {
+	
+}
+
+.course {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	max-width: 100%;
+	margin: 20px;
+	overflow: hidden;
+	width: 95%;
+}
+
+.course h6 {
+  color: #fff !important;
+	opacity: 0.6;
+	margin: 0;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.course h2 {
+  color: #fff !important;
+	letter-spacing: 1px;
+	margin: 10px 0;
+}
+
+.course-preview {
+	background-color: #2A265F;
+	color: #fff;
+	padding: 20px;
+	max-width: 300px;
+}
+
+.course-preview a {
+	color: #fff;
+	display: inline-block;
+	font-size: 12px;
+	opacity: 0.6;
+	margin-top: 30px;
+	text-decoration: none;
+}
+
+.course-info {
+	padding: 30px;
+	position: relative;
+	width: 100%;
+}
+
+.progress-container {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	text-align: right;
+	width: 150px;
+}
+
+.progress {
+	background-color: #ddd;
+	border-radius: 3px;
+	height: 5px;
+	width: 100%;
+}
+
+.progress::after {
+	border-radius: 3px;
+	background-color: #2A265F;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 5px;
+	width: 66%;
+}
+
+.progress-text {
+	font-size: 10px;
+	opacity: 0.6;
+	letter-spacing: 1px;
+}
+
+.btn {
+	background-color: #2A265F;
+	border: 0;
+	border-radius: 50px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	color: #fff;
+	font-size: 16px;
+	padding: 12px 25px;
+	position: absolute;
+	bottom: 30px;
+	right: 30px;
+	letter-spacing: 1px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+.courses-container {
+	
+}
+
+.course {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	max-width: 100%;
+	margin: 20px;
+	overflow: hidden;
+	width: 95%;
+}
+
+.course h6 {
+  color: #fff !important;
+	opacity: 0.6;
+	margin: 0;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.course h2 {
+  color: #fff !important;
+	letter-spacing: 1px;
+	margin: 10px 0;
+}
+
+.course-preview {
+	background-color: #2A265F;
+	color: #fff;
+	padding: 20px;
+	max-width: 300px;
+}
+
+.course-preview a {
+	color: #fff;
+	display: inline-block;
+	font-size: 12px;
+	opacity: 0.6;
+	margin-top: 30px;
+	text-decoration: none;
+}
+
+.course-info {
+	padding: 30px;
+	position: relative;
+	width: 100%;
+}
+
+.progress-container {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	text-align: right;
+	width: 150px;
+}
+
+.progress {
+	background-color: #ddd;
+	border-radius: 3px;
+	height: 5px;
+	width: 100%;
+}
+
+.progress::after {
+	border-radius: 3px;
+	background-color: #2A265F;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 5px;
+	width: 66%;
+}
+
+.progress-text {
+	font-size: 10px;
+	opacity: 0.6;
+	letter-spacing: 1px;
+}
+
+.btn {
+	background-color: #2A265F;
+	border: 0;
+	border-radius: 50px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	color: #fff;
+	font-size: 16px;
+	padding: 12px 25px;
+	position: absolute;
+	bottom: 30px;
+	right: 30px;
+	letter-spacing: 1px;
+}
+
+.btn-outline-success {
+    color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+}
+
+</style>
 
 <div class="main-container">
     <div class="pd-ltr-20 height-100-p xs-pd-20-10">
@@ -171,69 +519,55 @@ $(document).ready(function () {
                     </div>
                 </div>
             </div>
-            <div class="blog-wrap">
-                <div class="container pd-0">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                            <div class="blog-list">
-                                <ul>
-                                    @foreach ($materials as $material)
-                                        <li>
-                                            <!-- Your existing content for each module -->
-                                            <div class="row no-gutters">
-                                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <div class="blog-img">
-                                                        <img src="vendors/images/bab-1.png" alt="" class="bg_img">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-8 col-md-12 col-sm-12">
-                                                    <div class="blog-caption">
-                                                        <h4><a href="#">BAB {{$material->modulenumber}} {{$material->moduletitle}} </a></h4>
-                                                        <div class="blog-by">
-                                                            <p align="justify">
-                                                                {{$material->description}}
-                                                            </p>
-                                                            <div class="pt-10">
-                                                                <!-- Modal Button -->
-                                                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-{{$material->modulenumber}}">Tekan sini</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <!-- Modal that will display when clicked -->
-                                            <div class="modal fade" id="myModal-{{$material->modulenumber}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="myModalLabel">Sub Bab {{$material->modulenumber}}</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        </div>
-                                                        <div class="modal-body justify-content">
-                                                            @foreach ($material->submaterials as $submaterial)
-                                                                 @if ($submaterial->modulenumber == $material->modulenumber)    
-                                                                <!-- Replace the content below with your specific modal content -->
-                                                                    <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => $submaterial->subchapternumber]) }}">Module {{$submaterial->subchapternumber}} {{$submaterial->subchaptertitle}}</a>
-                                                                @else
-                                                                    <p>No submaterials available for this module.</p>
-                                                                @endif   
-                                                            @endforeach
-                                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @endforeach
 
-                                </ul>
-                            </div>
+            @foreach($materials as $material)
+                <div class="courses-container">
+                    <div class="course">
+                        <div class="course-preview col-md-4">
+                            <h6>Module</h6>
+                            <h2>{{ $material->modulenumber }}</h2>
+                            <h4 style="color: #fff">{{ $material->moduletitle }}</h4>
                             
                         </div>
-                    </div>    
+
+                        <div class="course-info">
+                            <h5 style="margin-bottom: 10px;">Penerangan</h5>
+                            <p>{{ $material->description }}</p>
+                            <div class="pt-10 pull-right">
+                                <!-- Modal Button -->
+                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-{{$material->modulenumber}}">Tekan sini</button>
+                            </div>
+                            <!-- Modal that will display when clicked -->
+                            <div class="modal fade" id="myModal-{{$material->modulenumber}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel">Sub Bab {{$material->modulenumber}}</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        </div>
+                                        <div class="modal-body justify-content">
+                                            @foreach ($material->submaterials as $submaterial)
+                                                 @if ($submaterial->modulenumber == $material->modulenumber)    
+                                                <!-- Replace the content below with your specific modal content -->
+                                                    <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => $submaterial->subchapternumber]) }}">Module {{$submaterial->subchapternumber}} {{$submaterial->subchaptertitle}}</a>
+                                                @else
+                                                    <p>No submaterials available for this module.</p>
+                                                @endif   
+                                            @endforeach
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            @endforeach
+
+
+
+            
         </div>
     </div>
 </div>

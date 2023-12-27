@@ -381,6 +381,7 @@ hr.new1 {
                                                         
                                                         <form method="GET" action="{{ route('comment.create', ['post_id' => $post->id, 'page_number' => 2]) }}">
                                                             @csrf
+                                                            <br><br>
                                                             <button type="submit" class="btn btn-success">Post Comment</button>
                                                         </form>
 
