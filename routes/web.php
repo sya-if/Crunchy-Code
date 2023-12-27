@@ -14,7 +14,6 @@ use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\SubmaterialController;
-use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------

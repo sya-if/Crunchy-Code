@@ -49,11 +49,14 @@ class User extends Authenticatable
     }
 
 
+    protected static function boot()
+    {
+        parent::boot();
+
         static::creating(function ($user) {
             if (request('adminCheckbox')) {
                 $user->role = 'admin';
             }
         });
     }
-
 }
