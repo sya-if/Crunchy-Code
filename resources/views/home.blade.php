@@ -3,6 +3,19 @@
 @php($user = Auth::user())
 @php($modules = App\Models\Modules::orderBy('title', 'asc')->get())
 @section('content')
+<style>
+    .profile-picture-wrapper {
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adjust the shadow as needed */
+}
+
+.profile-picture {
+    width: 100%; /* Ensure the image fills the circular frame */
+    border-radius: 50%; /* Ensure the image is circular */
+}
+
+</style>
 
 <div class="main-container">
     <div class="xs-pd-20-10 pd-ltr-20">
@@ -38,7 +51,9 @@
         <div class="card-box pd-20 height-100-p mb-30">
             <div class="row align-items-center">
                 <div class="col-md-3">
-                    <img src="{{ asset ('uploads/users/'.$user->photo)}}" alt="Profile photo">
+                    <div class="profile-picture-wrapper">
+                        <img src="{{ asset ('uploads/users/'.$user->photo)}}" alt="Profile photo" class="profile-picture">
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <h4 class="font-20 weight-500 mb-10 text-capitalize">
@@ -48,6 +63,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- Student Dashboard -->
         @if($user->role=='student')

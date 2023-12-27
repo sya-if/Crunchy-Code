@@ -40,7 +40,7 @@ class ProfileController extends Controller
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:1000',
             'bio' => 'nullable',
             'school' => 'nullable',
-            'dob' => 'nullable',
+            'dob' => 'required|date',
         ]);
 
         $user->fullname = $request['fullname'];
