@@ -1,5 +1,24 @@
 @extends('layouts.master')
 @section('content')
+<style>
+    .color-options {
+        display: flex;
+    }
+
+    .color-box {
+        width: 30px;
+        height: 30px;
+        border: 1px solid #ccc;
+        margin-right: 5px;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    /* Style the selected color box */
+    .color-box:checked {
+        border: 2px solid #333;
+    }
+</style>
 <div class="main-container">
     <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-200px">
@@ -40,7 +59,25 @@
                         @csrf
                         <div class="form-group">
                             <label>Select Color:</label>
-                            <input type="color" id="color" name="color" value="#20b2aa">
+                            <div class="color-options">
+                                <input type="radio" id="color_20b2aa" name="color" value="#20b2aa" checked>
+                                <label for="color_20b2aa" class="color-box" style="background-color: #20b2aa;"></label>
+
+                                <input type="radio" id="color_ff0000" name="color" value="#ff0000">
+                                <label for="color_ff0000" class="color-box" style="background-color: #ff0000;"></label>
+
+                                <input type="radio" id="color_00ff00" name="color" value="#00ff00">
+                                <label for="color_00ff00" class="color-box" style="background-color: #00ff00;"></label>
+
+                                <input type="radio" id="color_0000ff" name="color" value="#0000ff">
+                                <label for="color_0000ff" class="color-box" style="background-color: #0000ff;"></label>
+
+                                <input type="radio" id="color_ffff00" name="color" value="#ffff00">
+                                <label for="color_ffff00" class="color-box" style="background-color: #ffff00;"></label>
+
+                                <input type="radio" id="color_ff00ff" name="color" value="#ff00ff">
+                                <label for="color_ff00ff" class="color-box" style="background-color: #ff00ff;"></label>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Please Choose What Module You Want To Add</label>
