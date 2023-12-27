@@ -19,18 +19,6 @@
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-md-6 col-sm-12 text-right">
-                        <div class="dropdown">
-                            <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                January 2018
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">Export List</a>
-                                <a class="dropdown-item" href="#">Policies</a>
-                                <a class="dropdown-item" href="#">View Assets</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -46,13 +34,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >Module Number :</label>
+                                        <label >Chapter Number :</label>
                                         <input type="text" class="form-control" name="modulenumber" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >Module Title :</label>
+                                        <label >Chapter Title :</label>
                                         <input type="text" class="form-control" name="moduletitle" required>
                                     </div>
                                 </div>
@@ -79,12 +67,6 @@
                                         <input type="text" class="form-control" name="subchaptertitle" required>
                                     </div>
                                 </div>
-                                {{-- <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Content (Blade File):</label>
-                                        <input type="file" class="form-control" name="content" accept=".blade.php" required>
-                                    </div>
-                                </div> --}}
                             </div>
                         </section>
                         <div class="clearfix" style="display:flex; justify-content:center;">

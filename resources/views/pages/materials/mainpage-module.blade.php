@@ -77,6 +77,109 @@
     width:83% !important;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+.courses-container {
+	
+}
+
+.course {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	max-width: 100%;
+	margin: 20px;
+	overflow: hidden;
+	width: 95%;
+}
+
+.course h6 {
+  color: #fff !important;
+	opacity: 0.6;
+	margin: 0;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.course h2 {
+  color: #fff !important;
+	letter-spacing: 1px;
+	margin: 10px 0;
+}
+
+.course-preview {
+	background-color: #2A265F;
+	color: #fff;
+	padding: 20px;
+	max-width: 300px;
+}
+
+.course-preview a {
+	color: #fff;
+	display: inline-block;
+	font-size: 12px;
+	opacity: 0.6;
+	margin-top: 30px;
+	text-decoration: none;
+}
+
+.course-info {
+	padding: 30px;
+	position: relative;
+	width: 100%;
+}
+
+.progress-container {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	text-align: right;
+	width: 150px;
+}
+
+.progress {
+	background-color: #ddd;
+	border-radius: 3px;
+	height: 5px;
+	width: 100%;
+}
+
+.progress::after {
+	border-radius: 3px;
+	background-color: #2A265F;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 5px;
+	width: 66%;
+}
+
+.progress-text {
+	font-size: 10px;
+	opacity: 0.6;
+	letter-spacing: 1px;
+}
+
+.btn {
+	background-color: #2A265F;
+	border: 0;
+	border-radius: 50px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	color: #fff;
+	font-size: 16px;
+	padding: 12px 25px;
+	position: absolute;
+	bottom: 30px;
+	right: 30px;
+	letter-spacing: 1px;
+}
+
 </style>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
@@ -171,7 +274,55 @@ $(document).ready(function () {
                     </div>
                 </div>
             </div>
-            <div class="blog-wrap">
+
+
+            @foreach($materials as $material)
+                <div class="courses-container">
+                    <div class="course">
+                        <div class="course-preview col-md-4">
+                            <h6>Module</h6>
+                            <h2>{{ $material->modulenumber }}</h2>
+                            <h4 style="color: #fff">{{ $material->moduletitle }}</h4>
+                            
+                        </div>
+
+                        <div class="course-info">
+                            <h5 style="margin-bottom: 10px;">Penerangan</h5>
+                            <p>{{ $material->description }}</p>
+                            <div class="pt-10 pull-right">
+                                <!-- Modal Button -->
+                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-{{$material->modulenumber}}">Tekan sini</button>
+                            </div>
+                            <!-- Modal that will display when clicked -->
+                            <div class="modal fade" id="myModal-{{$material->modulenumber}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel">Sub Bab {{$material->modulenumber}}</h4>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                        </div>
+                                        <div class="modal-body justify-content">
+                                            @foreach ($material->submaterials as $submaterial)
+                                                 @if ($submaterial->modulenumber == $material->modulenumber)    
+                                                <!-- Replace the content below with your specific modal content -->
+                                                    <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => $submaterial->subchapternumber]) }}">Module {{$submaterial->subchapternumber}} {{$submaterial->subchaptertitle}}</a>
+                                                @else
+                                                    <p>No submaterials available for this module.</p>
+                                                @endif   
+                                            @endforeach
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+
+
+            {{-- <div class="blog-wrap">
                 <div class="container pd-0">
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
@@ -233,7 +384,7 @@ $(document).ready(function () {
                         </div>
                     </div>    
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
