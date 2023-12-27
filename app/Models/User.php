@@ -43,6 +43,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function submaterials()
+    {
+        return $this->belongsToMany(Submaterial::class)->withPivot('status');
+    }
+
 
 
 }

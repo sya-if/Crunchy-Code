@@ -77,81 +77,17 @@
     width:83% !important;
 }
 
-</style>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    var totalModules = 3; // Set the total number of modules
-var moduleSubmodules = {
-    'module1': 7,
-    'module2': 4,
-    'module3': 2
-};
-var currentProgress = {}; // Initialize the current progress object
-
-// Initialize currentProgress object with default values
-for (var i = 1; i <= totalModules; i++) {
-    currentProgress['module' + i] = 0;
+.btn-outline-success {
+    color: #28a745;
+    border-color: #28a745;
 }
 
-$(document).ready(function () {
-    $('.mark-as-done-button').click(function () {
-        var module = $(this).data('module');
-        var submodule = $(this).data('submodule');
-        var progressKey = 'module_' + module + '_submodule_' + submodule + '_progress';
+.btn-outline-secondary {
+    color: #6c757d;
+    border-color: #6c757d;
+}
 
-        // Toggle the class to change the button color
-        $(this).toggleClass('btn-outline-success btn-danger');
-
-        // Change the button text based on the state
-        var buttonText = $(this).hasClass('btn-outline-success') ? 'Mark as done' : 'Done';
-        $(this).text(buttonText);
-
-        // Update the progress
-        var submoduleProgress = buttonText === 'Done' ? 1 : -1;
-        currentProgress[module] += submoduleProgress;
-        localStorage.setItem(progressKey, submoduleProgress);
-
-        // Update the UI with the new progress
-        updateProgressUI();
-    });
-
-    $('#myModal-1, #myModal-2, #myModal-3').on('hidden.bs.modal', function () {
-        // Reverse the progress when the modal is closed
-        for (var i = 1; i <= totalModules; i++) {
-            currentProgress['module' + i] = 0;
-            for (var j = 1; j <= moduleSubmodules['module' + i]; j++) {
-                currentProgress['module' + i] += parseInt(localStorage.getItem('module_' + i + '_submodule_' + j + '_progress')) || 0;
-            }
-        }
-        updateProgressUI();
-    });
-
-    // Function to update the UI with the new progress
-    function updateProgressUI() {
-        var averageProgress = 0;
-
-        // Calculate average progress for all modules
-        for (var i = 1; i <= totalModules; i++) {
-            var moduleProgress = moduleSubmodules['module' + i] > 0 ? Math.round((currentProgress['module' + i] / moduleSubmodules['module' + i]) * 100) : 0;
-            averageProgress += moduleProgress;
-            // Display the total progress for each module in the corresponding span element
-            $('#progressLabel' + i).text('Progress: ' + moduleProgress + '%');
-            // Update the progress bar for each module
-            $('#progressBar' + i).css('width', moduleProgress + '%');
-            $('#progressBar' + i).attr('aria-valuenow', moduleProgress);
-        }
-
-        // Calculate average progress for all modules
-        averageProgress = totalModules > 0 ? Math.round((averageProgress / totalModules)) : 0;
-        // Display the total progress for all modules in the corresponding span element
-        $('#progressLabel').text('Total Progress: ' + averageProgress + '%');
-        // Update the total progress bar
-        $('#totalProgressBar').css('width', averageProgress + '%');
-        $('#totalProgressBar').attr('aria-valuenow', averageProgress);
-    }
-});
-
-</script>
+</style>
 
 <div class="main-container">
     <div class="pd-ltr-20 height-100-p xs-pd-20-10">
@@ -196,6 +132,7 @@ $(document).ready(function () {
                                                             <div class="pt-10">
                                                                 <!-- Modal Button -->
                                                                 <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-{{$material->modulenumber}}">Tekan sini</button>
+                                                
                                                             </div>
                                                         </div>
                                                     </div>
@@ -214,10 +151,61 @@ $(document).ready(function () {
                                                             @foreach ($material->submaterials as $submaterial)
                                                                  @if ($submaterial->modulenumber == $material->modulenumber)    
                                                                 <!-- Replace the content below with your specific modal content -->
-                                                                    <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => $submaterial->subchapternumber]) }}">Module {{$submaterial->subchapternumber}} {{$submaterial->subchaptertitle}}</a>
+
+                                                                <div class="row">
+                                                                    <div class="col-md-9"> <!-- Adjust the column width based on your layout -->
+                                                                        <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => $submaterial->subchapternumber]) }}">
+                                                                            Module {{$submaterial->subchapternumber}} {{$submaterial->subchaptertitle}}
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="col-md-3"> <!-- Adjust the column width based on your layout -->
+                                                                        <!-- Mark As Done -->
+                                                                        @if($submaterial->status == "0")
+                                                                            <button class="markAsDoneButton btn btn-outline-success btn-sm text-nowrap" data-submodule="{{ $submaterial->id }}">
+                                                                                Mark as done
+                                                                            </button>
+                                                                        @else
+                                                                            <button class="markAsDoneButton btn btn-outline-secondary btn-sm text-nowrap" data-submodule="{{ $submaterial->id }}" disabled>
+                                                                                Already done
+                                                                            </button>
+                                                                        @endif
+                                                                        
+                                                                    </div>
+
+                                                                    <script>
+                                                                        $(document).ready(function () {
+                                                                            $('.markAsDoneButton').on('click', function () {
+                                                                                var button = $(this);
+                                                                                var submoduleId = button.data('submodule');
+
+                                                                                $.ajax({
+                                                                                    url: '/submaterials/' + submoduleId,
+                                                                                    type: 'PATCH',
+                                                                                    success: function (response) {
+                                                                                        // Update the button color based on the status
+                                                                                        if (response.status === 0) {
+                                                                                            button.removeClass('btn-outline-secondary').addClass('btn-outline-success').removeAttr('disabled');
+                                                                                        } else {
+                                                                                            button.removeClass('btn-outline-success').addClass('btn-outline-secondary').attr('disabled', 'disabled');
+                                                                                        }
+
+                                                                                        // Perform any other necessary actions
+                                                                                        alert(response.message);
+                                                                                    },
+                                                                                    error: function (error) {
+                                                                                        alert('Error updating status: ' + error.statusText);
+                                                                                    }
+                                                                                });
+                                                                            });
+                                                                        });
+                                                                    </script>
+                                                                    
+                                                                </div>
+
                                                                 @else
                                                                     <p>No submaterials available for this module.</p>
                                                                 @endif   
+
                                                             @endforeach
                                                             
                                                         </div>

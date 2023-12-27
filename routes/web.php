@@ -13,7 +13,7 @@ use App\Http\Controllers\ForumPostController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\SubmaterialController;
-
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -117,3 +117,5 @@ Route::get('/message', [MessageController::class, 'index'])->name('message');
 
 //Route for delete message
 Route::delete('/admin/messages/{id}', [MessageController::class, 'destroy'])->name('destroy');
+
+Route::patch('/submaterials/{submaterial}', [SubmaterialController::class, 'classupdateStatus']);
