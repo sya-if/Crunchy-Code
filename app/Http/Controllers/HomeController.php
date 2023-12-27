@@ -120,19 +120,17 @@ class HomeController extends Controller
     }
 
     // View the specific quiz page
-    public function showQuizPage($quiz)
+    public function showQuizPage($quizId)
     {
         $user = Auth::user();
-
-        $forum =
-
-            // Assuming the quiz views are named quiz-1-1.blade.php, quiz-1-2.blade.php, etc.
-            $viewName = "pages.quizzes.quiz-$quiz";
+        $quiz = Quiz::find($quizId);
+        // Assuming the module views are named module-1-1.blade.php, module-1-2.blade.php, etc.
+        $viewName = "pages.quizzes.quiz-$quizId";
 
         // Check if the view exists before attempting to render it
         if (view()->exists($viewName)) {
             // If the view exists, render it and pass any necessary data (e.g., $user) to the view
-            return view($viewName, compact('user'));
+            return view($viewName, compact('user','quizId','quiz'));
         } else {
             // If the view doesn't exist, you can handle the situation accordingly
             return abort(404); // or any other logic you prefer

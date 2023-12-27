@@ -38,7 +38,7 @@
                     <h4 class="text-blue h4">Edit Subquiz</h4>
                 </div>
                 <div class="wizard-content">
-                    <form method="POST" action="{{ route('quizzes.updateShow', ['quiz' => $quiz->chapternumber, 'subquizId' => optional($quiz->subquizzes->first())->id]) }}">
+                    <form method="POST" action="{{ route('quizzes.updateShow', ['quiz' => $quiz->chapternumber, 'subquizId' => $subquiz->id]) }}">
                         @csrf
                         @method('PUT')
                         <section>

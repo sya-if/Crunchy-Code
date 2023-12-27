@@ -75,4 +75,6 @@ class RegisterController extends Controller
 
         event(new UserRegistered($user));
     }
+
+    
 }

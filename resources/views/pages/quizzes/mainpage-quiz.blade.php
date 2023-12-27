@@ -4,8 +4,145 @@
 
 @section('content')
 
-
 <style>
+/* CSS */
+.button-74 {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-74:hover {
+  background-color: #fff;
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+	box-sizing: border-box;
+}
+
+.courses-container {
+	
+}
+
+.course {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	display: flex;
+	max-width: 100%;
+	margin: 20px;
+	overflow: hidden;
+	width: 95%;
+}
+
+.course h6 {
+  color: #fff !important;
+	opacity: 0.6;
+	margin: 0;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.course h2 {
+  color: #fff !important;
+	letter-spacing: 1px;
+	margin: 10px 0;
+}
+
+.course-preview {
+	background-color: #2A265F;
+	color: #fff;
+	padding: 20px;
+	max-width: 300px;
+}
+
+.course-preview a {
+	color: #fff;
+	display: inline-block;
+	font-size: 12px;
+	opacity: 0.6;
+	margin-top: 30px;
+	text-decoration: none;
+}
+
+.course-info {
+	padding: 30px;
+	position: relative;
+	width: 100%;
+}
+
+.progress-container {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+	text-align: right;
+	width: 150px;
+}
+
+.progress {
+	background-color: #ddd;
+	border-radius: 3px;
+	height: 5px;
+	width: 100%;
+}
+
+.progress::after {
+	border-radius: 3px;
+	background-color: #2A265F;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 5px;
+	width: 66%;
+}
+
+.progress-text {
+	font-size: 10px;
+	opacity: 0.6;
+	letter-spacing: 1px;
+}
+
+.btn {
+	background-color: #2A265F;
+	border: 0;
+	border-radius: 50px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	color: #fff;
+	font-size: 16px;
+	padding: 12px 25px;
+	position: absolute;
+	bottom: 30px;
+	right: 30px;
+	letter-spacing: 1px;
+}
 
 /* CSS */
 .button-85 {
@@ -77,164 +214,53 @@
     width:83% !important;
 }
 
+
 </style>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-    var totalModules = 3; // Set the total number of modules
-var moduleSubmodules = {
-    'module1': 7,
-    'module2': 4,
-    'module3': 2
-};
-var currentProgress = {}; // Initialize the current progress object
 
-// Initialize currentProgress object with default values
-for (var i = 1; i <= totalModules; i++) {
-    currentProgress['module' + i] = 0;
-}
-
-$(document).ready(function () {
-    $('.mark-as-done-button').click(function () {
-        var module = $(this).data('module');
-        var submodule = $(this).data('submodule');
-        var progressKey = 'module_' + module + '_submodule_' + submodule + '_progress';
-
-        // Toggle the class to change the button color
-        $(this).toggleClass('btn-outline-success btn-danger');
-
-        // Change the button text based on the state
-        var buttonText = $(this).hasClass('btn-outline-success') ? 'Mark as done' : 'Done';
-        $(this).text(buttonText);
-
-        // Update the progress
-        var submoduleProgress = buttonText === 'Done' ? 1 : -1;
-        currentProgress[module] += submoduleProgress;
-        localStorage.setItem(progressKey, submoduleProgress);
-
-        // Update the UI with the new progress
-        updateProgressUI();
-    });
-
-    $('#myModal-1, #myModal-2, #myModal-3').on('hidden.bs.modal', function () {
-        // Reverse the progress when the modal is closed
-        for (var i = 1; i <= totalModules; i++) {
-            currentProgress['module' + i] = 0;
-            for (var j = 1; j <= moduleSubmodules['module' + i]; j++) {
-                currentProgress['module' + i] += parseInt(localStorage.getItem('module_' + i + '_submodule_' + j + '_progress')) || 0;
-            }
-        }
-        updateProgressUI();
-    });
-
-    // Function to update the UI with the new progress
-    function updateProgressUI() {
-        var averageProgress = 0;
-
-        // Calculate average progress for all modules
-        for (var i = 1; i <= totalModules; i++) {
-            var moduleProgress = moduleSubmodules['module' + i] > 0 ? Math.round((currentProgress['module' + i] / moduleSubmodules['module' + i]) * 100) : 0;
-            averageProgress += moduleProgress;
-            // Display the total progress for each module in the corresponding span element
-            $('#progressLabel' + i).text('Progress: ' + moduleProgress + '%');
-            // Update the progress bar for each module
-            $('#progressBar' + i).css('width', moduleProgress + '%');
-            $('#progressBar' + i).attr('aria-valuenow', moduleProgress);
-        }
-
-        // Calculate average progress for all modules
-        averageProgress = totalModules > 0 ? Math.round((averageProgress / totalModules)) : 0;
-        // Display the total progress for all modules in the corresponding span element
-        $('#progressLabel').text('Total Progress: ' + averageProgress + '%');
-        // Update the total progress bar
-        $('#totalProgressBar').css('width', averageProgress + '%');
-        $('#totalProgressBar').attr('aria-valuenow', averageProgress);
-    }
-});
-
-</script>
 
 <div class="main-container">
-    <div class="pd-ltr-20 height-100-p xs-pd-20-10">
-        <div class="min-height-200px">
-            <div class="page-header">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12">
-                        <div class="title">
-                            <h4>Modul Pembelajaran Sains Komputer Tingkatan 4</h4>
-                        </div>
-                        <nav aria-label="breadcrumb" role="navigation">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Module</li>
-                            </ol>
-                        </nav>
+  <div class="pd-ltr-20 height-100-p xs-pd-20-10">
+      <div class="min-height-200px">
+
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="title">
+                        <h4>Crunchy Quiz</h4>
                     </div>
-                </div>
-            </div>
-            <div class="blog-wrap">
-                <div class="container pd-0">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                            <div class="blog-list">
-                                <ul>
-                                    @foreach ($quizzes as $quiz)
-                                        <li>
-                                            <!-- Your existing content for each module -->
-                                            <div class="row no-gutters">
-                                                <div class="col-lg-4 col-md-12 col-sm-12">
-                                                    <div class="blog-img">
-                                                        <img src="vendors/images/bab-1.png" alt="" class="bg_img">
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-8 col-md-12 col-sm-12">
-                                                    <div class="blog-caption">
-                                                        <h4><a href="#">BAB {{$quiz->chapternumber}} {{$quiz->chaptertitle}} </a></h4>
-                                                        <div class="blog-by">
-                                                            <p align="justify">
-                                                                {{$quiz->description}}
-                                                            </p>
-                                                            <div class="pt-10">
-                                                                <!-- Modal Button -->
-                                                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-{{$quiz->chapternumber}}">Tekan sini</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <!-- Modal that will display when clicked -->
-                                            <div class="modal fade" id="myModal-{{$quiz->chapternumber}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-lg modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title" id="myModalLabel">Sub Bab {{$quiz->chapternumber}}</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                                        </div>
-                                                        <div class="modal-body justify-content">
-                                                            @foreach ($quiz->subquizzes as $subquiz)
-                                                                 @if ($subquiz->chapternumber == $quiz->chapternumber)    
-                                                                <!-- Replace the content below with your specific modal content -->
-                                                                    <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => $subquiz->subchapternumber]) }}">Module {{$subquiz->subchapternumber}} {{$subquiz->subchaptertitle}}</a>
-                                                                @else
-                                                                    <p>No subquizzes available for this module.</p>
-                                                                @endif   
-                                                            @endforeach
-                                                            
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @endforeach
-
-                                </ul>
-                            </div>
-                            
-                        </div>
-                    </div>    
+                    <nav aria-label="breadcrumb" role="navigation">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Quiz</li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
         </div>
-    </div>
+
+        @foreach($quizzes as $quiz)
+        <div class="courses-container">
+            <div class="course">
+                <div class="course-preview col-md-4">
+                    <h6>Quiz</h6>
+                    <h2>{{$quiz->chapternumber}}</h2>
+                    <h4 style="color: #fff">{{ $quiz->chaptertitle }}</h4>
+                </div>
+                <div class="course-info col-md-8">
+                    <p>{{ $quiz->description }}</p>
+                    <a class="button-85" role="button" href="{{ route('quiz.page', ['quizId' => $quiz->chapternumber]) }}">Sertai Kuiz</a>
+                </div>
+            </div>
+        </div>
+        @endforeach
+
+      </div>
+  </div>
+
+  <div class="footer-wrap pd-20 mb-20 card-box">
+    Crunchy Code Web Application System developed by Elysium
+  </div>
+
 </div>
+
 @endsection

@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('subquizzes', function (Blueprint $table) {
             $table->id();
-            $table->string('question_text')->nullable();
+            $table->text('question_text')->nullable();
             $table->string('answer_1')->nullable();
             $table->string('answer_2')->nullable();
             $table->string('answer_3')->nullable();
             $table->string('answer_4')->nullable();
-            $table->string('answerZ')->nullable();
+            $table->string('answer')->nullable();
             $table->bigInteger('chapternumber')->unsigned();
             $table->foreign('chapternumber')->references('chapternumber')->on('quizzes')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

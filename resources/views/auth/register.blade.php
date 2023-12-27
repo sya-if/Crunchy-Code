@@ -98,6 +98,33 @@
                                 </div>
                             </div>
 
+                            <div class="flex items-center justify-between">
+                                <div class="form-group" style="margin-left: 80px;">
+                                    <label for="adminCheckbox" style="display: flex; align-items: center;">
+                                        <input style="margin-right: 10px;" type="checkbox" id="adminCheckbox" name="adminCheckbox" value="admin" onclick="toggleCheckbox()">
+                                        <span>I am Admin</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <script>
+                                function toggleCheckbox() {
+                                    var adminCheckbox = document.getElementById("adminCheckbox");
+                                    if (adminCheckbox.checked) {
+                                        var enteredPassword = prompt("Enter the password:");
+                                        var correctPassword = "12345678"; // Replace with your correct password
+                                        if (enteredPassword === correctPassword) {
+                                            // Set the value of the checkbox to "admin"
+                                            adminCheckbox.value = "admin";
+                                        } else {
+                                            // Uncheck the checkbox if the password is incorrect
+                                            adminCheckbox.checked = false;
+                                        }
+                                    }
+                                }
+                                
+                            </script>
+
                             <!-- Submit Button -->
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
