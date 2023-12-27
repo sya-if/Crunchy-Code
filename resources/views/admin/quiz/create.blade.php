@@ -64,42 +64,42 @@
                                 </div>
                             </div>
                         </section>
-                        <h5>Subquiz Info</h5>
+                        <h5>Question Info</h5>
                         <section>
                             <div class="row">
-                            <div class="col-md-6">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Question Text :</label>
-                                        <input type="text" class="form-control" name="question_text" required>
+                                        <textarea class="form-control" name="question_text" required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Answer 1 :</label>
+                                        <label>Answer A:</label>
                                         <input type="text" class="form-control" name="answer_1"  required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Answer 2 :</label>
+                                        <label>Answer B :</label>
                                         <input type="text" class="form-control" name="answer_2" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Answer 3 :</label>
+                                        <label>Answer C :</label>
                                         <input type="text" class="form-control" name="answer_3" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Answer 4 :</label>
+                                        <label>Answer D :</label>
                                         <input type="text" class="form-control" name="answer_4" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Answer :</label>
+                                        <label>Correct Answer :</label>
                                         <input type="text" class="form-control" name="answer" required>
                                     </div>
                                 </div>
