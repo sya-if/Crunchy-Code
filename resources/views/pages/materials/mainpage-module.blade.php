@@ -77,314 +77,7 @@
     width:83% !important;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
-* {
-	box-sizing: border-box;
-}
-
-.courses-container {
-	
-}
-
-.course {
-	background-color: #fff;
-	border-radius: 10px;
-	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-	display: flex;
-	max-width: 100%;
-	margin: 20px;
-	overflow: hidden;
-	width: 95%;
-}
-
-.course h6 {
-  color: #fff !important;
-	opacity: 0.6;
-	margin: 0;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-}
-
-.course h2 {
-  color: #fff !important;
-	letter-spacing: 1px;
-	margin: 10px 0;
-}
-
-.course-preview {
-	background-color: #2A265F;
-	color: #fff;
-	padding: 20px;
-	max-width: 300px;
-}
-
-.course-preview a {
-	color: #fff;
-	display: inline-block;
-	font-size: 12px;
-	opacity: 0.6;
-	margin-top: 30px;
-	text-decoration: none;
-}
-
-.course-info {
-	padding: 30px;
-	position: relative;
-	width: 100%;
-}
-
-.progress-container {
-	position: absolute;
-	top: 30px;
-	right: 30px;
-	text-align: right;
-	width: 150px;
-}
-
-.progress {
-	background-color: #ddd;
-	border-radius: 3px;
-	height: 5px;
-	width: 100%;
-}
-
-.progress::after {
-	border-radius: 3px;
-	background-color: #2A265F;
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 5px;
-	width: 66%;
-}
-
-.progress-text {
-	font-size: 10px;
-	opacity: 0.6;
-	letter-spacing: 1px;
-}
-
-.btn {
-	background-color: #2A265F;
-	border: 0;
-	border-radius: 50px;
-	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-	color: #fff;
-	font-size: 16px;
-	padding: 12px 25px;
-	position: absolute;
-	bottom: 30px;
-	right: 30px;
-	letter-spacing: 1px;
-}
-
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
-
-* {
-	box-sizing: border-box;
-}
-
-.courses-container {
-	
-}
-
-.course {
-	background-color: #fff;
-	border-radius: 10px;
-	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-	display: flex;
-	max-width: 100%;
-	margin: 20px;
-	overflow: hidden;
-	width: 95%;
-}
-
-.course h6 {
-  color: #fff !important;
-	opacity: 0.6;
-	margin: 0;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-}
-
-.course h2 {
-  color: #fff !important;
-	letter-spacing: 1px;
-	margin: 10px 0;
-}
-
-.course-preview {
-	background-color: #2A265F;
-	color: #fff;
-	padding: 20px;
-	max-width: 300px;
-}
-
-.course-preview a {
-	color: #fff;
-	display: inline-block;
-	font-size: 12px;
-	opacity: 0.6;
-	margin-top: 30px;
-	text-decoration: none;
-}
-
-.course-info {
-	padding: 30px;
-	position: relative;
-	width: 100%;
-}
-
-.progress-container {
-	position: absolute;
-	top: 30px;
-	right: 30px;
-	text-align: right;
-	width: 150px;
-}
-
-.progress {
-	background-color: #ddd;
-	border-radius: 3px;
-	height: 5px;
-	width: 100%;
-}
-
-.progress::after {
-	border-radius: 3px;
-	background-color: #2A265F;
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 5px;
-	width: 66%;
-}
-
-.progress-text {
-	font-size: 10px;
-	opacity: 0.6;
-	letter-spacing: 1px;
-}
-
-.btn {
-	background-color: #2A265F;
-	border: 0;
-	border-radius: 50px;
-	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-	color: #fff;
-	font-size: 16px;
-	padding: 12px 25px;
-	position: absolute;
-	bottom: 30px;
-	right: 30px;
-	letter-spacing: 1px;
-}
-
-@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
-
-* {
-	box-sizing: border-box;
-}
-
-.courses-container {
-	
-}
-
-.course {
-	background-color: #fff;
-	border-radius: 10px;
-	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-	display: flex;
-	max-width: 100%;
-	margin: 20px;
-	overflow: hidden;
-	width: 95%;
-}
-
-.course h6 {
-  color: #fff !important;
-	opacity: 0.6;
-	margin: 0;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-}
-
-.course h2 {
-  color: #fff !important;
-	letter-spacing: 1px;
-	margin: 10px 0;
-}
-
-.course-preview {
-	background-color: #2A265F;
-	color: #fff;
-	padding: 20px;
-	max-width: 300px;
-}
-
-.course-preview a {
-	color: #fff;
-	display: inline-block;
-	font-size: 12px;
-	opacity: 0.6;
-	margin-top: 30px;
-	text-decoration: none;
-}
-
-.course-info {
-	padding: 30px;
-	position: relative;
-	width: 100%;
-}
-
-.progress-container {
-	position: absolute;
-	top: 30px;
-	right: 30px;
-	text-align: right;
-	width: 150px;
-}
-
-.progress {
-	background-color: #ddd;
-	border-radius: 3px;
-	height: 5px;
-	width: 100%;
-}
-
-.progress::after {
-	border-radius: 3px;
-	background-color: #2A265F;
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 5px;
-	width: 66%;
-}
-
-.progress-text {
-	font-size: 10px;
-	opacity: 0.6;
-	letter-spacing: 1px;
-}
-
-.btn {
-	background-color: #2A265F;
-	border: 0;
-	border-radius: 50px;
-	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-	color: #fff;
-	font-size: 16px;
-	padding: 12px 25px;
-	position: absolute;
-	bottom: 30px;
-	right: 30px;
-	letter-spacing: 1px;
-}
 
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
@@ -500,6 +193,80 @@
 }
 
 </style>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    var totalModules = 3; // Set the total number of modules
+    var moduleSubmodules = {
+        'module1': 7,
+        'module2': 4,
+        'module3': 2
+    };
+    var currentProgress = {}; // Initialize the current progress object
+
+    // Initialize currentProgress object with default values
+    for (var i = 1; i <= totalModules; i++) {
+        currentProgress['module' + i] = 0;
+    }
+
+    $(document).ready(function () {
+        $('.mark-as-done-button').click(function () {
+            var module = $(this).data('module');
+            var submodule = $(this).data('submodule');
+            var progressKey = 'module_' + module + '_submodule_' + submodule + '_progress';
+
+            // Toggle the class to change the button color
+            $(this).toggleClass('btn-outline-success btn-danger');
+
+            // Change the button text based on the state
+            var buttonText = $(this).hasClass('btn-outline-success') ? 'Mark as done' : 'Done';
+            $(this).text(buttonText);
+
+            // Update the progress
+            var submoduleProgress = buttonText === 'Done' ? 1 : -1;
+            currentProgress[module] += submoduleProgress;
+            localStorage.setItem(progressKey, submoduleProgress);
+
+            // Update the UI with the new progress
+            updateProgressUI();
+        });
+
+        $('#myModal-1, #myModal-2, #myModal-3').on('hidden.bs.modal', function () {
+            // Reverse the progress when the modal is closed
+            for (var i = 1; i <= totalModules; i++) {
+                currentProgress['module' + i] = 0;
+                for (var j = 1; j <= moduleSubmodules['module' + i]; j++) {
+                    currentProgress['module' + i] += parseInt(localStorage.getItem('module_' + i + '_submodule_' + j + '_progress')) || 0;
+                }
+            }
+            updateProgressUI();
+        });
+
+        // Function to update the UI with the new progress
+        function updateProgressUI() {
+            var averageProgress = 0;
+
+            // Calculate average progress for all modules
+            for (var i = 1; i <= totalModules; i++) {
+                var moduleProgress = moduleSubmodules['module' + i] > 0 ? Math.round((currentProgress['module' + i] / moduleSubmodules['module' + i]) * 100) : 0;
+                averageProgress += moduleProgress;
+                // Display the total progress for each module in the corresponding span element
+                $('#progressLabel' + i).text('Progress: ' + moduleProgress + '%');
+                // Update the progress bar for each module
+                $('#progressBar' + i).css('width', moduleProgress + '%');
+                $('#progressBar' + i).attr('aria-valuenow', moduleProgress);
+            }
+
+            // Calculate average progress for all modules
+            averageProgress = totalModules > 0 ? Math.round((averageProgress / totalModules)) : 0;
+            // Display the total progress for all modules in the corresponding span element
+            $('#progressLabel').text('Total Progress: ' + averageProgress + '%');
+            // Update the total progress bar
+            $('#totalProgressBar').css('width', averageProgress + '%');
+            $('#totalProgressBar').attr('aria-valuenow', averageProgress);
+        }
+    });
+
+</script>
 
 <div class="main-container">
     <div class="pd-ltr-20 height-100-p xs-pd-20-10">
