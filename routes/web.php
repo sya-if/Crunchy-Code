@@ -59,7 +59,6 @@ Route::resource('materials', MaterialController::class);
 Route::resource('submaterials', SubmaterialController::class);
 
 
-
 //Route to go back to submaterial index
 Route::get('admin/submaterial/index', 'SubmaterialController@index')->name('view.submaterial');
 

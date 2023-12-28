@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <!-- Student Progress  -->
+            {{-- <!-- Student Progress  -->
             @if($user->role == ('student'))
             <div class="row">
                 <div class="row justify-content-center">
@@ -81,7 +81,7 @@
                         </div>
                 </div>
             </div>
-            @endif
+            @endif --}}
 
             <div class="row">
                 <!-- Bahagian Pertama Personal Details -->
