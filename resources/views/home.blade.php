@@ -4,7 +4,8 @@
 @php($modules = App\Models\Modules::orderBy('title', 'asc')->get())
 @section('content')
 <style>
-    .profile-picture-wrapper {
+.profile-picture-wrapper 
+{
     overflow: hidden;
     border-radius: 50%;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adjust the shadow as needed */
@@ -39,9 +40,18 @@
         <div class="card-box pd-20 height-100-p mb-30">
             <div class="row align-items-center">
                 <div class="col-md-3">
-                    <div class="profile-picture-wrapper">
-                        <img src="{{ asset ('uploads/users/'.$user->photo)}}" alt="Profile photo" class="profile-picture">
-                    </div>
+
+                    @if(isset($user->photo) && file_exists(public_path('uploads/users/' . $user->photo)))
+                        <div class="profile-picture-wrapper">
+                            <img src="{{ asset('uploads/users/' . $user->photo) }}" alt="Profile photo" class="profile-picture">
+                        </div>
+                    @else
+                        <div class="profile-picture-wrapper">
+                            <img src="{{ asset('vendors/images/default-admin-photo.png') }}" alt="Default Profile photo" class="profile-picture">
+                        </div>
+                    @endif
+
+
                 </div>
                 <div class="col-md-6">
                     <h4 class="font-20 weight-500 mb-10 text-capitalize">

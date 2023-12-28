@@ -25,9 +25,9 @@ class User extends Authenticatable
         'phone',
         'bio',
         'school',
-        'dob', 
-        'photo'
+        'dob',
     ];
+    
 
     /**
      * The attributes that should be hidden for serialization.
@@ -48,7 +48,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Adding the creating event
     protected static function boot()
     {
         parent::boot();
