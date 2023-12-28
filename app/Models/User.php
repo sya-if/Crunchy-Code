@@ -22,6 +22,11 @@ class User extends Authenticatable
         'nickname',
         'email',
         'password',
+        'phone',
+        'bio',
+        'school',
+        'dob', 
+        'photo'
     ];
 
     /**
@@ -53,6 +58,7 @@ class User extends Authenticatable
                 $user->role='admin';
             }
         });
+    
     }
 
 

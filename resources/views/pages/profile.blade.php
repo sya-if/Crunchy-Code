@@ -85,6 +85,7 @@
 
             <div class="row">
                 <!-- Bahagian Pertama Personal Details -->
+                <!-- Contact Information -->
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-30">
                     <div class="pd-20 card-box height-100-p">
                         <div class="profile-photo">
@@ -122,14 +123,14 @@
                         </div>
 
                         @if($user-> role == ('admin'))
-                        <h5 class="text-center h5 mb-0">{{ old('name' , $user->name ) }}</h5>
+                        <h5 class="text-center h5 mb-0">{{ old('fullname' , $user->fullname ) }}</h5>
                         <p class="text-center text-muted font-14">I'm excited to introduce our comprehensive web development program, designed to equip you with the essential skills and knowledge to build dynamic and engaging websites that make a lasting impact in the digital world.</p>
                         <div class="profile-info">
                             <h5 class="mb-20 h5 text-blue">Contact Information</h5>
                             <ul>
                                 <li>
                                     <span>Email Address:</span>
-                                    {{ old('name' , $user->email ) }}
+                                    {{ old('email' , $user->email ) }}
                                 </li>
                                 <li>
                                     <span>Phone Number:</span>
@@ -139,13 +140,13 @@
                         </div>
 
                         @elseif($user->role == ('student'))
-                        <p class="text-center text-muted font-14">{{ $user->fullname }}</p>
+                        <p class="text-center text-muted font-14">{{ old('fullname' , $user->fullname ) }}</p>
                         <div class="profile-info">
                             <h5 class="mb-20 h5 text-blue">Contact Information</h5>
                             <ul>
                                 <li>
                                     <span>Email Address:</span>
-                                    {{ old('name' , $user->email ) }}
+                                    {{ old('email' , $user->email ) }}
                                 </li>
                                 <li>
                                     <span>Bio:</span>

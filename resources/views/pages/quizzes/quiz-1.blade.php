@@ -293,7 +293,9 @@
 								@foreach($quiz->subquizzes as $key => $subquiz)
 								<div class="question-container">
 								<h6>Question {{ $key + 1 }}</h6>
-								<p>{{ $subquiz->question_text }}</p>
+								<pre>
+									<p>{{ $subquiz->question_text }}</p>
+								</pre>
 
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_1" value="{{ $subquiz->answer_1 }}">

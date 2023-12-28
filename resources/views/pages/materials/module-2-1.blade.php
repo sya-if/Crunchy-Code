@@ -159,7 +159,7 @@ body p{
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                                 <li class="breadcrumb-item"><a href="{{route('module')}}">Module</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Module 2.2 Struktur Kawalan</li>
+                                <li class="breadcrumb-item active" aria-current="page">Module 2.1 Pangkalan Data Hubungan</li>
                             </ol>
                         </nav>
                     </div>
