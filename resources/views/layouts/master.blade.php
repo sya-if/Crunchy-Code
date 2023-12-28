@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+  
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -88,7 +89,6 @@
 	<script src="../../../src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
 	<script src="../../../vendors/scripts/dashboard.js"></script>
     <script src="../../../src/plugins/jquery-steps/jquery.steps.js"></script>
-	<script src="../../../vendors/scripts/steps-setting.js"></script>
-    
+	<script src="../../../vendors/scripts/steps-setting.js"></script>    
 </body>
 </html>

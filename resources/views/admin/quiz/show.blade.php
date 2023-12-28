@@ -4,7 +4,11 @@
 
 @section('content')
 
-
+<style>
+    table, tr,th,td{
+        border: 1px solid #000;
+    }
+</style>
 <div class="main-container">
     @if(session()->has('success'))
     <div class="alert alert-info">
@@ -31,7 +35,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                                 <li class="breadcrumb-item"><a href="{{route('quizzes.index')}}">View Quiz</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">View Subchapter</li>
+                                <li class="breadcrumb-item active" aria-current="page">View Question</li>
                             </ol>
                         </nav>
                     </div>
@@ -53,13 +57,12 @@
             <div class="pd-20 card-box mb-30">
                 <div class="clearfix mb-20">
                     <div class="pull-left">
-                        <h4 class="text-blue h4">List of Subchapter</h4>
+                        <h4 class="text-blue h4">List of Questions</h4>
                     </div>
                 </div>
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Id</th>
                             <th scope="col">Question Text</th>
                             <th scope="col">A</th>
                             <th scope="col">B</th>
@@ -72,7 +75,6 @@
                     <tbody>
                         @foreach($quiz->subquizzes as $subquiz)
                         <tr>
-                            <td>{{$subquiz->id}}</td>
                             <td>{{$subquiz->question_text}}</td>
                             <td>{{$subquiz->answer_1}}</td>
                             <td>{{$subquiz->answer_2}}</td>

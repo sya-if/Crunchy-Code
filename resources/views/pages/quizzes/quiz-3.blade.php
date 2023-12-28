@@ -131,19 +131,28 @@
 }
 
 .btn {
-	background-color: #2A265F;
 	border: 0;
 	border-radius: 50px;
 	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 	color: #fff;
 	font-size: 16px;
 	padding: 12px 25px;
-	position: absolute;
 	bottom: 30px;
 	right: 30px;
-	letter-spacing: 1px;
+	letter-spacing: 1px; 
 }
-
+#resultContainer {
+	float: right;
+	margin-right: 20px; /* Adjust the margin as needed */
+	display: inline-block;
+    vertical-align: top; /* Adjust the alignment as needed */
+}
+.button-container {
+	margin-top: 10px; /* Adjust the margin as needed */
+	display: inline-block;
+	vertical-align: top; /* Adjust the alignment as needed */
+	margin-left: 20px; /* Adjust the margin as needed */
+}
 
 </style>
 
@@ -179,28 +188,28 @@
 								<p>{{ $subquiz->question_text }}</p>
 
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_1" value="A">
+									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_1" value="{{ $subquiz->answer_1 }}">
 									<label class="form-check-label" for="answer_{{ $key }}_1">
 										A. {{ $subquiz->answer_1 }}
 									</label>
 								</div>
 
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_2" value="B">
+									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_2" value="{{ $subquiz->answer_2 }}">
 									<label class="form-check-label" for="answer_{{ $key }}_2">
 										B. {{ $subquiz->answer_2 }}
 									</label>
 								</div>
 
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_3" value="C">
+									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_3" value="{{ $subquiz->answer_3 }}">
 									<label class="form-check-label" for="answer_{{ $key }}_3">
 										C. {{ $subquiz->answer_3 }}
 									</label>
 								</div>
 
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_4" value="D">
+									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_4" value="{{ $subquiz->answer_4 }}">
 									<label class="form-check-label" for="answer_{{ $key }}_4">
 										D. {{ $subquiz->answer_4 }}
 									</label>
@@ -208,7 +217,14 @@
 
 								<br><br>
 								@endforeach
+								<div id="resultContainer"></div>
+								<div class="button-container">
+									<button class="btn btn-primary" type="button" id="checkAnswersBtn" onclick="checkAnswers()">Check Answers</button>
+									<button class="btn btn-success" type="button" id="refreshQuestionsBtn" onclick="refreshQuestions()">Refresh Questions</button>
+								</div>
+
 							</form>
+
 
 						</div>
 					</div>
@@ -223,5 +239,45 @@
   </div>
 
 </div>
+<script>
+    function checkAnswers() {
+        var totalQuestions = {{ count($quiz->subquizzes) }};
+        var correctCount = 0;
+        var incorrectQuestions = [];
 
+        // Loop through each question
+        @foreach($quiz->subquizzes as $key => $subquiz)
+            // Get the selected answer for the current question
+            var selectedAnswer = $('input[name="answer_{{ $key }}"]:checked').val();
+
+            // Get the correct answer from the database
+            var correctAnswer = '{{ $subquiz->answer }}';
+
+            // Check if the selected answer is correct
+            if (selectedAnswer === correctAnswer) {
+                correctCount++;
+            } else {
+                incorrectQuestions.push({ 
+                    questionNumber: {{ $key + 1 }},
+                    correctAnswer: correctAnswer,
+                    userAnswer: selectedAnswer
+                });
+            }
+        @endforeach
+
+        // Display the results on the page
+        var score = correctCount / totalQuestions * 100;
+        var resultContainer = document.getElementById('resultContainer');
+        
+        resultContainer.innerHTML = 'Your Score: ' + score.toFixed(2) + '%<br><br>' +
+            (correctCount === totalQuestions ? 'All questions are correct!' : 'Incorrectly Answered Questions:<br>' +
+            incorrectQuestions.map(function(q) {
+                return 'Question ' + q.questionNumber;
+            }));
+    }
+	function refreshQuestions() {
+        // Reload the page or perform any action needed to refresh the questions
+        location.reload();
+    }
+</script>
 @endsection

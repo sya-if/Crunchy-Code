@@ -381,6 +381,7 @@ hr.new1 {
                                                         
                                                         <form method="GET" action="{{ route('comment.create', ['post_id' => $post->id, 'page_number' => 1]) }}">
                                                             @csrf
+                                                            <br><br>
                                                             <button type="submit" class="btn btn-success">Post Comment</button>
                                                         </form>
 
@@ -388,7 +389,7 @@ hr.new1 {
 
                                                         <!-- Comments -->
 
-                                                        <div class="comments-container">
+                                                        <div id="comments-container-{{ $post->id }}" class="comments-container">
 
                                                             @forelse($post->comments as $comment)
                                                             <div class="media-block">
@@ -440,42 +441,14 @@ hr.new1 {
                                                             @endforelse
                                                         </div>
                                                         
-                                                        
-                                                        <button class="btn btn-warning comment-toggle" style="cursor: pointer;">Show/Hide Comments ({{ count($post->comments) }})</button>
+                                                    
                                                         <!-- /Comments Section -->
                                                     </div>
                                                    
                                                 </div>
                                             </div>
 
-                                            <script>
-                                                document.addEventListener('DOMContentLoaded', function() {
-                                                    // Get all comment containers and toggle buttons
-                                                    const commentContainers = document.querySelectorAll('.comments-container');
-                                                    const commentToggles = document.querySelectorAll('.comment-toggle');
-                                            
-                                                    // Hide all comment containers initially
-                                                    commentContainers.forEach(container => {
-                                                        container.style.display = 'none';
-                                                    });
-                                            
-                                                    // Add click event listeners to toggle buttons
-                                                    commentToggles.forEach((toggle, index) => {
-                                                        toggle.addEventListener('click', function() {
-                                                            const container = commentContainers[index];
-                                            
-                                                            // Toggle display of the comments container
-                                                            if (container.style.display === 'none') {
-                                                                container.style.display = 'block';
-                                                            } else {
-                                                                container.style.display = 'none';
-                                                            }
-                                                        });
-                                                    });
-                                                });
-                                            </script>
-                                            
-                                        
+                                                    
                                         </div>
                                     @empty
                                         <p>No posts available.</p>

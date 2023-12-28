@@ -32,18 +32,6 @@
                         </ol>
                     </nav>
                 </div>
-                <div class="col-md-6 col-sm-12 text-right">
-                    <div class="dropdown">
-                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                            January 2018
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Export List</a>
-                            <a class="dropdown-item" href="#">Policies</a>
-                            <a class="dropdown-item" href="#">View Assets</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -72,6 +60,7 @@
         <div class="container">
             <div class="row justify-content-left">
                 @foreach($modules as $module)
+                @if($module->user_id == Auth::id())
                 <div class="col-md-4 col-sm-12 mb-30 position-relative">
                     <div class="card-box pd-30 height-100-p" style="background-color: {{$module->color}}">
                         <div class="progress-box text-center">
@@ -84,6 +73,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 @endforeach
                 <div class="row justify-content-right">
                     <table class="m-0 p-0" style="width: 100%;">

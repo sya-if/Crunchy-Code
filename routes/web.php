@@ -4,16 +4,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ModuleController;
-use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ForumPostController;
 use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\ForumController;
-use App\Http\Controllers\ForumPostController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\SubmaterialController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +57,11 @@ Route::resource('materials', MaterialController::class);
 
 //Route for student function - Submaterial Controller
 Route::resource('submaterials', SubmaterialController::class);
+
+
+
+//Route to go back to submaterial index
+Route::get('admin/submaterial/index', 'SubmaterialController@index')->name('view.submaterial');
 
 // Route for quiz function - Resource Controller
 Route::resource('quizzes', QuizController::class);
@@ -117,3 +122,5 @@ Route::get('/message', [MessageController::class, 'index'])->name('message');
 
 //Route for delete message
 Route::delete('/admin/messages/{id}', [MessageController::class, 'destroy'])->name('destroy');
+
+Route::patch('/submaterials/{submaterial}', [SubmaterialController::class, 'classupdateStatus']);

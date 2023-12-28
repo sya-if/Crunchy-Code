@@ -12,6 +12,7 @@ use App\Models\Subquiz;
 use App\Models\Forum;
 use App\Models\ForumPost;
 use App\Models\Comment;
+use App\Models\Progress;
 use Auth;
 
 class HomeController extends Controller
@@ -161,7 +162,7 @@ class HomeController extends Controller
         // Check if the view exists before attempting to render it
         if (view()->exists($viewName)) {
             // If the view exists, render it and pass any necessary data (e.g., $user) to the view
-            return view($viewName, compact('user', 'forumTitle', 'forum','posts'));
+            return view($viewName, compact('user', 'forumTitle', 'forum', 'posts'));
         } else {
             // If the view doesn't exist, you can handle the situation accordingly
             return abort(404); // or any other logic you prefer
@@ -169,8 +170,40 @@ class HomeController extends Controller
 
     }
 
+    public function markAsDone($submodule)
+    {
+        $userId = auth()->user()->id;
+
+        $status = Progress::where('user_id', $userId)
+            ->where('submodule_id', $submodule)
+            ->first();
+
+        if (!$status) {
+            // If the status record doesn't exist, create a new one
+            Progress::create([
+                'user_id' => $userId,
+                'submodule_id' => $submodule,
+                'status' => 1, // Assuming '1' represents 'done'
+            ]);
+
+            $updatedStatus = 1; // Set the default status if a new record is created
+        } else {
+            // If the status record exists, update the status
+            $status->update([
+                'status' => $status->status == 0 ? 1 : 0,
+            ]);
+
+            $updatedStatus = $status->status; // Get the updated status
+        }
+
+        // Return the updated status
+        return response()->json(['message' => 'Marked as done successfully', 'status' => $updatedStatus]);
+    }
+
     public function viewFAQ()
     {
         return view('pages\FAQ');
     }
+
+
 }

@@ -48,7 +48,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // Adding the creating event
+    public function submaterials()
+    {
+        return $this->belongsToMany(Submaterial::class)->withPivot('status');
+    }
+
+
     protected static function boot()
     {
         parent::boot();
@@ -61,5 +66,4 @@ class User extends Authenticatable
         });
     
     }
-
 }

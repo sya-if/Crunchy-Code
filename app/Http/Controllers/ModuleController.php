@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Modules;
+use App\Models\Submaterial;
+use Illuminate\Support\Facades\Auth;
 
 class ModuleController extends Controller
 {
@@ -27,25 +29,23 @@ class ModuleController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
+        
+        // Fetch unique submaterial titles from the database
+        $moduleTitles = Submaterial::distinct('subchapternumber')
+        ->pluck('subchaptertitle', 'subchapternumber')
+        ->map(function ($title, $number) {
+            return "$number: $title";
+        })
+        ->toArray();
 
-        $moduleTitles = [
-            "1.1 Strategi Penyelesaian Masalah",
-            "1.2 Algoritma",
-            "1.3 Pemboleh Ubah, Pemalar dan Jenis Data",
-            "1.4 Struktur Kawalan",
-            "1.5 Amalan Terbaik Pengaturcaraan",
-            "1.6 Struktur Data dan Modular",
-            "1.7 Pembangunan Aplikasi",
-            "2.1 Pangkalan Data Hubungan",
-            "2.2 Reka Bentuk Pangkalan Data Hubungan",
-            "2.3 Pembangunan Pangkalan Data Hubungan",
-            "2.4 Pembangunan Sistem Pangkalan Data",
-            "3.1 Reka Bentuk Interaksi",
-            "3.2 Paparan dan Reka Bentuk Skrin",
-        ];
+        // You can sort the moduleTitles array if needed
+        sort($moduleTitles);
+        
+        
         $modules = new Modules;
 
-        return view('pages\module-page\create', compact('moduleTitles', 'modules'));
+        return view('pages\module-page\create', compact('moduleTitles', 'modules','user'));
     }
 
     /**
@@ -62,10 +62,15 @@ class ModuleController extends Controller
             'color' => 'required|string|max:255',
         ]);
 
-        // Check if the '<link>title</link>' already exists in the database
-        $existingModule = Modules::where('title', $request['title'])->first();
+        $user = Auth::user();
+
+        // Check if the '<link>title</link>' already exists for the specific user
+        $existingModule = Modules::where('title', $request['title'])
+                                    ->where('user_id', $user->id)
+                                    ->first();
+
         if ($existingModule) {
-            return redirect()->route('modules.index')->with('success', 'modules already exist!');
+            return redirect()->route('modules.index')->with('success', 'Module already exists for the user!');
         } else {
             $modules = new Modules();
 
@@ -77,14 +82,16 @@ class ModuleController extends Controller
             $modules->title = $request['title'];
             $modules->link = $modifiedLink;
             $modules->color = $request['color'];
+            $modules->user_id = $user->id;
 
             // Save the action
             $modules->save();
 
             // Redirect to a success page or back to the form
-            return redirect()->route('modules.index')->with('success', 'modules enrolled successfully');
+            return redirect()->route('modules.index')->with('success', 'Module enrolled successfully');
         }
     }
+
     /**
      * Display the specified resource.
      *
