@@ -149,7 +149,113 @@
         margin-top: 10px; /* Adjust the margin as needed */
 }
 
+#timerContainer {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  #timer {
+    font-weight: bold;
+    color: #fff;
+    background-color: #2A265F;
+    padding: 8px 12px;
+    border-radius: 5px;
+  }
+
+  .question-container {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #fff;
+    }
 </style>
+<script>
+    var timer;
+    var totalTime = 200; // Set the total time for the quiz in seconds (e.g., 10 minutes)
+
+    // Call this function when the page is loaded
+    window.onload = function() {
+        startTimer();
+    };
+
+    function startTimer() {
+        var minutes, seconds;
+        timer = setInterval(function() {
+            minutes = parseInt(totalTime / 60, 10);
+            seconds = parseInt(totalTime % 60, 10);
+
+            document.getElementById('timer').innerHTML = minutes + 'm ' + seconds + 's';
+
+            if (--totalTime < 0) {
+                clearInterval(timer);
+                // Call a function to handle time expiration (e.g., submit the quiz)
+                timeExpired();
+            }
+        }, 1000);
+    }
+
+	function checkAnswers() {
+        // Display a confirmation pop-up
+        var confirmCheck = confirm("Are you sure you want to check your answers?");
+
+        console.log("confirmCheck:", confirmCheck); // Add this line for debugging
+
+        if (confirmCheck) {
+            // If the user clicks "OK" in the confirmation pop-up
+            var totalQuestions = {{ count($quiz->subquizzes) }};
+            var correctCount = 0;
+            var incorrectQuestions = [];
+
+            // Loop through each question
+            @foreach($quiz->subquizzes as $key => $subquiz)
+                // Get the selected answer for the current question
+                var selectedAnswer = $('input[name="answer_{{ $key }}"]:checked').val();
+
+                // Get the correct answer from the database
+                var correctAnswer = '{{ $subquiz->answer }}';
+
+                // Check if the selected answer is correct
+                if (selectedAnswer === correctAnswer) {
+                    correctCount++;
+                } else {
+                    incorrectQuestions.push({ 
+                        questionNumber: {{ $key + 1 }},
+                        correctAnswer: correctAnswer,
+                        userAnswer: selectedAnswer
+                    });
+                }
+            @endforeach
+
+            // Display the results on the page
+            var score = correctCount / totalQuestions * 100;
+            var resultContainer = document.getElementById('resultContainer');
+            
+            resultContainer.innerHTML = 'Your Score: ' + score.toFixed(2) + '%<br><br>' +
+                (correctCount === totalQuestions ? 'All questions are correct!' : 'Incorrectly Answered Questions:<br>' +
+                incorrectQuestions.map(function(q) {
+                    return 'Question ' + q.questionNumber;
+                }));
+
+            // Stop the timer when the user checks the answers
+            clearInterval(timer);
+
+            // Additional actions for when the user clicks "OK"
+            alert('Answers checked successfully!');
+        } else {
+            // If the user clicks "Cancel" in the confirmation pop-up
+            // Additional actions or messages can be added here
+            alert('Answers not checked. The timer will continue.');
+        }
+    }
+
+    function refreshQuestions() {
+        // Reload the page or perform any action needed to refresh the questions
+        location.reload();
+    }
+</script>
+
 
 
 <div class="main-container">
@@ -176,9 +282,16 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-12">
 					<div class="blog-detail card-box overflow-hidden mb-30">
+					<div class="button-container">
+						<div id="timerContainer">
+							Time Left: <span id="timer"></span>
+						</div>
+
+
 						<div class="blog-caption" style="color : #000;">
 							<form>
 								@foreach($quiz->subquizzes as $key => $subquiz)
+								<div class="question-container">
 								<h6>Question {{ $key + 1 }}</h6>
 								<p>{{ $subquiz->question_text }}</p>
 
@@ -211,6 +324,8 @@
 								</div>
 
 								<br><br>
+							</div>
+
 								@endforeach
 								<div class="button-container">
 									<button class="btn btn-primary" type="button" id="checkAnswersBtn" onclick="checkAnswers()">Check Answers</button>
@@ -234,45 +349,4 @@
   </div>
 
 </div>
-<script>
-    function checkAnswers() {
-        var totalQuestions = {{ count($quiz->subquizzes) }};
-        var correctCount = 0;
-        var incorrectQuestions = [];
-
-        // Loop through each question
-        @foreach($quiz->subquizzes as $key => $subquiz)
-            // Get the selected answer for the current question
-            var selectedAnswer = $('input[name="answer_{{ $key }}"]:checked').val();
-
-            // Get the correct answer from the database
-            var correctAnswer = '{{ $subquiz->answer }}';
-
-            // Check if the selected answer is correct
-            if (selectedAnswer === correctAnswer) {
-                correctCount++;
-            } else {
-                incorrectQuestions.push({ 
-                    questionNumber: {{ $key + 1 }},
-                    correctAnswer: correctAnswer,
-                    userAnswer: selectedAnswer
-                });
-            }
-        @endforeach
-
-        // Display the results on the page
-        var score = correctCount / totalQuestions * 100;
-        var resultContainer = document.getElementById('resultContainer');
-        
-        resultContainer.innerHTML = 'Your Score: ' + score.toFixed(2) + '%<br><br>' +
-            (correctCount === totalQuestions ? 'All questions are correct!' : 'Incorrectly Answered Questions:<br>' +
-            incorrectQuestions.map(function(q) {
-                return 'Question ' + q.questionNumber;
-            }));
-    }
-	function refreshQuestions() {
-        // Reload the page or perform any action needed to refresh the questions
-        location.reload();
-    }
-</script>
 @endsection

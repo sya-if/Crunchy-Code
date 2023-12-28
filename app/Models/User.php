@@ -43,17 +43,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function submaterials()
+    protected static function boot()
     {
-        return $this->belongsToMany(Submaterial::class)->withPivot('status');
-    }
+        parent::boot();
 
-
-        static::creating(function ($user) {
+        static::creating(function ($user)
+        {
             if (request('adminCheckbox')) {
-                $user->role = 'admin';
+                $user->role='admin';
             }
         });
     }
+
 
 }
