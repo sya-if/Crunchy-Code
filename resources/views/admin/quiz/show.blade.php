@@ -52,6 +52,9 @@
             <!-- Striped table start -->
             <div class="pd-20 card-box mb-30">
                 <div class="clearfix mb-20">
+                    <div class="pull-right">
+                        <a href="{{route('quizzes.create')}}" class="btn btn-info float-end">Add New Quiz</a>
+                    </div>
                     <div class="pull-left">
                         <h4 class="text-blue h4">List of Questions</h4>
                     </div>
