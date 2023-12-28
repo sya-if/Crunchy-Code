@@ -144,14 +144,9 @@
 #resultContainer {
 	float: right;
 	margin-right: 20px; /* Adjust the margin as needed */
-	display: inline-block;
-    vertical-align: top; /* Adjust the alignment as needed */
 }
 .button-container {
-	margin-top: 10px; /* Adjust the margin as needed */
-	display: inline-block;
-	vertical-align: top; /* Adjust the alignment as needed */
-	margin-left: 20px; /* Adjust the margin as needed */
+        margin-top: 10px; /* Adjust the margin as needed */
 }
 
 </style>
@@ -185,7 +180,9 @@
 							<form>
 								@foreach($quiz->subquizzes as $key => $subquiz)
 								<h6>Question {{ $key + 1 }}</h6>
-								<p>{{ $subquiz->question_text }}</p>
+								<pre>
+									<p>{{ $subquiz->question_text }}</p>
+								</pre>
 
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_1" value="{{ $subquiz->answer_1 }}">
@@ -217,7 +214,6 @@
 
 								<br><br>
 								@endforeach
-								<div id="resultContainer"></div>
 								<div class="button-container">
 									<button class="btn btn-primary" type="button" id="checkAnswersBtn" onclick="checkAnswers()">Check Answers</button>
 									<button class="btn btn-success" type="button" id="refreshQuestionsBtn" onclick="refreshQuestions()">Refresh Questions</button>
@@ -265,17 +261,23 @@
             }
         @endforeach
 
-        // Display the results on the page
+        // Display the results using an alert popup
         var score = correctCount / totalQuestions * 100;
-        var resultContainer = document.getElementById('resultContainer');
-        
-        resultContainer.innerHTML = 'Your Score: ' + score.toFixed(2) + '%<br><br>' +
-            (correctCount === totalQuestions ? 'All questions are correct!' : 'Incorrectly Answered Questions:<br>' +
-            incorrectQuestions.map(function(q) {
-                return 'Question ' + q.questionNumber;
-            }));
+
+        if (correctCount === totalQuestions) {
+            alert('Your Score: ' + score.toFixed(2) + '%\nAll questions are correct!');
+        } else {
+            var errorMessage = 'Your Score: ' + score.toFixed(2) + '%\nIncorrectly Answered Questions:\n';
+
+            incorrectQuestions.forEach(function(q) {
+                errorMessage += 'Question ' + q.questionNumber + '\n';
+            });
+
+            alert(errorMessage);
+        }
     }
-	function refreshQuestions() {
+
+    function refreshQuestions() {
         // Reload the page or perform any action needed to refresh the questions
         location.reload();
     }
