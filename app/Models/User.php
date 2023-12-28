@@ -22,6 +22,11 @@ class User extends Authenticatable
         'nickname',
         'email',
         'password',
+        'phone',
+        'bio',
+        'school',
+        'dob', 
+        'photo'
     ];
 
     /**
@@ -48,11 +53,13 @@ class User extends Authenticatable
     {
         parent::boot();
 
-        static::creating(function ($user) {
+        static::creating(function ($user)
+        {
             if (request('adminCheckbox')) {
                 $user->role = 'admin';
             }
         });
+    
     }
 
 }
