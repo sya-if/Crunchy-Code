@@ -54,7 +54,6 @@ class StudentController extends Controller
             'fullname' => 'required|string|max:255',
             'nickname' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'phone' => 'nullable',
             'password' => 'nullable|min:8|confirmed',
             'photo' =>'nullable|mimes:jpeg,jpg,png|max:10000'
             

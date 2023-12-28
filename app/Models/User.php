@@ -22,6 +22,11 @@ class User extends Authenticatable
         'nickname',
         'email',
         'password',
+        'phone',
+        'bio',
+        'school',
+        'dob', 
+        'photo'
     ];
 
     /**
@@ -43,20 +48,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function submaterials()
-    {
-        return $this->belongsToMany(Submaterial::class)->withPivot('status');
-    }
-
-
+    // Adding the creating event
     protected static function boot()
     {
         parent::boot();
 
-        static::creating(function ($user) {
+        static::creating(function ($user)
+        {
             if (request('adminCheckbox')) {
                 $user->role = 'admin';
             }
         });
+    
     }
+
 }

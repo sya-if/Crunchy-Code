@@ -25,21 +25,21 @@ class ProfileController extends Controller
     public function postProfile(Request $request)
     {
         // View the sent data
-        // dd($request);
+        // dd($request->all());
 
         // Validation of data that has been sent. Check the format, the box has been filled.
         $user = Auth::user();
 
         // Standard validation
         $this->validate($request, [
-            'fullname' => 'required|min:3',
-            'nickname' => 'required|min:3',
+            'fullname' => 'required|regex:/^[a-zA-Z\s]+$/|min:3',
+            'nickname' => 'required|regex:/^[a-zA-Z\s]+$/|min:3',
             'email' => ['required', 'email', 'unique:users,email,' . ($user ? $user->id : '')],
-            'phone' => 'nullable',
+            'phone' => 'required|regex:/^(\+?6?01)[0-46-9]-*[0-9]{7,8}$/',
             'password' => 'nullable|min:8|confirmed',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:1000',
             'bio' => 'nullable',
-            'school' => 'nullable',
+            'school' => 'nullable|regex:/^[a-zA-Z\s]+$/',
             'dob' => 'required|date',
         ]);
 
