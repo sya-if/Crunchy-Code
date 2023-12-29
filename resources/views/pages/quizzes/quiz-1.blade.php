@@ -335,7 +335,6 @@
 								</div>
 
 							</form>
-							<div id="resultContainer"></div>
 
 
 						</div>
