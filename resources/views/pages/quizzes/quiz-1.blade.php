@@ -197,58 +197,65 @@
     }
 
 	function checkAnswers() {
-        // Display a confirmation pop-up
-        var confirmCheck = confirm("Are you sure you want to check your answers?");
+    var totalQuestions = {{ count($quiz->subquizzes) }};
+    var correctCount = 0;
+    var incorrectQuestions = [];
 
-        console.log("confirmCheck:", confirmCheck); // Add this line for debugging
+    // Loop through each question
+    @foreach($quiz->subquizzes as $key => $subquiz)
+        // Get the selected answer for the current question
+        var selectedAnswer = $('input[name="answer_{{ $key }}"]:checked').val();
 
-        if (confirmCheck) {
-            // If the user clicks "OK" in the confirmation pop-up
-            var totalQuestions = {{ count($quiz->subquizzes) }};
-            var correctCount = 0;
-            var incorrectQuestions = [];
+        // Get the correct answer from the database
+        var correctAnswer = '{{ $subquiz->answer }}';
 
-            // Loop through each question
-            @foreach($quiz->subquizzes as $key => $subquiz)
-                // Get the selected answer for the current question
-                var selectedAnswer = $('input[name="answer_{{ $key }}"]:checked').val();
-
-                // Get the correct answer from the database
-                var correctAnswer = '{{ $subquiz->answer }}';
-
-                // Check if the selected answer is correct
-                if (selectedAnswer === correctAnswer) {
-                    correctCount++;
-                } else {
-                    incorrectQuestions.push({ 
-                        questionNumber: {{ $key + 1 }},
-                        correctAnswer: correctAnswer,
-                        userAnswer: selectedAnswer
-                    });
-                }
-            @endforeach
-
-            // Display the results on the page
-            var score = correctCount / totalQuestions * 100;
-            var resultContainer = document.getElementById('resultContainer');
-            
-            resultContainer.innerHTML = 'Your Score: ' + score.toFixed(2) + '%<br><br>' +
-                (correctCount === totalQuestions ? 'All questions are correct!' : 'Incorrectly Answered Questions:<br>' +
-                incorrectQuestions.map(function(q) {
-                    return 'Question ' + q.questionNumber;
-                }));
-
-            // Stop the timer when the user checks the answers
-            clearInterval(timer);
-
-            // Additional actions for when the user clicks "OK"
-            alert('Answers checked successfully!');
+        // Check if the selected answer is correct
+        if (selectedAnswer === correctAnswer) {
+            correctCount++;
+            displayAnswerFeedback({{ $key + 1 }}, 'Correct!', 'text-success');
         } else {
-            // If the user clicks "Cancel" in the confirmation pop-up
-            // Additional actions or messages can be added here
-            alert('Answers not checked. The timer will continue.');
+            incorrectQuestions.push({ 
+                questionNumber: {{ $key + 1 }},
+                correctAnswer: correctAnswer,
+                userAnswer: selectedAnswer
+            });
+            displayAnswerFeedback({{ $key + 1 }}, 'Incorrect. Correct Answer: ' + correctAnswer, 'text-danger');
         }
+    @endforeach
+
+    // Display the overall score
+    var score = correctCount / totalQuestions * 100;
+    var scoreFeedback = 'Your Score: ' + score.toFixed(2) + '%';
+
+    // Display the result in the modal
+    $('#resultText').text(scoreFeedback);
+    $('#resultModal').modal('show');
+
+    // Display the overall score in your existing feedback
+    displayAnswerFeedback('total', scoreFeedback, 'font-weight-bold');
+
+    // Optionally, you can display additional feedback or perform other actions as needed
+
+        // Optionally, you can display additional feedback or perform other actions as needed
     }
+
+    function displayAnswerFeedback(questionNumber, feedback, styleClass) {
+        // Remove any existing feedback for the current question
+        $('.question-container:eq(' + (questionNumber - 1) + ') .feedback-message').remove();
+
+        // Create a div to display feedback
+        var feedbackDiv = $('<div></div>').addClass('feedback-message ' + styleClass).html(feedback);
+
+        // Append the feedback below the corresponding question
+        $('.question-container:eq(' + (questionNumber - 1) + ')').append(feedbackDiv);
+    }
+
+    function closeResultModal() {
+        $('#resultModal').modal('hide');
+       
+}
+
+
 
     function refreshQuestions() {
         // Reload the page or perform any action needed to refresh the questions
@@ -297,6 +304,9 @@
 									<p>{{ $subquiz->question_text }}</p>
 								</pre>
 
+								@if($subquiz->photo)
+                    <img src="{{ asset ('uploads/quizzes/'.$subquiz->photo)}}" style="width:300px;">
+                @endif
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_1" value="{{ $subquiz->answer_1 }}">
 									<label class="form-check-label" for="answer_{{ $key }}_1">
@@ -336,6 +346,26 @@
 
 							</form>
 
+              <!-- Add this code after your existing HTML -->
+              <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="resultModalLabel">Quiz Result</h5>
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p id="resultText"></p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeResultModal()">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
 
 						</div>
 					</div>
@@ -350,4 +380,5 @@
   </div>
 
 </div>
+
 @endsection
