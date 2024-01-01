@@ -44,11 +44,16 @@
         <div class="container">
             <div class="row align-items-center">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <div class="col-md-6">
 =======
                 <div class="col-md-6 animated">
 >>>>>>> Stashed changes
                     <img src="vendors/images/forgot-password.png" alt="">
+=======
+                <div class="col-md-6">
+                    <img src="vendors/images/welcome.png" alt="">
+>>>>>>> Stashed changes
                 </div>
                 <div class="col-md-6">
                     <div class="login-box bg-white box-shadow border-radius-10">
