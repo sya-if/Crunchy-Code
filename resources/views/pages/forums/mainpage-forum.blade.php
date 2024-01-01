@@ -81,7 +81,7 @@
 	background-color: #2A265F;
 	color: #fff;
 	padding: 20px;
-	max-width: 300px !important;
+	max-width: 300px;
 }
 
 .course-preview a {
@@ -180,17 +180,9 @@
 
                       <div class="course-info">
                           <h5>Penerangan</h5>
-                          <br>
-                          <p style="width:80%; text-align:justify;">{{ $forum->description }}</p>
-
+                          <p>{{ $forum->description }}</p>
                           <a href="{{ route('forum.page', ['pageNumber' => $loop->index + 1, 'forumTitle' => $forum->title]) }}" class="btn button-74">Sertai</a>
                       </div>
-
-                      <div>
-                        
-                      </div>
-
-                      
                   </div>
               </div>
           @endforeach

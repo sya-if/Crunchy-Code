@@ -43,7 +43,11 @@
     <div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
         <div class="container">
             <div class="row align-items-center">
+<<<<<<< Updated upstream
                 <div class="col-md-6">
+=======
+                <div class="col-md-6 animated">
+>>>>>>> Stashed changes
                     <img src="vendors/images/forgot-password.png" alt="">
                 </div>
                 <div class="col-md-6">

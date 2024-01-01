@@ -11,7 +11,17 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
+<<<<<<< Updated upstream
         "laravel/ui": "4.x"
+=======
+<<<<<<< HEAD
+        "laravel/ui": "4.x",
+        "ext-gd": "*",
+        "intervention/image": "^2.5"
+=======
+        "laravel/ui": "4.x"
+>>>>>>> parent of 154ad00 (Enable GD extension)
+>>>>>>> Stashed changes
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
