@@ -35,7 +35,7 @@
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="brand-logo">
                 <a href="/">
-                    <img src="vendors/images/deskapp-logo.svg" alt="">
+                    <img src="vendors/images/word-logo.png" alt="">
                 </a>
             </div>
         </div>
@@ -43,18 +43,10 @@
     <div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
         <div class="container">
             <div class="row align-items-center">
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                <div class="col-md-6">
-=======
-                <div class="col-md-6 animated">
->>>>>>> Stashed changes
-                    <img src="vendors/images/forgot-password.png" alt="">
-=======
                 <div class="col-md-6">
                     <img src="vendors/images/welcome.png" alt="">
->>>>>>> Stashed changes
                 </div>
+                
                 <div class="col-md-6">
                     <div class="login-box bg-white box-shadow border-radius-10">
                         <div class="login-title">
