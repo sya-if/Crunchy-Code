@@ -191,7 +191,7 @@
             if (--totalTime < 0) {
                 clearInterval(timer);
                 // Call a function to handle time expiration (e.g., submit the quiz)
-                timeExpired();
+                checkAnswers();
             }
         }, 1000);
     }
@@ -346,7 +346,6 @@
 
 							</form>
 
-              <!-- Add this code after your existing HTML -->
               <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
