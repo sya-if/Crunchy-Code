@@ -336,6 +336,9 @@
 
             
         </div>
+        <div class="footer-wrap pd-20 mb-20 card-box">
+            Crunchy Code Web Application System developed by Elysium
+        </div>
     </div>
 </div>
 @endsection
