@@ -205,5 +205,12 @@ class HomeController extends Controller
         return view('pages\FAQ');
     }
 
+    public function dashboard()
+    {
+        $users = User::whereHas('roles', function ($query) {
+            $query->where('name', 'student');
+        })->count();
+    }
+
 
 }

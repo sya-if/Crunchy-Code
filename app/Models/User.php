@@ -55,10 +55,11 @@ class User extends Authenticatable
         static::creating(function ($user)
         {
             if (request('adminCheckbox')) {
-                $user->role = 'admin';
+                $user->role='admin';
             }
         });
     
     }
+
 
 }

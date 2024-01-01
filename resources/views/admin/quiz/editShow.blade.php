@@ -38,7 +38,7 @@
                     <h4 class="text-blue h4">Edit Subquiz</h4>
                 </div>
                 <div class="wizard-content">
-                    <form method="POST" action="{{ route('quizzes.updateShow', ['quiz' => $quiz->chapternumber, 'subquizId' => $subquiz->id]) }}">
+                    <form method="POST" action="{{ route('quizzes.updateShow', ['quiz' => $quiz->chapternumber, 'subquizId' => $subquiz->id]) }}" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <section>
@@ -47,7 +47,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Question Text :</label>
-                                        <input type="text" class="form-control" name="question_text" value="{{ $subquiz->question_text }}" required>
+                                        <textarea class="form-control" name="question_text" required>{{ $subquiz->question_text }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
