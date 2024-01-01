@@ -3,11 +3,6 @@
 @php($user = Auth::user())
 
 @section('content')
-<style>
-    .required {
-        color: red;
-    }
-</style>
 <div class="main-container">
     <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-200px">
@@ -51,19 +46,19 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >Chapter Number<span class="required">*</span> :</label>
+                                        <label >Chapter Number :</label>
                                         <input type="text" class="form-control" name="chapternumber" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >Chapter Title<span class="required">*</span> :</label>
+                                        <label >Chapter Title :</label>
                                         <input type="text" class="form-control" name="chaptertitle" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label >Description<span class="required">*</span> :</label>
+                                        <label >Description :</label>
                                         <textarea class="form-control" name="description" required></textarea>
                                     </div>
                                 </div>
@@ -74,35 +69,25 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Question Text<span class="required">*</span> :</label>
+                                        <label>Question Text :</label>
                                         <textarea class="form-control" name="question_text" required></textarea>
                                     </div>
                                 </div>
-
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="file" name="photo" class="form-control">
-                                        @error('photo')
-                                            <span class="text-danger">{{ $message}}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Answer A<span class="required">*</span> :</label>
+                                        <label>Answer A:</label>
                                         <input type="text" class="form-control" name="answer_1"  required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Answer B<span class="required">*</span> :</label>
+                                        <label>Answer B :</label>
                                         <input type="text" class="form-control" name="answer_2" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Answer C<span class="required">*</span> :</label>
+                                        <label>Answer C :</label>
                                         <input type="text" class="form-control" name="answer_3" required>
                                     </div>
                                 </div>

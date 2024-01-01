@@ -63,7 +63,6 @@
                         <tr>
                             <th scope="col">Chapter Number</th>
                             <th scope="col">Chapter Title</th>
-                            
                             <th scope="col" colspan="3">Action</th>
                         </tr>
                     </thead>
