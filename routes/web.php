@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\SubmaterialController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,127 +32,91 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< Updated upstream
-//Route for edit profile. Panggil ProfileController. Method yang berbeza.
-Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'getProfile'])->name('profile');
-Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'postProfile'])->name('profile.post');
-
-// Route for handling the photo update
-Route::post('/update-photo', [App\Http\Controllers\ProfileController::class, 'updatePhoto'])->name('update-photo');
-=======
->>>>>>> Stashed changes
-
 // Authentication Route
 Auth::routes();
 
-<<<<<<< Updated upstream
-// Route for student model (resource)
-Route::resource('user', 'App\Http\Controllers\Admin\StudentController');
+// Route to display a notice to the user that they should click the email verification link in the verification email that Laravel sent them after registration.
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
 
-// Route for get the list of students
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route o handle requests generated when the user clicks the email verification link in the email.
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
 
-// Route for logout into the system
-Route::get('/logout', [LoginController::class, 'logout']);
+    return redirect('/home');
+})->middleware(['auth', 'signed'])->name('verification.verify');
 
-// Route for student function - Resource Controller
-Route::resource('users', StudentController::class);
+// Route to resend a verification link if the user accidentally loses the first verification link.
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
 
-// Route for student function - Material Controller
-Route::resource('materials', MaterialController::class);
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.resend');
 
-//Route for student function - Submaterial Controller
-Route::resource('submaterials', SubmaterialController::class);
-
-
-// Route for quiz function - Resource Controller
-Route::resource('quizzes', QuizController::class);
-
-// Add a custom route for destroying a subquiz
-Route::delete('quizzes/{subquiz}/destroy-subquiz', [QuizController::class, 'destroySubquiz'])->name('quizzes.destroySubquiz');
-
-// Add a custom route to go to editShow page
-Route::get('/quizzes/{quiz}/editShow/{subquizId}', [QuizController::class, 'editShow'])->name('quizzes.editShow');
-
-// Add a custom route to handle update on editShow page
-Route::put('/quizzes/{quiz}/updateShow/{subquizId}', [QuizController::class, 'updateShow'])->name('quizzes.updateShow');
-
-// Route for Module function - Resource Controller
-Route::resource('modules', ModuleController::class);
-=======
-// Group the route. Apply prefix app kepada semua url
+//Group the route. Apply prefix app kepada semua url
 Route::group([
 
-    'middleware' => ['auth'], // User kena login dulu baru boleh buka page
+    // Only verified users may access this route...
+    'middleware' => ['auth', 'verified'],
 ], function () {
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     //Route for edit profile. Panggil ProfileController. Method yang berbeza.
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'getProfile'])->name('profile');
     Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'postProfile'])->name('profile.post');
->>>>>>> Stashed changes
 
-// Route for forum function - Resource Controller
-Route::resource('forum', ForumController::class);
+    // Route for handling the photo update
+    Route::post('/update-photo', [App\Http\Controllers\ProfileController::class, 'updatePhoto'])->name('update-photo');
 
-// Route for forum post function - Resource Controller
-Route::resource('post', ForumPostController::class);
-
-<<<<<<< Updated upstream
-// Replace create forum route
-Route::get('/post/create/{forum_id}/{page_number}', [ForumPostController::class, 'create'])->name('post.create');
-=======
-    // Route for get the list of students
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // Route for student model (resource)
+    Route::resource('user', 'App\Http\Controllers\Admin\StudentController');
 
     // Route for logout into the system
     Route::get('/logout', [LoginController::class, 'logout']);
->>>>>>> Stashed changes
 
-// Route for forum comment function - Resource Controller
-Route::resource('comment', CommentController::class);
+    // Route for student function - Resource Controller
+    Route::resource('users', StudentController::class);
 
-// Replace create discussion route
-Route::get('/comment/create/{post_id}/{page_number}', [CommentController::class, 'create'])->name('comment.create');
+    // Route for student function - Material Controller
+    Route::resource('materials', MaterialController::class);
 
-// Route for module main page
-Route::get('/module', [App\Http\Controllers\HomeController::class, 'ViewModule'])->name('module');
+    //Route for student function - Submaterial Controller
+    Route::resource('submaterials', SubmaterialController::class);
 
-// Route for chosen module page
-Route::get('/module/{module}', [App\Http\Controllers\HomeController::class, 'showModulePage'])->name('module.page');
+    //Route to go back to submaterial index
+    Route::get('admin/submaterial/index', 'SubmaterialController@index')->name('view.submaterial');
 
-// Route for quiz main page
-Route::get('/quiz', [App\Http\Controllers\HomeController::class, 'ViewQuiz'])->name('quiz');
+    // Route for quiz function - Resource Controller
+    Route::resource('quizzes', QuizController::class);
 
-// Route for chosen quiz page
-Route::get('/quiz/{quizId}', [App\Http\Controllers\HomeController::class, 'showQuizPage'])->name('quiz.page');
+    // Add a custom route for destroying a subquiz
+    Route::delete('quizzes/{subquiz}/destroy-subquiz', [QuizController::class, 'destroySubquiz'])->name('quizzes.destroySubquiz');
 
-// Route for forum main page
-Route::get('/discussion', [App\Http\Controllers\HomeController::class, 'viewForumPage'])->name('discussion');
+    // Add a custom route to go to editShow page
+    Route::get('/quizzes/{quiz}/editShow/{subquizId}', [QuizController::class, 'editShow'])->name('quizzes.editShow');
 
-// Route for specific page number
-Route::get('/forum/page/{pageNumber}/{forumTitle?}', [App\Http\Controllers\HomeController::class, 'showForumPage'])->name('forum.page');
+    // Add a custom route to handle update on editShow page
+    Route::put('/quizzes/{quiz}/updateShow/{subquizId}', [QuizController::class, 'updateShow'])->name('quizzes.updateShow');
 
-// Route for FAQ page
-Route::get('/FAQ', [App\Http\Controllers\HomeController::class, 'viewFAQ'])->name('FAQ');
+    // Route for Module function - Resource Controller
+    Route::resource('modules', ModuleController::class);
 
-// Route for contact us form
-Route::post('/contact', [ContactController::class, 'store'])->name('contact');
+    // Route for forum function - Resource Controller
+    Route::resource('forum', ForumController::class);
 
-//Route for message
-Route::get('/message', [MessageController::class, 'index'])->name('message');
+    // Route for forum post function - Resource Controller
+    Route::resource('post', ForumPostController::class);
 
-<<<<<<< Updated upstream
-//Route for delete message
-Route::delete('/admin/messages/{id}', [MessageController::class, 'destroy'])->name('destroy');
-=======
     // Replace create forum route
-    Route::get('/post/create/{forum_id}/{page_number}', [ForumPostController::class, 'create'])->name('post.create');
+    Route::get('/post/create/{forum_id}/{page_number}', [ForumPostController::class, 'create']);
 
     // Route for forum comment function - Resource Controller
     Route::resource('comment', CommentController::class);
 
     // Replace create discussion route
-    Route::get('/comment/create/{post_id}/{page_number}', [CommentController::class, 'create'])->name('comment.create');
+    Route::get('/comment/create/{post_id}/{page_number}', [CommentController::class, 'create']);
 
     // Route for module main page
     Route::get('/module', [App\Http\Controllers\HomeController::class, 'ViewModule'])->name('module');
@@ -184,8 +150,5 @@ Route::delete('/admin/messages/{id}', [MessageController::class, 'destroy'])->na
 
     Route::patch('/submaterials/{submaterial}', [SubmaterialController::class, 'classupdateStatus']);
 
-
 });
->>>>>>> Stashed changes
 
-// Route::patch('/submaterials/{submaterial}', [SubmaterialController::class, 'classupdateStatus']);
