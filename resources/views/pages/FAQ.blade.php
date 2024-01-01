@@ -316,7 +316,7 @@
                                     </div>
                                     <div style="display: block; justify-content: center; text-align: center;">
                                         <h6 style="margin-bottom: 10px;">Jika ada pertanyaan lebih lanjut sila hubungi kami</h6>
-                                        <button class="btn btn-success" role="button" data-toggle="modal" data-target="#contactModal">Contact Us</button>
+                                        <button class="btn btn-success" role="button" data-toggle="modal" data-target="#contactModal">Hubungi Kami</button>
                                     </div>
 
                                     {{-- For popup page --}}

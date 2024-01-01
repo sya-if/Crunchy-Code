@@ -1,6 +1,21 @@
 @extends('layouts.master')
 @section('content')
 <div class="main-container">
+
+    @if(session()->has('success'))
+    <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+        <b>{{session()->get('success')}}</b>
+    </div>
+    @endif
+
+    @if(session('error'))
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+        {{ session('error') }}
+    </div>
+    @endif
+
     <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-200px">
             <div class="page-header">
