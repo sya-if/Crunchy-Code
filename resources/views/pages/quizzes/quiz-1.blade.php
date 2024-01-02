@@ -173,7 +173,7 @@
 </style>
 <script>
     var timer;
-    var totalTime = 200; // Set the total time for the quiz in seconds (e.g., 10 minutes)
+    var totalTime = 100; // Set the total time for the quiz in seconds (e.g., 10 minutes)
 
     // Call this function when the page is loaded
     window.onload = function() {

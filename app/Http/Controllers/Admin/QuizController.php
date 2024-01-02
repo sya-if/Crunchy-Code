@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Quiz;
 use App\Models\Subquiz;
 
-use Image;
-
 class QuizController extends Controller
 {
     /**
@@ -55,7 +53,6 @@ class QuizController extends Controller
             'answer_3' => 'required|string|max:255',
             'answer_4' => 'required|string|max:255',
             'answer' => 'required|string|max:255',
-            'photo' =>'nullable|mimes:jpeg,jpg,png|max:10000'
         ]);
 
         // Find or create the quiz based on chapternumber
@@ -75,20 +72,7 @@ class QuizController extends Controller
         $subquiz->answer_3 = $request['answer_3'];
         $subquiz->answer_4 = $request['answer_4'];
         $subquiz->answer = $request['answer'];
-        //save photo
-        $image_name ='subquizzes_'.time().'.'.$request->photo->getClientOriginalExtension();
-        $directory = $_SERVER['DOCUMENT_ROOT'].'/uploads/quizzes';
-        if (!file_exists($directory)){
-            mkdir ($directory,0755,true);
-        }
-        $img = Image::make ($request->photo->getRealPath());
-
-        $img->fit(200,200,function ($constraint){
-            $constraint->aspectRatio();
-        })->save ($directory . '/' .$image_name,100);
-        
-        $subquiz->photo =$image_name;
-
+    
         // Associate the subquiz with the quiz
         $subquiz->quizzes()->associate($quiz);
     

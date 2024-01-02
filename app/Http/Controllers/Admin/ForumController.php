@@ -51,7 +51,7 @@ class ForumController extends Controller
         $this->validate($request, [
             'forum-title' => 'required|string|max:255',
             'forum_category' => 'required|string|max:255',
-            'forum-description' => 'required|string|max:10000',
+            'forum-description' => 'required|string|max:255',
         ]);
 
         // Save the action
@@ -109,7 +109,7 @@ class ForumController extends Controller
         $this->validate($request, [
             'forum-title' => 'required|string|max:255',
             'forum_category' => 'required|string|max:255',
-            'forum-description' => 'required|string|max:10000',
+            'forum-description' => 'required|string|max:255',
         ]);
 
         // Save the action

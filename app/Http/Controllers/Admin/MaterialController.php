@@ -61,6 +61,12 @@ class MaterialController extends Controller
             'subchaptertitle' => 'required|string|max:255',
         ]);
 
+
+        // Check if Submaterial with the given subchapternumber already exists
+        if (Submaterial::where('subchapternumber', $request['subchapternumber'])->exists()) {
+            return redirect()->route('materials.create')->with('error', 'Subchapter number already exists.');
+        }
+
         // Find or create the material based on modulenumber
         $material = Material::firstOrCreate(['modulenumber' => $request['modulenumber']], [
             'moduletitle' => $request['moduletitle'],

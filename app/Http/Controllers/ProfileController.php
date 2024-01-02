@@ -35,26 +35,28 @@ class ProfileController extends Controller
             'fullname' => 'required|regex:/^[a-zA-Z\s]+$/',
             'nickname' => 'required|regex:/^[a-zA-Z\s]+$/',
             // 'email' => ['required', 'email', 'unique:users,email,' . ($user ? $user->id : '')],
-            //'phone' => 'required',
+            'phone' => 'required',
             'password' => 'required|min:8|confirmed',
             'bio' => 'required',
             'school' => 'required|regex:/^[a-zA-Z\s]+$/',
             'dob' => 'required|date',
         ]);
-
+        
         $user->update([
             'fullname' => $request['fullname'],
             'nickname' => $request['nickname'],
             'email' => $request['email'],
+            'phone' => $request['phone'],
             'bio' => $request['bio'],
             'school' => $request['school'],
             'dob' => $request['dob'],
             'password' => $request->filled('password') ? Hash::make($request['password']) : $user->password,
         ]);
 
+        Session::flash('message', 'Your profile has been updated successfully!');
 
         // Redirect to the profile page
-        return redirect()->route('profile')->with('Your profile has been updated successfully!');
+        return redirect()->route('profile');
 
     }
     public function updatePhoto(Request $request, User $user)
