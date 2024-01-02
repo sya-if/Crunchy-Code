@@ -125,7 +125,7 @@ class HomeController extends Controller
         $user = Auth::user();
         $quiz = Quiz::find($quizId);
         // Assuming the module views are named module-1-1.blade.php, module-1-2.blade.php, etc.
-        $viewName = "pages.quizzes.quiz-$quizId";
+        $viewName = "pages.quizzes.quiz";
 
         // Check if the view exists before attempting to render it
         if (view()->exists($viewName)) {
