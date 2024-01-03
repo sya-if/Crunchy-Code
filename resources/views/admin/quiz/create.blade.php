@@ -73,6 +73,16 @@
                                         <textarea class="form-control" name="question_text" required></textarea>
                                     </div>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="file" name="photo" class="form-control">
+                                        @error('photo')
+                                            <span class="text-danger">{{ $message}}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Answer A:</label>
