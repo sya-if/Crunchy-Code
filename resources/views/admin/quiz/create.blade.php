@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Answer A:</label>
+                                        <label>Answer A<span class="required">*</span> :</label>
                                         <input type="text" class="form-control" name="answer_1"  required>
                                     </div>
                                 </div>
