@@ -176,9 +176,9 @@
     var totalTime = 100; // Set the total time for the quiz in seconds (e.g., 10 minutes)
 
     // Call this function when the page is loaded
-    window.onload = function() {
-        startTimer();
-    };
+    document.addEventListener('DOMContentLoaded', function() {
+    startTimer();
+});
 
     function startTimer() {
         var minutes, seconds;
@@ -303,7 +303,7 @@
 								</pre>
 
 								@if($subquiz->photo)
-                    <img src="{{ asset ('uploads/quizzes/'.$subquiz->photo)}}" style="width:300px;">
+                    <img src="{{ asset('uploads/users/' . $subquiz->photo) }}" style="width:300px;">
                 @endif
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_1" value="{{ $subquiz->answer_1 }}">
