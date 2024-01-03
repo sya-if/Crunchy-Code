@@ -255,8 +255,6 @@
        
 }
 
-
-
     function refreshQuestions() {
         // Reload the page or perform any action needed to refresh the questions
         location.reload();
