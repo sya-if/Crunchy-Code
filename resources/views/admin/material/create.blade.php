@@ -3,6 +3,12 @@
 @php($user = Auth::user())
 
 @section('content')
+<style>
+    .required-asterisk {
+        color: red;
+    }
+</style>
+
 <div class="main-container">
 
     @if(session()->has('success'))
@@ -44,24 +50,27 @@
                 <div class="wizard-content">
                     <form method="POST" action="{{route('materials.store')}}" enctype="multipart/form-data">
                         @csrf
+                        
+                        <p style="color: red">* Required</p> 
+                        
                         <h5>Module Info</h5>
                         <section>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >Chapter Number :</label>
+                                        <label >Chapter Number :<span class="required-asterisk">*</span></label>
                                         <input type="text" class="form-control" name="modulenumber" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label >Chapter Title :</label>
+                                        <label >Chapter Title :<span class="required-asterisk">*</span></label>
                                         <input type="text" class="form-control" name="moduletitle" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label >Description :</label>
+                                        <label >Description :<span class="required-asterisk">*</span></label>
                                         <textarea class="form-control" name="description" required></textarea>
                                     </div>
                                 </div>
@@ -72,16 +81,22 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Subchapter Number :</label>
+                                        <label>Subchapter Number :<span class="required-asterisk">*</span></label>
                                         <input type="text" class="form-control" name="subchapternumber" placeholder="Format: 0-0" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Subchapter Title :</label>
+                                        <label>Subchapter Title :<span class="required-asterisk">*</span></label>
                                         <input type="text" class="form-control" name="subchaptertitle" required>
                                     </div>
                                 </div>
+                                {{-- <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>File (Blade type file) :</label>
+                                        <input type="file" class="form-control" name="modulefile" required>
+                                    </div>
+                                </div> --}}
                             </div>
                         </section>
                         <div class="clearfix" style="display:flex; justify-content:center;">

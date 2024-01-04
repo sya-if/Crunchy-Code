@@ -115,7 +115,9 @@
         color: rgba(30, 48, 86, 0.8);
         line-height: 30px;
     }
-
+    .required-asterisk {
+        color: red;
+    }
     
 </style>
 
@@ -331,16 +333,15 @@
                                                     <!-- Add your contact form here -->
                                                     <form id="contactForm" action="{{ route('contact') }}" method="post">
                                                         @csrf
-                                                        <div class="form-group">
-                                                            <label for="name">Name</label>
-                                                            <input type="text" class="form-control" id="name" name="name" required>
+                                                        <div class="pull-right">
+                                                            <p style="color: red">* Required</p> 
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="email">Email</label>
-                                                            <input type="email" class="form-control" id="email" name="email" required>
+                                                            <label for="email">Subject <span class="required-asterisk">*</span></label>
+                                                            <input type="text" class="form-control" name="subject" required>
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="message">Message</label>
+                                                            <label for="message">Message <span class="required-asterisk">*</span></label>
                                                             <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
                                                         </div>
                                                         <button type="submit" class="btn btn-success">Hantar</button>
