@@ -177,7 +177,8 @@
 
     // Call this function when the page is loaded
     window.onload = function() {
-        startTimer();
+      console.log('Window loaded successfully');
+      startTimer();
     };
 
     function startTimer() {
