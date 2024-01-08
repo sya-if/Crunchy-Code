@@ -149,6 +149,9 @@
         margin-top: 10px; /* Adjust the margin as needed */
 }
 
+.button-container {
+        margin-top: 10px; /* Adjust the margin as needed */
+}
 
 #timerContainer {
     margin-top: 20px;
