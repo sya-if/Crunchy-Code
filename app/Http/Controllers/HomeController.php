@@ -14,6 +14,8 @@ use App\Models\ForumPost;
 use App\Models\Comment;
 use App\Models\Progress;
 use Auth;
+use Carbon\Carbon;
+
 
 class HomeController extends Controller
 {
@@ -36,10 +38,69 @@ class HomeController extends Controller
     {
         $user = Auth::user(); // Get the authenticated user
         $users = User::where('role', 'student')->get(); // Get students
+        $materials = Material::all(); // Get all materials
+        $quizzes = Quiz::all(); // Get all quiz
+        $forums = Forum::all(); // Get all forums
+        
+        // Fetch monthly student counts
+        $monthlyStudentCounts = $this->getMonthlyStudentCounts();
 
-        return view('home', compact('user', 'users'));
+        return view('home', compact('user', 'users', 'materials', 'quizzes', 'forums', 'monthlyStudentCounts'));
     }
+    public function getMonthlyStudentCounts()
+    {
+        try {
+            // Enable query logging
+            \DB::enableQueryLog();
+    
+            // Fetch and organize monthly student counts
+            $monthlyCounts = User::where('role', 'student')
+                ->selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month, count(*) as count')
+                ->groupBy('month')
+                ->orderBy('month')
+                ->get();
+    
+            // Log SQL query and fetched data
+            \Log::info("SQL Query: " . \DB::getQueryLog()[0]['query']);
+            \Log::info("Fetched Data: " . json_encode($monthlyCounts));
+    
+            // Initialize an array with default counts for the next 12 months, including the current month
+            $defaultCounts = $this->getDefaultMonthlyCounts();
+    
+            // Merge the fetched counts with default counts to ensure all months are included
+            $mergedCounts = [];
+    
+            foreach ($defaultCounts as $month => $defaultCount) {
+                $matchedCount = $monthlyCounts->where('month', $month)->first();
+    
+                if ($matchedCount) {
+                    $mergedCounts[$month] = $matchedCount['count'];
+                } else {
+                    $mergedCounts[$month] = 0;
+                }
+            }
+            
 
+            return $mergedCounts;
+    
+        } catch (\Exception $e) {
+            // Log any exceptions
+            \Log::error("Error in getMonthlyStudentCounts: " . $e->getMessage());
+        }
+    }
+    public function getDefaultMonthlyCounts()
+    {
+         // Create an array with default counts for the next 12 months, including the current month
+        $defaultCounts = [];
+        $currentMonth = now(); // Assuming you are using Carbon
+
+        for ($i = 0; $i < 12; $i++) {
+            $defaultMonth = $currentMonth->copy()->addMonths($i)->startOfMonth();
+            $defaultCounts[$defaultMonth->format('Y-m')] = 0;
+        }
+
+        return $defaultCounts;
+    }
     public function view_delete_profile()
     {
         $data = User::all();
