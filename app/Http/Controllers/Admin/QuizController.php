@@ -9,7 +9,6 @@ use App\Models\Subquiz;
 use Image;
 
 
-use Image;
 
 class QuizController extends Controller
 {
