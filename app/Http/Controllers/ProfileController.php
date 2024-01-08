@@ -34,8 +34,7 @@ class ProfileController extends Controller
         $request->validate([
             'fullname' => 'required|regex:/^[a-zA-Z\s]+$/',
             'nickname' => 'required|regex:/^[a-zA-Z\s]+$/',
-            // 'email' => ['required', 'email', 'unique:users,email,' . ($user ? $user->id : '')],
-            'phone' => 'required',
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => 'required|min:8|confirmed',
             'bio' => 'required',
             'school' => 'required|regex:/^[a-zA-Z\s]+$/',
@@ -53,7 +52,6 @@ class ProfileController extends Controller
             'password' => $request->filled('password') ? Hash::make($request['password']) : $user->password,
         ]);
 
-        Session::flash('message', 'Your profile has been updated successfully!');
 
         // Redirect to the profile page
         return redirect()->route('profile');

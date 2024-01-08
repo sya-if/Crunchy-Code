@@ -194,7 +194,7 @@
                                             <tr>
                                                 <td>Full Name <span class="required">*</span></td>
                                                 <td>
-                                                    <input type="text" name="fullname" value=" {{ old('fullname' , $user->fullname ) }}" class="form-control">
+                                                    <input type="text" name="fullname" value=" {{ old('fullname' , $user->fullname ) }}" class="form-control" placeholder="e.g., Ali bin Abu">
                                                     @error('fullname')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -205,7 +205,7 @@
                                             <tr>
                                                 <td>Nickname <span class="required">*</span></td>
                                                 <td>
-                                                    <input type="text" name="nickname" value=" {{ old('nickname' , $user->nickname ) }}" class="form-control">
+                                                    <input type="text" name="nickname" value=" {{ old('nickname' , $user->nickname ) }}" class="form-control" placeholder="e.g., Ali">
                                                     @error('nickname')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -216,7 +216,7 @@
                                             <tr>
                                                 <td>Email <span class="required">*</span></td>
                                                 <td>
-                                                    <input type="text" name="email" value="{{ old('email' , $user->email ) }}" class="form-control">
+                                                    <input type="text" name="email" value="{{ old('email' , $user->email ) }}" class="form-control" placeholder="e.g., ali00@gmail.com">
                                                     @error('email')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -229,7 +229,7 @@
                                              <tr>
                                                 <td>Phone <span class="required">*</span></td>
                                                 <td>
-                                                    <input type="text" name="phone" value="{{ old('phone' , $user->phone ) }}" class="form-control">
+                                                    <input type="text" name="phone" value="{{ old('phone' , $user->phone ) }}" class="form-control" placeholder="e.g., 010-12345678">
                                                     @error('phone')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -244,7 +244,7 @@
                                             <tr>
                                                 <td>School <span class="required">*</span></td>
                                                 <td>
-                                                    <input type="text" name="school" value="{{ old('school', $user->school )}}" class="form-control">
+                                                    <input type="text" name="school" value="{{ old('school', $user->school )}}" class="form-control" placeholder="e.g., SMKA Johor Bahru">
                                                     @error('school')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -266,7 +266,7 @@
                                             <tr>
                                                 <td>Date of Birth <span class="required">*</span></td>
                                                 <td>
-                                                    <input type="date" name="dob" value="{{ old('dob' , $user-> dob) }}" class="form-control">
+                                                    <input type="date" name="dob" value="{{ old('dob' , $user-> dob) }}" class="form-control" placeholder="e.g., dd/mm/yyyy">
                                                     @error('dob')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -274,27 +274,27 @@
                                             </tr>
                                             @endif
 
-                                            <!-- Password -->
+                                            <!-- Password
                                             <tr>
                                                 <td>Password</td>
                                                 <td>
-                                                    <input type="password" name="password" class="form-control">
+                                                    <input type="password" name="password" class="form-control" placeholder="Please insert more than 8 characters.">
                                                     @error('password')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </td>
                                             </tr>
 
-                                            <!-- Confirm Password -->
+                                            Confirm Password 
                                             <tr>
                                                 <td>Confirm Password</td>
                                                 <td>
-                                                    <input type="password" name="password_confirmation"  class="form-control">
+                                                    <input type="password" name="password_confirmation"  class="form-control" placeholder="Please insert more than 8 characters.">
                                                     @error('password_confirmation')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </td>
-                                            </tr>
+                                            </tr>-->
 
                                             <tr>
                                                 <td></td>
