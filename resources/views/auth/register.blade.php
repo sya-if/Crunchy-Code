@@ -112,7 +112,7 @@
                                     var adminCheckbox = document.getElementById("adminCheckbox");
                                     if (adminCheckbox.checked) {
                                         var enteredPassword = prompt("Enter the password:");
-                                        var correctPassword = "12345678"; // Replace with your correct password
+                                        var correctPassword = "Admin123"; // Replace with your correct password
                                         if (enteredPassword === correctPassword) {
                                             // Set the value of the checkbox to "admin"
                                             adminCheckbox.value = "admin";
@@ -124,7 +124,7 @@
                                 }
                                 
                             </script>
-
+                            
                             <!-- Submit Button -->
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">

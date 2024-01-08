@@ -85,7 +85,16 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Answer A:</label>
+                                        <input type="file" name="photo" class="form-control">
+                                        @error('photo')
+                                            <span class="text-danger">{{ $message}}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Answer A<span class="required">*</span> :</label>
                                         <input type="text" class="form-control" name="answer_1"  required>
                                     </div>
                                 </div>

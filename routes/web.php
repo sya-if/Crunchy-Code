@@ -116,8 +116,14 @@ Route::get('/FAQ', [App\Http\Controllers\HomeController::class, 'viewFAQ'])->nam
 // Route for contact us form
 Route::post('/contact', [ContactController::class, 'store'])->name('contact');
 
+Route::get('/components/header', [ContactController::class, 'viewReply']);
+
 //Route for message
 Route::get('/message', [MessageController::class, 'index'])->name('message');
+
+Route::get('/response/{contact}', [MessageController::class, 'showReplyForm'])->name('create.response');
+
+Route::post('/response/{contact}', [MessageController::class, 'storeReply'])->name('store.response');
 
 //Route for delete message
 Route::delete('/admin/messages/{id}', [MessageController::class, 'destroy'])->name('destroy');

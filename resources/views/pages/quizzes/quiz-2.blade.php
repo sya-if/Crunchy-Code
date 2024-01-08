@@ -149,6 +149,7 @@
         margin-top: 10px; /* Adjust the margin as needed */
 }
 
+
 #timerContainer {
     margin-top: 20px;
     font-size: 18px;
@@ -170,15 +171,17 @@
         border-radius: 10px;
         background-color: #fff;
     }
+
 </style>
+
 <script>
     var timer;
-    var totalTime = 100; // Set the total time for the quiz in seconds (e.g., 10 minutes)
+    var totalTime = 200; // Set the total time for the quiz in seconds (e.g., 10 minutes)
 
     // Call this function when the page is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-    startTimer();
-});
+    window.onload = function() {
+        startTimer();
+    };
 
     function startTimer() {
         var minutes, seconds;
@@ -191,7 +194,7 @@
             if (--totalTime < 0) {
                 clearInterval(timer);
                 // Call a function to handle time expiration (e.g., submit the quiz)
-                checkAnswers();
+                timeExpired();
             }
         }, 1000);
     }
@@ -250,28 +253,11 @@
         }
     }
 
-    function displayAnswerFeedback(questionNumber, feedback, styleClass) {
-        // Remove any existing feedback for the current question
-        $('.question-container:eq(' + (questionNumber - 1) + ') .feedback-message').remove();
-
-        // Create a div to display feedback
-        var feedbackDiv = $('<div></div>').addClass('feedback-message ' + styleClass).html(feedback);
-
-        // Append the feedback below the corresponding question
-        $('.question-container:eq(' + (questionNumber - 1) + ')').append(feedbackDiv);
-    }
-
-    function closeResultModal() {
-        $('#resultModal').modal('hide');
-       
-}
-
     function refreshQuestions() {
         // Reload the page or perform any action needed to refresh the questions
         location.reload();
     }
 </script>
-
 
 
 <div class="main-container">
@@ -298,24 +284,14 @@
 			<div class="row">
 				<div class="col-md-12 col-sm-12">
 					<div class="blog-detail card-box overflow-hidden mb-30">
-					<div class="button-container">
-						<div id="timerContainer">
-							Time Left: <span id="timer"></span>
-						</div>
-
-
 						<div class="blog-caption" style="color : #000;">
 							<form>
 								@foreach($quiz->subquizzes as $key => $subquiz)
-								<div class="question-container">
 								<h6>Question {{ $key + 1 }}</h6>
 								<pre>
 									<p>{{ $subquiz->question_text }}</p>
 								</pre>
 
-								@if($subquiz->photo)
-                    <img src="{{ asset('uploads/users/' . $subquiz->photo) }}" style="width:300px;">
-                @endif
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_1" value="{{ $subquiz->answer_1 }}">
 									<label class="form-check-label" for="answer_{{ $key }}_1">
@@ -345,8 +321,6 @@
 								</div>
 
 								<br><br>
-							</div>
-
 								@endforeach
 								<div class="button-container">
 									<button class="btn btn-primary" type="button" id="checkAnswersBtn" onclick="checkAnswers()">Check Answers</button>
@@ -354,25 +328,6 @@
 								</div>
 
 							</form>
-
-              <div class="modal fade" id="resultModal" tabindex="-1" role="dialog" aria-labelledby="resultModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="resultModalLabel">Quiz Result</h5>
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <p id="resultText"></p>
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick="closeResultModal()">Close</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
 
 
 						</div>
@@ -388,4 +343,51 @@
   </div>
 
 </div>
+<script>
+    function checkAnswers() {
+        var totalQuestions = {{ count($quiz->subquizzes) }};
+        var correctCount = 0;
+        var incorrectQuestions = [];
+
+        // Loop through each question
+        @foreach($quiz->subquizzes as $key => $subquiz)
+            // Get the selected answer for the current question
+            var selectedAnswer = $('input[name="answer_{{ $key }}"]:checked').val();
+
+            // Get the correct answer from the database
+            var correctAnswer = '{{ $subquiz->answer }}';
+
+            // Check if the selected answer is correct
+            if (selectedAnswer === correctAnswer) {
+                correctCount++;
+            } else {
+                incorrectQuestions.push({ 
+                    questionNumber: {{ $key + 1 }},
+                    correctAnswer: correctAnswer,
+                    userAnswer: selectedAnswer
+                });
+            }
+        @endforeach
+
+        // Display the results using an alert popup
+        var score = correctCount / totalQuestions * 100;
+
+        if (correctCount === totalQuestions) {
+            alert('Your Score: ' + score.toFixed(2) + '%\nAll questions are correct!');
+        } else {
+            var errorMessage = 'Your Score: ' + score.toFixed(2) + '%\nIncorrectly Answered Questions:\n';
+
+            incorrectQuestions.forEach(function(q) {
+                errorMessage += 'Question ' + q.questionNumber + '\n';
+            });
+
+            alert(errorMessage);
+        }
+    }
+
+    function refreshQuestions() {
+        // Reload the page or perform any action needed to refresh the questions
+        location.reload();
+    }
+</script>
 @endsection

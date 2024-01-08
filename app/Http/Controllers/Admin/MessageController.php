@@ -13,6 +13,25 @@ class MessageController extends Controller
         return view('admin\message', compact('contacts'));
     }
 
+    public function showReplyForm(Contact $contact){
+        return view('admin.response', compact('contact'));
+    }
+
+    public function storeReply(Request $request, Contact $contact)
+    {
+        // Validate the form data
+        $request->validate([
+            'reply' => 'required|string',
+        ]);
+
+        // Save the reply to the database
+        $contact->update([
+            'reply' => $request->input('reply'),
+        ]);
+
+        return redirect()->route('message')->with('success', 'Reply sent successfully');
+    }
+
     public function destroy($id)
     {
         $contact = Contact::find($id);
