@@ -98,8 +98,8 @@
             </div>
         </div>
 
-        <div class="progress" id="progress-bar">
-    <div class="progress-bar" role="progressbar" aria-valuenow="54" style="width: 54%" aria-valuemin="0" aria-valuemax="100"></div>
+        <div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="54" style="width: 54%" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -151,6 +151,10 @@
                 </div>
             </div>
             </div>
+        </div>
+
+        <div class="footer-wrap pd-20 mb-20 card-box">
+            Crunchy Code Web Application System developed by Elysium
         </div>
 
         <!-- End Student Dashboard -->
@@ -283,7 +287,7 @@
             
             <div class="col-xl-4 mb-30">
                 <div class="card-box height-100-p pd-20">
-                    <h2 class="h4 mb-20">Distribution of Forums, Quizzes, and Materials</h2>
+                    <h2 class="h4 mb-20" style="text-align: center">Distribution of Forums, Quizzes, and Materials</h2>
                     <div id="chartContainer"></div>
                 </div>
             </div>
