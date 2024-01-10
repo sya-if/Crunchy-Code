@@ -196,58 +196,47 @@
         }, 1000);
     }
 
-	function checkAnswers() {
-        // Display a confirmation pop-up
-        var confirmCheck = confirm("Are you sure you want to check your answers?");
+    function checkAnswers() {
+    var totalQuestions = {{ count($quiz->subquizzes) }};
+    var correctCount = 0;
+    var incorrectQuestions = [];
 
-        console.log("confirmCheck:", confirmCheck); // Add this line for debugging
+    // Loop through each question
+    @foreach($quiz->subquizzes as $key => $subquiz)
+        // Get the selected answer for the current question
+        var selectedAnswer = $('input[name="answer_{{ $key }}"]:checked').val();
 
-        if (confirmCheck) {
-            // If the user clicks "OK" in the confirmation pop-up
-            var totalQuestions = {{ count($quiz->subquizzes) }};
-            var correctCount = 0;
-            var incorrectQuestions = [];
+        // Get the correct answer from the database
+        var correctAnswer = '{{ $subquiz->answer }}';
 
-            // Loop through each question
-            @foreach($quiz->subquizzes as $key => $subquiz)
-                // Get the selected answer for the current question
-                var selectedAnswer = $('input[name="answer_{{ $key }}"]:checked').val();
-
-                // Get the correct answer from the database
-                var correctAnswer = '{{ $subquiz->answer }}';
-
-                // Check if the selected answer is correct
-                if (selectedAnswer === correctAnswer) {
-                    correctCount++;
-                } else {
-                    incorrectQuestions.push({ 
-                        questionNumber: {{ $key + 1 }},
-                        correctAnswer: correctAnswer,
-                        userAnswer: selectedAnswer
-                    });
-                }
-            @endforeach
-
-            // Display the results on the page
-            var score = correctCount / totalQuestions * 100;
-            var resultContainer = document.getElementById('resultContainer');
-            
-            resultContainer.innerHTML = 'Your Score: ' + score.toFixed(2) + '%<br><br>' +
-                (correctCount === totalQuestions ? 'All questions are correct!' : 'Incorrectly Answered Questions:<br>' +
-                incorrectQuestions.map(function(q) {
-                    return 'Question ' + q.questionNumber;
-                }));
-
-            // Stop the timer when the user checks the answers
-            clearInterval(timer);
-
-            // Additional actions for when the user clicks "OK"
-            alert('Answers checked successfully!');
+        // Check if the selected answer is correct
+        if (selectedAnswer === correctAnswer) {
+            correctCount++;
+            displayAnswerFeedback({{ $key + 1 }}, 'Correct!', 'text-success');
         } else {
-            // If the user clicks "Cancel" in the confirmation pop-up
-            // Additional actions or messages can be added here
-            alert('Answers not checked. The timer will continue.');
+            incorrectQuestions.push({ 
+                questionNumber: {{ $key + 1 }},
+                correctAnswer: correctAnswer,
+                userAnswer: selectedAnswer
+            });
+            displayAnswerFeedback({{ $key + 1 }}, 'Incorrect. Correct Answer: ' + correctAnswer, 'text-danger');
         }
+    @endforeach
+
+    // Display the overall score
+    var score = correctCount / totalQuestions * 100;
+    var scoreFeedback = 'Your Score: ' + score.toFixed(2) + '%';
+
+    // Display the result in the modal
+    $('#resultText').text(scoreFeedback);
+    $('#resultModal').modal('show');
+
+    // Display the overall score in your existing feedback
+    displayAnswerFeedback('total', scoreFeedback, 'font-weight-bold');
+
+    // Optionally, you can display additional feedback or perform other actions as needed
+
+        // Optionally, you can display additional feedback or perform other actions as needed
     }
 
     function displayAnswerFeedback(questionNumber, feedback, styleClass) {
@@ -265,6 +254,8 @@
         $('#resultModal').modal('hide');
        
 }
+
+
 
     function refreshQuestions() {
         // Reload the page or perform any action needed to refresh the questions
@@ -314,7 +305,7 @@
 								</pre>
 
 								@if($subquiz->photo)
-                    <img src="{{ asset('uploads/users/' . $subquiz->photo) }}" style="width:300px;">
+                    <img src="{{ asset('uploads/quizzes/' . $subquiz->photo) }}" style="width:300px;">
                 @endif
 								<div class="form-check">
 									<input class="form-check-input" type="radio" name="answer_{{ $key }}" id="answer_{{ $key }}_1" value="{{ $subquiz->answer_1 }}">

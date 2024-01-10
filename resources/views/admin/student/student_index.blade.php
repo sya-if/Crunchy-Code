@@ -1,16 +1,20 @@
 @extends('layouts.master')
 
 @section('content')
-
 <div class="main-container">
-    
-    <!-- Untuk check whether session has established ataupun tidak -->
-    @if(Session::has('message'))
-        <div class="alert alert-success">
+    @if(Session::has('success'))
+        <div class="alert alert-info">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-            {{ Session::get('message') }}
+            <b>{{ Session::get('success') }}</b>
         </div>
     @endif
+
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-200px">
             <div class="page-header">
@@ -19,20 +23,15 @@
                         <div class="title">
                             <h4>Student List</h4>
                         </div>
-
-                        
-
-
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Student List</li>
                             </ol>
                         </nav>
                     </div>
                     <div class="col-md-6 col-sm-12 text-right">
                         <div class="dropdown">
-                            <!-- Create New Student -->
                             <div class="pull-right">
                                 <a href="{{ route('users.create') }}" class="btn btn-primary">Add Student</a>
                             </div>
@@ -40,69 +39,53 @@
                     </div>
                 </div>
             </div>
-            <!-- Simple Datatable start -->
-            <div class="card-box mb-30">
 
-                <!-- Title-->
-                <div class=" row pd-20">
-                    <h4 class="text-blue h4">Students's List</h4>
-                </div>
-        
-                <!-- Table -->
-                <div class="pb-18">
-                    <div class="table-responsive">
-                        <table class="data-table table stripe hover nowrap">
-                            <thead>
-                                <tr>
-                                    <th class="table-plus datatable-nosort">FullName</th>
-                                    <th>NickName</th>
-                                    <th>Email</th>
-                                    <th>Photo</th>
-                                    <th class="datatable-nosort">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($users as $user)
-                                <tr>
-                                    <td class="table-plus">{{$user->fullname}}</td>
-                                    <td>{{$user->nickname}}</td>
-                                    <td>{{$user->email}}</td>
-                                    <td>
-                                        <img src="{{ asset ('uploads/users/'.$user->photo)}}" style="width:100px;">
-                                    </td>
-
-                                    <td>
-                                        <div class="dropdown">
-                                            <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                                <i class="dw dw-more"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-    
-                                                <!-- Edit Student Information -->
-                                                <a href="{{ route('users.edit', $user) }}" class="dropdown-item"><i class="dw dw-edit2"></i>Edit</a>
-
-    
-                                                <!-- Delete Student Information -->
-                                                <form method="POST" action="{{route('user.destroy', $user->id)}}">
-                                                    <input type="hidden" name="_method" value="DELETE" />
-                                                    @csrf
-    
-                                                    @method('DELETE')
-                                                    <button type="submit" onclick="return confirm('Are you sure that you want to delete this user?')" class="dropdown-item"><i class="dw dw-delete-3"></i>Delete</button>
-                                                </form>
-    
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+            <!-- Striped table start -->
+            <div class="pd-20 card-box mb-30">
+                <div class="clearfix mb-20">
+                    <div class="pull-right">
+                        <a href="{{ route('users.create') }}" class="btn btn-info float-end">Add New Student</a>
+                    </div>
+                    <div class="pull-left">
+                        <h4 class="text-blue h4">List of Students</h4>
                     </div>
                 </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Nick Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Photo</th>
+                            <th scope="col" colspan="3">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($users as $user)
+                            <tr>
+                                <td>{{ $user->fullname }}</td>
+                                <td>{{ $user->nickname }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>
+                                    <img src="{{ asset('uploads/users/'.$user->photo) }}" style="width:100px;">
+                                </td>
+                                <td>
+                                    <a href="{{ route('users.edit', $user) }}" class="btn btn-success">Edit</a>
+                                </td>
+                                <td>
+                                    <form method="POST" action="{{ route('users.destroy', $user->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="return confirm('Are you sure you want to delete this user?')" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-            <!-- Simple Datatable End -->
+            <!-- Striped table End -->
+        </div>
     </div>
 </div>
-
 @endsection
