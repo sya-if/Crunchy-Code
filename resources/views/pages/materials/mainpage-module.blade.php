@@ -59,6 +59,14 @@
   }
 }
 
+.button-85 {
+    /* Add or modify styles as needed */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
 .button-85:after {
   z-index: -1;
   content: "";
@@ -192,81 +200,80 @@
     border-color: #6c757d;
 }
 
+.btn-block-width.text-white {
+    color: #fff; /* Set the text color to white */
+}
+
 </style>
+<!-- ... Your existing scripts ... -->
+
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    var totalModules = 3; // Set the total number of modules
-    var moduleSubmodules = {
-        'module1': 7,
-        'module2': 4,
-        'module3': 2
-    };
-    var currentProgress = {}; // Initialize the current progress object
-
-    // Initialize currentProgress object with default values
-    for (var i = 1; i <= totalModules; i++) {
-        currentProgress['module' + i] = 0;
-    }
-
     $(document).ready(function () {
-        $('.mark-as-done-button').click(function () {
-            var module = $(this).data('module');
-            var submodule = $(this).data('submodule');
-            var progressKey = 'module_' + module + '_submodule_' + submodule + '_progress';
+        var totalModules = {{ count($materials) }}; // Set the total number of modules
+        var moduleSubmodules = {
+            @foreach($materials as $material)
+                'module{{$material->modulenumber}}': {{ count($material->submaterials) }},
+            @endforeach
+        };
+        var currentProgress = {}; // Initialize the current progress object
 
-            // Toggle the class to change the button color
-            $(this).toggleClass('btn-outline-success btn-danger');
+        // Initialize currentProgress object with default values
+        @foreach($materials as $material)
+            currentProgress['module{{$material->modulenumber}}'] = 0;
+        @endforeach
 
-            // Change the button text based on the state
-            var buttonText = $(this).hasClass('btn-outline-success') ? 'Mark as done' : 'Done';
-            $(this).text(buttonText);
+        $('.btn-mark-done').click(function () {
+    console.log('Mark as Done button clicked');
+    var moduleId = $(this).data('module');
+    console.log('Module ID:', moduleId);
+            var submoduleProgress = 1;
 
-            // Update the progress
-            var submoduleProgress = buttonText === 'Done' ? 1 : -1;
-            currentProgress[module] += submoduleProgress;
-            localStorage.setItem(progressKey, submoduleProgress);
+            // Update the progress for the specific module
+            currentProgress['module' + moduleId] += submoduleProgress;
 
             // Update the UI with the new progress
-            updateProgressUI();
+            updateProgressUI(moduleId);
         });
 
-        $('#myModal-1, #myModal-2, #myModal-3').on('hidden.bs.modal', function () {
-            // Reverse the progress when the modal is closed
-            for (var i = 1; i <= totalModules; i++) {
-                currentProgress['module' + i] = 0;
-                for (var j = 1; j <= moduleSubmodules['module' + i]; j++) {
-                    currentProgress['module' + i] += parseInt(localStorage.getItem('module_' + i + '_submodule_' + j + '_progress')) || 0;
-                }
-            }
-            updateProgressUI();
-        });
+        // Function to update the UI with the new progress for a specific module
+        function updateProgressUI(moduleId) {
+            var moduleProgress = currentProgress['module' + moduleId];
+            var totalSubmodules = moduleSubmodules['module' + moduleId];
+            var averageProgress = totalSubmodules > 0 ? Math.round((moduleProgress / totalSubmodules) * 100) : 0;
 
-        // Function to update the UI with the new progress
-        function updateProgressUI() {
-            var averageProgress = 0;
+            // Update the progress bar width
+            $('#progressBar' + moduleId).css('width', averageProgress + '%');
+            $('#progressBar' + moduleId).attr('aria-valuenow', averageProgress);
+
+            // Update the progress label
+            $('#progressLabel' + moduleId).text('Progress: ' + averageProgress + '%');
+
+            // Update the total progress for all modules
+            updateTotalProgress();
+        }
+
+        // Function to update the total progress for all modules
+        function updateTotalProgress() {
+            var averageTotalProgress = 0;
 
             // Calculate average progress for all modules
             for (var i = 1; i <= totalModules; i++) {
-                var moduleProgress = moduleSubmodules['module' + i] > 0 ? Math.round((currentProgress['module' + i] / moduleSubmodules['module' + i]) * 100) : 0;
-                averageProgress += moduleProgress;
-                // Display the total progress for each module in the corresponding span element
-                $('#progressLabel' + i).text('Progress: ' + moduleProgress + '%');
-                // Update the progress bar for each module
-                $('#progressBar' + i).css('width', moduleProgress + '%');
-                $('#progressBar' + i).attr('aria-valuenow', moduleProgress);
+                averageTotalProgress += currentProgress['module' + i];
             }
 
-            // Calculate average progress for all modules
-            averageProgress = totalModules > 0 ? Math.round((averageProgress / totalModules)) : 0;
-            // Display the total progress for all modules in the corresponding span element
-            $('#progressLabel').text('Total Progress: ' + averageProgress + '%');
-            // Update the total progress bar
-            $('#totalProgressBar').css('width', averageProgress + '%');
-            $('#totalProgressBar').attr('aria-valuenow', averageProgress);
+            // Calculate average total progress
+            averageTotalProgress = totalModules > 0 ? Math.round((averageTotalProgress / (totalModules * 100)) * 100) : 0;
+
+            // Update the total progress for all modules
+            $('#totalProgressBar').css('width', averageTotalProgress + '%');
+            $('#totalProgressBar').attr('aria-valuenow', averageTotalProgress);
+            $('#progressLabel').text('Total Progress: ' + averageTotalProgress + '%');
         }
     });
-
 </script>
+
+<!-- ... Remaining scripts ... -->
 
 <div class="main-container">
     <div class="pd-ltr-20 height-100-p xs-pd-20-10">
@@ -289,22 +296,31 @@
 
 
             @foreach($materials as $material)
-                <div class="courses-container">
-                    <div class="course">
-                        <div class="course-preview col-md-4">
-                            <h6>Module</h6>
-                            <h2>{{ $material->modulenumber }}</h2>
-                            <h4 style="color: #fff">{{ $material->moduletitle }}</h4>
-                            
-                        </div>
+        <div class="courses-container">
+            <div class="course">
+                <div class="course-preview col-md-4">
+                    <h6>Module</h6>
+                    <h2>{{ $material->modulenumber }}</h2>
+                    <h4 style="color: #fff">{{ $material->moduletitle }}</h4>
+                </div>
 
-                        <div class="course-info">
-                            <h5 style="margin-bottom: 10px;">Penerangan</h5>
-                            <p>{{ $material->description }}</p>
-                            <div class="pt-10 pull-right">
-                                <!-- Modal Button -->
-                                <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-{{$material->modulenumber}}">Tekan sini</button>
-                            </div>
+                <div class="course-info">
+                    <h5 style="margin-bottom: 10px;">Penerangan</h5>
+                    <p>{{ $material->description }}</p>
+                    
+                    <div class="progress-container">
+                        <!-- Progress Bar -->
+                        <div class="progress">
+                            <div class="progress-bar" id="progressBar{{$material->modulenumber}}" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="progress-text">Progress: <span id="progressLabel{{$material->modulenumber}}">0%</span></div>
+                    </div>
+
+                    <div class="pt-10 pull-right">
+                        <!-- Modal Button -->
+                        <button class="button-85" role="button" data-toggle="modal" data-target="#myModal-{{$material->modulenumber}}">Tekan sini</button>
+                    </div>
+
                             <!-- Modal that will display when clicked -->
                             <div class="modal fade" id="myModal-{{$material->modulenumber}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -314,14 +330,25 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                         </div>
                                         <div class="modal-body justify-content">
-                                            @foreach ($material->submaterials as $submaterial)
-                                                 @if ($submaterial->modulenumber == $material->modulenumber)    
+                                        @foreach ($material->submaterials as $submaterial)
+                                            @if ($submaterial->modulenumber == $material->modulenumber)    
                                                 <!-- Replace the content below with your specific modal content -->
-                                                    <a class="button-85 btn-block mb-4" role="button" href="{{ route('module.page', ['module' => $submaterial->subchapternumber]) }}">Module {{$submaterial->subchapternumber}} {{$submaterial->subchaptertitle}}</a>
-                                                @else
-                                                    <p>No submaterials available for this module.</p>
-                                                @endif   
-                                            @endforeach
+                                                <div class="row">
+                                            <div class="col-md-9">
+                                                <!-- Module button -->
+                                                <div class="button-85 btn-block mb-4 d-flex justify-content-between align-items-center " role="button">
+                                                    <a class=" btn-block-width text-white" href="{{ route('module.page', ['module' => $submaterial->subchapternumber]) }}">Module {{$submaterial->subchapternumber}} {{$submaterial->subchaptertitle}}</a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <!-- "Mark as Done" button -->
+                                                <button class="btn btn-success btn-mark-done" data-module="{{$material->modulenumber}}" data-submodule="{{$submaterial->subchapternumber}}">Mark as Done</button>
+                                            </div>
+                                        </div>
+
+
+                                            @endif   
+                                        @endforeach
                                             
                                         </div>
                                     </div>
@@ -330,11 +357,7 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
-
-
-
-            
+            @endforeach    
         </div>
         <div class="footer-wrap pd-20 mb-20 card-box">
             Crunchy Code Web Application System developed by Elysium
