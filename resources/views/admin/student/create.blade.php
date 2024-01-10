@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="wizard-content">
-                    <form method="POST" action="{{ route('user.store') }}">
+                    <form method="POST" action="{{ route('user.store') }}" enctype="multipart/form-data">
                         @csrf
                         <h5 class="mb-30">Student's Information</h5>
 
@@ -88,7 +88,7 @@
                             <div class="row" style="margin-bottom:20px;">
                                 <label for="photo" class="col-md-4 col-form-label">{{ __('Photo') }}<span style="color: red;">*</span></label>
                                 <div class="col-md-8">
-                                    <input  id="photo" type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('email') }}" required autocomplete="photo" required>
+                                    <input id="photo" type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" value="{{ old('email') }}" required autocomplete="photo">
 
                                     @error('photo')
                                         <span class="invalid-feedback" role="alert">
