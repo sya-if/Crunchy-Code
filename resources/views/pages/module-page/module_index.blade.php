@@ -39,40 +39,47 @@
                         <h4 class="text-blue h4">List of Module</h4>
                     </div>
                 </div>
+                
                 <div class="container">
                     <div class="row justify-content-left">
-                        @foreach($modules as $module)
-                        @if($module->user_id == Auth::id())
-                        <div class="col-md-4 col-sm-12 mb-30 position-relative">
-                            <div class="card-box pd-30 height-100-p" style="background-color: {{$module->color}}">
-                                <div class="progress-box text-center">
-                                    <div class="button-group text-center">
-                                        <a href="{{ route('module.page', ['module' => $module->link]) }}">
-                                            <input type="text" class="knob dial2" value="70" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#00f" data-angleOffset="180" readonly>
-                                            <h5 class="padding-top-10 h5" style="color: #000"> {{$module->title}}</h5>
-                                        </a>
-                                        <table class="mx-auto">
-                                            <tr>
-                                                <td>
-                                                    <a href="{{route('modules.edit', $module->id)}}" class="btn btn-sm btn-success mr-2">Edit</a>
-                                                </td>
-                                                <td>
-                                                    <form method="POST" action="{{route('modules.destroy', $module->id)}}">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" onclick="return confirm('Are you sure that you want to delete this module?')" class="btn btn-sm btn-danger">Delete</button>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                        </table>
+                        @forelse($modules as $module)
+                            @if($module->user_id == Auth::id())
+                            <div class="col-md-4 col-sm-12 mb-30 position-relative">
+                                <div class="card-box pd-30 height-100-p" style="background-color: {{$module->color}}">
+                                    <div class="progress-box text-center">
+                                        <div class="button-group text-center">
+                                            <a href="{{ route('module.page', ['module' => $module->link]) }}">
+                                                <input type="text" class="knob dial2" value="70" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#00f" data-angleOffset="180" readonly>
+                                                <h5 class="padding-top-10 h5" style="color: #000"> {{$module->title}}</h5>
+                                            </a>
+                                            <table class="mx-auto">
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{route('modules.edit', $module->id)}}" class="btn btn-sm btn-success mr-2">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <form method="POST" action="{{route('modules.destroy', $module->id)}}">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" onclick="return confirm('Are you sure that you want to delete this module?')" class="btn btn-sm btn-danger">Delete</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        @endif
-                        @endforeach
+                            @endif
+                        @empty
+                            <div class="col-md-12">
+                                <p style="text-align: center">You did not select any modules</p>
+                            </div>
+                        @endforelse
                     </div>
                 </div>
+                
+
             </div>
             </div>
             <!-- Striped table End -->

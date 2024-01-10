@@ -48,23 +48,23 @@
                         <div class="form-group">
                             <label>Select Color:</label>
                             <div class="color-options">
-                                <input type="radio" id="color_20b2aa" name="color" value="#20b2aa" checked>
-                                <label for="color_20b2aa" class="color-box" style="background-color: #20b2aa;"></label>
+                                <input type="radio" id="color_20b2aa" name="color" value="#ffdbdb" checked>
+                                <label for="color_20b2aa" class="color-box" style="background-color: #ffdbdb;"></label>
 
-                                <input type="radio" id="color_ff0000" name="color" value="#ff0000">
-                                <label for="color_ff0000" class="color-box" style="background-color: #ff0000;"></label>
+                                <input type="radio" id="color_ff0000" name="color" value="#ffcea5">
+                                <label for="color_ff0000" class="color-box" style="background-color: #ffcea5;"></label>
 
-                                <input type="radio" id="color_00ff00" name="color" value="#00ff00">
-                                <label for="color_00ff00" class="color-box" style="background-color: #00ff00;"></label>
+                                <input type="radio" id="color_00ff00" name="color" value="#fff9d4">
+                                <label for="color_00ff00" class="color-box" style="background-color: #fff9d4;"></label>
 
-                                <input type="radio" id="color_0000ff" name="color" value="#0000ff">
-                                <label for="color_0000ff" class="color-box" style="background-color: #0000ff;"></label>
+                                <input type="radio" id="color_0000ff" name="color" value="#d2fafd">
+                                <label for="color_0000ff" class="color-box" style="background-color: #d2fafd;"></label>
 
-                                <input type="radio" id="color_ffff00" name="color" value="#ffff00">
-                                <label for="color_ffff00" class="color-box" style="background-color: #ffff00;"></label>
+                                <input type="radio" id="color_ffff00" name="color" value="#c9ffc7">
+                                <label for="color_ffff00" class="color-box" style="background-color: #c9ffc7;"></label>
 
-                                <input type="radio" id="color_ff00ff" name="color" value="#ff00ff">
-                                <label for="color_ff00ff" class="color-box" style="background-color: #ff00ff;"></label>
+                                <input type="radio" id="color_ff00ff" name="color" value="#a6a6ee">
+                                <label for="color_ff00ff" class="color-box" style="background-color: #a6a6ee;"></label>
                             </div>
                         </div>
                         <div class="form-group">

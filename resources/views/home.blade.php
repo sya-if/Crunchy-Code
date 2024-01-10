@@ -16,26 +16,56 @@
     border-radius: 50%; /* Ensure the image is circular */
 }
 
+
+/* CSS */
+.button-34 {
+  background: #5E5DF0;
+  border-radius: 999px;
+  box-shadow: #5E5DF0 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+}
+
+.button-35 {
+  background: #30aed7;
+  border-radius: 999px;
+  box-shadow: #2ed7f9 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+}
 </style>
 
 <div class="main-container">
     <div class="xs-pd-20-10 pd-ltr-20">
-        <div class="page-header">
-            <div class="row">
-                <div class="col-md-6 col-sm-12">
-                    <div class="title">
-                        <h4>Dashboard</h4>
-                    </div>
-                    <nav aria-label="breadcrumb" role="navigation">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-
+    
         <!-- First Row - Welcome -->
         <div class="card-box pd-20 height-100-p mb-30">
             <div class="row align-items-center">
@@ -66,90 +96,81 @@
         <!-- Student Dashboard -->
         @if($user->role=='student')
 
-        <!-- Second Row - Progress -->
-        <div class="container">
-            <div class="row justify-content-left">
-                @foreach($modules as $module)
-                @if($module->user_id == Auth::id())
-                <div class="col-md-4 col-sm-12 mb-30 position-relative">
-                    <div class="card-box pd-30 height-100-p" style="background-color: {{$module->color}}">
-                        <div class="progress-box text-center">
-                            <div class="button-group">
-                                <a href="{{ route('module.page', ['module' => $module->link]) }}">
-                                    <input type="text" class="knob dial2" value="70" data-width="120" data-height="120" data-linecap="round" data-thickness="0.12" data-bgColor="#fff" data-fgColor="#00f" data-angleOffset="180" readonly>
-                                    <h5 class="padding-top-10 h5" style="color: #000"> {{$module->title}}</h5>
-                                </a>
-                            </div>
+        <div class="row justify-content-center">
+            <div class="card-box pd-20 height-100-p mb-30">
+                <div class="pd-20 mb-30">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>My Modules</h4>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <a href="{{ route('modules.create') }}" class="btn button-34" style="margin:10px;">Enroll More Module</a>
+                            <a href="{{ route('modules.index') }}" class="btn button-35" style="margin: 10px;">Manage Module</a>
                         </div>
                     </div>
-                </div>
-                @endif
-                @endforeach
-                <div class="row justify-content-right">
-                    <table class="m-0 p-0" style="width: 100%;">
-                        <tr>
-                            <td>
-                                <a href="{{ route('modules.create') }}" class="btn btn-info float-end" style="margin:10px;">Enroll More Module</a>
-                                <a href="{{ route('modules.index') }}" class="btn btn-success float-end" style="margin: 10px;">Manage Module</a>
-                            </td>
-                        </tr>
-                    </table>
+        
+                    @forelse($modules as $module)
+                        @if($module->user_id == Auth::id())
+                        <div class="col-md-4 col-sm-12 mb-30 position-relative">
+                            <div class="card-box pd-30 height-100-p" style="background-color: {{$module->color}}">
+                                <div class="progress-box text-center">
+                                    <div class="button-group">
+                                        <a href="{{ route('module.page', ['module' => $module->link]) }}">
+                                         
+                                            <span class="micon dw dw-book1 fa-2x"></span>
+                                            <h5 class="padding-top-10 h5" style="color: #000"> {{$module->title}}</h5>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                    @empty
+                        <div class="col-md-12">
+                            <p style="text-align: center">You did not select any modules</p>
+                        </div>
+                    @endforelse
+
                 </div>
             </div>
         </div>
+        
 
         <div>
-        <div class="progress-bar" role="progressbar" aria-valuenow="54" style="width: 54%" aria-valuemin="0" aria-valuemax="100"></div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-        <!-- Forth Row - Announcements -->
-        <div class="row justify-content-center">
-            <div class="card-box pd-20 height-100-p mb-30">
-            <div class="col-md-11 pd-20 mb-30">
-                <h4>Announcements</h4><br>
-                <div class="row justify-content-center">
-                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img class="d-block w-75 mx-auto" src="vendors/images/img1.jpg" alt="First slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5 class="color-white">First slide label</h5>
-                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <!-- Forth Row - Announcements -->
+            <div class="row justify-content-center">
+                <div class="card-box pd-20 height-100-p mb-30">
+                <div class="pd-20 mb-30">
+                    <h4>Announcements</h4><br>
+                    <div class="row justify-content-center">
+                        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="d-block w-120 mx-auto" src="vendors/images/banner1.png" alt="First slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-120 mx-auto" src="vendors/images/banner2.png" alt="Second slide">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="d-block w-120 mx-auto" src="vendors/images/banner3.png" alt="Third slide">
                                 </div>
                             </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-75 mx-auto" src="vendors/images/img3.jpg" alt="Second slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5 class="color-white">Second slide label</h5>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block w-75 mx-auto" src="vendors/images/img2.jpg" alt="Third slide">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <h5 class="color-white">Third slide label</h5>
-                                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                                </div>
-                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
 
