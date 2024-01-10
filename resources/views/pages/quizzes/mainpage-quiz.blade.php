@@ -248,7 +248,9 @@
                 </div>
                 <div class="course-info col-md-8">
                     <p>{{ $quiz->description }}</p>
-                    <a class="button-85" role="button" href="{{ route('quiz.page', ['quizId' => $quiz->chapternumber]) }}">Sertai Kuiz</a>
+                    <div class="pt-10 pull-right">
+                      <a class="button-85" role="button" href="{{ route('quiz.page', ['quizId' => $quiz->chapternumber]) }}">Sertai Kuiz</a>
+                    </div>
                 </div>
             </div>
         </div>

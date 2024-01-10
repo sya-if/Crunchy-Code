@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
 use App\Models\Subquiz;
-
 use Image;
+
+
 
 class QuizController extends Controller
 {
@@ -88,7 +89,6 @@ class QuizController extends Controller
         })->save ($directory . '/' .$image_name,100);
         
         $subquiz->photo =$image_name;
-
         // Associate the subquiz with the quiz
         $subquiz->quizzes()->associate($quiz);
     

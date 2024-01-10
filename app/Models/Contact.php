@@ -13,6 +13,7 @@ class Contact extends Model
         'name',
         'email',
         'message',
+        'reply',
     ];
 
     public function users() {

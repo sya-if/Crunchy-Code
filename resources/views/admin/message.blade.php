@@ -46,7 +46,8 @@
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Message</th>
-                    <th scope="col">Action</th>
+                    {{-- <th scope="col">Reply</th> --}}
+                    <th scope="col" colspan="2">Action</th>
 
                 </tr>
             </thead>
@@ -54,9 +55,11 @@
                 @foreach ($contacts as $count => $contact)
                 <tr>
                         <td>{{$count+1}}</td>
-                        <td>{{$contact->name}}</td>
-                        <td>{{$contact->email}}</td>
+                        <td>{{$contact->users->email}}</td>
+                        <td>{{$contact->subject}}</td>
                         <td>{{$contact->message}}</td>
+                        {{-- <td>{{$contact->reply}}</td> --}}
+                        {{-- <td><a class="btn btn-success btn-sm" href="{{route('create.response', $contact)}}">Reply</a></td> --}}
                         <td>
                             <form action="{{ route('destroy', $contact->id) }}" method="post">
                                 @csrf

@@ -185,35 +185,38 @@
                     <!-- Profile -->
                     <li class="dropdown">
                         <a href="{{ route('profile') }}" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-edit2"></span><span class="mtext">Profile</span>
+                            <span class="micon fa fa-user"></span><span class="mtext">Profile</span>
                         </a>
                     </li>
 
                     <!-- Modules -->
                     <li class="dropdown">
                         <a href="{{ route('module') }}" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-edit2"></span><span class="mtext">Modules</span>
+                            <span class="micon dw dw-notebook"></span><span class="mtext">Modules</span>
                         </a>
                     </li>
 
                     <!-- Quizzes -->
                     <li>
+    
                         <a href="{{ route('quiz') }}"class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-calendar1"></span><span class="mtext">Quizzes</span>
+                            <span class="micon dw dw-writing"></span><span class="mtext">Quizzes</span>
                         </a>
                     </li>
 
                     <!-- Forum -->
                     <li>
+                      
                         <a href="{{ route('discussion') }}" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-calendar1"></span><span class="mtext">Forum</span>
+                            <span class="micon dw dw-group"></span><span class="mtext">Forum</span>
                         </a>
                     </li>
 
                     <!-- Community -->
                     <li class="dropdown">
+                        
                         <a href="{{route('FAQ')}}" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-paint-brush"></span><span class="mtext">FAQ</span>
+                            <span class="micon dw dw-idea"></span><span class="mtext">FAQ</span>
                         </a>
                     </li>
 

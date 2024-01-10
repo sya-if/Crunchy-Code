@@ -1,5 +1,11 @@
 @extends('layouts.master')
 @section('content')
+<style>
+    .required-asterisk {
+        color: red;
+    }
+</style>
+
 <div class="main-container">
 
     @if(session()->has('success'))
@@ -43,24 +49,25 @@
                     <form method="POST" action="{{ route('materials.update', $material) }}">
                         @csrf
                         @method('PUT')
+                        <p style="color: red">* Required</p>
                         <h5>Module Info</h5>
                         <section>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Chapter Number :</label>
+                                        <label>Chapter Number :<span class="required-asterisk">*</span></label>
                                         <input type="text" class="form-control" name="modulenumber" value="{{ $material->modulenumber }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Chapter Title :</label>
+                                        <label>Chapter Title :<span class="required-asterisk">*</span></label>
                                         <input type="text" class="form-control" name="moduletitle" value="{{ $material->moduletitle }}" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Description :</label>
+                                        <label>Description :<span class="required-asterisk">*</span></label>
                                         <textarea class="form-control" name="description" required>{{ $material->description }}</textarea>
                                     </div>
                                 </div>

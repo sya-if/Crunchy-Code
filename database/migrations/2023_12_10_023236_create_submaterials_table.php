@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('subchapternumber')->nullable();
             $table->string('subchaptertitle')->nullable();
-            $table->bigInteger('modulenumber')->unsigned();
             $table->string('status')->nullable()->default('0');
+            $table->bigInteger('modulenumber')->unsigned();
             $table->foreign('modulenumber')->references('modulenumber')->on('materials')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

@@ -95,20 +95,20 @@ class SubmaterialController extends Controller
             'modulenumber' => $request['modulenumber'],
         ]);
 
-        $oldBladeFilePath = resource_path('views\pages\materials\module-' . $originalSubchapterNumber . '.blade.php');
-        $newBladeFilePath = resource_path('views\pages\materials\module-' . $request['subchapternumber'] . '.blade.php');
+        // $oldBladeFilePath = resource_path('views\pages\materials\module-' . $originalSubchapterNumber . '.blade.php');
+        // $newBladeFilePath = resource_path('views\pages\materials\module-' . $request['subchapternumber'] . '.blade.php');
 
         
 
-        // Rename the Blade file if the subchapter number has changed
-        if ($oldBladeFilePath !== $newBladeFilePath) {
-            // Check if the old Blade file exists before renaming
-            if (file_exists($oldBladeFilePath)) {
-                rename($oldBladeFilePath, $newBladeFilePath);
-            } else {
-                dd('Cannot find the blade file');
-            }
-        }
+        // // Rename the Blade file if the subchapter number has changed
+        // if ($oldBladeFilePath !== $newBladeFilePath) {
+        //     // Check if the old Blade file exists before renaming
+        //     if (file_exists($oldBladeFilePath)) {
+        //         rename($oldBladeFilePath, $newBladeFilePath);
+        //     } else {
+        //         dd('Cannot find the blade file');
+        //     }
+        // }
 
         // Redirect or return response
         return redirect()->route('materials.index')->with('success', 'Submaterial updated successfully');
@@ -126,13 +126,13 @@ class SubmaterialController extends Controller
     public function destroy(Submaterial $submaterial)
     {
         // Get the path to the Blade file
-        $bladeFilePath = resource_path('views/pages/materials/module-' . $submaterial->subchapternumber . '.blade.php');
+        // $bladeFilePath = resource_path('views/pages/materials/module-' . $submaterial->subchapternumber . '.blade.php');
 
-        // Check if the Blade file exists before deleting
-        if (File::exists($bladeFilePath)) {
-            // Delete the Blade file
-            File::delete($bladeFilePath);
-        }
+        // // Check if the Blade file exists before deleting
+        // if (File::exists($bladeFilePath)) {
+        //     // Delete the Blade file
+        //     File::delete($bladeFilePath);
+        // }
 
         $submaterial->delete();
 

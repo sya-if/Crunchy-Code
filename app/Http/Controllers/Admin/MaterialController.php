@@ -79,6 +79,7 @@ class MaterialController extends Controller
         // Set the values for the submaterial
         $submaterial->subchapternumber = $request['subchapternumber'];
         $submaterial->subchaptertitle = $request['subchaptertitle'];
+
     
         // Associate the submaterial with the material
         $submaterial->material()->associate($material);
@@ -86,14 +87,14 @@ class MaterialController extends Controller
         // Save the submaterial
         $submaterial->save();
 
-        // Generate the content for the Blade file
-        $bladeContent = "@extends('layouts.app')\n\n@section('content')\n\n\n@endsection";
+        // // Generate the content for the Blade file
+        // $bladeContent = "@extends('layouts.app')\n\n@section('content')\n\n\n@endsection";
 
-        // Define the path where the Blade file will be stored
-        $bladeFilePath = resource_path('views\pages\materials' . '\module-' .$submaterial->subchapternumber . '.blade.php');
+        // // Define the path where the Blade file will be stored
+        // $bladeFilePath = resource_path('views\pages\materials' . '\module-' .$submaterial->subchapternumber . '.blade.php');
 
-        // Store the Blade file
-        file_put_contents($bladeFilePath, $bladeContent);
+        // // Store the Blade file
+        // file_put_contents($bladeFilePath, $bladeContent);
     
         // Redirect to a success page or back to the form
         return redirect()->route('materials.index')->with('success','Material and Submaterial has been created!');
@@ -176,13 +177,13 @@ class MaterialController extends Controller
     {
         // Delete associated submaterials and their Blade files
         foreach ($material->submaterials as $submaterial) {
-            $bladeFilePath = resource_path('views/pages/materials/module-' . $submaterial->subchapternumber . '.blade.php');
+            // $bladeFilePath = resource_path('views/pages/materials/module-' . $submaterial->subchapternumber . '.blade.php');
 
-            // Check if the Blade file exists before deleting
-            if (File::exists($bladeFilePath)) {
-                // Delete the Blade file
-                File::delete($bladeFilePath);
-            }
+            // // Check if the Blade file exists before deleting
+            // if (File::exists($bladeFilePath)) {
+            //     // Delete the Blade file
+            //     File::delete($bladeFilePath);
+            // }
 
             // Delete the submaterial
             $submaterial->delete();

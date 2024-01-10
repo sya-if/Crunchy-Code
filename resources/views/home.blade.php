@@ -98,8 +98,8 @@
             </div>
         </div>
 
-        <div class="progress" id="progress-bar">
-    <div class="progress-bar" role="progressbar" aria-valuenow="54" style="width: 54%" aria-valuemin="0" aria-valuemax="100"></div>
+        <div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="54" style="width: 54%" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -153,6 +153,10 @@
             </div>
         </div>
 
+        <div class="footer-wrap pd-20 mb-20 card-box">
+            Crunchy Code Web Application System developed by Elysium
+        </div>
+
         <!-- End Student Dashboard -->
         @endif
 
@@ -166,11 +170,8 @@
             <div class="col-xl-3 mb-30">
                 <div class="card-box height-100-p widget-style1">
                     <div class="d-flex flex-wrap align-items-center">
-                        <div class="progress-data">
-                            <div id="chart2"></div>
-                        </div>
                         <div class="widget-data">
-                            <div class="h4 mb-0">10</div>
+                            <div class="h4 mb-0">{{ $users->count() }}</div>
                             <div class="weight-600 font-14">Students</div>
                         </div>
                     </div>
@@ -179,11 +180,8 @@
             <div class="col-xl-3 mb-30">
                 <div class="card-box height-100-p widget-style1">
                     <div class="d-flex flex-wrap align-items-center">
-                        <div class="progress-data">
-                            <div id="chart3"></div>
-                        </div>
                         <div class="widget-data">
-                            <div class="h4 mb-0">3</div>
+                            <div class="h4 mb-0">{{ $materials->count() }}</div>
                             <div class="weight-600 font-14">Modules</div>
                         </div>
                     </div>
@@ -192,11 +190,8 @@
             <div class="col-xl-3 mb-30">
                 <div class="card-box height-100-p widget-style1">
                     <div class="d-flex flex-wrap align-items-center">
-                        <div class="progress-data">
-                            <div id="chart"></div>
-                        </div>
                         <div class="widget-data">
-                            <div class="h4 mb-0">10</div>
+                            <div class="h4 mb-0">{{ $quizzes->count() }}</div>
                             <div class="weight-600 font-14">Quizzes</div>
                         </div>
                     </div>
@@ -205,11 +200,8 @@
             <div class="col-xl-3 mb-30">
                 <div class="card-box height-100-p widget-style1">
                     <div class="d-flex flex-wrap align-items-center">
-                        <div class="progress-data">
-                            <div id="chart4"></div>
-                        </div>
                         <div class="widget-data">
-                            <div class="h4 mb-0">10</div>
+                            <div class="h4 mb-0">{{ $forums->count() }}</div>
                             <div class="weight-600 font-14">Forum</div>
                         </div>
                     </div>
@@ -221,49 +213,145 @@
 
         <!-- Row 2 -->
         <div class="row">
-            <!-- Student Table -->
-            <div class="col-lg-8 col-md-6 col-sm-12 mb-30">
-                <div class="pd-20 card-box height-100-p">
-                    <h4 class="mb-20 h4">Student List</h4>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php($i=0)
-                            @foreach ($users as $user)
-                                @if($user->role == 'student')
-                                    <tr>
-                                        <td>{{ ++$i }}</td>
-                                        <td>{{ $user->fullname }}</td>
-                                    </tr>
-                                @endif
-                            @endforeach
-                        </tbody>
-                    </table>
+
+            <div class="col-xl-8 mb-30">
+                <div class="card-box height-100-p pd-20">
+                    <h2 class="h4 mb-20" style="text-align: center">Students Registration Record in 2024</h2>
+                    <div id="chart52"></div>
+
+
                 </div>
             </div>
+
+            <script>
+                // Assuming $monthlyStudentCounts is an array containing monthly student counts
+                var monthlyStudentCounts = {!! json_encode($monthlyStudentCounts) !!};
             
-        
-            <!-- Forum List -->
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
-                <div class="pd-20 card-box height-100-p">
-                    <h4 class="mb-20 h4">Community List</h4>
-                    <ul class="list-group">
-                        <li class="list-group-item">SMK Batu Pahat</li>
-                        <li class="list-group-item">Universiti Teknologi Malaysia</li>
-                        <li class="list-group-item">Fakulti Komputeran</li>
-                        <li class="list-group-item">Public</li>
-                        <li class="list-group-item">Private</li>
-                    </ul>
+                // Extracting labels (months) and data (student counts) from the monthlyStudentCounts
+                var months = [];
+                var studentCounts = [];
+            
+                // Filter data for the year 2024
+                Object.keys(monthlyStudentCounts).forEach(function(date) {
+                    var [year, month] = date.split('-');
+                    if (parseInt(year) === 2024) {
+                        // Convert numeric month to month name
+                        var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                        var monthName = monthNames[parseInt(month) - 1];
+            
+                        months.push(monthName);
+                        studentCounts.push(monthlyStudentCounts[date]);
+                    }
+                });
+
+                // Inline script to initialize the chart
+                document.addEventListener("DOMContentLoaded", function () {
+                    var options5 = {
+                        series: [{
+                            name: 'Students',
+                            data: studentCounts
+                        }],
+                        chart: {
+                            height: 350,
+                            type: 'bar',
+                            toolbar: {
+                                show: false,
+                            }
+                        },
+                        plotOptions: {
+                            bar: {
+                                columnWidth: '50%',
+                                distributed: true
+                            }
+                        },
+                        dataLabels: {
+                            enabled: false
+                        },
+                        xaxis: {
+                            categories: months,
+                            labels: {
+                                show: true
+                            }
+                        },
+                        yaxis: {
+                            title: {
+                                text: 'Number of Students'
+                            }
+                        }
+                    };
+            
+                    var chart52 = new ApexCharts(document.querySelector("#chart52"), options5);
+                    chart52.render();
+                });
+            </script>
+            
+            <div class="col-xl-4 mb-30">
+                <div class="card-box height-100-p pd-20">
+                    <h2 class="h4 mb-20" style="text-align: center">Distribution of Forums, Quizzes, and Materials</h2>
+                    <div id="chartContainer"></div>
                 </div>
             </div>
+
+            <script>
+                // Sample data (replace with your actual data)
+                var forumsCount = {{ $forums->count() ?? 0 }};
+                var quizzesCount = {{ $quizzes->count() ?? 0 }};
+                var materialsCount = {{ $materials->count() ?? 0 }};
+            
+                // Data for the pie chart
+                var chartData = {
+                    series: [forumsCount, quizzesCount, materialsCount],
+                    labels: ["Forums", "Quizzes", "Materials"]
+                };
+            
+                // Options for the pie chart
+                var chartOptions = {
+                    chart: {
+                        type: 'donut',
+                    },
+                    labels: chartData.labels,
+                    series: chartData.series,
+                    colors: ["#FF6384", "#36A2EB", "#FFCE56"],
+                    responsive: [{
+                        breakpoint: 480,
+                        options: {
+                            chart: {
+                                width: 200
+                            },
+                            legend: {
+                                position: 'bottom'
+                            }
+                        }
+                    }],
+                    plotOptions: {
+                        pie: {
+                            customScale: 0.8, // Adjust this value to control the size of the donut chart
+                            donut: {
+                                size: '70%',
+                                labels: {
+                                    show: true,
+                                    total: {
+                                        show: true,
+                                        label: 'Total',
+                                        formatter: function (w) {
+                                            return chartData.series.reduce((a, b) => a + b, 0);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+            
+                // Initialize ApexCharts and render the chart
+                document.addEventListener("DOMContentLoaded", function () {
+                    var chart = new ApexCharts(document.getElementById('chartContainer'), chartOptions);
+                    chart.render();
+                });
+            </script>
+            
         </div>
         
-
         <!-- End Admin Dashboard -->
         @endif
 
@@ -282,5 +370,8 @@
 <script src="src/plugins/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
 <script src="src/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script> -->
 <script src="vendors/scripts/dashboard2.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 
 @endsection
