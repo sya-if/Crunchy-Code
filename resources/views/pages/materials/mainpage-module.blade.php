@@ -153,21 +153,22 @@
 }
 
 .progress {
-	background-color: #ddd;
-	border-radius: 3px;
-	height: 5px;
-	width: 100%;
+    background-color: transparent; 
+    border-radius: 3px;
+    height: 5px;
+    width: 100%;
 }
 
 .progress::after {
-	border-radius: 3px;
-	background-color: #2A265F;
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	height: 5px;
-	width: 66%;
+    border-radius: 3px;
+    background-color: #2A265F; 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    width: 0; 
+    transition: width 0.3s ease-in-out; 
 }
 
 .progress-text {
@@ -201,40 +202,59 @@
 }
 
 .btn-block-width.text-white {
-    color: #fff; /* Set the text color to white */
+    color: #fff;
+}
+
+.btn-mark-done.done {
+    background-color: #ff0000;
+    border-color: #ff0000;
+    color: #ffffff; 
+}
+
+.btn-mark-done.done:hover {
+    background-color: #cc0000; 
+    border-color: #cc0000;
+    color: #ffffff; 
 }
 
 </style>
-<!-- ... Your existing scripts ... -->
+
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    $(document).ready(function () {
-        var totalModules = {{ count($materials) }}; // Set the total number of modules
-        var moduleSubmodules = {
-            @foreach($materials as $material)
-                'module{{$material->modulenumber}}': {{ count($material->submaterials) }},
-            @endforeach
-        };
-        var currentProgress = {}; // Initialize the current progress object
-
-        // Initialize currentProgress object with default values
+   $(document).ready(function () {
+    var totalModules = {{ count($materials) }};
+    var moduleSubmodules = {
         @foreach($materials as $material)
-            currentProgress['module{{$material->modulenumber}}'] = 0;
+            'module{{$material->modulenumber}}': {{ count($material->submaterials) }},
         @endforeach
+    };
+    var currentProgress = {};
 
-        $('.btn-mark-done').click(function () {
-    console.log('Mark as Done button clicked');
-    var moduleId = $(this).data('module');
-    console.log('Module ID:', moduleId);
+    @foreach($materials as $material)
+        currentProgress['module{{$material->modulenumber}}'] = 0;
+    @endforeach
+
+    $('.btn-mark-done').click(function () {
+        console.log('Mark as Done button clicked');
+        var moduleId = $(this).data('module');
+        console.log('Module ID:', moduleId);
+
+        // Check if the button has the class 'done'
+        if ($(this).hasClass('done')) {
+            // If 'done', toggle back to 'Mark as Done' state and decrease progress
+            $(this).removeClass('done').text('Mark as Done');
+            var submoduleProgress = -1;
+        } else {
+            // If not 'done', toggle to 'Done' state and increase progress
+            $(this).addClass('done').text('Done');
             var submoduleProgress = 1;
+        }
 
-            // Update the progress for the specific module
-            currentProgress['module' + moduleId] += submoduleProgress;
+        currentProgress['module' + moduleId] += submoduleProgress;
+        updateProgressUI(moduleId);
+    });
 
-            // Update the UI with the new progress
-            updateProgressUI(moduleId);
-        });
 
         // Function to update the UI with the new progress for a specific module
         function updateProgressUI(moduleId) {
@@ -273,7 +293,7 @@
     });
 </script>
 
-<!-- ... Remaining scripts ... -->
+
 
 <div class="main-container">
     <div class="pd-ltr-20 height-100-p xs-pd-20-10">
@@ -332,7 +352,6 @@
                                         <div class="modal-body justify-content">
                                         @foreach ($material->submaterials as $submaterial)
                                             @if ($submaterial->modulenumber == $material->modulenumber)    
-                                                <!-- Replace the content below with your specific modal content -->
                                                 <div class="row">
                                             <div class="col-md-9">
                                                 <!-- Module button -->
