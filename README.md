@@ -30,7 +30,7 @@ The second concern relates to the significance of the teacher preparation progra
 
 <div class="row">
     <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Sustainable_Development_Goal_4-cs.svg" width="200" alt="Laravel Logo"></a></p>
-    <p align="center"><a href="https://laravel.com" target="_blank"><img src="[public/vendors/images/crunchy-code-logo.png](https://upload.wikimedia.org/wikipedia/commons/d/d4/Sustainable_Development_Goal_10.png)" width="200" alt="Laravel Logo"></a></p>
+    <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Sustainable_Development_Goal_10.png" width="200" alt="Laravel Logo"></a></p>
 </div>
 
 ## About Laravel
