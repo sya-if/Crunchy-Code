@@ -24,15 +24,18 @@ There may have been a major issue as a result of Malaysian colleges' inadequate 
 
 Issue 2:Teacher Training and Capacity
 
-The second concern relates to the significance of the teacher preparation program's  goal of teaching computer science to the pupils. For a teacher to teach computer science , implementing effective computer science and navigating the technology-driven learning environment are crucial. Before beginning to educate pupils, the teacher may require ongoing professional development and training.These days, the number of teachers with computer science competence who are qualified to instruct secondary school pupils is far too few.
+The second concern relates to the significance of the teacher preparation program's  goal of teaching computer science to the pupils. For a teacher to teach computer science, implementing effective computer science and navigating the technology-driven learning environment is crucial. Before beginning to educate pupils, the teacher may require ongoing professional development and training. These days, the number of teachers with computer science competence who are qualified to instruct secondary school pupils is far too few.
 
-## SDG need to be achieved
+## SDG needs to be achieved
 
-<div class="row">
-    <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Sustainable_Development_Goal_4-cs.svg" width="200" alt="Laravel Logo"></a></p>
-    <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Sustainable_Development_Goal_10.png" width="200" alt="Laravel Logo"></a></p>
-</div>
+ SDG 4: Quality Education
+- Focus on the fundamental concepts of programming languages to ensure that students can grasp the essentials.
+- Enables students to develop a solid foundation in computer science, which can later be expanded upon.
 
+SDG 10: Reduced Inequality
+- Accessible to students from various socioeconomic backgrounds, ensuring that it doesn't exacerbate educational inequalities.
+- Support underprivileged and marginalized communities by providing them with equal access to computer science education.
+  
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
