@@ -101,13 +101,13 @@
                                                 <a href="{{ route('quizzes.editShow', ['quiz' => $quiz, $subquiz->id]) }}" class="dropdown-item"><i class="dw dw-edit2"></i>Edit</a>
 
     
-                                                <!-- Delete Student Information -->
-                                                <form method="POST" action="{{ route('quizzes.editShow', ['quiz' => $quiz, $subquiz->id]) }}" ">
+                                                <!-- Delete question Information -->
+                                                <form method="POST" action="{{ route('quizzes.destroySubquiz', ['quiz' => $quiz, $subquiz->id]) }}" ">
                                                     <input type="hidden" name="_method" value="DELETE" />
                                                     @csrf
     
                                                     @method('DELETE')
-                                                    <button type="submit" onclick="return confirm('Are you sure that you want to delete this user?')" class="dropdown-item"><i class="dw dw-delete-3"></i>Delete</button>
+                                                    <button type="submit" onclick="return confirm('Are you sure that you want to delete this quiz?')" class="dropdown-item"><i class="dw dw-delete-3"></i>Delete</button>
                                                 </form>
     
                                             </div>
