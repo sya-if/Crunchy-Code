@@ -108,32 +108,29 @@
                             <a href="{{ route('modules.index') }}" class="btn button-35" style="margin: 10px;">Manage Module</a>
                         </div>
                     </div>
-
+        
                     <div class="row">
                         @forelse($modules as $module)
-                        @if($module->user_id == Auth::id())
-                        <div class="col-md-4 col-sm-12 mb-30 position-relative">
-                            <div class="card-box pd-30 height-100-p" style="background-color: {{$module->color}}">
-                                <div class="progress-box text-center">
-                                    <div class="button-group">
-                                        <a href="{{ route('module.page', ['module' => $module->link]) }}">
-                                         
-                                            <span class="micon dw dw-book1 fa-2x"></span>
-                                            <h5 class="padding-top-10 h5" style="color: #000"> {{$module->title}}</h5>
-                                        </a>
+                            @if($module->user_id == Auth::id())
+                            <div class="col-md-4 col-sm-12 mb-30 position-relative">
+                                <div class="card-box pd-30 height-100-p" style="background-color: {{$module->color}}">
+                                    <div class="progress-box text-center">
+                                        <div class="button-group">
+                                            <a href="{{ route('module.page', ['module' => $module->link]) }}">
+                                                <span class="micon dw dw-book1 fa-2x"></span>
+                                                <h5 class="padding-top-10 h5" style="color: #000"> {{$module->title}}</h5>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        @endif
+                            @endif
                         @empty
-                            <div class="col-md-12">
-                                <p style="text-align: center">You did not select any modules</p>
-                            </div>
+                        <div class="col-md-12">
+                            <p style="text-align: center">You did not select any modules</p>
+                        </div>
                         @endforelse
-
                     </div>
-                    
 
                 </div>
             </div>
